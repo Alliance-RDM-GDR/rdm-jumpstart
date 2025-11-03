@@ -13,7 +13,7 @@
 
 <title>IDEs &amp; Relative Paths</title>
 
-<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -582,12 +582,11 @@ should have an .Rproj file in the root of your project.</p>
 <pre class="r"><code>install.packages(&quot;here&quot;)</code></pre>
 <p>Then, load it into each of your .R or .Rmd files</p>
 <pre class="r"><code>library(here)</code></pre>
-<pre><code>## Warning: package &#39;here&#39; was built under R version 4.3.3</code></pre>
-<pre><code>## here() starts at /Users/vdunbar/Library/CloudStorage/OneDrive-UBC/_tmp/bootcamp_website/rdm-jumpstart</code></pre>
+<pre><code>## here() starts at /Users/vdunbar/Desktop/_tmp/rdm-jumpstart</code></pre>
 <p>When you call here, it reports the root directory of your R
 project</p>
 <pre class="r"><code>here()</code></pre>
-<pre><code>## [1] &quot;/Users/vdunbar/Library/CloudStorage/OneDrive-UBC/_tmp/bootcamp_website/rdm-jumpstart&quot;</code></pre>
+<pre><code>## [1] &quot;/Users/vdunbar/Desktop/_tmp/rdm-jumpstart&quot;</code></pre>
 <p>To use <code>here</code> to load data, you call <code>here</code>
 from within data reading function, and feed it a character string
 representing the directory or directories to follow from your root all

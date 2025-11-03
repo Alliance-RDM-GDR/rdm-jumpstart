@@ -13,7 +13,7 @@
 
 <title>First steps in R</title>
 
-<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -615,27 +615,27 @@ arguments.</p>
 <col width="36%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th align="left"><strong>Argument</strong></th>
 <th align="left"><strong>What it means</strong></th>
 <th align="left"><strong>Default Value</strong></th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td align="left">x</td>
 <td align="left">x is an R object that contains the numbers we want to
 find the mean of</td>
 <td align="left">No default, required</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left">trim</td>
 <td align="left">A number between 0 and 0.5. Removes a fraction of
 highest and lowest values before computing mean (useful if you want a
 trimmed mean that ignores outliers).</td>
 <td align="left">0 means no trimming</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left">na.rm</td>
 <td align="left">Indicates whether NA values should be included or not
 in the calculation</td>
@@ -724,8 +724,6 @@ tomorrow…</p>
 <p>Packages are stored in libraries. Once a package is installed, we
 need to call the library with the function <code>library()</code>.</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## Warning: package &#39;purrr&#39; was built under R version 4.3.3</code></pre>
-<pre><code>## Warning: package &#39;lubridate&#39; was built under R version 4.3.3</code></pre>
 <div class="flag">
 <p>Note that the package name needs to be in quotations when installing
 the package, but not when loading the library.</p>
@@ -759,34 +757,34 @@ formats like <code>read_tsv()</code>(tab-separated values),
 different file types.</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th align="left"><strong>File Type</strong></th>
 <th align="left"><strong>Function</strong></th>
 <th align="left"><strong>Package</strong></th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td align="left">.csv</td>
 <td align="left"><code>read_csv()</code></td>
 <td align="left">readr</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left">.xlsx</td>
 <td align="left"><code>read.xlsx()</code></td>
 <td align="left">xlsx</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left">.sav</td>
 <td align="left"><code>read_sav()</code></td>
 <td align="left">haven</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left">.sas7bdat , .sas7bcat</td>
 <td align="left"><code>read_sas()</code></td>
 <td align="left">haven</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left">.dta</td>
 <td align="left"><code>read_dta()</code></td>
 <td align="left">haven</td>

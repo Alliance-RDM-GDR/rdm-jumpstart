@@ -13,7 +13,7 @@
 
 <title>Saving Outputs for Reproducible Research</title>
 
-<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -833,14 +833,14 @@ automatic data feeds and processing.</p></li>
 <col width="33%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th align="left">Aspect</th>
 <th align="left">Human-Readable Data Dictionary</th>
 <th align="left">Machine-Readable Data Dictionary</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td align="left"><strong>Pros</strong></td>
 <td align="left"><strong>Accessibility</strong>: Easy to read, supports
 <strong>reusability</strong> for non-technical users. <br><strong>Ease
@@ -853,7 +853,7 @@ Programmatic updates reduce errors for large datasets.<br>
 <strong>Standardization</strong>: Metadata standards enhance
 <strong>findability</strong>.</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><strong>Cons</strong></td>
 <td align="left"><strong>Limited Automation</strong>: Unstructured, hard
 to parse, hinders <strong>interoperability</strong>.<br> <strong>Manual
@@ -933,14 +933,14 @@ has distinct advantages and limitations, depending on your needs.</p>
 <col width="33%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th align="left">Aspect</th>
 <th align="left">PDF Output</th>
 <th align="left">HTML Output</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td align="left"><strong>Pros</strong></td>
 <td align="left">- Human-readable.<br>- Universally accessible.<br>-
 Consistent formatting.<br>- Ideal for formal distribution (e.g.,
@@ -948,7 +948,7 @@ publications, reports).</td>
 <td align="left">- Machine-readable.<br>- Supports interactivity (e.g.,
 collapsible code).<br>- Web-friendly.<br>- Smaller file sizes.</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><strong>Cons</strong></td>
 <td align="left">- Not machine-readable. <br>- Lacks interactivity.
 <br>- Large file sizes.<br>- Limited for web-based sharing.</td>
@@ -968,7 +968,7 @@ YAML header supporting both PDF and HTML outputs:</p>
 <pre class="yaml"><code>---
 title: &quot;RDM Jumpstart Workshop&quot;
 author: &quot;Your Name&quot;
-date: &quot;2025-05-16&quot;
+date: &quot;2025-11-03&quot;
 output:
   pdf_document:
     toc: true              # optional: include table of contents
@@ -1010,40 +1010,40 @@ interactive features.</li>
 <col width="78%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th align="left">Topic</th>
 <th align="left">Recommendation</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td align="left"><strong>Compression</strong></td>
 <td align="left">Use <code>.csv.gz</code> or <code>.tsv.gz</code> for
 large files to reduce size and improve access speed.</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><strong>Interoperability</strong></td>
 <td align="left">Prefer <code>.csv</code> or <code>.tsv</code>; avoid
 locked-in formats to maximize cross-platform use.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><strong>Naming Conventions</strong></td>
 <td align="left">Use descriptive names with dates/versions:
 <code>timeuse_day4_3_20250515.csv</code>.</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><strong>Transparency</strong></td>
 <td align="left">Log all changes in RMarkdown; describe decisions in
 plain language.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><strong>Metadata</strong></td>
 <td align="left">Maintain and save an updated data dictionary in
 human-readable (e.g., PDF) or machine-readable (e.g., JSON) formats with
 rich, structured metadata, enhancing <strong>findability</strong> and
 <strong>interoperability</strong>.</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><strong>Plot Formats</strong></td>
 <td align="left">Use appropriate formats (<code>.png</code>,
 <code>.pdf</code>, <code>.tiff</code>) based on audience and/or

@@ -13,7 +13,7 @@
 
 <title>R Cheatsheet</title>
 
-<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -565,208 +565,208 @@ to renv</a></li>
 <col width="33%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th align="left">Command</th>
 <th align="left">Description</th>
 <th align="left">Syntax</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td align="left"><code>&lt;-</code></td>
 <td align="left">Assign content to an R object.</td>
 <td align="left"><code>object-name &lt;- content-assigned</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><code>read.csv()</code></td>
 <td align="left">Read data into R. It’s advised to assign to an R
 object).</td>
 <td
 align="left"><code>data &lt;- read.csv("file-path/data-file-name.csv")</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><code>write.csv()</code></td>
 <td align="left">Save data used/created in R as a .csv file.</td>
 <td
 align="left"><code>write.csv(data, "file-path/file-name.csv")</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><code>colnames()</code></td>
 <td align="left">List all the column names in a dataset.</td>
 <td align="left"><code>colnames(data)</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><code>head</code></td>
 <td align="left">Display the top rows of a dataset. Can optionally
 include a specified number after a comma.</td>
 <td align="left"><code>head(data, 10)</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><code>View()</code></td>
 <td align="left">Display a dataset as a spreadsheet within an RStudio
 window.</td>
 <td align="left"><code>View(data)</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><code>install.packages()</code></td>
 <td align="left">Install a package into R. Only need to do this
 once.</td>
 <td align="left"><code>install.packages("package-name")</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><code>library()</code></td>
 <td align="left">Bring a package to use by calling its library.</td>
 <td align="left"><code>library(package-name)</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><code>names()</code></td>
 <td align="left">Display a list of all the column names in a data
 object.</td>
 <td align="left"><code>names(data)</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><code>|&gt;</code></td>
 <td align="left">The pipe operator, which takes the output of one
 command/function and passes it through to another, and can be thought of
 as “and then” in your code.</td>
 <td align="left"><code>data &lt;- data |&gt; function(...)</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><code>save()</code></td>
 <td align="left">A way to save R objects in a specified file.</td>
 <td
 align="left"><code>save(data, file="file-path/file-name.file-extension")</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><code>load()</code></td>
 <td align="left">Import saved R objects from a file.</td>
 <td
 align="left"><code>load(file-path/file-name.file-extension)</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><code>rename()</code></td>
 <td align="left">Allows you to rename column names (variables) of a
 dataset.</td>
 <td
 align="left"><code>data &lt;- data |&gt; rename("new-column-name" = "old-column-name")</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><code>mean()</code></td>
 <td align="left">Calculates the mean of the data that’s placed in the
 brackets.</td>
 <td align="left"><code>mean(data)</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><code>sum()</code></td>
 <td align="left">Returns the sum of all the values present in the
 argument.</td>
 <td align="left"><code>sum(function(data$variable)</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><code>is.na()</code></td>
 <td align="left">Display when a variable or dataframe has missing
 values, presented as TRUE/FALSE.</td>
 <td align="left"><code>is.na(data$variable)</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><code>complete.cases()</code></td>
 <td align="left">Display when a row has no missing values, presented as
 TRUE/FALSE</td>
 <td align="left"><code>complete.cases(data)</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><code>class()</code></td>
 <td align="left">Returns the class of an object to indicate the data
 structure.</td>
 <td align="left"><code>class(data)</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><code>recode()</code></td>
 <td align="left">Change data format of variables or re-categorize
 certain values in a variable as some other value. Often used in
 conjunction with <code>mutate</code> (see below for example).</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><code>mutate()</code></td>
 <td align="left">Create new columns based on values in existing
 columns.</td>
 <td
 align="left"><code>data &lt;- data |&gt; mutate(new-variable-name = recode(data$old-variable, "old-value" = "new-value"))</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><code>class()</code></td>
 <td align="left">Prints the data type of a variable, or the structure of
 a dataset.</td>
 <td align="left"><code>class(object-of-interest)</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><code>is.numeric</code></td>
 <td align="left">Check to see if the data is of a numeric class, which
 will return a TRUE/FALSE response. <code>is.numeric(data)</code></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><code>as.numeric()</code></td>
 <td align="left">Converts alternative data types into numeric
 values.</td>
 <td align="left"><code>as.numeric(data)</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><code>distinct()</code></td>
 <td align="left">Display distinct values of a variable.</td>
 <td align="left"><code>data %&gt;% distinct(variable)</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><code>count()</code></td>
 <td align="left">Counts the number of occurrences of each value in a
 column.</td>
 <td align="left"><code>data |&gt; count(variable)</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><code>arrange()</code></td>
 <td align="left">Display outcome results in ascending or descending
 order (default is ascending)</td>
 <td
 align="left"><code>data %&gt;% arrange(desc(value-of-interest))</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><code>filter</code></td>
 <td align="left">Subset the data to keep only rows where a specified
 condition is met.</td>
 <td
 align="left"><code>data |&gt; filter(variable-value == x)</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><code>nrow()</code></td>
 <td align="left">Returns the number of rows present in x.</td>
 <td align="left"><code>nrow(data)</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><code>ncol()</code></td>
 <td align="left">Returns the number of columns present in x.</td>
 <td align="left"><code>ncol(data)</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><code>print(paste())</code></td>
 <td align="left">Print output with a string variable together.</td>
 <td
 align="left"><code>print(paste("print this string with possible R objects"))</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><code>select()</code></td>
 <td align="left">Select specific columns from a dataset, usually used in
 part of a pipe. To select multiple columns, separate with commas.</td>
 <td
 align="left"><code>r-object |&gt; select(variable1, variable2)</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><code>summarise</code></td>
 <td align="left">Creates a new dataframe, and will saummarise all
 observations from the input.</td>
 <td align="left"><code>summarise(R-object)</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><code>ggplot()</code></td>
 <td align="left">A library to make plots from your data. The usage of
 ggplot ranges from very simple to very detailed, so for further
@@ -774,14 +774,14 @@ information on usage see the Day 4 section on Visualizations, or read
 the documentation above on the Tidyverse.</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><code>gzfile()</code></td>
 <td align="left">Used to compress/zip files in R to create a smaller
 file that’s easier to store and share.</td>
 <td
 align="left"><code>gzfile("file-path/file-name.file-extension)</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left"><code>ggsave</code></td>
 <td align="left">Save a ggplot graphic as a .png or .pdf file. There are
 many arguments that can fit into this, and you can read more in the
@@ -789,7 +789,7 @@ tidyverse documentation at the top of the page</td>
 <td
 align="left"><code>ggsave("file-path/file-name.file-extension", arguments)</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left"><code>tiff</code></td>
 <td align="left">Save a graphic as a .tiff file. Like
 <code>ggsave</code>, there are many arguments that can fit into

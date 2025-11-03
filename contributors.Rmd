@@ -55,3 +55,22 @@ Data Science Librarian, University of Victoria
 
 Nick Rochlin is the Data Science Librarian at the University of Victoria (UVic).  Prior to joining UVic, he was the Research Data Management (RDM) Specialist with the University of British Columbia’s Advanced Research Computing team, where he provided assistance and instruction to researchers in accessing and using digital research infrastructure, as well as all things RDM.  In his current role, he focuses on supporting researchers in RDM and reproducible research workflows, and bridging the gap between UVic’s Library and Research Computing Services.  He has participated in a number of national roles in Canada’s data ecosystem, and is currently the Co-chair of the Digital Research Alliance of Canada’s RDM National Training Expert Group.
 
+## 2025 Volunteers
+
+We would like to thank the following individuals for volunteering their time and expertise throughout the program:
+
+* Alex Cooper
+* Alex Thistlewood
+* Alp Ozturk
+* Amir Golzan
+* Anneliese Eber
+* Ceri MacMillan
+* Daniel Manrique-Castano
+* Emma Garlock
+* Jaime Orr
+* James Doiron
+* Janet Rothney
+* Kaetlyn Phillips
+* Minglu Wang
+* Susie Wilson
+
