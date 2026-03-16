@@ -2,9 +2,9 @@
 
 ### Overview
 
-Quarto builds a website using paramters set in `_quarto.yml`, which controls site structure, including site navigation. Using `knitr`, it takes in all `.qmd` and `.Rmd` files it can find (this behavious is recursive in directories), and renders them to `html` and connects them based on the paramters outlined in `_quarto.yml`.
+Quarto builds a website using parameters set in `_quarto.yml`, which controls site structure, including site navigation. Using `knitr`, it takes in all `.qmd` and `.Rmd` files it can find (this behavious is recursive in directories), and renders them to `html` and connects them based on the paramters outlined in `_quarto.yml`.
 
-In our case, the site is rendered to the directory `docs/`. If this directory does not yet exist, it will create it. If it already exists, it will overwrite it. **To avoid unnecessary merge conflicts, `docs/` is ignored by `Git`. We will push the `docs/` directory to GitHub when we're ready to publish the course.
+In our case, the site is rendered to the directory `docs/`. If this directory does not yet exist, it will create it. If it already exists, it will overwrite it. **To avoid unnecessary merge conflicts, `docs/` is ignored by `Git`. We will push the `docs/` directory to GitHub when we're ready to publish the course.**
 
 Rendering the site is most easily done from within RStudio's GUI. Open `rdm-jumpstart.Rproj`, go to the `Build` tab and select `Render Website`. In addition to rendering the wite to `docs/` it will also launch a local server and deploy the site. Once the site is deployed, Quarto will continue to listen for modifications to any configuration files (`.yml`, `.scss`, etc.). However, after modifying a `.qmd` file, you will need to rebuild; Quarto will rebuild only the modified files and launch a new local server.
 
