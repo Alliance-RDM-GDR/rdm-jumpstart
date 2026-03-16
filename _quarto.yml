@@ -1,0 +1,35 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "RDM Jumpstart"
+  google-analytics: "G-KSGZ4ESKQ3"
+  favicon: "images/institutions/alliance_favicon.png"
+  page-footer:
+    left: |
+      Copyright Statement
+    center: |
+      Institutional Logos
+    right: |
+      Build with Quarto
+    border: true
+  navbar:
+    logo: "images/institutions/Alliance_logo_Symbol.png"
+    search: true
+    left:
+      - href: index.qmd
+        text: Home
+      - codeOfConduct.qmd
+      - contributors.qmd
+      - template.qmd
+
+format:
+  html:
+    theme: flatly
+    toc: true
+    css: styles.css
+      
+execute:
+  echo: false
+  warning: false
