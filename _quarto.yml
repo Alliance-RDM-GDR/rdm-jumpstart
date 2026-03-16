@@ -16,20 +16,24 @@ website:
     border: true
   navbar:
     logo: "images/institutions/Alliance_logo_Symbol.png"
+    logo-alt: "Alliance Logo"
     search: true
     left:
-      - href: index.qmd
+      - href: qmd/index.qmd
         text: Home
-      - codeOfConduct.qmd
-      - contributors.qmd
-      - template.qmd
+      - qmd/codeOfConduct.qmd
+      - qmd/contributors.qmd
+      - qmd/template.qmd
 
 format:
   html:
-    theme: flatly
+    theme:
+      light: [flatly, style-sheets/styles.scss]
+      dark: [darkly, style-sheets/styles.scss]
     toc: true
-    css: styles.css
       
 execute:
   echo: false
   warning: false
+  
+engine: knitr

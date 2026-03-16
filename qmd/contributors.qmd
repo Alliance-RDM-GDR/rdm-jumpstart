@@ -6,24 +6,14 @@ title: "Contributors"
 
 In alphabetic order…
 
-Erin McCoy, Gia-Huy Hoang, Jane Fry, Jennifer Abel, Maria Amoros-Teijeiro, Mathew Vis-Dunbar, Nick Rochlin
+Names...
 
 <hr />
 
-**Erin McCoy**  
-Research Assistant, Carleton University
+**Name**  
+{Title} {Institution}
 
-Erin McCoy is a PhD Candidate in Social Psychology at Carleton University. Her research focuses on friendship and gossip behavior. 
-
-**Gia-Huy Hoang**  
-Research Assistant, University of Calgary
-
-Gia-Huy Hoang is a second-year Master’s student in Neuroscience from University of Calgary. His research is on machine learning models using psychosocial and neuroimaging data to predict the first onset of anxiety and depression in high-risk adolescents, using data from the large Adolescent Brain Cognitive Development (ABCD) study.
-
-**Jane Fry**  
-Data Services Librarian, Carleton University
-
-Jane Fry is the Data Services Librarian at MacOdrum Library, Carleton University. She has been 'doing data' for over 25 years. This includes helping researchers at all levels to discover, understand, and use data. Research data management is her other main area of responsibility, and she collaborates regularly with the data community by participating in various RDM initiatives, both in leadership roles and as a member. She has also participated in several provincial, national, and international committees in various positions, from Chair to member, including the ICPSR Governing Council, the Portage and Alliance Training Expert Groups, the Ontario data community, and Carleton's Institutional RDM Strategies Working Group. Some of her other activities include being a national Data Champion and a peer reviewer for various data publications.
+{Brief Bio}
 
 **Jennifer Abel**  
 Research Data Management Librarian, University of Calgary
@@ -49,18 +39,5 @@ Nick Rochlin is the Data Science Librarian at the University of Victoria (UVic).
 
 We would like to thank the following individuals for volunteering their time and expertise throughout the program:
 
-* Alex Cooper
-* Alex Thistlewood
-* Alp Ozturk
-* Amir Golzan
-* Anneliese Eber
-* Ceri MacMillan
-* Daniel Manrique-Castano
-* Emma Garlock
-* Jaime Orr
-* James Doiron
-* Janet Rothney
-* Kaetlyn Phillips
-* Minglu Wang
-* Susie Wilson
+* {Names...}
 

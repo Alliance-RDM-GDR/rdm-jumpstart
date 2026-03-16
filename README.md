@@ -1,34 +1,75 @@
-This is the delivery content for the pilot RDM Jumpstart, scheduled to run May 12-16, 2025.
+## Quarto
+
+### Overview
+
+Quarto builds a website using paramters set in `_quarto.yml`, which controls site structure, including site navigation. Using `knitr`, it takes in all `.qmd` and `.Rmd` files it can find (this behavious is recursive in directories), and renders them to `html` and connects them based on the paramters outlined in `_quarto.yml`.
+
+In our case, the site is rendered to the directory `docs/`. If this directory does not yet exist, it will create it. If it already exists, it will overwrite it. **To avoid unnecessary merge conflicts, `docs/` is ignored by `Git`. We will push the `docs/` directory to GitHub when we're ready to publish the course.
+
+Rendering the site is most easily done from within RStudio's GUI. Open `rdm-jumpstart.Rproj`, go to the `Build` tab and select `Render Website`. In addition to rendering the wite to `docs/` it will also launch a local server and deploy the site. Once the site is deployed, Quarto will continue to listen for modifications to any configuration files (`.yml`, `.scss`, etc.). However, after modifying a `.qmd` file, you will need to rebuild; Quarto will rebuild only the modified files and launch a new local server.
+
+### Key Resources
+
+The reference documentation is critical to properly setting up the site, including organizing navigation, customizing css, etc.
+
+* [Website Options](https://quarto.org/docs/reference/projects/websites.html): High level website options for `_quarto.yml` for setting navigation options, page footers, etc.
+* [HTML Theming](https://quarto.org/docs/output-formats/html-themes.html): More granular options for custom theming through Sass variable, mostly connected with `styles.scss`.
+* [More About Quarto themes](https://quarto.org/docs/output-formats/html-themes-more.html): Instructions for how to set up `styles.scss` so that it actually works.
+* [HTML Options](https://quarto.org/docs/reference/formats/html.html): Mostly these apply to standalone html documents, but some features are used in `_quarto.yml`.
+
+## Project Structure
+
+| File | Description |
+| :--- | :--- |
+| _quarto.yml | Key configuration file. Please don't touch. |
+| README.md | This file. Please read and keep updated. |
+
+| Directory | Description |
+| :--- | :--- |
+| _getting_started | A series of 'how to' articles. Not updated since 2025 |
+| docs | Website build location |
+| images | All standalone images, i.e. images not generated within a code chunk. Keep this organized! |
+| qmd | All qmd files. We will come up with a naming convention. Nesting in subdirectories is an option. |
+| scripts | Currently a layover from 2025. May delete. |
+| style-sheets | Custom scss code. |
 
 **Make sure your `.gitignore` file is properly configured. We don't want to see your `.Rproj.user` file, your `.DS_Store` file if you're on a mac, or any other hidden or personal files you may have in your directory :)**
 
-## Using this Repository
+## Authoring Content
 
-This website uses the [RMarkdown Website Generator](https://bookdown.org/yihui/rmarkdown/websites.html). Pages are written in RMarkdown (when code rendering is required) or Markdown (when no code rendering is required). Each page requires YAML frontmatter to be properly processed.
+### YAML
 
-The website is fed from the `docs/` directory. During development, output will be directed to the `website/` directory, so that `docs/` can hold the 'save the date' information.
-
-**Refer to the `template.Rmd` file for RMarkdown markup and the requisite YAML information.**
-
-## RMarkdown Package
-
-You will need to have the `rmarkdown` package installed.
+YAML is a serialized language comprised of key value pairs, in essence, this means spaces are significant. Key value pairs are seperated by a colon and space `: ` and indenting of additional arguments uses a tab. The entire thing is wrapped in three back dashes `---`. Now that we're using Quarto, things should be relatively simple, and all you need is a title.
 
 ```
-install.packages('rmarkdown')
+---
+title: page title
+---
 ```
 
-To generate the site, from within `RStudio` you can simply use the `Build Website` button on the `Build` tab in your`Environment` pane.
+### Code Chunks
 
-A few notes:
+Quickly insert a code chunk with cmd + option + i (Mac) or (Someone with a PC fill in.)
 
-* If you need to load external scripts not part of your RMarkdown document, place these in the `scripts` directory.
-* If you need to reference external files, place these in the `files` directory.
-* If you need to non-hyperlinkable images, plase these in the `images` directory.
+Code cell options are set with `|# option`
 
-## Merge Conflicts
+```{r}
+|# option
 
-These can be particularly challenging to handle in this environment as the html output is also tracked by `git`. Here's the suggested workflow.
+dat <- read.csv()
+```
+
+See detailed options [here](https://quarto.org/docs/reference/cells/cells-knitr.html).
+
+### Callout boxes
+
+Callout boxes are used for highlighting sections of text. Quarto has built in presets. See options and markup instructions [here](https://quarto.org/docs/authoring/callouts.html).
+
+This is the delivery content for the pilot RDM Jumpstart, scheduled to run May 12-16, 2025.
+
+## Git Etiquette
+
+Suggested workflow.
 
 * Conduct all of your work in a `branch`. Build in that branch to test.
 * `add` and `commit` only the files you edit, but nothing in the `docs` directory.
@@ -38,46 +79,7 @@ These can be particularly challenging to handle in this environment as the html 
 * `add`, `commit`, `push`.
 * Cross your fingers.
 
-## YAML
-
-YAML is a serialized language comprised of key value pairs, in essence, this means spaces are significant. Key value pairs are seperated by a colon and space `: ` and indenting of additional arguments uses a tab. The entire thing is wrapped in three back dashes `---`
-
-```
----
-title: page title
-output:
-  html_document:
-    toc: TRUE
----
-```
-
-## _site.yml
-
-Site level paramters are defined in this YAML file. Likely the most relevant part of this file is the `navbar` key.
-
-```
----
-navbar:
-  - text: "navigation text title"
-    href: link # use the name of the .Rmd file, but change the extenstion to .html
-  - text:  "navigation link title"
-    menu: # start a drop down menu
-      - text: "navigation link title"
-        href: link
----
-```
-
 # Naming Convention
 
-Format: # (of the day)-LEC/ACT-sequence-ShortTopic
-*sequence number starts at 1 for lecture sections and re-starts at 1 for activities sections in a given day
-
-Examples:
-2-Overview
-2-LEC-1-ConsequencesPoorDRM
-2-ACT-1-RSetup
-2-ACT-2-FirstSteps
-3-ACT-1-DataTypes
-3-ACT-2-FilterSelect
-3-ExtraExercises
+**TBD**
 
