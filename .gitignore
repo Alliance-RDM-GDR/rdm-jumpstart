@@ -1,4 +1,7 @@
 **/.DS_Store
 .Rproj.user
 .Rhistory
-website/
+docs/
+
+/.quarto/
+**/*.quarto_ipynb
