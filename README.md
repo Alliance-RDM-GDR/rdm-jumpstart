@@ -83,3 +83,8 @@ Suggested workflow.
 
 **TBD**
 
+# Future Development Options
+
+## Multilingual Site
+
+`babelquarto` allows for toggling of translated content. Details [here](https://github.com/ropensci-review-tools/babelquarto)
