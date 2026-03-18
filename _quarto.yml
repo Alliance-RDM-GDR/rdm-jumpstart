@@ -8,11 +8,11 @@ website:
   favicon: "images/institutions/alliance_favicon.png"
   page-footer:
     left: |
-      Copyright Statement
+      Exclusive of images, all content is licensed CC BY-NC 4.0<br/>[Attribution-NonCommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/deed.en)<br/>![](/images/institutions/CC-License.png)
     center: |
-      Institutional Logos
+      ![](/images/institutions/all_logos.png)
     right: |
-      Build with Quarto
+      Build with [Quarto](https://quarto.org/) & [RStudio from Posit](https://posit.co/).
     border: true
   navbar:
     logo: "images/institutions/Alliance_logo_Symbol.png"
