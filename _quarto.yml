@@ -19,11 +19,11 @@ website:
     logo-alt: "Alliance Logo"
     search: true
     left:
-      - href: qmd/index.qmd
+      - href: qmd/extras/index.qmd
         text: Home
-      - qmd/codeOfConduct.qmd
-      - qmd/contributors.qmd
-      - qmd/template.qmd
+      - qmd/extras/codeOfConduct.qmd
+      - qmd/extras/contributors.qmd
+      - qmd/extras/template.qmd
 
 format:
   html:
