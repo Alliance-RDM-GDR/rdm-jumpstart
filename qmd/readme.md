@@ -1,1 +1,3 @@
 Place all `.qmd` and other presentation files, i.e. slide decks, in their respective block folders. Any `.qmd` and presentation files that don't fit into an explicit block should go in extra, such as the index, code of conduct, etc.
+
+Empty folders are populated with an empty `_tmp.md` to force folder upload to GitHub. As soon as you've put a real file in any block folder, feel free to delete the `_tmp.md` file in that folder.
