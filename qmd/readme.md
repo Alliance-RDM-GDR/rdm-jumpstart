@@ -1,0 +1,1 @@
+Place all `.qmd` and other presentation files, i.e. slide decks, in their respective block folders. Any `.qmd` and presentation files that don't fit into an explicit block should go in extra, such as the index, code of conduct, etc.
