@@ -27,9 +27,10 @@ The reference documentation is critical to properly setting up the site, includi
 | Directory | Description |
 | :--- | :--- |
 | _getting_started | A series of 'how to' articles. Not updated since 2025 |
-| docs | Website build location |
-| images | All standalone images, i.e. images not generated within a code chunk. Keep this organized! |
-| qmd | All qmd files. We will come up with a naming convention. Nesting in subdirectories is an option. |
+| docs | Website build location. It will remain absent until we push the rendered site. |
+| files | All data files should go here. |
+| images | All images used across the site. Block specific images should be stored in their respective folders `qmd > block* > images`. |
+| qmd | All qmd files. There is a subdirectory for each block. The included `readme.md` file has additional details. |
 | scripts | Currently a layover from 2025. May delete. |
 | style-sheets | Custom scss code. |
 
