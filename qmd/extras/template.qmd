@@ -6,7 +6,7 @@ title: Template
 
 We assume a base knowledge of Markdown.
 
-The knitting process uses Pandoc. Please refer to the Pandoc documtentation for supported Markdown syntax.
+The knitting process uses Pandoc. Please refer to the [Pandoc documtentation](https://pandoc.org/MANUAL.html#pandocs-markdown) for supported Markdown syntax.
 
 ## Quarto
 
