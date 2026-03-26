@@ -8,6 +8,16 @@ We assume a base knowledge of Markdown.
 
 The knitting process uses Pandoc. Please refer to the [Pandoc documtentation](https://pandoc.org/MANUAL.html#pandocs-markdown) for supported Markdown syntax.
 
+## YAML
+
+YAML is a serialized language comprised of key value pairs, in essence, this means spaces are significant. Key value pairs are seperated by a colon and space `: ` and indenting of additional arguments uses a tab. The entire thing is wrapped in three back dashes `---`. Now that we're using Quarto, things should be relatively simple, and all you need is a title.
+
+```markdown
+---
+title: page title
+---
+```
+
 ## Quarto
 
 Code cells in Quarto are generally created in the same way as in RMarkdown, i.e.

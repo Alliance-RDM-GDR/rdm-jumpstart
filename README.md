@@ -1,3 +1,7 @@
+**Refer to the resources in `_getting_started/` for support with GitHub**
+
+**Refer to `qmd/extras/template.qmd` for support with Quarto and page formatting.**
+
 ## Quarto
 
 ### Overview
@@ -36,51 +40,7 @@ The reference documentation is critical to properly setting up the site, includi
 
 **Make sure your `.gitignore` file is properly configured. We don't want to see your `.Rproj.user` file, your `.DS_Store` file if you're on a mac, or any other hidden or personal files you may have in your directory :)**
 
-## Authoring Content
-
-### YAML
-
-YAML is a serialized language comprised of key value pairs, in essence, this means spaces are significant. Key value pairs are seperated by a colon and space `: ` and indenting of additional arguments uses a tab. The entire thing is wrapped in three back dashes `---`. Now that we're using Quarto, things should be relatively simple, and all you need is a title.
-
-```
----
-title: page title
----
-```
-
-### Code Chunks
-
-Quickly insert a code chunk with cmd + option + i (Mac) or (Someone with a PC fill in.)
-
-Code cell options are set with `|# option`
-
-```{r}
-|# option
-
-dat <- read.csv()
-```
-
-See detailed options [here](https://quarto.org/docs/reference/cells/cells-knitr.html).
-
-### Callout boxes
-
-Callout boxes are used for highlighting sections of text. Quarto has built in presets. See options and markup instructions [here](https://quarto.org/docs/authoring/callouts.html).
-
-This is the delivery content for the pilot RDM Jumpstart, scheduled to run May 12-16, 2025.
-
-## Git Etiquette
-
-Suggested workflow.
-
-* Conduct all of your work in a `branch`. Build in that branch to test.
-* `add` and `commit` only the files you edit, but nothing in the `docs` directory.
-* Switch to `main` and pull to ensure you're up to date with `remote`.
-* `merge` your `branch` to `main`.
-* Build the site.
-* `add`, `commit`, `push`.
-* Cross your fingers.
-
-# Naming Convention
+# Naming Conventions
 
 **TBD**
 
