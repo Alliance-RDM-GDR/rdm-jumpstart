@@ -31,9 +31,10 @@ format:
       light: [flatly, style-sheets/styles.scss]
       dark: [darkly, style-sheets/styles.scss]
     toc: true
+    callout-icon: false
       
 execute:
-  echo: false
   warning: false
+  error: false
   
 engine: knitr
