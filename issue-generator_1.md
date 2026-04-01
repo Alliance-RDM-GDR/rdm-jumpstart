@@ -1,4 +1,4 @@
 Some text here.
 
-Edited online. Again.
-edited locally.
+Edited online.
+edited locally. Again.
