@@ -1,3 +1,4 @@
 Some text here.
 
-Edited remotely. Again.
+Edited remotely.
+And locally.
