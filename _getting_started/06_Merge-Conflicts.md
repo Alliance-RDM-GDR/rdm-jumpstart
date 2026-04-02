@@ -115,7 +115,7 @@ Going forward, if Nick wants to avoid a merge issue, he'll want to make sure he 
 
 ## Merge with No Conflict
 
-If Nick and Jen are at **Diagram A**, but they not modified the same file, i.e. Nick is working in Block 1 and Jen in Block 2, git is able to handle the merge, since there's nothing to suggest that their file modifications have any conflict.
+If Nick and Jen are at **Diagram A**, but they have not modified the same file, i.e. Nick is working in Block 1 and Jen in Block 2, git is able to handle the merge, since there's nothing to suggest that their file modifications have any conflict.
 
 What does this look like in practice?
 
@@ -183,11 +183,11 @@ From github.com:Alliance-RDM-GDR/rdm-jumpstart
 Successfully rebased and updated refs/heads/main.
 ```
 
-Success! Because Nick and Jen did modify the same file(s), git handles the merge flawlessly. We're now at **Diagram C**.
+Success! Because Nick and Jen did not modify the same file(s), git handles the merge flawlessly. We're now at **Diagram C**.
 
 ## Merge with Conflict
 
-Now let's assume that we're at **Diagram A**, but this time, Nick and Jen have both modified the same file. Again, we'll assume Nick has pushed first, and we sitting at **Diagram B**.
+Now let's assume that we're at **Diagram A**, but this time, Nick and Jen have both modified the same file. Again, we'll assume Nick has pushed first, and we are sitting at **Diagram B**.
 
 The journey for Jen begins in a simlar way with git telling her to `pull` before she can `push`.
 
@@ -308,7 +308,7 @@ Success! We are now at **Diagram C**.
 
 ## Another Situation
 
-It may happen that you have edited a file or files locally, but have not staged and committed these, for some reason. It happens. Let's assume Jen has done this. Jen is falling best practice and doing a `pull` from `main` to make sure she's up to date for working on an edit she plans to `stage`, `commit`, and `push`.
+It may happen that you have edited a file or files locally, but have not staged and committed these, for some reason. It happens. Let's assume Jen has done this. Jen is following best practice and doing a `pull` from `main` to make sure she's up to date for working on an edit she plans to `stage`, `commit`, and `push`.
 
 Unfortunately, this will result in the following error:
 
@@ -328,7 +328,7 @@ If you're ready to `stage` and `commit`, do this. Then `push`. If you encounter 
 
 `stash` your edits and return to them later.
 
-When you do this, Git keeps a record of the modifications you made to the file, but reverts the file in your working directory to where it was at before you edited it, i.e. like you did a fresh `pull` and you and GitHub are on the same path.
+When you do this, git keeps a record of the modifications you made to the file, but reverts the file in your working directory to where it was at before you edited it, i.e. like you did a fresh `pull` and you and GitHub are on the same path.
 
 Let's do this:
 
@@ -346,7 +346,7 @@ vdunbar rdm-jumpstart $ git stash list
 stash@{0}: On main: my edits to issue 2
 ```
 
-And to retrieve your edited copy for further work, run `git stash pop`. If the last pull you did did no result in merge conflict, you'll get something like:
+And to retrieve your edited copy for further work, run `git stash pop`. If the last pull you did did not result in a merge conflict, you'll get something like:
 
 ```bash
 vdunbar rdm-jumpstart $ git stash pop
