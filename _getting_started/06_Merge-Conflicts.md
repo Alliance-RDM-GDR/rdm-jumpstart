@@ -71,6 +71,42 @@ flowchart TD
    end
 ```
 
+When Jen attempts to push to GitHub, git will let her know that she's on a different path and she has to resolve these differences before she can push.
+
+Resolving the differences starts with Jen being forced to do a `pull`, figure out how to merge the two paths, and create a new starting point for herself and GitHub, which will all be then one commit ahead of Nick, i.e. Nick will still be at `point b` while Jen and GitHub will be at `point c`.
+
+```mermaid
+flowchart TD
+   A[GitHub]
+   B[Jen]
+   C[Nick]
+   D[c5e6b59]
+   E[c5e6b59]
+   F[c5e6b59]
+   G[bf4f8cf7]
+   H[d938c74]
+   I[d938c74]
+   J[New Point B]
+   K[New Point B]
+   L[h587f82]
+   M[h587f82]
+
+   subgraph X[" "]
+   direction TD
+      A --> D --> J --> L
+   end
+
+   subgraph Y[" "]
+   direction TD
+      B --> E --> K --> M
+   end
+
+   subgraph Z[" "]
+   direction TD
+      C --> F --> H 
+   end
+```
+
 # Merge Conflicts
 
 There are several possible ways in which merge issues and merge conflicts may arise when trying to `pull` from or `push` to GitHub. We'll start with the issue where you have not modified the same file as someone else has, but you have both made changes to different files. This should not create a conflict, but will need to be addressed by you telling Git how to handle this situation.
