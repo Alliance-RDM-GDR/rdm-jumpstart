@@ -14,6 +14,8 @@ At this stage we have the repository at three different points on `main`. GitHub
 
 Diagrammatically, this looks like
 
+**Diagram A**
+
 ```mermaid
 flowchart TD
    A[GitHub]
@@ -42,6 +44,8 @@ flowchart TD
 ```
 
 If Nick pushes before Jen, Nick and GitHub will be on the same path, but not Jen.
+
+**Diagram B**
 
 ```mermaid
 flowchart TD
@@ -75,6 +79,8 @@ When Jen attempts to push to GitHub, git will let her know that she's on a diffe
 
 Resolving the differences starts with Jen being forced to do a `pull`, figure out how to merge the two paths, and create a new starting point for herself and GitHub, which will all be then one commit ahead of Nick, i.e. Nick will still be at `point b` while Jen and GitHub will be at `point c`.
 
+**Diagram C**
+
 ```mermaid
 flowchart TD
    A[GitHub]
@@ -107,27 +113,15 @@ flowchart TD
 
 Going forward, if Nick wants to avoid a merge issue, he'll want to make sure he does a `pull` before modifying any files.
 
-# Merge Conflicts
+## Merge with No Conflict
 
-There are several possible ways in which merge issues and merge conflicts may arise when trying to `pull` from or `push` to GitHub. We'll start with the issue where you have not modified the same file as someone else has, but you have both made changes to different files. This should not create a conflict, but will need to be addressed by you telling Git how to handle this situation.
+If Nick and Jen are at **Diagram A**, but they not modified the same file, i.e. Nick is working in Block 1 and Jen in Block 2, git is able to handle the merge, since there's nothing to suggest that their file modifications have any conflict.
 
-## Issue 1: Simple Path Divergence
+What does this look like in practice?
 
-Assuming you are working on branch `main`, when you modify a file, stage it, and commit it locally, you have a tracked change that moves you from point a to point b (the path) on the branch. This path is identified by a commit "code". So say you start from a fresh `pull` from GitHub at point a, with commit code `c5e6b59` -- both you and GitHub are sitting at `c5e6b59`. Then, you make your edits, stage, and commit these. This moves you to point b, say `bf4f8cf7`.
+Let's assume Nick has pushed, so we're at **Diagram B**. When Jen attempts to `push` she'll get a response like this:
 
-Now, someone else working on the project in branch `main` with a fresh `pull` will be starting at the same point a as you on their local machine, `c5e6b59`. When they edit a file, stage, and commit those changes, they will move to point b, but a different point b to you! All the "codes" are auto generated. So their point b will be earmarked as, say `d938c74`.
-
-You're both on the same branch, `main`, you both started at the same point, `c5e6b59`, but you've taken different paths. Becuase you both made fresh `pulls` from GitHub, GitHub is sitting at point a, `c5e6b59`.
-
-If your friend or colleague pushes their point b, `d938c74` to GitHub before you, GitHub will move from `c5e6b59` to `d938c74`.
-
-When you try to push to GitHub, Git will say, "hold on, you're trying to move from `c5e6b59` to `bf4f8cf7`, but I have no record of this path, I only know the path from `c5e6b59` to `d938c74`, how am I supposed to handle the differences between these two paths?"
-
-The way to handle this is to find a way to merge these two paths.
-
-Let's see how this plays out. I've edited a file locally, staged it, and committed it. I go to push it, and I get the following:
-
-```
+```bash
 vdunbar rdm-jumpstart $ git push
 
 To github.com:Alliance-RDM-GDR/rdm-jumpstart.git
@@ -140,9 +134,12 @@ hint: the same ref. If you want to integrate the remote changes, use
 hint: 'git pull' before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 ```
-Git is telling me that I'm on a different path from what's on GitHub. And it wants me to reconcile this locally, first pulling before pushing. Let's do that.
 
-```
+git wants Jen to `pull` before she can `push`.
+
+So, let's do that.
+
+```bash
 vdunbar rdm-jumpstart $ git pull
 remote: Enumerating objects: 5, done.
 remote: Counting objects: 100% (5/5), done.
@@ -166,15 +163,15 @@ hint: invocation.
 fatal: Need to specify how to reconcile divergent branches.
 ```
 
-This is what you'll see the first time this happens. Here, Git is telling me that I need to identify how to merge these two paths. For this project, we'll use `git config pull.rebase true`. Here we go:
+This is what you'll see the first time this happens. git has three options or methods for managing merges.  For this project, we'll use `git config pull.rebase true`. We only need to set this once, i.e. the first time we encounter a merge.
 
-```
+```bash
 vdunbar rdm-jumpstart $ git config pull.rebase true
 ```
 
-Let's try the pull again.
+Now that the merge option is set, let's try the pull again.
 
-```
+```bash
 vdunbar rdm-jumpstart $ git pull
 remote: Enumerating objects: 5, done.
 remote: Counting objects: 100% (5/5), done.
@@ -186,15 +183,15 @@ From github.com:Alliance-RDM-GDR/rdm-jumpstart
 Successfully rebased and updated refs/heads/main.
 ```
 
-Success! We're now all on the same path and can continue working.
+Success! Because Nick and Jen did modify the same file(s), git handles the merge flawlessly. We're now at **Diagram C**.
 
-## Issue 2: Path Divergence and Modifcations to the Same File
+## Merge with Conflict
 
-This story has a similar starting point to that above. You have modified, staged, and committed a file. So has your friend or colleague, but this time, you've made edits to the same file! You both started at point a, you are now at different point bs. This will result in a merge conflict, one that Git won't automatically deal with.
+Now let's assume that we're at **Diagram A**, but this time, Nick and Jen have both modified the same file. Again, we'll assume Nick has pushed first, and we sitting at **Diagram B**.
 
-You go to push, and the initial message reads the same:
+The journey for Jen begins in a simlar way with git telling her to `pull` before she can `push`.
 
-```
+```bash
 vdunbar rdm-jumpstart $ git push
 To github.com:Alliance-RDM-GDR/rdm-jumpstart.git
  ! [rejected]        main -> main (fetch first)
@@ -206,15 +203,15 @@ hint: 'git pull' before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 ```
 
-If you haven't already, you know from above that first we need to specify how to merge divergent paths. If you haven't yet, run
+If this is the first time you're encoungering a merge, run the following before continuing.
 
-```
+```bash
 vdunbar rdm-jumpstart $ git config pull.rebase true
 ```
 
-The try to pull
+And then we try to `pull`
 
-```
+```bash
 vdunbar rdm-jumpstart $ git pull
 remote: Enumerating objects: 5, done.
 remote: Counting objects: 100% (5/5), done.
@@ -234,13 +231,15 @@ hint: Disable this message with "git config set advice.mergeConflict false"
 Could not apply 1c04a8e... # issue 2
 ```
 
-Unlike the first time, where the modifications didn't create a conflict, Git is saying it can't resolve the issue and you need to step in -- you need to decide what is kept and what is not in the file modified by you and your colleague.
+Unlike the first time, since the same file was changed by two users, git is unable, or unwilling, to automatically handle the merge. Instead, it wants Jen to decide what modifications should be kept and which discarded.
 
-We know the issue is the file `issue-generator_2.md`. And Git has markup to indicate where the issue is. This mark up uses a series of `<<<<<>>>>>` to demarcate the begining and end of the issue, with `======` representing the break between what is in the file in GitHub and what is in the file locally on your machine. Your job is to delete the markup and keep only the text that should belong!
+We know the issue is the file `issue-generator_2.md` -- ths is listed after `CONFLICT (content)`. Jen will need to open `issue-generator_2.md` to resolve the condlict.
+
+git has markup to indicate where the issue is. This mark up uses a series of `<<<<<>>>>>` to demarcate the begining and end of the issue, with `======` representing the break between what is in the file in GitHub and what is in the file locally on your machine. There could multiple points in the file that have conflicting edits. Jen's job is to delete the markup and keep only the text that should belong.
 
 This will look something like:
 
-```
+```markdown
 Some text here.
 
 <<<<<<< HEAD
@@ -253,30 +252,44 @@ And locally.
 
 And you need to edit it to something like:
 
-```
+```markdown
 Some text here.
 
 Edited remotely.
 And locally.
 ```
 
-Save the file, you have completed the hint:
+Once this is done, Jen will need to save the file. This addresses the first hint given by the git.
 
+```bash
+hint: Resolve all conflicts manually...
 ```
+
+Next we address the remainder of the hint with the next hint
+
+```bash
 hint: Resolve all conflicts manually, mark them as resolved with
-```
-
-Next we address the hint
-
-```
 hint: "git add/rm <conflicted_files>", then run "git rebase --continue".
 ```
 
-```
+We'll add all modified files for this example.
+
+```bash
 vdunbar rdm-jumpstart $ git add *
+```
+
+Jen will then commit
+
+```bash
 vdunbar rdm-jumpstart $ git commit -m 'resolve issue in issue 2'
 [detached HEAD 5a52f39] resolve issue in issue 2
  1 file changed, 2 insertions(+), 1 deletion(-)
+
+```
+
+And finally, Jen will complete the `rebase`, i.e. the merge.
+
+```bash
 vdunbar rdm-jumpstart $ git rebase --continue
 Successfully rebased and updated refs/heads/main.
 vdunbar rdm-jumpstart $ git push
@@ -291,31 +304,35 @@ To github.com:Alliance-RDM-GDR/rdm-jumpstart.git
    d7e9f52..5a52f39  main -> main
 ```
 
-Success!
+Success! We are now at **Diagram C**.
 
-## Issue 3: You go to Pull, but you have unstaged edits.
+## Another Situation
 
-Whoops! You were working in a file, saved your changes and walked away for a bit. You came back, and did a pull and get this...
+It may happen that you have edited a file or files locally, but have not staged and committed these, for some reason. It happens. Let's assume Jen has done this. Jen is falling best practice and doing a `pull` from `main` to make sure she's up to date for working on an edit she plans to `stage`, `commit`, and `push`.
 
-```
+Unfortunately, this will result in the following error:
+
+```bash
 vdunbar rdm-jumpstart $ git pull
 error: cannot pull with rebase: You have unstaged changes.
 error: Please commit or stash them.
 ```
 
-You're given two options.
+You have two ways of resolving this isse.
 
-**Option 1**
+### Option 1
 
-If you're ready to stage and commit, do this and then follow along with **Issue 1** or **Issue 2** whichever manifests.
+If you're ready to `stage` and `commit`, do this. Then `push`. If you encounter a merge conflict, address it as above.
 
-**Option 2**
+## Option 2
 
-*stash* your edits and return to them later. When you do this, Git keeps a record of the modifications you made to the file, but reverts it to a stage that predates these changes. In essence, you're no longer on a divergent path.
+`stash` your edits and return to them later.
+
+When you do this, Git keeps a record of the modifications you made to the file, but reverts the file in your working directory to where it was at before you edited it, i.e. like you did a fresh `pull` and you and GitHub are on the same path.
 
 Let's do this:
 
-```
+```bash
 vdunbar rdm-jumpstart $ git stash push -m 'my edits to issue 2'
 Saved working directory and index state On main: my edits to issue 2
 ```
@@ -324,14 +341,14 @@ Saved working directory and index state On main: my edits to issue 2
 
 To see what you have stashed, run
 
-```
+```bash
 vdunbar rdm-jumpstart $ git stash list
 stash@{0}: On main: my edits to issue 2
 ```
 
 And to retrieve your edited copy for further work, run `git stash pop`. If the last pull you did did no result in merge conflict, you'll get something like:
 
-```
+```bash
 vdunbar rdm-jumpstart $ git stash pop
 On branch main
 Your branch is up to date with 'origin/main'.
@@ -346,9 +363,11 @@ no changes added to commit (use "git add" and/or "git commit -a")
 Dropped refs/stash@{0} (df4aa46f369d7a4aa610c335a1cbae7b4dd9af05)
 ```
 
-And you're good to go. However, if there is a conflict, you'll get something like:
+And you're good to go.
 
-```
+However, if there is a conflict, you'll get something like:
+
+```bash
 vdunbar rdm-jumpstart $ git stash pop
 Auto-merging issue-generator_2.md
 CONFLICT (content): Merge conflict in issue-generator_2.md
@@ -367,4 +386,4 @@ Unmerged paths:
 The stash entry is kept in case you need it again.
 ```
 
-And you'll need to go back to **Issue 2** to address this.
+And you'll need to review the merge conflict section of this document to address this.
