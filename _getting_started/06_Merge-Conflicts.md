@@ -20,19 +20,21 @@ flowchart TD
    B[Jen]
    C[Nick]
    D[c5e6b59]
-   E[bf4f8cf7]
-   F[d938c74]
+   E[c5e6b59]
+   F[c5e6b59]
+   G[bf4f8cf7]
+   H[d938c74]
 
    subgraph X[" "]
       A --> D
    end
 
    subgraph Y[" "]
-      B --> D --> E
+      B --> E --> G
    end
 
    subgraph Z[" "]
-      C --> D --> F 
+      C --> F --> H 
    end
 ```
 
