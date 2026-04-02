@@ -15,16 +15,17 @@ At this stage we have the repository at three different points on `main`. GitHub
 Diagrammatically, this looks like
 
 ```mermaid
-A[GitHub]
-B[Jen]
-C[Nick]
-D[c5e6b59]
-E[bf4f8cf7]
-F[d938c74]
+flowchart TD
+   A[GitHub]
+   B[Jen]
+   C[Nick]
+   D[c5e6b59]
+   E[bf4f8cf7]
+   F[d938c74]
 
-A --> D
-B --> D --> E
-C --> D --> F 
+   A --> D
+   B --> D --> E
+   C --> D --> F 
 ```
 
 # Merge Conflicts
