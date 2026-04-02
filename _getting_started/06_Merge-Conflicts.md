@@ -41,6 +41,36 @@ flowchart TD
    end
 ```
 
+If Nick pushes before Jen, Nick and GitHub will be on the same path, but not Jen.
+
+```mermaid
+flowchart TD
+   A[GitHub]
+   B[Jen]
+   C[Nick]
+   D[c5e6b59]
+   E[c5e6b59]
+   F[c5e6b59]
+   G[bf4f8cf7]
+   H[d938c74]
+   I[d938c74]
+
+   subgraph X[" "]
+   direction TD
+      A --> D --> I
+   end
+
+   subgraph Y[" "]
+   direction TD
+      B --> E --> G
+   end
+
+   subgraph Z[" "]
+   direction TD
+      C --> F --> H 
+   end
+```
+
 # Merge Conflicts
 
 There are several possible ways in which merge issues and merge conflicts may arise when trying to `pull` from or `push` to GitHub. We'll start with the issue where you have not modified the same file as someone else has, but you have both made changes to different files. This should not create a conflict, but will need to be addressed by you telling Git how to handle this situation.
