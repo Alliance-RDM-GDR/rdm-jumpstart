@@ -83,9 +83,7 @@ flowchart TD
    D[c5e6b59]
    E[c5e6b59]
    F[c5e6b59]
-   G[bf4f8cf7]
    H[d938c74]
-   I[d938c74]
    J[New Point B]
    K[New Point B]
    L[h587f82]
@@ -106,6 +104,8 @@ flowchart TD
       C --> F --> H 
    end
 ```
+
+Going forward, if Nick wants to avoid a merge issue, he'll want to make sure he does a `pull` before modifying any files.
 
 # Merge Conflicts
 
