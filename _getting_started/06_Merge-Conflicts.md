@@ -1,3 +1,32 @@
+# Merges in git
+
+The need to merge in git results from: a) creating a new branch where changes are made that need to be integrated into the main branch, `main`; and b) people taking different paths in the same branch.
+
+Here, we'll demo working through merging using the latter. However, resolution for the former is the same.
+
+## Path Divergence
+
+Path divergence results from two (or more) people starting from a common origin, here, we'll say a `pull` from `main` at the same commit point. We'll call this `point a`, git would have a commit hash for this, something like `c5e6b59`.
+
+Each of the two people then makes some local edits to the files, stages these and commits them. Locally, these users have moved to a new point, `point b`, but there `point b`s are different, as they've made different modifications. For each user, git establishes a new commit hash, say `bf4f8cf7` for Jen and `d938c74` for Nick.
+
+At this stage we have the repository at three different points on `main`. GitHub is at `c5e6b59`, while Jen and Nick have respectively progressed to `bf4f8cf7` and `d938c74`.
+
+Diagrammatically, this looks like
+
+```mermaid
+A[GitHub]
+B[Jen]
+C[Nick]
+D[c5e6b59]
+E[bf4f8cf7]
+F[d938c74]
+
+A --> D
+B --> D --> E
+C --> D --> F 
+```
+
 # Merge Conflicts
 
 There are several possible ways in which merge issues and merge conflicts may arise when trying to `pull` from or `push` to GitHub. We'll start with the issue where you have not modified the same file as someone else has, but you have both made changes to different files. This should not create a conflict, but will need to be addressed by you telling Git how to handle this situation.
