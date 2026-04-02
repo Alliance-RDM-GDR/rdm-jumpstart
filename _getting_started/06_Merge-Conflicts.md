@@ -10,7 +10,7 @@ Path divergence results from two (or more) people starting from a common origin,
 
 Each of the two people then makes some local edits to the files, stages these and commits them. Locally, these users have moved to a new point, `point b`, but there `point b`s are different, as they've made different modifications. For each user, `git` establishes a new commit hash, say `bf4f8cf7` for Jen and `d938c74` for Nick.
 
-At this stage we have the repository at three different points on `main`. `git`Hub is at `c5e6b59`, while Jen and Nick have respectively progressed to `bf4f8cf7` and `d938c74`.
+At this stage we have the repository at three different points on `main`. GitHub is at `c5e6b59`, while Jen and Nick have respectively progressed to `bf4f8cf7` and `d938c74`.
 
 Diagrammatically, this looks like
 
@@ -18,7 +18,7 @@ Diagrammatically, this looks like
 
 ```mermaid
 flowchart TD
-   A[`git`Hub]
+   A[GitHub]
    B[Jen]
    C[Nick]
    D[c5e6b59]
@@ -43,13 +43,13 @@ flowchart TD
    end
 ```
 
-If Nick pushes before Jen, Nick and `git`Hub will be on the same path, but not Jen.
+If Nick pushes before Jen, Nick and GitHub will be on the same path, but not Jen.
 
 **Diagram B**
 
 ```mermaid
 flowchart TD
-   A[`git`Hub]
+   A[GitHub]
    B[Jen]
    C[Nick]
    D[c5e6b59]
@@ -75,15 +75,15 @@ flowchart TD
    end
 ```
 
-When Jen attempts to push to `git`Hub, `git` will let her know that she's on a different path and she has to resolve these differences before she can push.
+When Jen attempts to push to GitHub, `git` will let her know that she's on a different path and she has to resolve these differences before she can push.
 
-Resolving the differences starts with Jen being forced to do a `pull`, figure out how to merge the two paths, and create a new starting point for herself and `git`Hub, which will all be then one commit ahead of Nick, i.e. Nick will still be at `point b` while Jen and `git`Hub will be at `point c`.
+Resolving the differences starts with Jen being forced to do a `pull`, figure out how to merge the two paths, and create a new starting point for herself and GitHub, which will all be then one commit ahead of Nick, i.e. Nick will still be at `point b` while Jen and GitHub will be at `point c`.
 
 **Diagram C**
 
 ```mermaid
 flowchart TD
-   A[`git`Hub]
+   A[GitHub]
    B[Jen]
    C[Nick]
    D[c5e6b59]
@@ -122,11 +122,11 @@ What does this look like in practice?
 Let's assume Nick has pushed, so we're at **Diagram B**. When Jen attempts to `push` she'll get a response like this:
 
 ```bash
-vdunbar rdm-jumpstart $ `git` push
+vdunbar rdm-jumpstart $ git push
 
-To `git`hub.com:Alliance-RDM-GDR/rdm-jumpstart.`git`
+To GitHub.com:Alliance-RDM-GDR/rdm-jumpstart.`git`
  ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to '`git`hub.com:Alliance-RDM-GDR/rdm-jumpstart.`git`'
+error: failed to push some refs to 'GitHub.com:Alliance-RDM-GDR/rdm-jumpstart.`git`'
 
 hint: Updates were rejected because the remote contains work that you do not
 hint: have locally. This is usually caused by another repository pushing to
@@ -140,13 +140,13 @@ hint: See the 'Note about fast-forwards' in '`git` push --help' for details.
 So, let's do that.
 
 ```bash
-vdunbar rdm-jumpstart $ `git` pull
+vdunbar rdm-jumpstart $ git pull
 remote: Enumerating objects: 5, done.
 remote: Counting objects: 100% (5/5), done.
 remote: Compressing objects: 100% (3/3), done.
 remote: Total 3 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
 Unpacking objects: 100% (3/3), 946 bytes | 189.00 KiB/s, done.
-From `git`hub.com:Alliance-RDM-GDR/rdm-jumpstart
+From GitHub.com:Alliance-RDM-GDR/rdm-jumpstart
    a7c6b29..80987a2  main       -> origin/main
 hint: You have divergent branches and need to specify how to reconcile them.
 hint: You can do so by running one of the following commands sometime before
@@ -163,22 +163,22 @@ hint: invocation.
 fatal: Need to specify how to reconcile divergent branches.
 ```
 
-This is what you'll see the first time this happens. `git` has three options or methods for managing merges.  For this project, we'll use ``git` config pull.rebase true`. We only need to set this once, i.e. the first time we encounter a merge.
+This is what you'll see the first time this happens. `git` has three options or methods for managing merges.  For this project, we'll use `git config pull.rebase true`. We only need to set this once, i.e. the first time we encounter a merge.
 
 ```bash
-vdunbar rdm-jumpstart $ `git` config pull.rebase true
+vdunbar rdm-jumpstart $ git config pull.rebase true
 ```
 
 Now that the merge option is set, let's try the pull again.
 
 ```bash
-vdunbar rdm-jumpstart $ `git` pull
+vdunbar rdm-jumpstart $ git pull
 remote: Enumerating objects: 5, done.
 remote: Counting objects: 100% (5/5), done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
 Unpacking objects: 100% (3/3), 950 bytes | 118.00 KiB/s, done.
-From `git`hub.com:Alliance-RDM-GDR/rdm-jumpstart
+From GitHub.com:Alliance-RDM-GDR/rdm-jumpstart
    bc88f56..07bbb3f  main       -> origin/main
 Successfully rebased and updated refs/heads/main.
 ```
@@ -192,10 +192,10 @@ Now let's assume that we're at **Diagram A**, but this time, Nick and Jen have b
 The journey for Jen begins in a simlar way with `git` telling her to `pull` before she can `push`.
 
 ```bash
-vdunbar rdm-jumpstart $ `git` push
-To `git`hub.com:Alliance-RDM-GDR/rdm-jumpstart.`git`
+vdunbar rdm-jumpstart $ git push
+To GitHub.com:Alliance-RDM-GDR/rdm-jumpstart.`git`
  ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to '`git`hub.com:Alliance-RDM-GDR/rdm-jumpstart.`git`'
+error: failed to push some refs to 'GitHub.com:Alliance-RDM-GDR/rdm-jumpstart.`git`'
 hint: Updates were rejected because the remote contains work that you do not
 hint: have locally. This is usually caused by another repository pushing to
 hint: the same ref. If you want to integrate the remote changes, use
@@ -206,19 +206,19 @@ hint: See the 'Note about fast-forwards' in '`git` push --help' for details.
 If this is the first time you're encoungering a merge, run the following before continuing.
 
 ```bash
-vdunbar rdm-jumpstart $ `git` config pull.rebase true
+vdunbar rdm-jumpstart $ git config pull.rebase true
 ```
 
 And then we try to `pull`
 
 ```bash
-vdunbar rdm-jumpstart $ `git` pull
+vdunbar rdm-jumpstart $ git pull
 remote: Enumerating objects: 5, done.
 remote: Counting objects: 100% (5/5), done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
 Unpacking objects: 100% (3/3), 956 bytes | 119.00 KiB/s, done.
-From `git`hub.com:Alliance-RDM-GDR/rdm-jumpstart
+From GitHub.com:Alliance-RDM-GDR/rdm-jumpstart
    07bbb3f..d7e9f52  main       -> origin/main
 Auto-merging issue-generator_2.md
 CONFLICT (content): Merge conflict in issue-generator_2.md
@@ -233,9 +233,9 @@ Could not apply 1c04a8e... # issue 2
 
 Unlike the first time, since the same file was changed by two users, `git` is unable, or unwilling, to automatically handle the merge. Instead, it wants Jen to decide what modifications should be kept and which discarded.
 
-We know the issue is the file `issue-generator_2.md` -- ths is listed after `CONFLICT (content)`. Jen will need to open `issue-generator_2.md` to resolve the condlict.
+We know the issue is the file `issue-generator_2.md` -- this is listed after `CONFLICT (content)`. Jen will need to open `issue-generator_2.md` to resolve the condlict.
 
-`git` has markup to indicate where the issue is. This mark up uses a series of `<<<<<>>>>>` to demarcate the begining and end of the issue, with `======` representing the break between what is in the file in `git`Hub and what is in the file locally on your machine. There could multiple points in the file that have conflicting edits. Jen's job is to delete the markup and keep only the text that should belong.
+`git` has markup to indicate where the issue is. This mark up uses a series of `<<<<<>>>>>` to demarcate the begining and end of the issue, with `======` representing the break between what is in the file in GitHub and what is in the file locally on your machine. There could multiple points in the file that have conflicting edits. Jen's job is to delete the markup and keep only the text that should belong.
 
 This will look something like:
 
@@ -275,13 +275,13 @@ hint: "`git` add/rm <conflicted_files>", then run "`git` rebase --continue".
 We'll add all modified files for this example.
 
 ```bash
-vdunbar rdm-jumpstart $ `git` add *
+vdunbar rdm-jumpstart $ git add *
 ```
 
 Jen will then commit
 
 ```bash
-vdunbar rdm-jumpstart $ `git` commit -m 'resolve issue in issue 2'
+vdunbar rdm-jumpstart $ git commit -m 'resolve issue in issue 2'
 [detached HEAD 5a52f39] resolve issue in issue 2
  1 file changed, 2 insertions(+), 1 deletion(-)
 
@@ -290,9 +290,9 @@ vdunbar rdm-jumpstart $ `git` commit -m 'resolve issue in issue 2'
 And finally, Jen will complete the `rebase`, i.e. the merge.
 
 ```bash
-vdunbar rdm-jumpstart $ `git` rebase --continue
+vdunbar rdm-jumpstart $ git rebase --continue
 Successfully rebased and updated refs/heads/main.
-vdunbar rdm-jumpstart $ `git` push
+vdunbar rdm-jumpstart $ git push
 Enumerating objects: 9, done.
 Counting objects: 100% (9/9), done.
 Delta compression using up to 8 threads
@@ -300,7 +300,7 @@ Compressing objects: 100% (5/5), done.
 Writing objects: 100% (6/6), 619 bytes | 619.00 KiB/s, done.
 Total 6 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
 remote: Resolving deltas: 100% (3/3), completed with 2 local objects.
-To `git`hub.com:Alliance-RDM-GDR/rdm-jumpstart.`git`
+To GitHub.com:Alliance-RDM-GDR/rdm-jumpstart.`git`
    d7e9f52..5a52f39  main -> main
 ```
 
@@ -313,7 +313,7 @@ It may happen that you have edited a file or files locally, but have not staged 
 Unfortunately, this will result in the following error:
 
 ```bash
-vdunbar rdm-jumpstart $ `git` pull
+vdunbar rdm-jumpstart $ git pull
 error: cannot pull with rebase: You have unstaged changes.
 error: Please commit or stash them.
 ```
@@ -328,12 +328,12 @@ If you're ready to `stage` and `commit`, do this. Then `push`. If you encounter 
 
 `stash` your edits and return to them later.
 
-When you do this, `git` keeps a record of the modifications you made to the file, but reverts the file in your working directory to where it was at before you edited it, i.e. like you did a fresh `pull` and you and `git`Hub are on the same path.
+When you do this, `git` keeps a record of the modifications you made to the file, but reverts the file in your working directory to where it was at before you edited it, i.e. like you did a fresh `pull` and you and GitHub are on the same path.
 
 Let's do this:
 
 ```bash
-vdunbar rdm-jumpstart $ `git` stash push -m 'my edits to issue 2'
+vdunbar rdm-jumpstart $ git stash push -m 'my edits to issue 2'
 Saved working directory and index state On main: my edits to issue 2
 ```
 
@@ -342,14 +342,14 @@ Saved working directory and index state On main: my edits to issue 2
 To see what you have stashed, run
 
 ```bash
-vdunbar rdm-jumpstart $ `git` stash list
+vdunbar rdm-jumpstart $ git stash list
 stash@{0}: On main: my edits to issue 2
 ```
 
 And to retrieve your edited copy for further work, run ``git` stash pop`. If the last pull you did did not result in a merge conflict, you'll get something like:
 
 ```bash
-vdunbar rdm-jumpstart $ `git` stash pop
+vdunbar rdm-jumpstart $ git stash pop
 On branch main
 Your branch is up to date with 'origin/main'.
 
@@ -368,7 +368,7 @@ And you're good to go.
 However, if there is a conflict, you'll get something like:
 
 ```bash
-vdunbar rdm-jumpstart $ `git` stash pop
+vdunbar rdm-jumpstart $ git stash pop
 Auto-merging issue-generator_2.md
 CONFLICT (content): Merge conflict in issue-generator_2.md
 On branch main
