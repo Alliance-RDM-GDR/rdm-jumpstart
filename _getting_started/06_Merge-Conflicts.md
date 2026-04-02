@@ -26,14 +26,17 @@ flowchart TD
    H[d938c74]
 
    subgraph X[" "]
+   direction TD
       A --> D
    end
 
    subgraph Y[" "]
+   direction TD
       B --> E --> G
    end
 
    subgraph Z[" "]
+   direction TD
       C --> F --> H 
    end
 ```
