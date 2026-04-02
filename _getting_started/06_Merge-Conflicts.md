@@ -23,9 +23,17 @@ flowchart TD
    E[bf4f8cf7]
    F[d938c74]
 
-   A --> D
-   B --> D --> E
-   C --> D --> F 
+   subgraph X[" "]
+      A --> D
+   end
+
+   subgraph Y[" "]
+      B --> D --> E
+   end
+
+   subgraph Z[" "]
+      C --> D --> F 
+   end
 ```
 
 # Merge Conflicts
