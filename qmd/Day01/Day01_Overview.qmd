@@ -1,0 +1,30 @@
+---
+title: "Overview"
+---
+
+## Overview
+
+Welcome to Day 1 of RDM Jumpstart 2026!
+
+Today, we are going to begin with a high-level introduction of the most fundamental aspects of Research Data Management (RDM). First, we will discuss the research data lifecycle, the importance of research data management, and considerations for sensitive data. Then, we will cover two essential data management practices: data management plans and data documentation. All course activities will be framed within the context of an example research project; this project will help us explore how research data management principles can support research transparency and reproducibility. 
+
+### Learning Objectives: 
+
+By the end of today, you will be able to:
+
+- Define research data management (RDM), and explain how RDM principles support research transparency, accessibility and reproducibility.
+- Recognize data management considerations for sensitive data, including risk assessment and harm in data management.
+- Identify data management plans (DMPs) as a way to maintain good RDM practices.
+- Explain the importance of documenting research projects and data, and list the main types of data documentation files.
+- Connect introduced RDM concepts and practices to previous research and/or data management experiences as well as an example research project.
+
+### Lessons
+
+This day has four lessons:
+
+- Lesson 1 - Introduction to Research Data Management
+- Lesson 2 - Introduction to the Project
+- Lesson 3 - Data Management Plans
+- Lesson 4 - Data Documentation
+
+You can click on the links above to go to each lesson page. There, you will find the learning objectives for the lesson, as well as all the material you will need to follow along with the course.
