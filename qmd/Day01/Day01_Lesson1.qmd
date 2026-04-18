@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Research Data Management"
+title: "Lesson 1: Introduction to Research Data Management"
 ---
 
 ## Learning Objectives
@@ -16,7 +16,12 @@ By the end of this lesson, you will be able to:
 
 ## Introduction
 
-Before we start, let’s take a few minutes to get to know the other students in this course. In breakout rooms of five, introduce yourself, using the following information as a guide:
+Before we start, let’s take a few minutes to get to know the other students in this course. 
+
+::: {.callout-note}
+## Breakout Room
+
+In breakout rooms of five, introduce yourself, using the following information as a guide:
 
 - Your name and pronouns.
 - Your university and the program you are in.
@@ -24,6 +29,9 @@ Before we start, let’s take a few minutes to get to know the other students in
 - What interested you about this course.
 
 You will have 15 minutes in the breakout room.
+:::
+
+
 
 ## Lecture - Introduction to Research Data Management and Working with Sensitive Data
 ### Lecture
@@ -242,13 +250,20 @@ In addition to storing data for your active work, there are platforms that suppo
 
 ## Activity \- Breakout Room Discussion
 
-Now that you have learned about some of the fundamental aspects of RDM, take some time to reflect on your previous research and/or data management experiences in the light of RDM concepts. In breakout rooms of five students, discuss one or more of the following questions:
+Now that you have learned about some of the fundamental aspects of RDM, take some time to reflect on your previous research and/or data management experiences in the light of RDM concepts. 
 
-\- What (if any) research data management practices do you or your research group currently implement?  
-\- What stage(s) of the research data management lifecycle would be the most challenging to implement for your own work?  
-\- How can implementing research data management practices improve transparency, accountability, reproducibility and/or academic integrity in your research?  
-\- What data policies have you heard about before and/or had to implement? If applicable, how was your experience with them?  
-\- Are you familiar with RDM support at your own institution? Have you used their services before? How was your experience with it?
+::: {.callout-note}
+## Breakout Room
+
+In breakout rooms of five students, discuss one or more of the following questions:
+
+* What (if any) research data management practices do you or your research group currently implement?  
+* What stage(s) of the research data management lifecycle would be the most challenging to implement for your own work?  
+* How can implementing research data management practices improve transparency, accountability, reproducibility and/or academic integrity in your research?  
+* What data policies have you heard about before and/or had to implement? If applicable, how was your experience with them?  
+* Are you familiar with RDM support at your own institution? Have you used their services before? How was your experience with it?
 
 You will have ten minutes in the breakout rooms. You won’t need to report back about your discussion to the larger group.
+:::
+
 
