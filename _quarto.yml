@@ -19,11 +19,18 @@ website:
     logo-alt: "Alliance Logo"
     search: true
     left:
-      - href: qmd/extras/index.qmd
-        text: Home
-      - qmd/extras/codeOfConduct.qmd
-      - qmd/extras/contributors.qmd
-      - qmd/extras/template.qmd
+      - text: "Day 1"
+        menu:
+            - qmd/Day01/Day01_Overview.qmd
+            - qmd/Day01/Day01_Lesson1.qmd 
+            - qmd/Day01/Day01_Lesson2.qmd
+            - qmd/Day01/Day01_Lesson3.qmd
+            - qmd/Day01/Day01_Lesson4.qmd   
+      - text: "Resources"
+        menu:
+            - qmd/extras/codeOfConduct.qmd
+            - qmd/extras/contributors.qmd
+            - qmd/extras/template.qmd
 
 format:
   html:
