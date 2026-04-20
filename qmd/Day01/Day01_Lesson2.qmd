@@ -1,0 +1,35 @@
+---
+title: "Lesson 2: Introduction to the Research Project"
+---
+
+## Learning Objectives
+
+By the end of this lesson, you will be able to: 
+
+ - Describe the context of the example research project that will be used throughout the course.  
+ - Identify the type of data that will be used throughout the course.  
+ - Recognize considerations about data sensitivity and harm that might apply to the example research project.  
+ - Inspect the data collection instrument and the raw data from the example research project.
+
+## The Project 
+
+Read the project description
+
+## Activity \- Breakout Room Discussion
+
+::: {.callout-note}
+## Breakout Room
+
+In breakout rooms, read the project description, and then go through the following items:
+
+* Go through the [Google Form survey](https://docs.google.com/forms/d/e/1FAIpQLSc1BvWYEQlzdLJNFowhD02Sz0n7Y2jTISqlHhllFCuW3SkkBQ/viewform?usp=dialog) to get a sense of what kind of data are being collected. **Note:** while the data you submit will not be shared, it will be stored on Google Drive. Do not use your real information if you don’t want it to be saved\!  
+    
+* Open the survey .csv file (you can do this in Excel, Numbers or a similar application) and take a look at the raw dataset.  
+  * What pieces of information are personally-identifying, and would need to be removed to create an anonymized dataset appropriate for analysis and sharing?  
+  * What other kinds of information are being collected?
+
+
+You will have 20 min in break out rooms. Please choose someone in your group to share your group's main discussion points to the larger group after.
+
+:::
+ 

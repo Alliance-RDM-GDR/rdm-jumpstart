@@ -1,0 +1,19 @@
+---
+title: "The Project"
+---
+
+## Project Description
+
+Today is your first day as a research assistant in the Social Cognition and Wellbeing Lab at Crunchem Hall University. Your new lab group studies the effects of social media on university student and faculty mental health using a combination of online surveys and in-person focus groups. You will be working on a project that attempts to answer the question: **how does social media use affect the mental health of university students?**
+
+You’ve been tasked with wrangling data from a round of student surveys. More specifically, your supervisor has asked you to clean-up and anonymize the data (i.e., remove personally-identifying information) to make the data easier to work with and to comply with ethics policies. All you’ve been given is a link to the Google Form survey and a spreadsheet file (a `.csv`, or comma-separated values document) with the raw survey results. The data is saved as a `.csv` so it can be easily opened across interfaces (like Excel or Numbers) and read into data analysis tools (like R).
+
+Your lab group saves all data and files to their institutional NetDrive account, which can only be accessed by people affiliated with the research group through an approval process that involves university administrators. The NetDrive stores data on servers located in Canada. You have been asked to back-up all of the files you generate as you conduct your data cleaning and research. The lab NetDrive account has a lot of storage (10 TB) to back up large video recordings of focus group sessions. Because you’re working with survey results in `.csv` file format, which are typically quite small, you’ll only need about 1 MB of storage.
+
+Your supervisor has asked that a copy of the complete, raw dataset \- with personal data preserved \- be saved on the lab’s institutional NetDrive, so that it’s accessible to your lab members, but otherwise, the raw data are not be shared beyond that. You are allowed to save the raw dataset to your personal computer to wrangle and clean it, but you must delete your personal copy as soon as the dataset is anonymized. Your work falls under their ethics application, and is registered with the number HEA12345.  
+
+## Project files
+
+ - [Survey](https://docs.google.com/forms/d/e/1FAIpQLSc1BvWYEQlzdLJNFowhD02Sz0n7Y2jTISqlHhllFCuW3SkkBQ/viewform?usp=dialog) 
+ - Survey data
+ - 

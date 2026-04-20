@@ -1,0 +1,135 @@
+---
+title: "Lesson 4: Data Documentation"
+---
+
+## Learning Objectives
+
+By the end of this lesson, you will be able to:  
+ - Examine metadata documentation of example projects.  
+ - Explain the purpose of documenting research projects and data.  
+ - Differentiate between project- and data-level documentation.  
+ - List the main contents of README and data dictionary files.  
+ - Explain the difference and give examples of human-readable and machine-readable metadata.
+
+## Lecture \- Introduction to Data Documentation
+
+### Lecture
+
+Insert ppt of lecture
+
+### Lecture Notes
+
+### Why Do We Need Data Documentation?
+
+Have you ever gone back to a spreadsheet you’ve created and realized that you can’t determine the meaning of your variable labels or formulas? Have you received data from a collaborator that was confusing or vague? Or perhaps, you’re ready to share your data with your supervisor,  but they need to know what your codes, acronyms, and values represent. 
+
+Although you may think your workflow is obvious, or that you won’t forget your process, your documentation is truly your best collaborator. Yes, good documentation helps others understand your work, but it is essential for you as well. If you can’t remember what a value refers to or what a piece of code does, you are putting yourself at risk for accidental misrepresentation of your research findings.
+
+When creating your documentation, it is important that it is clearly structured so that your data can be navigated, interpreted, and understood by yourself and others. When writing documentation, always ask yourself, “could someone else understand my work without me being there to explain it?” 
+### Types of Documentation
+
+There are many different types of documentation that can support a research project. The specific documentation you create will be determined by: 
+
+* disciplinary norms and requirements.  
+* standard laboratory or research group practices.  
+* type of data (e.g., tabular data vs. qualitative data).  
+* Internal or external purposes (e.g., for internal reference or if it is supporting data sharing).
+
+Documentation can take many forms; below we describe standard research documents you should become familiar with, depending on your needs. Regardless of the specific type and structure of your documentation, the goal is to make your data and accompanying materials as interpretable and reusable as possible. 
+
+
+- **README file:** A plain text file that contains detailed information about datasets or code. It is designed to help users understand what is required to use and interpret the files.  
+- **Data dictionary:** A machine-readable document that contains detailed information about the technical structure of a dataset, in addition to its contents.  
+- **Codebook:** A human-readable document that describes a dataset and includes details about its contents and design.  
+- **Code file / script:** A document that contains the computer code or scripts used to clean, interpret, or manipulate a dataset. This document should include the dependencies required to execute your code, as well as comments that describe what the code does.  
+- **Standard operating procedures (SOPs):** These are documents that describe lab or research group procedures. They include detailed instructions to track routine operations, processes, and practices.
+
+For the purpose of this course, we’re going to focus on the README file, noting that your discipline may require different or additional forms of documentation. 
+
+### Exercise
+
+Scenario: A research group that studies geology using computational methods and physical survey data is nearing the end of the academic school year and is close to the summer data-collection season. The group currently has ten graduate students (in different years of study) and two co-principal investigators. Several graduate students will be graduating and leaving the group at the end of the term and a few new grad students will be joining the team. What types of documentation should the research group make sure they have from the students before they leave to ensure that the next cohort of graduate students can be onboarded and continue the research? What details should be included in the documentation? 
+
+### README files
+#### What is a README File? 
+
+README files are flexible text documents that add context to a collection of files, data, or a research project to help ensure that files and data can be interpreted and understood by everyone (yourself included) in the future.
+
+#### What should README Files Include? 
+
+Depending on your needs, your README file may include slightly different information, or the information may be documented in other files (e.g., in a data dictionary), but there are some standard fields that cover the basics of a research project that should be included as much as possible. 
+
+* Title: This could be for the dataset or a project title.  
+    
+* Contact/author information: Information about the researcher(s) on a project detailing their role(s) and basic contact information. Tip: Include [ORCID numbers](https://orcid.org/) when possible (learn more about the [benefits of ORCIDs](https://subjectguides.uwaterloo.ca/orcid)).  
+    
+* Description/summary: Brief description of what the README documents and supports.  
+    
+* Software: Include software names and version numbers, with the associated file extensions.  
+    
+* File and folder structure: List all files and folders contained in the dataset along with a brief description. Include information about the relationship between files if applicable.  
+    
+* Naming conventions: Include description for any abbreviations used in your filenames.  
+    
+* Description of variables \[if applicable\]: Include full names and definitions of column headings for tabular data and spell out abbreviated words.   
+    
+* Methods: Include a cleaning and analysis script if applicable.  
+  * Data cleaning, analysis, manipulation, modifications, anonymization process  
+  * Data collection, protocols, sampling, instrument specifics   
+      
+* Data confidentiality and permissions: Detail and restrictions about the confidentiality of the data or who can/cannot access it.  
+    
+* License & reuse information: A license defines what can and cannot be done with your data once made freely available. The most common data licenses are Creative Commons (CC) licenses. ([https://creativecommons.org/choose/](https://creativecommons.org/choose/)).
+
+#### How to Create a README?
+
+To make sure your README file is as robust as possible, there are a few key things you must remember to do (and not to do). 
+
+* README files should:  
+  * Be plain text (use either.txt or .md files).  
+    * Tip: Creating your README files in a notebook or simple text editor is a great option.  
+  * Appear at the top of a file list and be easy to find.  
+    * Tip: Use force ordering and prepend filename with an underscore (\_README.txt) or three dashes (---README---.txt).   
+  * Should be updated regularly to ensure accuracy.  
+    * Tip: Don’t forget to include a date that the README was originally created and an update date.
+
+* README files should **not**:  
+  * Include excess formatting,  
+    * Tip: Break your README up into easily readable chunks with headers.  
+  * Include irrelevant information.  
+  * Include pictures or other visual data.
+
+## Activity \- Explore Data Documentation
+
+To better understand how you can document your own project, it is helpful to see how other projects have documented their data. 
+
+::: {.callout-note}
+## Breakout Room
+
+In this activity, you will work in break out groups to look at the documentation of different datasets, and discuss some of the characteristics of the documentation as well as any positive or negative aspects that you see.
+
+First, choose one of the following datasets to inspect. You will have ten minutes to read through its documentation and files. Although some people in your break-our group will inspect the same dataset, make sure that each dataset is inspected by at least one person in your group.
+
+\- Kampen, Andrea; Pearson, Maggie; Smit, Michael, 2018, “Replication Data for: Digital Tools and Techniques in Scholarship and Pedagogy in the Social Sciences and Humanities”, [https://doi.org/10.23685/1H9TOV](https://doi.org/10.23685/1H9TOV)  
+\- Livingstone, D.W., 2021, “7 Replication Data for: 2017 CWKE Registered Nursing Dataset”, [https://doi.org/10.5683/SP2/I98O1W](https://doi.org/10.5683/SP2/I98O1W)  
+\- Perron, Maxime, 2023, “Interindividual variability in the benefits of personal sound amplification products on speech perception in noise: a randomized cross-over clinical trial”, [https://doi.org/10.5683/SP3/HTMDLI](https://doi.org/10.5683/SP3/HTMDLI)
+
+Then, for an additional ten minutes, discuss the following questions in your break out room. One person should take notes so that your team can report back for a general discussion.  
+
+\- What kind of documentation do you see?  
+\- Can you tell what each of the files is?  
+\- When looking at a data file, can you understand what you are looking at? Why or why not?  
+\- Is there anything that sticks out to you as interesting? Good? Bad?
+
+After your group discussion, we will reconvene with the larger group to share what was discovered. Please choose someone in your group to share your group's main discussion points. 
+
+:::
+
+## Prepare for Day 2
+
+In the next session, we will use what we have learned so far about data documentation to create a README file for the example project of this course. To prepare for this, make sure to do the following before the start of next day:
+
+\- Download the [README file template](https://cornell.app.box.com/v/ReadmeTemplate).  
+\- Have the README template open in a text editor so it is ready for the start of the next session.  
+
+
