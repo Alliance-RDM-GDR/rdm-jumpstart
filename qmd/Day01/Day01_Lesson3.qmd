@@ -15,7 +15,10 @@ By the end of this lesson, you will be able to:
 
 ### Lecture
 
-Insert ppt of lecture
+* [Download the PowerPoint](files/day1-L3_DMPs.pptx)
+
+<embed src="files/day1-L3_DMPs.pdf" type="application/pdf" width="100%" height="600px" />
+
 
 ### Lecture Notes
 
@@ -44,7 +47,7 @@ Every DMP will be unique, but they all serve the same purpose. DMPs can:
 #### Why Would You Create a DMP?
 
 **Funder Requirements**  
-As mentioned in the “Introduction to RDM” \[link\] lesson, the [Tri-Agency RDM Policy](https://science.gc.ca/site/science/en/interagency-research-funding/policies-and-guidelines/research-data-management/tri-agency-research-data-management-policy) has begun rolling out the DMP requirement for certain grant opportunities ([see here for a full list of Tri-Agency competitions that required DMPs](https://science.gc.ca/site/science/en/interagency-research-funding/policies-and-guidelines/research-data-management/funding-opportunities-requiring-data-management-plans)). Whether you are required to create a DMP or not, developing skills in data management, especially as a graduate student, will benefit your own research and the research of every one you work with.
+As mentioned in the [“Introduction to RDM”](Day01_Lesson1.html) lesson, the [Tri-Agency RDM Policy](https://science.gc.ca/site/science/en/interagency-research-funding/policies-and-guidelines/research-data-management/tri-agency-research-data-management-policy) has begun rolling out the DMP requirement for certain grant opportunities ([see here for a full list of Tri-Agency competitions that required DMPs](https://science.gc.ca/site/science/en/interagency-research-funding/policies-and-guidelines/research-data-management/funding-opportunities-requiring-data-management-plans)). Whether you are required to create a DMP or not, developing skills in data management, especially as a graduate student, will benefit your own research and the research of every one you work with.
 
 **Research Group/Lab Requirements**  
 Standardized practices and documentation guidelines are essential to a well-run project. Onboarding, or training, should occur when new researchers join a lab or project to ensure consistent practices are followed. It is also just as important to review documentation when a lab member leaves the project, as this ensures that transitions are smooth and no data are lost. It is possible that your research lab or group may already have a data management plan in place. Having a group-wide DMP can help large research groups standardize how data is managed across smaller, but interconnected, research projects. Even if you’re not required to create a DMP, it will benefit your research and the work of the lab.
@@ -121,13 +124,13 @@ Watch this YouTube video to familiarize yourself with the DMP Assistant:
 
 1\. At the top of the page, you will see tabs with Project Details, Contributors, Plan overview, Write Plan, Research Outputs, Share, and Download. Navigate through these tabs to get a sense of what the RDM Assistant entails.
 
-2\. Fill out as much as you can in the tabs Project Details and Contributors using the project description. It is okay if some sections are left blank as this is an example project. In real life, you will want to fill out all the information.
+2\. Fill out as much as you can in the tabs Project Details and Contributors using the [project description](00_TheProject.html). It is okay if some sections are left blank as this is an example project. In real life, you will want to fill out all the information.
 
 ### Start Writing the DMP
 
 1\. Navigate to the tab “Write Plan”. This is where you write the bulk of your data management plant. You will see that this opens a page with seven collapsible sections, each with 2-3 questions that you should answer to finish your data management plan.
 
-2\. Today, we are going to fill out the questions below. To fill out each question, feel free to read through the project description again, and discuss with your colleagues what you think should go in each section. You can type in your ideas in bullet-point format if you prefer.
+2\. Today, we are going to fill out the questions below. To fill out each question, feel free to read through the [project description](00_TheProject.html) again, and discuss with your colleagues what you think should go in each section. You can type in your ideas in bullet-point format if you prefer.
 
     - Section 1: Data Collection  
         - What types of data will you collect, create, link to, acquire and/or record?  

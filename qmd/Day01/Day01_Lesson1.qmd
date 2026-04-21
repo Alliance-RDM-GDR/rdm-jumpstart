@@ -36,7 +36,10 @@ You will have 15 minutes in the breakout room.
 ## Lecture - Introduction to Research Data Management and Working with Sensitive Data
 ### Lecture
 
-Insert ppt of lecture
+* [Download the PowerPoint](files/day1-L1_Intro-to-RDM.pptx)
+
+<embed src="files/day1-L1_Intro-to-RDM.pdf" type="application/pdf" width="100%" height="600px" />
+
 
 ### Lecture Notes
 

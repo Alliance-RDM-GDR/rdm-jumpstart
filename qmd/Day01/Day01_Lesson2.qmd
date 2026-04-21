@@ -13,7 +13,7 @@ By the end of this lesson, you will be able to:
 
 ## The Project 
 
-Read the project description
+Read the [project description](00_TheProject.html)
 
 ## Activity \- Breakout Room Discussion
 
