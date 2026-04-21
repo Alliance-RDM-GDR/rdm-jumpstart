@@ -1,0 +1,45 @@
+---
+title: "Lesson 1: Documentation in Action"
+---
+
+## Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+-  Use a template to create a README file for an example project.
+
+## Activity \- Create a README file
+
+In the previous lesson, you were introduced to the [example project](00_TheProject.html) we will be using throughout this course. You also learned about the importance of data documentation and README files, which allow your data to be navigated, interpreted, and understood both by you and others. 
+
+In this activity, you will draw from these lessons to create and start writing a README file for the example project.
+
+::: {.callout-note}
+## Breakout Room
+
+You will work together in breakout rooms to discuss the sections and content of the README file, but remember, each student needs to create their own file. Submitting a README file is one of the requirements to obtain a certificate for this course, so take advantage of this time to complete the document.
+
+You will have 30 minutes to complete this activity.
+:::
+
+### Inspect the README File Template
+
+Open the README file template you downloaded at the end of the previous day. Take a few minutes to look over the different sections of the template. Discuss the following questions in your breakout group:
+
+- What is unique about the README template, compared to other documentation you’ve used?   
+- What types of fields does it contain? Is anything missing? Are there fields you don’t recognize?   
+- How is the template organized? 
+
+### Fill Out the README File
+
+Work together with your peers to begin populating your README templates with the information you’ve learned about the project. 
+
+You will not be able to fill out the entire template, and that’s okay. We will continue working on this file as the course progresses. However, make sure you begin to populate the following sections:
+
+- General information  
+- Methodological information
+
+Do not worry about filling in data-specific information now, as we will continue to work on the raw data throughout the course, and will update that later.
+
+
+

@@ -1,0 +1,29 @@
+---
+title: "Overview"
+---
+
+## Overview
+
+In the last session, we learned about some of the most fundamental aspects of RDM. Today, we are going to keep learning about data management practices and concepts. First, we will create a README file to finalize our lesson about data documentation, followed by a discussion of best practices for file management and maintaining directory structures. Then, we will learn about reproducibility in research, and introduce R in comparison to Excel as a way to foster reproducible research and data management. Because R is an important tool for data management, we will begin to learn the basics of R, so that later we can practice how to clean and manage data in R using the example project.
+
+### Learning Objectives: 
+
+By the end of today, you will be able to:
+
+ - Use a template to create a README file for an example project.  
+ - Explain best practices for project file naming and directory structure.  
+ - Identify issues with reproducibility in research, and best practices to make research reproducible.  
+ - Discuss pros and cons of using Excel for spreadsheet data.  
+ - Connect the data science workflow and the use of R and RStudio with the research data lifecycle.  
+ - Apply the syntax of R in R Studio to perform basic actions.
+ 
+### Lessons
+
+This day has four lessons:
+
+- Lesson 1 - [Documentation in action](Day02_Lesson1.html)  
+- Lesson 2 - [File Management](Day02_Lesson2.html)  
+- Lesson 3 - [Reproducibility in research, Excel and R](Day02_Lesson3.html)  
+- Lesson 4 - [Introduction to R](Day02_Lesson3.html)
+
+You can click on the links above to go to each lesson page. There, you will find the learning objectives for the lesson, as well as all the material you will need to follow along with the course.
