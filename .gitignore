@@ -6,3 +6,4 @@ docs/
 images/institutions/originals/
 /.quarto/
 **/*.quarto_ipynb
+.positai
