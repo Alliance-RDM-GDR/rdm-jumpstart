@@ -21,7 +21,6 @@ By the end of this lesson, you will be able to:
 <embed src="files/day1-L4_Documentation.pdf" type="application/pdf" width="100%" height="600px" />
 
 
-### Lecture Notes
 
 ### Why Do We Need Data Documentation?
 

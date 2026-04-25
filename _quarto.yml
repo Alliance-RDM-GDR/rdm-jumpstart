@@ -26,7 +26,6 @@ website:
             - qmd/Day01/Day01_Lesson2.qmd
             - qmd/Day01/Day01_Lesson3.qmd
             - qmd/Day01/Day01_Lesson4.qmd
-            - qmd/Day01/00_TheProject.qmd
       - text: "Day 2"
         menu:
             - qmd/Day02/Day02_Overview.qmd
@@ -34,6 +33,9 @@ website:
             - qmd/Day02/Day02_Lesson2.qmd
             - qmd/Day02/Day02_Lesson3.qmd
             - qmd/Day02/Day02_Lesson4.qmd
+      - text: "The Project"
+        menu:
+            - qmd/Day01/00_TheProject.qmd
       - text: "Resources"
         menu:
             - qmd/extras/codeOfConduct.qmd
@@ -46,6 +48,7 @@ format:
       light: [flatly, style-sheets/styles.scss]
       dark: [darkly, style-sheets/styles.scss]
     toc: true
+    toc-location: left
     callout-icon: false
       
 execute:

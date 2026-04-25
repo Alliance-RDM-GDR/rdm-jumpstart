@@ -23,7 +23,7 @@ By the end of today, you will be able to:
 This day has four lessons:
 
 - Lesson 1 - [Introduction to Research Data Management](Day01_Lesson1.html)
-- Lesson 2 - [Introduction to the Project](Day01_Lesson2.html)
+- Lesson 2 - [Introduction to the Research Project](Day01_Lesson2.html)
 - Lesson 3 - [Data Management Plans](Day01_Lesson3.html)
 - Lesson 4 - [Data Documentation](Day01_Lesson4.html)
 

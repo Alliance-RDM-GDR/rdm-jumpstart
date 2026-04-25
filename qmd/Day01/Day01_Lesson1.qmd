@@ -41,7 +41,6 @@ You will have 15 minutes in the breakout room.
 <embed src="files/day1-L1_Intro-to-RDM.pdf" type="application/pdf" width="100%" height="600px" />
 
 
-### Lecture Notes
 
 ### What is Research Data?
 

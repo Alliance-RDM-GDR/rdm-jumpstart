@@ -20,8 +20,6 @@ By the end of this lesson, you will be able to:
 <embed src="files/day1-L3_DMPs.pdf" type="application/pdf" width="100%" height="600px" />
 
 
-### Lecture Notes
-
 ### Data Management Plans (DMPs)
 
 ::: {.callout-tip}
