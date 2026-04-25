@@ -15,9 +15,11 @@ By the end of this lesson, you will be able to:
 
 ### Lecture
 
-Insert ppt of lecture
 
-### Lecture Notes
+* [Download the PowerPoint](files/day2_L2_File-Management.pptx)
+
+<embed src="files/day2_L2_File-Management.pdf" type="application/pdf" width="100%" height="600px" />
+
 
 ### Best Practices in File Naming
 
@@ -122,7 +124,7 @@ Directory structures typically consist of the following:
 2. Sub-directories (also known as sub-folders)  
 3. Relevant files
 
-![](images/day2-L2_filestructure.png)
+![](images/day-2-file-directory-0.png)
 
 Directories are denoted by a slash ‘/’ at the end of their name in these diagrams.
 
@@ -150,7 +152,7 @@ There are two distinct ways you can structure your directories:
 The directory structure shown above is a shallow structure. It has four sub-directories   
 (Data/, Funding/, Manuscript/ and Scripts/) and no sub-sub-directories. Below is an example of  a deep(er) directory structure:
 
-IMAGE 2
+![](images/day-2-file-directory-1.png)
 
 In this example, there are nested sub-directories in addition to four main sub-directories: three nested sub-directories in Analysis/ (Location-subsets/, Scripts/, and Species-subsets/) and two nested sub-directories in Data/ (Processed/ and Unprocessed/).
 

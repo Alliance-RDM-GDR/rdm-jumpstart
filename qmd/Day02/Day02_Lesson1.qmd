@@ -24,7 +24,7 @@ You will have 30 minutes to complete this activity.
 
 ### Inspect the README File Template
 
-Open the README file template you downloaded at the end of the previous day. Take a few minutes to look over the different sections of the template. Discuss the following questions in your breakout group:
+Open the [README file template](https://cornell.app.box.com/v/ReadmeTemplate) you downloaded at the end of the previous day. Take a few minutes to look over the different sections of the template. Discuss the following questions in your breakout group:
 
 - What is unique about the README template, compared to other documentation you’ve used?   
 - What types of fields does it contain? Is anything missing? Are there fields you don’t recognize?   
