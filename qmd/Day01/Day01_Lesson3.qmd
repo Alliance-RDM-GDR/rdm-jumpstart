@@ -130,19 +130,19 @@ Watch this YouTube video to familiarize yourself with the DMP Assistant:
 
 2\. Today, we are going to fill out the questions below. To fill out each question, feel free to read through the [project description](00_TheProject.html) again, and discuss with your colleagues what you think should go in each section. You can type in your ideas in bullet-point format if you prefer.
 
-    - Section 1: Data Collection  
-        - What types of data will you collect, create, link to, acquire and/or record?  
-        - What file formats will your data be collected in? Will these formats allow for data re-use, sharing and long-term access to the data?
+  - Section 1: Data Collection  
+      - What types of data will you collect, create, link to, acquire and/or record?  
+      - What file formats will your data be collected in? Will these formats allow for data re-use, sharing and long-term access to the data?
 
-    - Section 3: Storage and Back-up  
-        - What are the anticipated storage requirements for your project, in terms of storage space (in megabytes, gigabytes, terabytes, etc.) and the length of time you will be storing it?  
-        - How and where will your data be stored and backed up during your research project?  
-        - How will the research team and other collaborators access, modify, and contribute data throughout the project?
+   - Section 3: Storage and Back-up  
+      - What are the anticipated storage requirements for your project, in terms of storage space (in megabytes, gigabytes, terabytes, etc.) and the length of time you will be storing it?  
+      - How and where will your data be stored and backed up during your research project?  
+      - How will the research team and other collaborators access, modify, and contribute data throughout the project?
 
-    - Section 7: Ethics and Legal Compliance  
-        - If your research project includes sensitive data, how will you ensure that it is securely managed and accessible only to approved members of the project?  
-        - If applicable, what strategies will you undertake to address secondary uses of sensitive data?  
-        - How will you manage legal, ethical, and intellectual property issues?
+   - Section 7: Ethics and Legal Compliance  
+      - If your research project includes sensitive data, how will you ensure that it is securely managed and accessible only to approved members of the project?  
+       - If applicable, what strategies will you undertake to address secondary uses of sensitive data?  
+      - How will you manage legal, ethical, and intellectual property issues?
 
 
 
