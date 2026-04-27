@@ -11,10 +11,22 @@ Site last rendered `r Sys.Date()`.
 
 Welcome to RDM Jumpstart, 2025! Before going any further, [please read our code of conduct...](codeOfConduct.html)
 
-## Schedule
+## Program Content
 
-<p class = "highlight">Times displayed below should update to your local time zone.</p>
-<p>Your local time zone is <span id = "timezone"></span>, and your current date and time is: <span id = "current-time"></span>.</p>
+The series is broken up into 6 days. On the menu bar at the top of the webpage, you will see a drop-down menu for each of the 6 days and their content. Each day begins with an Overview that covers any technical pre-requisites, a textual description of the block, learning objectives, and an overview for each individual session. Each session’s content is listed on their respective pages. The session content will guide the live instruction, and is also meant to function as asynchronous materials for those wanting to revisit the content after attending live delivery, or if people want to guide themselves through the content on their own.
+
+The sessions are built in such a way that they are meant to be taken in sequential order, with each block functioning as a pre-requisite for subsequent blocks. However, acknowledging that everybody might not have the capacity or interest to take every block, they can also function as stand-alone sessions that will (hopefully!) be valuable on their own.
+
+## Certificate of Completion
+
+In addition to the learning objectives, for all those that complete every session, by the end of the program you will:
+
+* Complete a Data Management Plan (DMP) for a mock project.
+* Complete a README document for a mock project.
+* Create R coding scripts (depending on decisions made by the group) to manipulate a dataset.
+
+
+If you are interested in receiving a certificate from the Digital Research Alliance of Canada, please submit these files for review to the Jumpstart representative you have been in touch with. 
 
 ## Contact
 
