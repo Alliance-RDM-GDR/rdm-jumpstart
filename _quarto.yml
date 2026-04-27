@@ -33,6 +33,13 @@ website:
             - qmd/Day02/Day02_Lesson2.qmd
             - qmd/Day02/Day02_Lesson3.qmd
             - qmd/Day02/Day02_Lesson4.qmd
+      - text: "Day 3"
+        menu:
+            - qmd/Day03/Day03_Overview.qmd
+            - qmd/Day03/Day03_Lesson1.qmd 
+            - qmd/Day03/Day03_Lesson2.qmd
+            - qmd/Day03/Day03_Lesson3.qmd
+            - qmd/Day03/Day03_Lesson4.qmd
       - text: "The Project"
         menu:
             - qmd/Day01/00_TheProject.qmd

@@ -125,7 +125,7 @@ Both R script files and RMarkdown files can enable the practice of literate codi
 
 Reopen RStudio and create a script file. To create this file, select File \> New File \> R Script
 
-GIF1 HERE
+![](images/day-2-create-r-script.gif)
 
 ### Working in an R Script File
 
@@ -146,7 +146,7 @@ There are a few different ways that you can run code in your R script:
 
 1. **Point-and-click**: In the top right of the RStudio screen, you will see a button that says `Run`. If you click on it, RStudio will run the line/chunk of code where your cursor is located. If your cursor is above a line of code, it will run the line below it, but if your cursor is below the code, it won’t run anything. You can also highlight multiple lines of code and press `Run`, and they will be run consecutively
 
-GIF2 HERE
+![](images/day-2-run-r-script.gif)
 
 2. **Keyboard commands**: There are two main ways that you can use keyboard commands to code in R scripts:  
 * `Ctrl + Enter` (Windows) / `Command + RETURN` (Mac) \- will run a single line/chunk of code that your cursor is on  

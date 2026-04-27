@@ -1,0 +1,29 @@
+---
+title: "Overview"
+---
+
+## Overview
+
+Now that you have learned the basics of R, we are going to learn how to work with tabular data. First, we will introduce you to different data types and structures and R. Then, we will learn about how your computer sorts information via file paths, and use that knowledge to import data from our example project. For that, you will create a folder structure and an R Project to facilitate reading data into R in a reproducible way. Finally, we will learn about the `tidyverse` package and how to look for errors in our data.
+
+## Learning Objectives:
+
+By the end of today, you will be able to: 
+
+ - Describe and check the main data types and structures in R.  
+ - Work with vectors and dataframes in R.  
+ - Explain how your computer sorts information via file paths.  
+ - Organize files and folders within the project following a given directory structure and naming convention.  
+ - Use R Projects and the tidyverse package to read data into an R session.  
+ - Use both base R and tidyverse functions to view a dataset.
+
+## Lessons
+
+This day has four lessons:
+
+ - Lesson 1 \- [Data types and structures in R](Day03_Lesson1.html) 
+ - Lesson 2 \- [File paths](Day03_Lesson2.html)   
+ - Lesson 3 \- [Creating a project directory](Day03_Lesson3.html)   
+ - Lesson 4 \- [The tidyverse and reading data](Day03_Lesson4.html) 
+
+You can click on the links above to go to each lesson page. There, you will find the learning objectives for the lesson, as well as all the material you will need to follow along with the course.
