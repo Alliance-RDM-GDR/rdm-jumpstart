@@ -181,5 +181,230 @@ To import a `.csv` file, we can use the `read_csv()` function and assign it to a
 survey_data <- read_csv("surveydata/raw/survey_student_rawdata.csv")
 ```
 
+Now that you have imported the data, take a look at the environment pane on the top right. You should see the `survey_data` object listed under Data.
 
+## Tibbles
+
+A tibble is a type of data frame (tabular data stored in columns and rows) used in the `tidyverse`. Tibbles improve how data is displayed in the console by only showing the first 10 rows and clearly indicating the data type of each column. This makes it easier to quickly understand the structure of the dataset.
+
+Tibbles help to avoid some common issues found in base R data frames. For example, they do not automatically convert text into factors, and they handle column names more consistently.
+
+The `read_csv()` function imports data as a tibble by default, making it easier to work with using other `tidyverse` tools.
+
+### Inspect Your Dataset
+
+Every time you import a dataset into R, it is good practice to confirm that it was imported correctly. This will allow you to identify potential errors in the data that might need to be fixed before data analysis, and to understand the structure of the data so that you can explore it. We’ll start with some commands that were covered in the [Data Types and Structures section](Day03_Lesson1.html), and then move to some new ways to explore data.
+
+#### Looking at the Dataset
+
+The `View()` command is a way to see the whole dataset in a spreadsheet view.
+
+```{r}  
+#| eval: false  
+# View the dataset  
+View(survey_data)  
+```
+
+As mentioned above, thanks to `tidyverse`, the tibbles package improves how data is displayed. You can inspect your data by asking R to show the object `survey_data`.  
+   
+```{r}  
+#| eval: false
+# Check the dataset  
+survey_data  
+```  
+
+#### Listing Column Names
+
+Use the `names()` function to print a list of all of the column names in the dataset.
+
+```{r}  
+#| eval: false
+# View column names  
+names(survey_data)  
+```
+
+#### Head function
+
+The `head()` function will display the top rows of the dataset.
+
+```{r}  
+#| eval: false
+# View first rows of data  
+head(survey_data)  
+```
+
+#### Summary Function
+
+The `summary()` function gives you a quick overview of your data. It automatically calculates basic statistics for numeric data, and will provide counts of values for factor data.
+
+Let’s start by using the `summary()` function on the whole dataset: 
+
+```{r}  
+#| eval: false
+# See a summary of the data  
+summary(survey_data) 
+```
+
+::: {.callout-tip}
+## Questions
+
+What do you see?  
+Does anything stick out to you?
+
+:::
+
+You’ll see that it gives a breakdown of each variable (column) of our dataset. 
+
+**For character data**, it shows the length (how many rows), class (data type), and mode. Mode is more complicated, and you’ll see for character data it just shows the data type. However, for factor data, it will show the full counts of each category. Because none of our raw data is classified as factors, we won’t see this yet, but this is something we’ll cover in the next session.
+
+**For numeric data**, `summary()` gives a quick set of descriptive statistics that can help you understand the distribution of a variable:
+
+ * Min.: The smallest value in the column.  
+ * 1st Qu.: 1st Quartile, which is the value where 25% of the data falls below.  
+ * Median: The middle value, where half the data is above and half is below.  
+ * Mean: The average of all values.  
+ * 3rd Qu.: 3rd Quartile, where 75% of the values fall below.  
+ * Max: The largest value in the column.  
+ * NA’s: the number of NA (absent) values in the column.
+
+You can see that all of the variables in our survey data are either character or numeric. This is very common with raw data, but as mentioned, we’ll start converting some of these data types in the next session to prepare our data for analysis.
+
+::: {.callout-note}
+## Exercise
+
+Using the `$` operator that we learned about in the [Data Types and Structures](Day03_Lesson1.html) lesson, try to use the `summary()` function on specific variables. 
+
+:::
+
+#### Table Function
+
+The `table()` function creates a frequency table that counts how many times each unique value appears in a vector (column). It is a great way to get a quick count of values or categories in a variable.
+
+The syntax is as follows;
+
+`table(data-frame$variable)`
+
+Let’s try this with the `Age` variable.  
+
+```{r} 
+#| eval: false
+# See a frequency table of age  
+table(survey_data$Age) 
+```
+
+You’ll see that you get two rows of numbers:
+
+* The first row represents the values in the `Age` vector (17-29).  
+* The second row represents the number of occurrences of each value.
+
+You can also add multiple variables into the `table()` function to create a cross tabulation (also called a contingency table). The following code creates a table using the `Age` and `Gender` variables:
+
+```{r} 
+#| eval: false
+# Get a cross tabulation of age and gender  
+table(survey_data$Age, survey_data$Gender)  
+```
+
+In this table, the ages appear in rows, and the gender values are in the columns. Each cell in the table shows the number of observations for each combination of age and gender.
+
+
+::: {.callout-note}
+## Exercise
+
+Try using the `table()` function on the `Year of Study` variable.
+
+* Did it work?  
+* If not, what do you think happened?
+
+:::
+
+As mentioned in the “File Management” session \[insert link\], using spaces in file names causes problems for coding languages, and this is the same for variable and object names as well. In the next session we’re going to clean up the variable names to avoid this. However, for now, you can surround variable names that have spaces with quotation marks.
+
+```{r}  
+#| eval: false
+# Get a frequency table of Year of Study  
+table(survey_data$"Year of Study")  
+```
+
+#### Count Function
+
+The `count()` function (from the `dplyr` package in the `tidyverse`) is similar to the `table()` function, and is used to count how many times a value occurs in a dataset.
+
+Let’s start by using the function for our full dataset.  
+```{r}  
+#| eval: false
+# Count number of observations in the dataset  
+count(survey_data) 
+```
+
+This function shows the number of rows in our data. While it can be helpful for a quick reminder, it is not useful on its own. The real value of the `count()` function shows when applied to a vector (column) in a dataset, or to combinations of multiple vectors.
+
+The syntax is as follows:
+
+`count(data-frame, variable1, variable2, etc.)`
+
+Let’s try it with the `Age` variable.
+
+```{r}  
+#| eval: false
+# Get the number of observations by age  
+count(survey_data, Age)  
+```
+
+You’ll see that it gives you two columns:
+
+* Age: This shows each value in the `Age` vector.  
+* n: This shows how many instances of each value there are in the vector.
+
+
+Now let’s try doing this with two variables.
+
+```{r}  
+#| eval: false
+# Get the number of observations by age and gender  
+count(survey_data, Age, Gender)  
+```
+
+You’ll see that there’s a column for each value in both the `Age` and `Gender` vectors, as well as a count for how many values match the two values in each vector. You’ll also notice the following message below the output:
+
+ ℹ 37 more rows  
+ ℹ Use `print(n \= ...)` to see more rows
+
+This means that there are 37 rows that have not been displayed. The reason for this is because the result is a tibble, and tibbles, by default, only show the first 10 rows. To see all the results, you can use the `print()` function. The `print()` function takes as arguments a tibble and the number of observations to show, with the following syntax:
+
+`print(tibble, n = number of observations)`
+
+If you use `n = Inf`, R will print all observations.
+
+There are two ways to show all rows resulting from the `count()` function.
+
+1. Create an intermediate object called `obs_agebygender` to feed into the `print()` function.
+
+```{r}  
+#| eval: false
+# Get the number of observations by age and gender  
+obs_agebygender <- count(survey_data, Age, Gender)
+
+# Print all results 
+print(obs_agebygender, n = Inf) 
+```
+
+2. Since this new object will not be needed elsewhere in the script, you can avoid creating the object by using a technique called “nesting”. Nesting allows you to put one function inside another, so that the result of the first function is fed directly as an argument into the next function.
+
+```{r}  
+#| eval: false
+# Get the number of observations by age and gender and print all results
+print(count(survey_data, Age, Gender), n = Inf) 
+```
+
+In this case, `count(survey_data, Age, Gender)` is nested inside the `print()` function. The results are the same, but the code is more efficient.
+
+There is an additional way to make this code even simpler. We will learn all about it in an upcoming section about “pipes.”
+
+### Save Your Script
+
+This isn’t a useful script, but you may want to refer to it again for practice. Go to `File > Save As` and save it in the `scripts` folder that we just created. Remember to use the proper file naming convention when naming your script.
+
+
+As you can see, this prints the first 10 rows of data, and shows the data types in each column.
 
