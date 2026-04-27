@@ -149,7 +149,7 @@ Once a package is installed, you load it using the `library()` function.
 It’s best practice to **load packages in your script** so that others can see what packages are required to run the code.
 
 ```{r}
-#| eval: false
+#| eval: true
 
 # Install package
 
@@ -175,11 +175,10 @@ In order to start working with a dataset in R, we first need to import, or “re
 To import a `.csv` file, we can use the `read_csv()` function and assign it to a new object called `survey_data`. We’re creating this new object so that we can call it in different functions later on.
 
 ```{r}
-#|eval: false
+#| eval: false
 
 # Import data
-library(tidyverse)
-survey_data <- read_csv ("rdm-jumpstart/qmd/Day03/surveydata/raw/survey_student_rawdata.csv")
+survey_data <- read_csv("surveydata/raw/survey_student_rawdata.csv")
 ```
 
 
