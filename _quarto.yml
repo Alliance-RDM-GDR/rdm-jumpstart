@@ -19,6 +19,8 @@ website:
     logo-alt: "Alliance Logo"
     search: true
     left:
+      - text: "The Project"
+        href: qmd/Day01/00_TheProject.qmd
       - text: "Day 1"
         menu:
             - qmd/Day01/Day01_Overview.qmd
@@ -40,9 +42,6 @@ website:
             - qmd/Day03/Day03_Lesson2.qmd
             - qmd/Day03/Day03_Lesson3.qmd
             - qmd/Day03/Day03_Lesson4.qmd
-      - text: "The Project"
-        menu:
-            - qmd/Day01/00_TheProject.qmd
       - text: "Resources"
         menu:
             - qmd/extras/codeOfConduct.qmd
