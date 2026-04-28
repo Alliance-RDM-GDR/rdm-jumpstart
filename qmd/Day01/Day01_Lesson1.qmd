@@ -136,7 +136,7 @@ It is becoming more common for publishers to require that research data be share
 As research funding often comes from government organizations, which are supported by taxpayer dollars, funding agencies (such as SSHRC, NSERC, and CIHR) are starting to require proof of RDM practices. In some cases, this includes creating data management plans and making research data openly accessible. In Canada, the [Tri-Agency RDM Policy](https://science.gc.ca/site/science/en/interagency-research-funding/policies-and-guidelines/research-data-management/tri-agency-research-data-management-policy), has outlined the following requirements:
 
 * Institutional Strategies:  
-  * By March 1, 2023, research institutions subject to this requirement were required to post their RDM strategies online and share the link with the agencies so this information can be shared publicly on a [dedicated science.gc.ca webpage](http://science.gc.ca).  
+  * By March 1, 2023, research institutions subject to this requirement were required to post their RDM strategies online and share the link with the agencies so this information can be shared publicly on a [dedicated science.gc.ca webpage](https://science.gc.ca/site/science/en/interagency-research-funding/policies-and-guidelines/research-data-management/published-institutional-research-data-management-strategies).  
 * Data management plans:  
   * In spring 2022, the agencies identified the initial set of funding opportunities subject to the DMP requirement. The agencies are continuing to introduce the DMP requirement into funding opportunities as they finalize a timeline and approach for broader implementation of the requirement.  
 * Data deposit:  
