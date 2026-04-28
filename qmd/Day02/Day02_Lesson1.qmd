@@ -10,7 +10,7 @@ By the end of this lesson, you will be able to:
 
 ## Activity \- Create a README file
 
-In the previous lesson, you were introduced to the [example project](00_TheProject.html) we will be using throughout this course. You also learned about the importance of data documentation and README files, which allow your data to be navigated, interpreted, and understood both by you and others. 
+In the previous lesson, you were introduced to the [example project](../Day01/00_TheProject.html) we will be using throughout this course. You also learned about the importance of data documentation and README files, which allow your data to be navigated, interpreted, and understood both by you and others. 
 
 In this activity, you will draw from these lessons to create and start writing a README file for the example project.
 
