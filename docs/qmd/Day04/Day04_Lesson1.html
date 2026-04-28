@@ -839,7 +839,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Consult the project’s file naming and folder structure conventions (<a href="Day03_Lesson3.html">Day3</a>) if needed.</p>
+<p>Consult the project’s file naming and folder structure conventions (<a href="../Day03/Day03_Lesson3.html">Day3</a>) if needed.</p>
 </div>
 </div>
 <p>At the top of your script, create a title and add a brief description of its purpose. Remember, this comment should be preceded by a hash <code>#</code> symbol.</p>
@@ -861,7 +861,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 <p>Remember to check the console (below your script editing window) to ensure your code ran without errors.</p>
 <p>Then, load the dataset using <code>read_csv()</code></p>
-<p>If you can’t remember how this function works, look back to your practice scripts, or review <a href="Day03_Lesson4.html">Day 3</a>.</p>
+<p>If you can’t remember how this function works, look back to your practice scripts, or review <a href="../Day03/Day03_Lesson4.html">Day 3</a>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import data  </span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/raw/survey_student_rawdata.csv"</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -877,7 +877,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Was the data imported correctly? Use some of the functions you learned in <a href="Day03_Lesson4.html">Day 3</a> to check.</p>
+<p>Was the data imported correctly? Use some of the functions you learned in <a href="../Day03/Day03_Lesson4.html">Day 3</a> to check.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
@@ -940,7 +940,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <p>The column names consist of the question text from the survey form. While the single-word column names are acceptable, the other ones will be more difficult to work with, and require cleaning.</p>
 <p>To change column names we will use <code>rename()</code>. This function is part of the <code>dplyr</code> package that is installed with <code>tidyverse</code>.</p>
 <p>Type the following code into your script to change “Date of birth” to “date_birth”:</p>
-<p>Note: In this script, we are going to create a new object every time we perform an action on the dataset (such as, <code>survey_data_fixnames</code> or <code>survey_data_nodupl</code>). We do this to keep a visual record of the changes we are making to the dataset. However, when working on your own projects, avoid creating too many similar objects in your working environment. Instead, you will <a href="Day02_Lesson4.html">overwrite the original object</a> with the changes implemented (e.g., always overwrite the object named <code>survey_data</code> without adding the description).</p>
+<p>Note: In this script, we are going to create a new object every time we perform an action on the dataset (such as, <code>survey_data_fixnames</code> or <code>survey_data_nodupl</code>). We do this to keep a visual record of the changes we are making to the dataset. However, when working on your own projects, avoid creating too many similar objects in your working environment. Instead, you will <a href="../Day02/Day02_Lesson4.html">overwrite the original object</a> with the changes implemented (e.g., always overwrite the object named <code>survey_data</code> without adding the description).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change column names  </span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>survey_data_fixnames <span class="ot">&lt;-</span> survey_data <span class="sc">|&gt;</span>  </span>
@@ -1355,7 +1355,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </section>
 <section id="save-data-with-personal-identifiers" class="level5">
 <h5 class="anchored" data-anchor-id="save-data-with-personal-identifiers">Save Data with Personal Identifiers</h5>
-<p>Before we go further, let’s save a copy of our data as it is currently formatted, just as our project lead asked us to do in the <a href="00_TheProject.html">project scenario</a>. This copy will include the personal identifiers and the ID codes. We won’t be using this dataset for analysis, but it will be necessary should the project lead need to connect with respondents.</p>
+<p>Before we go further, let’s save a copy of our data as it is currently formatted, just as our project lead asked us to do in the <a href="../Day01/00_TheProject.html">project scenario</a>. This copy will include the personal identifiers and the ID codes. We won’t be using this dataset for analysis, but it will be necessary should the project lead need to connect with respondents.</p>
 <p>To save the data, we can use the function <code>write_csv()</code>, which is very similar to the function <code>read_csv</code> that you learned in an earlier lesson. The general syntax is:</p>
 <p><code>write_csv(object_to_save, “file-path-to-file-to-be-saved.csv”)</code></p>
 <p>It is important to know that if you use the name of an existing file, R will overwrite it without warning. As we mentioned earlier, <strong>you should never edit your original data</strong>, so in this step we are going to give the file a new descriptive name.</p>
@@ -1659,7 +1659,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
                                                                             </code></pre>
 </div>
 </div>
-<p>If you inspect the output in the console, you will see detailed information about each of the variables. The numeric variables show a set of descriptive statistics, while the character variables show the character count and other information. You may remember seeing these descriptive statistics in an <a href="Day03_Lesson4.html">earlier lesson</a>. At the bottom of each column generated by the <code>summary()</code> function, you will also see the number of NAs present in the data for each variable.</p>
+<p>If you inspect the output in the console, you will see detailed information about each of the variables. The numeric variables show a set of descriptive statistics, while the character variables show the character count and other information. You may remember seeing these descriptive statistics in an <a href="../Day03/Day03_Lesson4.html">earlier lesson</a>. At the bottom of each column generated by the <code>summary()</code> function, you will also see the number of NAs present in the data for each variable.</p>
 <p>As you can see in the columns related to the hours variables, there are NA values across all of them. For example, there were three participants that did not answer the question about hours spent on Facebook. Because this data is missing, R can’t accurately calculate the total hours, which explains the NAs in the <code>hours_total</code> variable.</p>
 <p>Every missing data situation is different, so when you’re working with your own data, you will have to make a decision about how you want to deal with NAs based on your dataset and research question.</p>
 <p>In some cases, you may want to preserve the missing values. Since we don’t have information to replace the missing data about social media usage, it would be unwise to add incorrect information simply to get rid of the error. In this situation, we can ask R to prevent the inclusion of NA values by using the <code>na.rm=TRUE</code> argument inside our function. This tells R to remove the NA values before performing a calculation.</p>
