@@ -320,7 +320,7 @@ Try using the `table()` function on the `Year of Study` variable.
 
 :::
 
-As mentioned in the [File Management](Day02_Lesson2.html) lesson, using spaces in file names causes problems for coding languages, and this is the same for variable and object names as well. In the next session we’re going to clean up the variable names to avoid this. However, for now, you can surround variable names that have spaces with quotation marks.
+As mentioned in the [File Management](../Day02/Day02_Lesson2.html) lesson, using spaces in file names causes problems for coding languages, and this is the same for variable and object names as well. In the next session we’re going to clean up the variable names to avoid this. However, for now, you can surround variable names that have spaces with quotation marks.
 
 ```{r}  
 #| eval: true
