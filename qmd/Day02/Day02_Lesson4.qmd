@@ -19,7 +19,7 @@ In this lesson, you will work through the tutorial below to learn how to navigat
 
 RStudio is a program that helps you write and run R code. The RStudio interface makes it easier to work with data, make graphs, and generate statistics.
 
-To complete this exercise, you must download R and RStudio; follow the instructions on this page, [R and RStudio setup](https://nickrochlin.github.io/rdm-jumpstart2/Block7_EXT-RRStudio.html).
+To complete this exercise, you must download R and RStudio; follow the instructions on this page, [R and RStudio setup](../extras/setup.html).
 
 ## RStudio Interface
 
