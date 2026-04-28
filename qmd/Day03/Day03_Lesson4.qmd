@@ -92,7 +92,7 @@ In this tutorial, we will read and inspect the dataset from our example project.
 
  - Because you already created the folder to contain the project in the previous session, you should choose “Existing Directory” here. If you had not created the folder, you could choose “New Directory”, and R Studio would also create the folder for you.
 
- - Click on “Browse” and then navigate to the folder `student_survey` that you just created.
+ - Click on “Browse” and then navigate to the folder `survey_student` that you just created.
 
  - Click on “Create Project”.
 
@@ -112,8 +112,8 @@ getwd()
 This command will show the working directory that R is looking at. To see how R Projects can be very useful, let’s do a test:
 
  - Close R Studio.  
- - Navigate to the `student_survey` folder on your computer.   
- - You now should have a file called `student_survey.RProj` in your folder. Open it. 
+ - Navigate to the `survey_student` folder on your computer.   
+ - You now should have a file called `survey_student.RProj` in your folder. Open it. 
 
 As you can see, the file opens R Studio. 
 
@@ -405,8 +405,6 @@ There is an additional way to make this code even simpler. We will learn all abo
 
 ### Save Your Script
 
-This isn’t a useful script, but you may want to refer to it again for practice. Go to `File > Save As` and save it in the `scripts` folder that we just created. Remember to use the proper file naming convention when naming your script.
+This isn’t a useful script, but you may want to refer to it again for practice. Go to `File > Save As` and save it in the `scripts` folder that we just created.  
 
-
-As you can see, this prints the first 10 rows of data, and shows the data types in each column.
-
+Save your script as: `survey_student_data-explore.R`

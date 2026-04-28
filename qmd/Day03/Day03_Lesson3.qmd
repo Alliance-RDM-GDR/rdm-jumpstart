@@ -30,9 +30,9 @@ You will have 30 minutes in the breakout rooms. You won’t need to report anyth
 
 ### File Naming Convention
 
-Because we won’t be using or creating many files, we can keep our file naming rules simple.  We will name the raw and processed data files using the format `asset_group_description.csv`, where ‘group’ refers to faculty/students, while the ‘description’ tells us what’s been done to the data.
+Because we won’t be using or creating many files, we can keep our file naming rules simple.  We will name the files using the format `asset_group_description`, where ‘group’ refers to faculty/students, while the ‘description’ tells us more about the purpose of the file.
 
-For example, a raw faculty survey dataset would be called `survey_faculty_rawdata.csv` and once it’s been cleaned and anonymized, `survey_faculty_anonymized.csv`.
+For example, an R script exploring the student survey data would be called survey_student_data-explore.R, and a raw student survey dataset would be called `survey_student_rawdata.csv` and once it’s been cleaned and anonymized, `survey_student_anonymized.csv`.
 
 
 
