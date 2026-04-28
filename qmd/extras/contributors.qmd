@@ -2,42 +2,60 @@
 title: "Contributors"
 ---
 
-## Contributors
-
 In alphabetic order…
 
-Names...
+#### Anneliese Eber
+Research Data Management Librarian, University of Waterloo
 
-<hr />
+Anneliese Eber is the Research Data Management Librarian at the University of Waterloo and has extensive experience in supporting researchers throughout the data lifecycle. With a background in anthropology and archaeology, Anneliese understands the challenges and nuances of data handling, storage and sharing. She specializes in guiding scholars on best practices for data organization, ethical management, and compliance with funder mandates. Passionate about empowering researchers to create data management systems that work for their unique situation, in her current role Anneliese provides tailored resources, workshops, and consultations to foster a culture of responsible data stewardship and research data management.
 
-**Name**  
-{Title} {Institution}
+#### Diana Bertuol Garcia
+Research Assistant, University of Victoria
 
-{Brief Bio}
+Diana Bertuol Garcia ia a PhD Candidate in Environmental Studies at the University of Victoria, where she studies how plant communities respond to extreme drought and the implications for ecosystem restoration in the face of climate change. She was born and raised in São Paulo, Brazil, where she received a bachelor’s degree in Biology, a teaching degree in Biology Education, and a master’s degree in Ecology. After her master’s, Diana worked as a high school Biology Teacher in Brazil, and then as an instructor in a semester-long field school on biodiversity conservation in Chile. Throughout her PhD, Diana has developed a passion for data and data analysis, and is always excited to share that love and helps other in their data and R learning journeys.
 
-**Jennifer Abel**  
+#### Jaime Orr 
+Research Data Management Librarian, University of Winnipeg
+
+Jaime Orr is the Research Data Management Librarian at the University of Winnipeg, and, as such, is the functional lead for data services - how to access, organize, and preserve research and public data. She supports Research Data Management (RDM) planning, policy, and dissemination and offers embedded RDM support to researchers at UWinnipeg. 
+
+#### Jamie Clarke
+Research Assistant, University of Victoria
+
+Jamie is a Masters student in the School of Environmental Studies at UVic. In collaboration with UBC and the Government of BC, she is testing new methods to measure moose (and other mammal) population sizes. Having never envisioned herself as a coder, Jamie has been pleasantly surprised by how useful, cool and fun R is.
+
+#### Jennifer Abel
 Research Data Management Librarian, University of Calgary
 
 Jennifer Abel is the Research Data Management Librarian at the University of Calgary, having joined the library in May 2023 from the Research Services Office. Prior to coming back to UCalgary in December 2021, after many years away, she was the Training Coordinator for the Portage Network, an RDM-focused initiative of the Canadian Association of Research Libraries, and for the RDM team in the Digital Research Alliance of Canada. Jennifer is the co-chair of the National Training Expert Group for the Canadian RDM Network of Experts. She holds a PhD in Linguistics and an MLIS from the University of British Columbia, and has taught at UCalgary, UBC and Mount Royal.
 
-**Maria Amoros-Teijeiro**  
+#### Maria Amoros-Teijeiro
 Research Assistant, University of Victoria
 
 Maria Amoros-Teijeiro is a PhD candidate in Educational Psychology at the University of Victoria. Originally from the Dominican Republic, she holds a bachelor’s degree in Psychology from INTEC (Dominican Republic) and a master’s in Educational Research from the Universidad de Valladolid (Spain). From 2017 to 2022, she taught research methods at INTEC, coordinated a program aimed at introducing young scholars to educational research, and worked as a researcher at the Dominican Institute of Research, Evaluation and Quality in Education (IDEICE). Passionate about data and research, she moved to Victoria, BC in 2022 to begin her doctoral studies.
 
-**Mathew Vis-Dunbar**  
-Data Librarian, University of British Columbia, Okangan
+#### Mathew Vis-Dunbar
+Data Librarian, University of British Columbia, Okanagan
 
-Mathew Vis-Dunbar is the Data Librarian at the University of British Columbia's Okanagan (UBCO) campus. In addition to supporting researcher needs related to data, he works with faculty and students to promote open and transparent research practices.
+Mathew Vis-Dunbar is the Data Librarian at the University of British Columbia’s Okanagan (UBCO) campus. In addition to supporting researcher needs related to data, he works with faculty and students to promote open and transparent research practices.
 
-**Nick Rochlin**  
+#### Nick Rochlin
 Data Science Librarian, University of Victoria
 
-Nick Rochlin is the Data Science Librarian at the University of Victoria (UVic).  Prior to joining UVic, he was the Research Data Management (RDM) Specialist with the University of British Columbia’s Advanced Research Computing team, where he provided assistance and instruction to researchers in accessing and using digital research infrastructure, as well as all things RDM.  In his current role, he focuses on supporting researchers in RDM and reproducible research workflows, and bridging the gap between UVic’s Library and Research Computing Services.  He has participated in a number of national roles in Canada’s data ecosystem, and is currently the Co-chair of the Digital Research Alliance of Canada’s RDM National Training Expert Group.
+Nick Rochlin is the Data Science Librarian at the University of Victoria (UVic). Prior to joining UVic, he was the Research Data Management (RDM) Specialist with the University of British Columbia’s Advanced Research Computing team, where he provided assistance and instruction to researchers in accessing and using digital research infrastructure, as well as all things RDM. In his current role, he focuses on supporting researchers in RDM and reproducible research workflows, and bridging the gap between UVic’s Library and Research Computing Services. He has participated in a number of national roles in Canada’s data ecosystem, and is currently the Co-chair of the Digital Research Alliance of Canada’s RDM National Training Expert Group.
 
-## 2025 Volunteers
+#### Sandra Sawchuk
+Research Data & Assessment Librarian, Mount Saint Vincent University
+
+Sandra Sawchuk is the Research Data & Assessment Librarian at Mount Saint Vincent University Library & Archives in Halifax, NS. Her research includes the digital and spatial humanities, data rescue and reuse, and computational reproducibility. She is currently the chair of the Council of Atlantic Academic Libraries Research Data Management committee and a member of the Data Liberation Initiative Professional Development Committee.
+
+## Volunteers
 
 We would like to thank the following individuals for volunteering their time and expertise throughout the program:
 
-* {Names...}
+* Alparslan Ozturk
+* John Brosz
+* Kelsey Harkness
+* Sarah McGill
+* Zeynep Cevik
 
