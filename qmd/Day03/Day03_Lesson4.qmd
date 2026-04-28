@@ -151,7 +151,7 @@ It’s best practice to **load packages in your script** so that others can see 
 ```{r}
 #| eval: true
 
-# Install package
+# Load package
 
 library(tidyverse)
 
@@ -175,7 +175,7 @@ In order to start working with a dataset in R, we first need to import, or “re
 To import a `.csv` file, we can use the `read_csv()` function and assign it to a new object called `survey_data`. We’re creating this new object so that we can call it in different functions later on.
 
 ```{r}
-#| eval: false
+#| eval: true
 
 # Import data
 survey_data <- read_csv("surveydata/raw/survey_student_rawdata.csv")
@@ -193,7 +193,7 @@ The `read_csv()` function imports data as a tibble by default, making it easier 
 
 ### Inspect Your Dataset
 
-Every time you import a dataset into R, it is good practice to confirm that it was imported correctly. This will allow you to identify potential errors in the data that might need to be fixed before data analysis, and to understand the structure of the data so that you can explore it. We’ll start with some commands that were covered in the [Data Types and Structures section](Day03_Lesson1.html), and then move to some new ways to explore data.
+Every time you import a dataset into R, it is good practice to confirm that it was imported correctly. This will allow you to identify potential errors in the data that might need to be fixed before data analysis, and to understand the structure of the data so that you can explore it. We’ll start with some commands that were covered in the [Data Types and Structures](Day03_Lesson1.html) lesson, and then move to some new ways to explore data.
 
 #### Looking at the Dataset
 
@@ -218,7 +218,7 @@ survey_data
 Use the `names()` function to print a list of all of the column names in the dataset.
 
 ```{r}  
-#| eval: false
+#| eval: true
 # View column names  
 names(survey_data)  
 ```
@@ -232,6 +232,8 @@ The `head()` function will display the top rows of the dataset.
 # View first rows of data  
 head(survey_data)  
 ```
+
+
 
 #### Summary Function
 
@@ -287,7 +289,7 @@ The syntax is as follows;
 Let’s try this with the `Age` variable.  
 
 ```{r} 
-#| eval: false
+#| eval: true
 # See a frequency table of age  
 table(survey_data$Age) 
 ```
@@ -300,7 +302,7 @@ You’ll see that you get two rows of numbers:
 You can also add multiple variables into the `table()` function to create a cross tabulation (also called a contingency table). The following code creates a table using the `Age` and `Gender` variables:
 
 ```{r} 
-#| eval: false
+#| eval: true
 # Get a cross tabulation of age and gender  
 table(survey_data$Age, survey_data$Gender)  
 ```
@@ -318,10 +320,10 @@ Try using the `table()` function on the `Year of Study` variable.
 
 :::
 
-As mentioned in the “File Management” session \[insert link\], using spaces in file names causes problems for coding languages, and this is the same for variable and object names as well. In the next session we’re going to clean up the variable names to avoid this. However, for now, you can surround variable names that have spaces with quotation marks.
+As mentioned in the [File Management](Day02_Lesson2.html) lesson, using spaces in file names causes problems for coding languages, and this is the same for variable and object names as well. In the next session we’re going to clean up the variable names to avoid this. However, for now, you can surround variable names that have spaces with quotation marks.
 
 ```{r}  
-#| eval: false
+#| eval: true
 # Get a frequency table of Year of Study  
 table(survey_data$"Year of Study")  
 ```
@@ -332,7 +334,7 @@ The `count()` function (from the `dplyr` package in the `tidyverse`) is similar 
 
 Let’s start by using the function for our full dataset.  
 ```{r}  
-#| eval: false
+#| eval: true
 # Count number of observations in the dataset  
 count(survey_data) 
 ```
@@ -346,7 +348,7 @@ The syntax is as follows:
 Let’s try it with the `Age` variable.
 
 ```{r}  
-#| eval: false
+#| eval: true
 # Get the number of observations by age  
 count(survey_data, Age)  
 ```
@@ -360,7 +362,7 @@ You’ll see that it gives you two columns:
 Now let’s try doing this with two variables.
 
 ```{r}  
-#| eval: false
+#| eval: true
 # Get the number of observations by age and gender  
 count(survey_data, Age, Gender)  
 ```
@@ -381,7 +383,7 @@ There are two ways to show all rows resulting from the `count()` function.
 1. Create an intermediate object called `obs_agebygender` to feed into the `print()` function.
 
 ```{r}  
-#| eval: false
+#| eval: true
 # Get the number of observations by age and gender  
 obs_agebygender <- count(survey_data, Age, Gender)
 
@@ -392,7 +394,7 @@ print(obs_agebygender, n = Inf)
 2. Since this new object will not be needed elsewhere in the script, you can avoid creating the object by using a technique called “nesting”. Nesting allows you to put one function inside another, so that the result of the first function is fed directly as an argument into the next function.
 
 ```{r}  
-#| eval: false
+#| eval: true
 # Get the number of observations by age and gender and print all results
 print(count(survey_data, Age, Gender), n = Inf) 
 ```
