@@ -1,0 +1,38 @@
+---
+title: "Lesson 2: Documentation Update"
+---
+
+## Activity \- Update README and DMP
+
+### README
+
+Now that we’ve done some data cleaning, let’s revisit our README and see what needs to be updated. In the previous session, we did a few things that should be documented:
+
+* Created a new R script  
+* Used the Tidyverse package to clean the data  
+* Saved a version of the data linking personal identifiers to IDs  
+* Created new variable names and variables  
+* Removed observations with NAs in some variables
+
+In your README document, do the following:
+
+* Update the file list to include the new script  
+* Update the methodological information to include R and the Tidyverse.  
+* Update the Data Specific information for the dataset:  
+  * Number of variables  
+  * Number of cases/rows  
+  * Variable List: \<list variable name(s), description(s), unit(s) and value labels as appropriate for each\>  
+  * Missing data codes: \<list code/symbol and definition\>  
+  * Specialized formats or other abbreviations used
+  
+### Update DMP
+
+Now jump into the DMP Assistant and see if there is anything you want to add for the sections that you have worked on. Also, consider what you could add for these sections:
+
+Responsibilities and Resources
+
+* Identify who will be responsible for managing this project's data during and after the project and the major data management tasks for which they will be responsible.  
+* How will responsibilities for managing data activities be handled if substantive changes happen in the personnel overseeing the project's data, including a change of Principal Investigator?  
+* What resources will you require to implement your data management plan? What do you estimate the overall cost for data management to be?
+
+

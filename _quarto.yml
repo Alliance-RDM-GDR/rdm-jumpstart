@@ -42,6 +42,11 @@ website:
             - qmd/Day03/Day03_Lesson2.qmd
             - qmd/Day03/Day03_Lesson3.qmd
             - qmd/Day03/Day03_Lesson4.qmd
+      - text: "Day 4"
+        menu:
+            - qmd/Day04/Day04_Overview.qmd
+            - qmd/Day04/Day04_Lesson1.qmd 
+            - qmd/Day04/Day04_Lesson2.qmd
       - text: "Resources"
         menu:
             - qmd/extras/codeOfConduct.qmd

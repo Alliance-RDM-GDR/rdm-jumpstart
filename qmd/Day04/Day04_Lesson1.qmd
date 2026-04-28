@@ -1,0 +1,79 @@
+---
+title: "Lesson 1: Data Cleaning"
+---
+
+## Learning Objectives
+
+By the end of this lesson, you’ll be able to:
+
+ - Describe the importance of data cleaning for the research data lifecycle.  
+ - Identify data cleaning needs for an example dataset.  
+ - Use the pipe operator and functions from the `tidyverse` to clean data of an example dataset.  
+ - Write reproducible code by applying concepts of literate programming.
+
+## Activity \- What Needs to Be Cleaned?
+
+Before cleaning a dataset, you should first explore your data so that you can understand what actions you must take in order to answer your research questions. In a previous lesson, you imported and looked at the dataset in RStudio. Now, you will perform a deeper inspection to make a plan for data cleaning.
+
+::: {.callout-note}
+## Breakout Room
+
+In your breakout rooms, open the survey dataset in R (e.g., use the `View()` function that you learned in Day 3, and discuss the following questions:
+
+1. Is this dataset in a consistent format for subsequent work and analysis? Why or why not?  
+2. What fields would you want to use to answer the project research question? Do they exist already?  
+3. Are there any fields that you think might be difficult to work with? Why?  
+4. What fields would you want to modify or correct in this dataset? How would you do that?
+
+Please make a list of things you would want to modify, transform, or correct in this dataset, and choose someone in your group to share that list with the larger group.
+
+You will have 20 minutes in the breakout room.
+
+:::
+
+## Lecture \- Data Cleaning
+
+### Lecture
+
+* [Download the PowerPoint](files/day4_L1_Data-Cleaning.pptx)
+
+<embed src="files/day4_L1_Data-Cleaning.pdf" type="application/pdf" width="100%" height="600px" />
+
+#### Data Cleaning
+
+Data cleaning is the process of checking, fixing, or transforming your data. Depending on how it was collected, your data may contain errors (e.g., typos) or it may be in a format that does not allow it to be easily used. During data cleaning, you will correct and transform the data to ensure it is ready for analysis.
+
+Data cleaning can be time consuming, but it is a crucial step in the research data lifecycle. If your data contains errors, the results of your analysis will not be reliable, regardless of how good your methods are. 
+
+As you clean your data, use the data management practices you’ve learned so far to document your data cleaning process. A preferred way to document this step is to create a script that performs and describes all of the required data cleaning actions. The comments in your script will not only help you in the future, but enhance the reproducibility of your research for others. 
+
+#### Best Practices for Data Cleaning
+
+The single most important rule in data cleaning is to **never directly edit your raw data**. Once your data has been collected, save the source file in the appropriate data folder in your project directory and do not change it. This ensures that you can reload the original dataset if you make a mistake. It also allows others (and yourself) to understand the ways in which you cleaned and manipulated your data. This is where file versioning practices are necessary, as any changes to the data should be saved and labelled as a new version.
+
+When performing data cleaning using a script, **create a single data cleaning script** that uploads the raw data, performs all necessary data cleaning steps, and then saves the cleaned dataset in a new file in the correct folder in your project directory.
+
+When sharing the dataset with others (which we will cover in more detail in another lesson), **always remember to share the clean version of your data.** This file will be easy to identify if you have named it appropriately.
+
+#### Data Cleaning Steps
+
+Each dataset is unique and the type of data cleaning practices you use will need to be adapted for each new project. But, here is a general idea of what a dataset may require for cleaning:
+
+ - Fix column names.  
+ - Remove duplicate observations.  
+ - Correct spelling mistakes.  
+ - Standardize letter case and use of spaces or other special characters.  
+ - Group values into larger categories.  
+ - Convert variables to correct variable types (e.g., numeric, categorical, date, etc).  
+ - Merge and split columns.  
+ - Create new variables.  
+ - Identify missing values.  
+ - Create a subset of the data.  
+ - Reshape the dataset for analysis.
+
+## Tutorial \- Data Cleaning
+
+In this tutorial, we are going to learn about common cleaning steps and techniques. As you go through this tutorial, transcribe the code into your own script file, and then run the code to execute the commands.
+
+
+
