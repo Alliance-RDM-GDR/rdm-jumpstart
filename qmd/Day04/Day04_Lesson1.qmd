@@ -859,7 +859,8 @@ Now you can use these values to fix the variable. In this case, we want to updat
 # fix values for the province variable  
 survey_data_notypos <- survey_data_dropna |>  
   mutate(   
-    province = replace_values(province,  
+    province = province |>
+      replace_values(  
                               c("AB", "Alta") ~ "Alberta",  
                               c("B.C.", "BC", "british columbia") ~ "British Columbia",  
                               "MB" ~ "Manitoba",  

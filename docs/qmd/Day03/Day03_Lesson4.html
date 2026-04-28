@@ -594,7 +594,7 @@ Using <code>setwd()</code> can break your code when:</p>
 <ul>
 <li><p>To create an R Project, select File &gt; New Project</p></li>
 <li><p>Because you already created the folder to contain the project in the previous session, you should choose “Existing Directory” here. If you had not created the folder, you could choose “New Directory”, and R Studio would also create the folder for you.</p></li>
-<li><p>Click on “Browse” and then navigate to the folder <code>student_survey</code> that you just created.</p></li>
+<li><p>Click on “Browse” and then navigate to the folder <code>survey_student</code> that you just created.</p></li>
 <li><p>Click on “Create Project”.</p></li>
 </ul>
 <p>Now you have created an R Project!</p>
@@ -607,9 +607,9 @@ Using <code>setwd()</code> can break your code when:</p>
 <ul>
 <li>Close R Studio.<br>
 </li>
-<li>Navigate to the <code>student_survey</code> folder on your computer.<br>
+<li>Navigate to the <code>survey_student</code> folder on your computer.<br>
 </li>
-<li>You now should have a file called <code>student_survey.RProj</code> in your folder. Open it.</li>
+<li>You now should have a file called <code>survey_student.RProj</code> in your folder. Open it.</li>
 </ul>
 <p>As you can see, the file opens R Studio.</p>
 <p>Enter <code>getwd()</code> into the console again.</p>
@@ -662,7 +662,7 @@ Using <code>setwd()</code> can break your code when:</p>
 <p>To import a <code>.csv</code> file, we can use the <code>read_csv()</code> function and assign it to a new object called <code>survey_data</code>. We’re creating this new object so that we can call it in different functions later on.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import data</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"surveydata/raw/survey_student_rawdata.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/raw/survey_student_rawdata.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now that you have imported the data, take a look at the environment pane on the top right. You should see the <code>survey_data</code> object listed under Data.</p>
 </section>
@@ -1066,8 +1066,8 @@ Does anything stick out to you?</p>
 </section>
 <section id="save-your-script" class="level3">
 <h3 class="anchored" data-anchor-id="save-your-script">Save Your Script</h3>
-<p>This isn’t a useful script, but you may want to refer to it again for practice. Go to <code>File &gt; Save As</code> and save it in the <code>scripts</code> folder that we just created. Remember to use the proper file naming convention when naming your script.</p>
-<p>As you can see, this prints the first 10 rows of data, and shows the data types in each column.</p>
+<p>This isn’t a useful script, but you may want to refer to it again for practice. Go to <code>File &gt; Save As</code> and save it in the <code>scripts</code> folder that we just created.</p>
+<p>Save your script as: <code>survey_student_data-explore.R</code></p>
 
 
 </section>
