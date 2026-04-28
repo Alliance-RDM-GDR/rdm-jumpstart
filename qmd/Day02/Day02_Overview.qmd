@@ -24,6 +24,6 @@ This day has four lessons:
 - Lesson 1 - [Documentation in action](Day02_Lesson1.html)  
 - Lesson 2 - [File Management](Day02_Lesson2.html)  
 - Lesson 3 - [Reproducibility in research, Excel and R](Day02_Lesson3.html)  
-- Lesson 4 - [Introduction to R](Day02_Lesson3.html)
+- Lesson 4 - [Introduction to R](Day02_Lesson4.html)
 
 You can click on the links above to go to each lesson page. There, you will find the learning objectives for the lesson, as well as all the material you will need to follow along with the course.

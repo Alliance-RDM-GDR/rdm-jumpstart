@@ -178,7 +178,7 @@ To import a `.csv` file, we can use the `read_csv()` function and assign it to a
 #| eval: true
 
 # Import data
-survey_data <- read_csv("surveydata/raw/survey_student_rawdata.csv")
+survey_data <- read_csv("data/raw/survey_student_rawdata.csv")
 ```
 
 Now that you have imported the data, take a look at the environment pane on the top right. You should see the `survey_data` object listed under Data.
