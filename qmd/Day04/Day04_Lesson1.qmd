@@ -75,5 +75,975 @@ Each dataset is unique and the type of data cleaning practices you use will need
 
 In this tutorial, we are going to learn about common cleaning steps and techniques. As you go through this tutorial, transcribe the code into your own script file, and then run the code to execute the commands.
 
+### The Pipe Operator
+
+You’ve already learned that the `tidyverse` package has many functions that are helpful for data cleaning. You will use these functions in this lesson, but before you do, it is helpful to understand one additional rule about the syntax used in this library. The `tidyverse` uses a pipe operator, represented by the symbol `|>`. The pipe is used to feed the result of one function directly into the next function.
+
+In an earlier lesson, you used “nesting” to view frequencies of observations by age and gender in our example dataset. To run this code again, open your script in RStudio, and run the first line of code uploading the data, and the final line of code exploring the count by age and gender:
+
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Load package
+library(tidyverse)
+```
+
+
+```{r}
+#| eval: true
+
+# Import data
+survey_data <- read_csv("data/raw/survey_student_rawdata.csv")
+```
+
+```{r}  
+#| eval: true
+# Get the number of observations by age and gender and print all results
+print(count(survey_data, Age, Gender), n = Inf) 
+```
+
+Here’s where the pipe operator becomes useful. Instead of nesting `count(survey_data, Age, Gender)` inside the `print()` function, you can use the `|>` symbol to feed the result of the first part of the argument \- `count(survey_data, Age, Gender`) into the second part \- `print()`.
+
+```{r}  
+# Get the number of observations by age and gender and print all results
+
+count(survey_data, Age, Gender) |>  
+    print(n = Inf)  
+```
+
+In the example above, `print(n = Inf)` is indented on a new line for readability. When using the pipe symbol (`|>`), editors such as RStudio may automatically indent the next line to show that the command continues.
+
+::: {.callout-note}
+## Exercise
+
+You can also use the pipe to feed the dataset `survey_data` into the `count()` function. What would the code look like?
+
+You can check the answer below, but please make sure to try it yourself before you see the answer. The best way to learn is to try to do it by yourself\!
+
+::: {.callout-tip collapse=true}
+## Answer
+
+```{r}  
+# Get the number of observations by age and gender and print all results  
+survey_data |>  
+    count(Age, Gender) |>  
+    print(n = Inf) 
+```
+
+:::
+
+Using pipes can help the code look cleaner and easier to understand. When formatted this way, you can see each step: 
+
+1. `survey_data` is fed into the `count()` function using `|>`  
+2. `count()` is counting the frequencies of the `Age` and `Gender` observations in `survey_data`, which is fed into the `print()` function using another `|>`.  
+3. `print()` shows the data you’ve requested from `count()` in the console and uses the `n = Inf` flag to ask R to show all of the data available.  
+
+This makes the code both machine-readable and easier to understand by humans, following the practices of literate programming.
+:::
+
+**Note**: The symbol `%>%` is another way of expressing the pipe syntax in `tidyverse`, while `|>` is used in base R. Both symbols will work exactly the same in most cases. In this course, we will use `|>`, which is now considered the standard pipe symbol, but if you see `%>%` in older tutorials or in `tidyverse` documentation, you can interpret it in the same way as `|>`. If you want to know more about their differences, you can refer to this page on [differences between the base R and magrittr pipes](https://tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/).
+
+Now that we have learned how to use the pipe, we can move on to creating the data cleaning script. You will continue to use the pipe throughout this lesson, so there will be plenty of opportunities to practice this new syntax. Save your current script and close it. We will start data cleaning in a new script.
+
+### Set up the Data Cleaning Script
+
+It is good practice to start a new task in R with a clean working environment. This removes existing objects and packages, which ensures that your code runs predictably and includes all necessary steps. 
+
+In RStudio, in the topmost menu bar, click on ‘Session’ and then ‘Restart R’.
+
+Now, open a new R script and save it with a meaningful name in the correct folder location.
+
+::: {.callout-caution}
+## Note
+
+Consult the project's file naming and folder structure conventions ([Day3](Day03_Lesson3.html)) if needed.
+ 
+:::
+
+At the top of your script, create a title and add a brief description of its purpose. Remember, this comment should be preceded by a hash `#` symbol.
+
+```{r}  
+# DATA CLEANING
+
+# this script:  
+## uploads the raw social media survey data \+ cleans it  
+## outputs a cleaned dataset ready to be used in analysis  
+```
+
+### Organize your working environment
+
+Before you start with the actual data cleaning tasks, make sure your working environment is ready to go. Since you are working within an R Project, the working directory will already be set.
+
+Next, add a line that loads the packages you need. In this lesson, we’ll be using `tidyverse`, though it is common to see more than one package here. Be sure to include a comment about what the script is doing. It may seem obvious to you, but the more you get into the habit of writing comments, the more likely you are to do it consistently.
+
+```{r}  
+# Load the tidyverse package  
+library(tidyverse)  
+``` 
+
+Remember to check the console (below your script editing window) to ensure your code ran without errors. 
+
+Then, load the dataset using `read_csv()`
+
+If you can’t remember how this function works, look back to your practice scripts, or review [Day 3](Day03_Lesson4.html).
+
+```{r}  
+#| eval: false  
+# import data  
+survey_data <- read_csv("data/raw/survey_student_rawdata.csv")  
+```
+
+You should now see a `survey_data` object listed under Data, in the top right panel Environment tab.
+
+::: {.callout-note}
+## Exercise
+
+Was the data imported correctly? Use some of the functions you learned in [Day 3](Day03_Lesson4.html) to check.
+
+:::
+
+::: {.callout-tip collapse=true}
+## Answer
+
+```{r}   
+#| eval: false
+
+# check that data was correctly imported  
+survey_data # prints in the console  
+View(survey_data) # prints in a separate window  
+head(survey_data) # prints the first 6 rows of data  
+```
+
+:::
+
+Take some time to inspect the console output for the code chunk you just created. What kind of information does each line provide? You may need to scroll up in the console to see the entire output. We won’t review them again here, but you should be seeing terms like `tibble`, `<chr>`, and `print(n = ...),` along with a sample of the survey data, both in the console and in a new window.
+
+### Cleaning the Data
+
+Now that we know that the data have been imported correctly, it is time to begin cleaning. Remember, each dataset is unique, so what we do in this lesson may not apply to the next project you work on. Use what you learn here as a starting point.
+
+#### Update Column Names
+
+The first thing we need to address are the column names, as they are currently very long with extra characters such as spaces and punctuation. Why do you think the column names look like this? 
+
+```{r}  
+# check names  
+names(survey_data)  
+```
+
+The column names consist of the question text from the survey form. While the single-word column names are acceptable, the other ones will be more difficult to work with, and require cleaning. 
+
+To change column names we will use `rename()`. This function is part of the `dplyr` package that is installed with `tidyverse`.
+
+Type the following code into your script to change “Date of birth” to “date\_birth”:
+
+Note: In this script, we are going to create a new object every time we perform an action on the dataset (such as, `survey_data_fixnames` or `survey_data_nodupl`). We do this to keep a visual record of the changes we are making to the dataset. However, when working on your own projects, avoid creating too many similar objects in your working environment. Instead, you will [overwrite the original object](Day02_Lesson4.html) with the changes implemented (e.g., always overwrite the object named `survey_data` without adding the description).
+
+```{r}  
+#| eval: false  
+# change column names  
+survey_data_fixnames <- survey_data |>  
+  rename(date_birth = "Date of birth")  
+``` 
+
+::: {.callout-caution}
+## Step-by-step explanation:
+
+* `survey_data_fixnames` \- this is a new object name  
+* `<-` \- this is the assignment operator. It assigns a value to a name and will take whatever comes next (on the right side) and apply it to the object on the left.  
+* `survey_data` \- this is our original dataset, loaded into RStudio from a file.   
+* `|>` \- this is the pipe. It passes information to the next function, taking the result from the left and using it as the first input on the right.  
+* `rename()` \- this is a function used to rename columns. Inside the parentheses, provide the new column name followed by the existing column name.  
+* `date_birth = "Date of birth"` \- you are renaming the “Date of birth” column to date\_birth. This new column name is written without quotes because it has no spaces.
+
+Run `names(survey_data)` again to check if the name change worked.
+ 
+:::
+
+What happened when you ran the `names(survey_data)`code again? Did you see the name change? Remember, we didn’t change column names in the `survey_data` object, we created a new object called `survey_data_fixnames` and changed the column name there.
+
+`rename()` can change multiple column names at once if you provide it with a comma separated list. Modify your code so that it changes the column “How many hours per day do you use each platform? [Facebook]” to “hours\_facebook”. You can do this by adding a comma after `date_birth = "Date of birth`.
+
+```{r}  
+#| eval: false  
+# change column names  
+survey_data_fixnames <- survey_data |>  
+  rename(date_birth = "Date of birth",  
+               hours_facebook = "How many hours per day do you use each platform? [Facebook]")  
+```
+
+::: {.callout-note}
+## Your turn\!
+
+Edit the code above so that it also changes the following column names in the same argument:
+
+* \`“Timestamp”\` to \`timestamp\`  
+* \`”Name”\` to \`name\`  
+* \`“Email”\` to \`email\`
+
+You can check the answer below, but please make sure to try it yourself before you see the answer. The best way to learn is to try to do it by yourself\!
+
+
+:::
+
+::: {.callout-tip collapse=true}
+## Answer
+
+```{r}  
+#| eval: false  
+# change column names  
+survey_data_fixnames <- survey_data  |>  
+  rename(date_birth = "Date of birth",  
+         hours_facebook = "How many hours per day do you use each platform? [Facebook]",  
+         timestamp = "Timestamp",  
+         name = "Name",  
+         email = "Email")  
+``` 
+
+:::
+
+Now, let’s change the rest of the column names. Use the code below as a guide, but get used to navigating your dataset in RStudio. Also, if you want to use copy / paste to collect the column names, do it in RStudio, not here. You should never copy code from a website for use on your computer. Not only can the HTML markup cause errors, the code itself could be malicious. 
+
+Remember, a script is a document. Take your time to create it, and check for typos as you go. Take the same care as you would when writing a paper or formatting a list of citations. Grammar, punctuation, and style matter. 
+
+::: {.callout-tip collapse=true}
+## Show Code
+
+```{r}  
+# change column names  
+survey_data_fixnames <- survey_data  |>  
+  rename(date_birth = "Date of birth",  
+         hours_facebook = "How many hours per day do you use each platform? [Facebook]",  
+         timestamp = "Timestamp",  
+         name = "Name",  
+         email = "Email",  
+         age = "Age",  
+         province = "Province",  
+         gender = "Gender",  
+         year_study = "Year of Study",  
+         field_study = "Field of Study",  
+         hours_instagram = "How many hours per day do you use each platform? [Instagram]",  
+         hours_snapchat = "How many hours per day do you use each platform? [Snapchat]",  
+         hours_tiktok = "How many hours per day do you use each platform? [Tiktok]",  
+         hours_xtwitter = "How many hours per day do you use each platform? [X (Twitter)]",  
+         hours_other = "How many hours per day do you use each platform? [Other]",  
+         hours_sleep = "On average, how many hours of sleep do you get per night?",  
+         devices_used = "What devices do you use to access social media",  
+         feel_connected = "Please indicate how much you agree or disagree with the following statements about social media and your mental health: [Social media helps me feel connected to others.]",  
+         feel_stress = "Please indicate how much you agree or disagree with the following statements about social media and your mental health: [Social media makes me feel anxious or stressed.]",  
+         feel_distracted = "Please indicate how much you agree or disagree with the following statements about social media and your mental health: [Social media distracts me from academic work.]",  
+         feel_improvedmood = "Please indicate how much you agree or disagree with the following statements about social media and your mental health: [Social media improves my mood when I feel lonely.]",  
+         reasons_use = "Select any of the following reasons for using social media:"  
+  )
+```
+ 
+:::
+
+You can now check if column names were correctly modified.
+
+```{r}  
+# Check if names were correctly changed  
+names(survey_data_fixnames)
+
+```  
+
+Did everything work as you expected? You should see a list of all of the updated column names. If you don’t, go back through this lesson from the beginning and try again. Remember, another way to keep track of your objects in RStudio is to check the Environment tab. 
+
+#### Remove Duplicates
+
+Duplicated information can happen in a dataset for many reasons. There may have been an error in the survey collection tool that created a duplicate column, or user errors could lead to the same data appearing in multiple records, or rows. It is good practice to search for duplicate data.
+
+One way to check for duplicates in a survey dataset like this, is to check that the number of respondents is the same as the number of rows in the dataset. 
+
+To see the number of respondents, we will use the `name` and `email` columns. While some people in a dataset could have the same name, they will have a different email address. Use the function `distinct()` from `dplyr`, which shows the unique combinations of the variables you choose. 
+
+```{r}  
+# Number of respondents in the dataset.  
+survey_data_fixnames |>  
+  distinct(name, email)  
+```  
+
+::: {.callout-caution}
+## Step-by-step explanation:
+
+* `survey_data_fixnames` \- this is the object with the renamed columns that holds our survey data.  
+* `|>` \- this is the pipe.  
+* `distinct()` \- this is a function used to show unique rows or unique combinations of values in a dataset.  
+* `name, email` \- these are the column names you want the `distinct()` function to check
+
+:::
+
+We are not creating a new object with this information, as we’ve not used the `<-` operator to assign new values. We are just displaying this information in the console. 
+
+The console output shows the following information: `A tibble: 500 x 2`
+
+This means that the function has retrieved two columns (name and email) and 500 rows (500 unique respondents).
+
+To check the total number of rows in the dataset, use the function `nrow().`
+
+```{r}  
+# Number of rows in the dataset.  
+nrow(survey_data_fixnames)  
+```
+What was the output from `nrow()`? If there are more rows than unique respondents, it means there are duplicate observations. 
+
+To remove them, we will use the `distinct()` function and a pipe that assigns the function’s output to a new object. If you do not specify column names inside the parentheses, this function will search for and keep unique rows from across the entire data frame or tibble.
+
+```{r}  
+# Remove duplicated values  
+survey_data_nodupl <- survey_data_fixnames |>   
+  distinct()  
+```
+
+::: {.callout-caution}
+## Step-by-step explanation:
+
+* `survey_data_nodupli` \- this is a new object to hold the deduplicated dataset.  
+* `<-` \- the assignment operator.   
+* `survey_data_fixnames` \- the object we want to read the data from  
+* `|>` \- the pipe passes information to the function.  
+* `distinct()` \- this function shows unique rows or unique combinations of values in a dataset. Without an argument in the parentheses, it will search all columns.
+
+:::
+
+Now, check the number of rows in the dataset again.
+
+```{r}  
+#| eval: false
+
+# Check number of rows in the dataset and the number of distinct rows  
+nrow(survey_data_nodupl)  
+distinct(survey_data_nodupl)  
+```
+
+You should now have the same number of rows as respondents, which shows that duplicates have been removed. If you don’t see the same result, refresh your R session and go through your code from the top. 
+
+#### Tackle Personal Identifiers
+
+This dataset includes the names and email address of respondents, as well as other personal details, such as age and gender. While the design of a survey instrument is outside of the scope of this course, it is always a good idea to consider how much data you actually need before you start collection. Your project may have documentation about how respondent data are to be collected or used, so make sure you follow the norms of your lab or research group.
+
+It is common practice to remove personal identifiers from survey data, but you may also wish to create a code for each entry, should you ever need to connect information back to the respondent. In this example, we will create a new ID column, and then write it to a new object with the personal information removed. 
+
+
+##### Create an ID Column
+
+The `mutate()` function, part of the `dplyr` package, is useful when you want to modify columns or create new columns based on other functions or calculations with existing variables.
+
+We can use `mutate()` with the `row_number()` function to create a new column that assigns a unique number to each row. This has the added benefit of identifying the unique entries in the dataset.
+
+```{r}  
+# add a column with an anonymous ID per respondent  
+survey_data_id <- survey_data_nodupl |>  
+  mutate(id = row_number())  
+```  
+
+::: {.callout-caution}
+## Step-by-step explanation:
+
+You can see that the grammar works in the same way as the `rename()` and `distinct()` function, which is one of the strengths of using the `tidyverse`.
+
+* `survey_data_noid` \- an object to hold the dataset with the new `id` column.  
+* `<-` \- the assignment operator.   
+* `survey_data_nodupli` \- the object we want to read the data from  
+* `|>` \- the pipe passes information to the function.  
+* `mutate()` \- this function adds new variables or changes existing ones by applying calculations or transformations.  
+* `id = -` the name of the new column. The equal operator here is used in the same way as it was in the `rename()` function, here it assigns a column name to whatever comes next.  
+* `row_number()` \- this is a function used to assign a number to each row, usually based on the current order of the data
+
+:::
+
+Now, check if the `id` column was created.
+
+```{r}  
+#| eval: false  
+# add a column with an anonymous ID per respondent  
+View(survey_data_id)  
+```
+
+Scroll down to the right to see the final column in the dataset, it should be the newly created `id` column.
+
+##### Reorder Columns
+
+Now, we want to move our newly created `id` column from the right of the tibble to the left, so that it is easier to see when we view the data. 
+
+The `relocate()` function, which is also part of the `dplyr` package, is the next function we will learn. It is a simple function that relocates columns in a dataset.
+
+The default of `relocate()` is to put the specified column in the first position, so we don’t need to specify location here, though that is possible with added arguments. We will learn those below. 
+
+```{r}  
+# moves id column to the left most position (default of relocate function)  
+survey_data_ordered <- survey_data_id |>  
+  relocate(id)
+
+# check if it worked  
+survey_data_ordered  
+```
+
+However, if you want to put a column in another location, you can specify the new location in reference to another column by using the arguments `.before` or `.after`. For example, the code below moves the gender column to the position after the age column.
+
+```{r}  
+# move gender column to the right of age column  
+survey_data_ordered <- survey_data_ordered |>  
+  relocate(gender, .after = age)
+
+# check  
+survey_data_ordered  
+```
+
+
+::: {.callout-note}
+## Your turn\!
+
+Use `relocate()` to move the gender column after the name column by rewriting your code to change the order of columns.
+
+You can check the answer below, but please make sure to try it yourself before you see the answer. The best way to learn is to try it yourself first.
+
+:::
+
+::: {.callout-tip collapse=true}
+## Answer
+
+```{r}  
+# move gender column to the right of name column  
+survey_data_ordered <- survey_data_ordered |>  
+  relocate(gender, .after = name)
+
+# check  
+survey_data_ordered  
+``` 
+
+:::
+
+##### Save Data with Personal Identifiers
+
+Before we go further, let’s save a copy of our data as it is currently formatted, just as our project lead asked us to do in the [project scenario](00_TheProject.html). This copy will include the personal identifiers and the ID codes. We won’t be using this dataset for analysis, but it will be necessary should the project lead need to connect with respondents.
+
+To save the data, we can use the function `write_csv()`, which is very similar to the function `read_csv` that you learned in an earlier lesson. The general syntax is:
+
+`write_csv(object_to_save, “file-path-to-file-to-be-saved.csv”)`
+
+It is important to know that if you use the name of an existing file, R will overwrite it without warning. As we mentioned earlier, **you should never edit your original data**, so in this step we are going to give the file a new descriptive name. 
+
+```{r}  
+#| eval: false  
+# Save data linking ID to names  
+write_csv(survey_data_ordered, "data/processed/survey_student_identifiers-IDs.csv")  
+```
+
+Remember, if you want to inspect your file directory, you can see it under the ‘Files’ tab in the bottom right panel of RStudio. Did your file save as expected?
+
+##### Remove Columns
+
+Now that we have saved a new version of the data, we will remove the email and name columns to de-identify the dataset. We will also use the same command to remove unnecessary columns.
+
+There are a number of ways to remove columns in R, but here, we’ll focus on the `select()` function from the `dplyr` package in `tidyverse`.
+
+This function uses  the same general syntax that we have been learning as we explore the `tidyverse`. In the parentheses, you must insert a dash \- or minus symbol, followed by the name of the column you want to remove.
+
+Remove the name and email columns using the `select()` function.
+
+```{r}  
+# Remove name and email columns  
+survey_data_anon <- survey_data_ordered |>  
+  select(-name, -email)  
+```
+
+::: {.callout-note}
+## Your turn\!
+
+Now remove other unnecessary columns. The timestamp is a default column added by the survey tool we used (Google Forms), but we will not be using this for our analysis. Use the `select()` function to remove this column from the dataset.
+
+You can check the answer below, but please make sure to try it yourself before you see the answer.
+
+:::
+
+::: {.callout-tip collapse=true}
+## Answer
+
+```{r}  
+# Remove other unnecessary columns  
+survey_data_anon <- survey_data_anon |>  
+  select(-timestamp)
+
+```
+ 
+:::
+
+You can now check that all column removals worked:
+
+```{r}  
+# check that it worked  
+survey_data_anon  
+```
+
+Before we continue to the next step, it is useful to know that the `select()` function can also be used to select specific variables from your dataset. For example, if you want to show the variables `year_study` and `field_study`, use the following code:
+
+```{r}  
+# select specific columns  
+survey_data_anon |>  
+  select(year_study, field_study)  
+```
+
+::: {.callout-note}
+## Your turn\!
+
+Write code that selects the `date_birth`, `age`, and `province` columns:
+
+You can check the answer below, but try it yourself before you see the answer. 
+
+:::
+
+::: {.callout-tip collapse=true}
+## Answer
+
+```{r}  
+# select specific columns  
+survey_data_anon |>  
+  select(date_birth, age, province) 
+```
+ 
+:::
+
+#### Save current version of the cleaned data
+
+Now that we removed the personal identifiers, it is good practice to save a version of the data at this stage, before any more steps of data cleaning, so we can share this version later on.
+
+::: {.callout-note}
+## Your turn\!
+
+Save the data in the object `survey_data_anon` into a .csv file named “survey_student_anonymized-cleancolnames.csv” in the processed data folder.
+
+You can check the answer below, but please make sure to try it yourself before you see the answer.
+
+:::
+
+::: {.callout-tip collapse=true}
+## Answer
+
+```{r}  
+#| eval: false  
+# Save the file without personal identifiers  
+write_csv(survey_data_anon, "data/processed/survey_student_anonymized-cleancolnames.csv")  
+``` 
+
+:::
+
+To continue the script, we want to import the data that we just saved. This will make sure that the rest of the code is reproducible later on when we share the anonymized data with clean column names.
+
+```{r}  
+#| eval: false  
+# import data  
+survey_data_anon <- read_csv("data/processed/survey_student_anonymized-cleancolnames.csv")  
+```
+
+#### Create New Variables
+
+Depending on your research question, you may need to create a new variable based on your existing variables. For example, because we are investigating overall social media usage, we could combine the time spent in different platforms into a single variable. This is called a **“derived variable”**, as it does not appear in the original dataset. However, if our question was about comparing the usage of different platforms, we would want to keep the variables separate. It is always important to go back to your questions to have more clarity on how you want your variables to be. 
+
+To create a derived variable, we will use the `mutate()` function. Remember, the syntax for this function requires an argument inside the parentheses. Last time, we used `mutate()` to create the new ID column. This time, we are using it to combine variables, so we need to tell R the new column name, followed by the names of the columns we want to merge. Since the column names are existing variables in our dataset, we don’t need to enclose them in quotations. Take a look at the code below to see how the `mutate()` function works for this example. 
+
+```{r}  
+# add a variable for total amount of time spent on social media  
+survey_data_tothour <- survey_data_anon |>  
+  mutate(  
+    hours_total = hours_facebook + hours_instagram + hours_snapchat + hours_tiktok + hours_xtwitter  + hours_other  
+  )  
+```  
+
+Remember, by default, R creates the new variable as the last column in the dataset. For a cleaner dataset, we may want to move this variable closer to the individual platform variables.
+
+::: {.callout-note}
+## Your turn\!
+
+Remember how to reorder columns? Now try to move the newly created column `hours_total` to after the `hours_other` variable.
+
+You can check the answer below, but please make sure to try it yourself first. 
+
+:::
+
+::: {.callout-tip collapse=true}
+## Answer
+
+```{r}  
+# move the new variable to after hour\_other  
+survey_data_tothour <- survey_data_tothour |>   
+  relocate(hours_total,  
+           .after = hours_other)  
+```
+
+:::
+
+Now that we have created this new variable, let’s see if the numbers from each individual column were added together correctly in the new column. First, let’s use the `range()` function to see the range of total hours spent in social media:
+
+```{r}  
+# check the range of hours\_total  
+range(survey_data_tothour$hours_total)  
+```
+
+If your code ran correctly, you’ll be seeing `NA`, or ‘not available’ in your console. NA in R means that a value is missing or unavailable.
+
+#### Deal with Missing Data
+
+Missing data can create difficulties when working with certain functions because they can’t be used in calculations. Certain statistical analyses, such as linear models, will not work if there is missing data. This means that dealing with NA values during data cleaning is very important. There are many different ways to handle NAs, but we will only cover some of them here.
+
+First, let’s look at how many NAs we have in our dataset. 
+
+```{r}  
+# check NAs in the dataset  
+survey_data_tothour |> summary()   
+```
+
+
+
+If you inspect the output in the console, you will see detailed information about each of the variables. The numeric variables show a set of descriptive statistics, while the character variables show the character count and other information. You may remember seeing these descriptive statistics in an [earlier lesson](Day03_Lesson4.html). At the bottom of each column generated by the `summary()` function, you will also see the number of NAs present in the data for each variable. 
+
+As you can see in the columns related to the hours variables, there are NA values across all of them. For example, there were three participants that did not answer the question about hours spent on Facebook. Because this data is missing, R can’t accurately calculate the total hours, which explains the NAs in the `hours_total` variable.
+
+Every missing data situation is different, so when you’re working with your own data, you will have to make a decision about how you want to deal with NAs based on your dataset and research question. 
+
+In some cases, you may want to preserve the missing values. Since we don’t have information to replace the missing data about social media usage, it would be unwise to add incorrect information simply to get rid of the error. In this situation, we can ask R to prevent the inclusion of NA values by using the `na.rm=TRUE` argument inside our function. This tells R to remove the NA values before performing a calculation.
+
+```{r}  
+# check range of total\_hour\_per\_day, removing NAs  
+range(survey_data_tothour$hours_total, na.rm = TRUE)  
+```  
+
+With this additional argument, you can now see the range of the `hours_total` variable, which shows the values 0 and 11. This means that the lowest value in the `hours_total` column is zero and the highest value is 11.  
+
+In other situations, you may wish to replace the NA values, rather than ignore them. In this dataset, we can safely substitute the NAs in the hours variables with zeroes, as the sum of all hours will still give us a minimum number of hours. To do this we will return to the `mutate()` function, combining it with the `replace_na()` function. The `replace_na` function takes a vector in its argument followed by a value to replace the missing values. 
+
+```{r}  
+# replace NAs in the hours variable with 0  
+survey_data_replna <- survey_data_tothour |>   
+  mutate(hours_facebook = replace_na(hours_facebook, 0),  
+         hours_instagram  = replace_na(hours_instagram, 0),  
+         hours_snapchat = replace_na(hours_snapchat, 0),  
+         hours_tiktok = replace_na(hours_tiktok, 0),  
+         hours_xtwitter = replace_na(hours_xtwitter, 0),  
+         hours_other = replace_na(hours_other, 0))
+
+```
+
+::: {.callout-caution}
+## Step-by-step explanation:
+
+The syntax used by the `mutate()` function is similar to the `rename()` function, as it allows you to modify several columns at once.
+
+* You start the `mutate` call with the first column you want to modify. By giving here the same name of a current column (e.g. `hours_facebook`), R will overwrite the column with the new set of values.  
+* After the `=` sign for each variable, you insert the new values for the column. Here they are calculated using the `replace_na` function.  
+* Inside the `replace_na` function, you add the column name, a comma, and the value for NAs.  
+* After closing the parenthesis for the `replace_na` function, you add a comma, and then can repeat for all the columns you want to modify.
+
+:::
+
+Now you can check if there still are NAs in those columns.
+
+```{r}  
+#| eval: false
+
+# check: that NAs were replaced by zeroes in hours-of-social-media-use columns  
+summary(survey_data_replna)  
+```  
+
+Now, we can update our `hours_total` column by re-running the code snippet again.
+
+```{r}  
+# update our 'hours_total' column   
+survey_data_replna <- survey_data_replna |>  
+  mutate(  
+    hours_total = hours_facebook + hours_instagram + hours_snapchat + hours_tiktok + hours_xtwitter  + hours_other  
+  )
+
+```
+
+Now you can check if there still are NAs in the `hours_total` column.
+
+```{r}  
+# check no NAs in hours_total  
+summary(survey_data_replna$hours_total)  
+```
+
+We can also check the range again.
+
+```{r}  
+# check the range again  
+range(survey_data_replna$hours_total)  
+```
+
+Looks good, now we have only numerical values, without having to use the `[na.rm](http://na.rm)` argument.
+
+Finally, another way that you can deal with NAs is to remove them for your dataset. For example, it might be that knowing the number of hours people sleep on average is very important for your research question, in which case you might want to remove all the entries  where hours of sleep were not specified from the dataset.
+
+We can remove the entries (i.e., rows) where `hours_sleep` are NA using the function drop_na(): 
+
+```{r}  
+# remove observations with NAs for hours slept  
+survey_data_dropna <- survey_data_replna |>   
+  drop_na(hours_sleep)  
+```
+
+::: {.callout-caution}
+## Step-by-step explanation:
+
+* The syntax is similar as before.  
+* Then you pipe the current dataset `survey_data_replna` into the `drop_na` function  
+* Inside the drop_na function, you add the column (or columns) for which you want the NAs to be dropped
+
+:::
+
+::: {.callout-note}
+## Your turn\!
+
+Now remove all observations with NA in the `date_birth` variable.
+
+You can check the answer below, but please make sure to try it yourself before you see the answer. 
+
+:::
+
+::: {.callout-tip collapse=true}
+## Answer
+
+```{r}  
+# remove observations with NAs for age  
+survey_data_dropna <- survey_data_dropna |>   
+  drop_na(date_birth)  
+``` 
+
+:::
+
+To drop NAs, you have to drop the entire observation, which means you end up with a smaller dataset.
+
+```{r}  
+# check number of rows now  
+nrow(survey_data_dropna)  
+```
+
+Therefore, dropping NAs is only recommended when essential for your analysis. Here, as we have a larger sample size, it is okay to continue with this smaller dataset. 
+
+Now that we have dealt with NAs, let’s continue with other data cleaning steps.
+
+#### Fix Typos and Recode Variables
+
+Now that we have organized our columns and dealt with NAs, it is time to start looking at the actual values of variables to see if we will be easily able to analyze them, or if they need cleaning too. A quick inspection of the dataset shows us that some variables like province and field of study need some work to be put into a stage that is ready for analysis. When we want to substitute some values of a variable for other values, we call that recoding. This can be done both to update an existing variable, or to create a new variable. Let’s look at both options.
+
+The `province` variable was entered as a free entry text, and there are a lot of typos that need to be corrected. A good way to see all possible entries is to use the function `distinct()`, which we have already seen.
+
+```{r}  
+# check all entries for the province variable  
+survey_data_dropna |>  
+  distinct(province) |>  
+  arrange(province) |>  
+  print(n = Inf)  
+```
+
+::: {.callout-caution}
+## Step-by-step explanation:
+
+Again, the syntax is similar to what you have previously done using the `tidyverse`.
+
+* We start with our current dataset `survey_data_dropna` and pipe it into our next function. We don’t use an assignment operator here as we are not trying to save anything, just see the output.  
+* The `distinct()` function will show you the unique rows for a variable or combination of variables. Here, we ask for the unique rows of `province`  
+* We then pipe this into the `arrange()` function, which will order the dataset based on a variable. We use `province` again here to order the dataset, so that we see it in alphabetical order and can more easily spot typos.  
+* Finally, we pipe it into the `print()` function. Using `n = Inf` here tells R to print all the rows in the tibble.  
+* As a result, you will see printed in the console a list of all unique entries for the province variable, organized alphabetically.
+
+:::
+
+Look at the results. Can you spot the typos that need to be fixed?
+
+Now you can use these values to fix the variable. In this case, we want to update the variable, and not create a new one. For that, we can use the `replace_values()` function from the `dplyr` package. This function is useful when you want to replace values in a column with new values. We will use this inside the `mutate()` function because we will be modifying an existing column. This is how we would use it for the province variable:
+
+```{r}  
+# fix values for the province variable  
+survey_data_notypos <- survey_data_dropna |>  
+  mutate(   
+    province = replace_values(province,  
+                              c("AB", "Alta") ~ "Alberta",  
+                              c("B.C.", "BC", "british columbia") ~ "British Columbia",  
+                              "MB" ~ "Manitoba",  
+                              "NS" ~ "Nova Scotia",  
+                              c("ON", "ontario") ~ "Ontario",  
+                              c("QC", "Québec") ~ "Quebec"  
+    )  
+  )  
+```
+
+::: {.callout-caution}
+## Step-by-step explanation:
+
+* We start with a similar syntax to the other functions in the `tidyverse` package: you start with tour current dataset survey_data_dropna, and you pipe it into the `mutate` function  
+* Inside the mutate function, you tell R that you want to update the `province`variable by indicating `province  =`  
+* Then, you use the `replace_values()` function to specify what and how you want to change  
+* Inside the `replace_values()` function, you first specify the variable that you want to fix, in our case, the `province` variable  
+* Then, a sequence of statements separated by commas should follow, with each statement specifying the values to be changed inside a character vector `c()`, followed by the `~` sign, followed by the new value. For example, the statement `c("AB", "Alta") ~ "Alberta"` tells R to substitute every entry of “AB”, and "Alta" with “Alberta”.   
+* If you have just one value that you want to replace, you do not need to use `c()`. For example, `"NS" ~ "Nova Scotia"` tells R to substitute every entry of “NS” with “Nova Scotia”.
+
+:::
+
+Now we can see if that worked:  
+```{r}  
+# check if it worked  
+survey_data_notypos |>  
+  distinct(province) |>  
+  arrange(province) |>  
+  print(n = Inf)  
+```
+
+::: {.callout-note}
+## Your turn\!
+
+You might have noticed that the field of study variable also has typos. Check which typos exist and use `replace_values()` to fix these typos.
+
+You can check the answer below, but please make sure to try it yourself before you see the answer. 
+ 
+:::
+
+::: {.callout-tip collapse=true}
+## Answer
+
+```{r}  
+# check all entries for the field\_study variable  
+survey_data_notypos |>  
+  distinct(field_study) |>  
+  arrange(field_study) |>  
+  print(n = Inf)
+
+# fix values for the field\_study variable  
+survey_data_notypos <- survey_data_notypos |>  
+  mutate(field_study = replace_values(field_study,  
+                                      c("Biolgy", "biology") ~ "Biology",  
+                                      c("CompSci", "comp sci") ~ "Computer Science",  
+                                      "chem" ~ "Chemistry",  
+                                      "econ" ~ "Economics",  
+                                      c("engineering", "enginering") ~ "Engineering",  
+                                      c("psychology", "psycology") ~"Psychology",  
+                                      "stats" ~ "Statistics"  
+                                      )  
+  )
+
+# check if it worked  
+survey_data_notypos |>  
+  distinct(field_study) |>  
+  arrange(field_study) |>  
+  print(n = Inf)
+
+```  
+
+:::
+
+Great, we fixed the typos and inconsistencies in the field of study variable. 
+
+Sometimes you might also want to create a new variable based on values from other variables. For example, it might be useful to group participants according to certain ranges of social media usage, instead of looking at the exact number of hours used per day. 
+
+For that, we can use the `case_when()` function inside `mutate()` to create a new categorical variable that bins participants into four categories of social media usage. The `case_when` function works well for when you want to create a whole new variable using values from an existing variable (this is different from replacing an existing variable, as we did above for the `province` and `field_study` variables, when we were interested in updating an existent column, rather than creating a new one). To create this new variable, `case_when` looks for statements of conditions, and creates the new values when the condition is `TRUE`. Let’s see how this works:
+
+```{r}  
+# create categorical variable for hours\_total  
+survey_data_bins <- survey_data_notypos  |>   
+  mutate(bin_hours_total = case_when(  
+    hours_total <= 2 ~ 'Less than or equal to 2 hours',  
+    hours_total <= 4 ~ '2-4 hours',  
+    hours_total <= 6 ~ '4-6 hours',  
+    hours_total > 6 ~ 'More than 6 hours'))
+
+```  
+
+::: {.callout-caution}
+## Step-by-step explanation:
+
+* The syntax is similar to the `replace_values()` function we used above: you start with our current dataset `survey_data_notypos`, and then pipe it into the `mutate()`function  
+* Inside the `mutate` function, you name the new variable to be created `bin_hours_total`, and follow it with a `=` sign  
+* Then, you use the `case_when` function to assign specific values for the new variable based on certain conditions  
+* The syntax is similar to the `replace_values()` syntax: the sequence of statements should be separated by commas, with each statement specifying a condition, followed by the `~` sign, followed by the new value. For example, the statement `hours_total <= 2 ~ "Less than or equal to 2 hours",` tells R to check if the value in the variable `hours_total` is smaller or equal to 2. If yes, it assigns the value “"Less than or equal to 2 hours" in the new variable.  
+* With this function, R uses the first condition that is `TRUE` to assign the new value. For example, someone who spent 1 hour per day on social media would satisfy the three first conditions, but R will assign it the value of “Less than or equal to 2 hours” because that was listed first.
+
+:::
+
+If you want to check how that worked, you can see how the bin\_hours\_total variable maps to the hours_total variable using this code:
+
+```{r}  
+# check if it worked  
+survey_data_bins  |>   
+  distinct(hours_total, bin_hours_total)  |>   
+  arrange(hours_total)  
+```
+
+#### Separate Values
+
+Before we go into our final cleaning step for this lesson (but there is more to come in the next lesson), let’s talk about how to separate values from a variable. In certain cases, you might have a variable that actually contains two variables. For example, the date_birth variable can actually be understood as containing information about the dat, month, and year of birth. To separate the values of this column into three columns, we can use the function `separate_wider_delim()` of the `tidyr` package, which specializes in dealing with columns like this.
+
+The `separate_wider_delim()` function will separate a column into multiple columns, therefore making the dataset wider, hence its name. It also uses a delimiter to separate the column, and that’s why it has delim on its name (we all love an informative function name, right?). The function has three main arguments: the column(s) you want to separate, the delimiter that should be used to separate the values, and the names for the new columns. In the case of the date_birth column, the delimiter is the character `/`.
+
+```{r}  
+# separate 'date of birth' into 'day', 'month and 'year' columns, using the '/ as the separator  
+survey_data_sep <- survey_data_bins  |>   
+  separate_wider_delim(cols = date_birth,  
+                       delim = "/",  
+                       names = c("day", "month", "year"))  
+```
+
+Let’s see if it worked:
+
+```{r}  
+# check the result  
+survey_data_sep  
+```
+
+Great, seems like we managed to separate the variable into three! 
+
+We can also unite the columns together using the `unite()` function, which does the opposite as `separate_wider_delim()`. This function takes in the name of the new column you want to create, followed by the current columns to be united, followed by the separator to be added between column values. For example, to recreate the date_birth variable, you can use this code:
+
+```{r}  
+# Now unite them  
+survey_data_unit <- survey_data_sep  |>   
+  unite(date_birth, day, month, year, sep = "/")
+
+# check the result  
+survey_data_unit  
+```
+
+Although this is a simple example, there are multiple cases of weirdly structured data where the `separate_wider_delim()` and `unite()` functions will come in handy.
+
+### Save Your Script
+
+Wow, that was a lot of data cleaning in one day! We are going to stop for now, but we will continue working on this script in Day 5 \- Lesson 1 (oh, you thought you were done with data cleaning?), so there is no need to save a final cleaned dataset just yet, but you should update the documentation where you can. However, you will want to document and save everything that you did. 
+
+::: {.callout-note}
+## Your turn\!
+
+Make sure the script is up to date:
+
+* At the top of the cleaning script, update the brief description to describe what you did  
+* Save your script as `survey_student_cleaning.R`, in the scripts folder of your project.
+
+:::
+
+You will have time to update the project documentation in the next lesson.
+
+## Optional Data Cleaning Activity
+
+Practice your skills in data cleaning with another dataset! This is an optional activity not required for the course. But if you choose to complete this activity, please let us know so that we know how many students were interested in our optional activities. You are also welcome to ask us any questions about it. We estimate it should take you 30–45min to complete this activity.
+
+1. Download this [dataset](https://www.dropbox.com/scl/fi/is2yaa5gz1of32xo1xwvd/squirrel-data.csv?rlkey=sao5wj2tqd98nzs6rsi5k7ot6&e=2&dl=0). If you want to read more about it, check out the [dataset documentation](https://www.dropbox.com/s/cs293zzz1li79nn/user-guide_data-sets_nyc-open-data-week-multi-park-squirrel-count.pdf?dl=0).   
+2. Create a data cleaning script that:  
+   * Renames variables to use consistent names with lower caps, no spaces, and no units of measurements  
+   * Checks for duplicates and corrects if needed  
+   * Reorders columns to move the Latitude and Longitude columns to after Squirrel ID  
+   * Fix typos and inconsistencies in the Height Aboveground column  
+     1. You will have to decide what you want to do with inconsistent values, but if you do not know the height, you can assign them an NA value  
+   * Recodes location variable to specify only “groundplane”, “aboveground”, or “both”.   
+     1. There is no need to mention “Specific Location” in the values here as a column for specific location exists and details their location.  
+     2. All entries that say solely “Specific Location” can be assigned to “aboveground” as they describe squirrels seen on a bench, tree, handrail or fence, as detailed in the specific location variable.  
+   * Saves the cleaned dataset with an informative name different from the raw dataset name
+
+If starting from scratch feels like too much for you, you could also download this <a href="files/day4_lesson1_extra-activity-template.R" download>
+  fill-in-the-blanks
+</a> data cleaning script template with hints for you to complete this activity.
+
+As always with R, there are multiple ways to perform the same actions, so your script won’t necessarily be the same as ours. But if you want a reference script that performs the above data cleaning tasks, you can find one <a href="files/day4_lesson1_extra-activity-solution.R" download>
+  here
+</a>
 
 
