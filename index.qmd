@@ -9,7 +9,7 @@ Site last rendered `r Sys.Date()`.
 
 ## Welcome to the 2026 RDM Jumpstart!
 
-Before going any further, [please read our code of conduct...](codeOfConduct.html)
+Before going any further, [please read our code of conduct...](qmd/extras/codeOfConduct.html)
 
 ## Program Overview
 
