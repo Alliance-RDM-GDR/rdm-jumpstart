@@ -29,6 +29,7 @@ Have you ever gone back to a spreadsheet you’ve created and realized that you 
 Although you may think your workflow is obvious, or that you won’t forget your process, your documentation is truly your best collaborator. Yes, good documentation helps others understand your work, but it is essential for you as well. If you can’t remember what a value refers to or what a piece of code does, you are putting yourself at risk for accidental misrepresentation of your research findings.
 
 When creating your documentation, it is important that it is clearly structured so that your data can be navigated, interpreted, and understood by yourself and others. When writing documentation, always ask yourself, “could someone else understand my work without me being there to explain it?” 
+
 ### Types of Documentation
 
 There are many different types of documentation that can support a research project. The specific documentation you create will be determined by: 
