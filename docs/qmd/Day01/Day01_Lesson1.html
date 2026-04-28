@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Lesson 1: Introduction to Research Data Management – RDM Jumpstart</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/institutions/alliance_favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-171f982d544e03298d991751a3ffa6d2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-f451d0c5045610450376d366026b0b86.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-171f982d544e03298d991751a3ffa6d2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KSGZ4ESKQ3"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
+</script>
+
+
+</head>
+
+<body class="floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/institutions/Alliance_logo_Symbol.png" alt="Alliance Logo" class="navbar-logo light-content">
+    <img src="../../images/institutions/Alliance_logo_Symbol.png" alt="Alliance Logo" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">RDM Jumpstart</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../qmd/Day01/00_TheProject.html"> 
+<span class="menu-text">The Project</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-1" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Day 1</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-1">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Lesson1.html">
+ <span class="dropdown-text">Lesson 1: Introduction to Research Data Management</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Lesson2.html">
+ <span class="dropdown-text">Lesson 2: Introduction to the Research Project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Lesson3.html">
+ <span class="dropdown-text">Lesson 3: Data Management Plans</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Lesson4.html">
+ <span class="dropdown-text">Lesson 4: Data Documentation</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-2" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Day 2</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-2">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Lesson1.html">
+ <span class="dropdown-text">Lesson 1: Documentation in Action</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Lesson2.html">
+ <span class="dropdown-text">Lesson 2: File Management</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Lesson3.html">
+ <span class="dropdown-text">Lesson 3: Reproducibility in Research</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Lesson4.html">
+ <span class="dropdown-text">Lesson 4: Introduction to R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-3" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Day 3</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-3">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Lesson1.html">
+ <span class="dropdown-text">Lesson 1: Data Types and Structures in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Lesson2.html">
+ <span class="dropdown-text">Lesson 2: File Paths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Lesson3.html">
+ <span class="dropdown-text">Lesson 3: Creating a Project Directory</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Lesson4.html">
+ <span class="dropdown-text">Lesson 4: The Tidyverse and Reading Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-4" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Day 4</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-4">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day04/Day04_Overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day04/Day04_Lesson1.html">
+ <span class="dropdown-text">Lesson 1: Data Cleaning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day04/Day04_Lesson2.html">
+ <span class="dropdown-text">Lesson 2: Documentation Update</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/extras/codeOfConduct.html">
+ <span class="dropdown-text">Code of Conduct</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/extras/setup.html">
+ <span class="dropdown-text">Setup</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/extras/contributors.html">
+ <span class="dropdown-text">Contributors</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/extras/template.html">
+ <span class="dropdown-text">Template</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#lecture---introduction-to-research-data-management-and-working-with-sensitive-data" id="toc-lecture---introduction-to-research-data-management-and-working-with-sensitive-data" class="nav-link" data-scroll-target="#lecture---introduction-to-research-data-management-and-working-with-sensitive-data">Lecture - Introduction to Research Data Management and Working with Sensitive Data</a>
+  <ul class="collapse">
+  <li><a href="#lecture" id="toc-lecture" class="nav-link" data-scroll-target="#lecture">Lecture</a></li>
+  <li><a href="#what-is-research-data" id="toc-what-is-research-data" class="nav-link" data-scroll-target="#what-is-research-data">What is Research Data?</a></li>
+  <li><a href="#what-is-research-data-management-rdm" id="toc-what-is-research-data-management-rdm" class="nav-link" data-scroll-target="#what-is-research-data-management-rdm">What is Research Data Management (RDM)?</a></li>
+  <li><a href="#the-research-data-lifecycle" id="toc-the-research-data-lifecycle" class="nav-link" data-scroll-target="#the-research-data-lifecycle">The Research Data Lifecycle</a></li>
+  <li><a href="#why-should-you-care" id="toc-why-should-you-care" class="nav-link" data-scroll-target="#why-should-you-care">Why Should You Care?</a></li>
+  <li><a href="#sensitive-data" id="toc-sensitive-data" class="nav-link" data-scroll-target="#sensitive-data">Sensitive Data</a></li>
+  <li><a href="#data-storage" id="toc-data-storage" class="nav-link" data-scroll-target="#data-storage">Data Storage</a></li>
+  </ul></li>
+  <li><a href="#activity---breakout-room-discussion" id="toc-activity---breakout-room-discussion" class="nav-link" data-scroll-target="#activity---breakout-room-discussion">Activity - Breakout Room Discussion</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lesson 1: Introduction to Research Data Management</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this lesson, you will be able to:</p>
+<ul>
+<li>Define research data, research data management, and the FAIR, CARE, and OCAP principles.</li>
+<li>List the different stages of the research data management lifecycle.</li>
+<li>Articulate how RDM principles support research transparency, accessibility and reproducibility.</li>
+<li>Identify where to find RDM support.</li>
+<li>Define sensitive data.</li>
+<li>Discuss risk assessment and harm in data management at both the individual participant and global level of privacy and data security.</li>
+<li>Connect RDM concepts and practices to previous research and/or data management experiences.</li>
+</ul>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Before we start, let’s take a few minutes to get to know the other students in this course.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Breakout Room
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In breakout rooms of five, introduce yourself, using the following information as a guide:</p>
+<ul>
+<li>Your name and pronouns.</li>
+<li>Your university and the program you are in.</li>
+<li>Your general research area / questions and what type of data you use.</li>
+<li>What interested you about this course.</li>
+</ul>
+<p>You will have 15 minutes in the breakout room.</p>
+</div>
+</div>
+</section>
+<section id="lecture---introduction-to-research-data-management-and-working-with-sensitive-data" class="level2">
+<h2 class="anchored" data-anchor-id="lecture---introduction-to-research-data-management-and-working-with-sensitive-data">Lecture - Introduction to Research Data Management and Working with Sensitive Data</h2>
+<section id="lecture" class="level3">
+<h3 class="anchored" data-anchor-id="lecture">Lecture</h3>
+<ul>
+<li><a href="files/day1-L1_Intro-to-RDM.pptx">Download the PowerPoint</a></li>
+</ul>
+<embed src="files/day1-L1_Intro-to-RDM.pdf" type="application/pdf" width="100%" height="600px">
+</section>
+<section id="what-is-research-data" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-research-data">What is Research Data?</h3>
+<p>Before we start talking about research data management (RDM), we first need to define research data. Every research project seeks to investigate a research question. The materials that support the answering of a research question are considered data. This can include:</p>
+<ul>
+<li>spreadsheet data<br>
+</li>
+<li>audio recordings<br>
+</li>
+<li>video recordings<br>
+</li>
+<li>textual transcripts<br>
+</li>
+<li>images / photographs<br>
+</li>
+<li>corpora of text<br>
+</li>
+<li>computer code<br>
+</li>
+<li>marginalia (writing in the margins of books)<br>
+</li>
+<li>geographic information, such as coordinates</li>
+</ul>
+<p>This is not an exhaustive list.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What data are you currently working with, or aiming to work with?</p>
+</div>
+</div>
+</section>
+<section id="what-is-research-data-management-rdm" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-research-data-management-rdm">What is Research Data Management (RDM)?</h3>
+<p>RDM involves the practices and activities over the research lifecycle that pertain to the management of research data, including planning, collecting, analyzing, documenting, storing, sharing, and preserving. Ultimately, RDM is research, and it is just as important as presenting at conferences and publishing papers. But, instead of framing your journal article as the star of the show, RDM puts the data front and centre.</p>
+</section>
+<section id="the-research-data-lifecycle" class="level3">
+<h3 class="anchored" data-anchor-id="the-research-data-lifecycle">The Research Data Lifecycle</h3>
+<p>Data can outlast a project, and even the researcher who collected it. For this reason, the analogy of a lifecycle is often used to describe the management of research data.</p>
+<p><img src="images/data-lifecycle.png" class="img-fluid"></p>
+<p>The stages in this lifecycle can be broadly defined. They include:</p>
+<ul>
+<li><strong>Plan:</strong> Creating documentation at the beginning of a project, often in the form of a data management plan (DMP), will help you consider and outline how data will be managed throughout the project’s lifecycle.</li>
+<li><strong>Create:</strong> This is the stage where people believe research ‘begins.’ It is the creation, collection, collation, or other fun verbs that describe how you will obtain or generate the data for a project.</li>
+<li><strong>Process:</strong> The raw materials or data that you gather are not usually in a state that makes it ready to understand. In order to ask meaningful questions of your data, you may need to clean, restructure, or anonymize what you’ve collected.</li>
+<li><strong>Analyze:</strong> This is the stage where people believe research ‘happens.’ The research question becomes answerable from the results of the analyzed data.</li>
+<li><strong>Preserve:</strong> What happens to research data after analysis and publication? It is not unusual for data to languish on an old hard drive, never to be used again. A key component of RDM is the consideration of how data will be preserved after the project’s completion.</li>
+<li><strong>Access:</strong> Some journal publishers and grant funders require research data to be accessible once a paper is published. There are platforms, called data repositories, where data can be deposited for the short or long-term. If data is preserved in a repository that allows other people to find it, the visibility of your work can increase, along with your citations.</li>
+<li><strong>Reuse:</strong> Closely related to access, if others can find and access your data, it has the potential to be reused for additional projects, including your own, maximizing the long-term value of your research.</li>
+</ul>
+<p>Even though “create” and “analyze” are what most people think of as research, the other stages are just as important in ensuring the quality of the research project. This lifecycle represents an ideal, but the realities of research are much harder to define and categorize. It is a model designed to help you understand the ways in which you interact with data, and to guide you through these stages before starting your research project. With that in mind, there is no perfectly circular flow to these stages, as there are many interconnections and repetitions of each stage within a research project.</p>
+<p>Throughout this course, we are going to take you through the research lifecycle using a mock research project. For the purposes of instruction, the project data may be a bit cleaner than what exists in reality, but the goal is to prepare you to plan and engage with your own research data in ways that promote the transparency and reproducibility of your work.</p>
+</section>
+<section id="why-should-you-care" class="level3">
+<h3 class="anchored" data-anchor-id="why-should-you-care">Why Should You Care?</h3>
+<section id="academic-integrity" class="level4">
+<h4 class="anchored" data-anchor-id="academic-integrity">Academic Integrity</h4>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What does academic integrity mean to you?</p>
+</div>
+</div>
+<p>In undergraduate programs, it is very common for academic integrity to be situated within the context of plagiarism (cite your sources!). But as you move through graduate research, there is a shift from ‘you as consumer’ of information to ‘you as producer’ of information. From this perspective, academic integrity encompasses the integrity of your research data, as your data forms the basis of the claims you will make in your research papers.</p>
+<p>Consider the following articles:</p>
+<ul>
+<li><a href="https://www.npr.org/2023/07/19/1188828810/stanford-university-president-resigns">Stanford president resigns after fallout from falsified data in his research</a></li>
+<li><a href="https://scitechdaily.com/research-fraud-is-everything-we-think-we-know-about-alzheimers-disease-wrong/">Research Fraud: Is Everything We Think We Know About Alzheimer’s Disease Wrong?</a><br>
+</li>
+<li><a href="https://www.science.org/content/article/university-investigation-found-prominent-spider-biologist-fabricated-falsified-data">University investigation found prominent spider biologist fabricated, falsified data</a></li>
+</ul>
+<p>In each of these stories, purposeful academic fraud occurred because the data was undocumented and inaccessible. While these examples represent extreme cases, what happens more commonly is that poor data management practices result in accidental misrepresentations of data. This can happen for a number of reasons, including:</p>
+<ul>
+<li>Using code that you do not fully understand.</li>
+<li>Working in a collaborative environment in which versions of data and data manipulations are not properly tracked or communicated.</li>
+<li>Applying statistical models that are not appropriate for your data.</li>
+<li>Subsetting portions of data to generate significant results, when results of the complete dataset may not be significant.</li>
+</ul>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Can you think of other reasons that data might be misrepresented (either purposefully or accidentally)?</p>
+</div>
+</div>
+<p>Learning to apply best practices in research data management is the focus of this course. Our goal is to teach you how you can avoid accidental misrepresentation by focusing on the integrity of your data, and how to incorporate each stage of the research data lifecycle into your overall program of research.</p>
+</section>
+<section id="data-policies" class="level4">
+<h4 class="anchored" data-anchor-id="data-policies">Data Policies</h4>
+<p><strong>Publisher policies</strong></p>
+<p>It is becoming more common for publishers to require that research data be shared upon publication to support the transparency, reproducibility, and validation of the research findings. Some examples include:</p>
+<ul>
+<li>Springer Nature: <a href="https://www.springernature.com/gp/authors/research-data-policy">Research Data Policy</a><br>
+</li>
+<li>Wiley: <a href="https://authorservices.wiley.com/author-resources/Journal-Authors/open-access/data-sharing-citation/data-sharing-policy.html">Data Sharing Policies</a><br>
+</li>
+<li>PLOSOne: <a href="https://journals.plos.org/plosone/s/data-availability">Data Availability</a></li>
+</ul>
+<p><strong>Funder Policies</strong></p>
+<p>As research funding often comes from government organizations, which are supported by taxpayer dollars, funding agencies (such as SSHRC, NSERC, and CIHR) are starting to require proof of RDM practices. In some cases, this includes creating data management plans and making research data openly accessible. In Canada, the <a href="https://science.gc.ca/site/science/en/interagency-research-funding/policies-and-guidelines/research-data-management/tri-agency-research-data-management-policy">Tri-Agency RDM Policy</a>, has outlined the following requirements:</p>
+<ul>
+<li>Institutional Strategies:
+<ul>
+<li>By March 1, 2023, research institutions subject to this requirement were required to post their RDM strategies online and share the link with the agencies so this information can be shared publicly on a <a href="http://science.gc.ca">dedicated science.gc.ca webpage</a>.<br>
+</li>
+</ul></li>
+<li>Data management plans:
+<ul>
+<li>In spring 2022, the agencies identified the initial set of funding opportunities subject to the DMP requirement. The agencies are continuing to introduce the DMP requirement into funding opportunities as they finalize a timeline and approach for broader implementation of the requirement.<br>
+</li>
+</ul></li>
+<li>Data deposit:
+<ul>
+<li>After reviewing the institutional strategies and in line with the readiness of the Canadian research community, the agencies will phase in the data deposit requirement, with deposit requirements expected to be rolled out for awarded projects beginning in 2026.</li>
+</ul></li>
+</ul>
+<p>In addition to the Tri-Agencies, other international funders require RDM:</p>
+<ul>
+<li>Horizon Europe: <strong><a href="https://www.openaire.eu/guides/">Research Data Management Guide</a></strong><br>
+</li>
+<li>National Institutes of Health (NIH): <a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/writing-dms-plan"><strong>Data Management and Sharing Policy</strong></a><br>
+</li>
+<li>National Science Foundation (NSF): <a href="https://www.nsf.gov/public-access"><strong>Public Access Initiative</strong></a></li>
+</ul>
+</section>
+<section id="philosophical-rationale" class="level4">
+<h4 class="anchored" data-anchor-id="philosophical-rationale">Philosophical Rationale</h4>
+<p><strong>FAIR Principles</strong></p>
+<p>The <a href="https://www.go-fair.org/fair-principles/">FAIR Principles (Findable, Accessible, Interoperable, Reusable)</a> support research visibility and citation, long-term preservation, and the responsible stewardship of data.</p>
+<p><strong>Findable</strong><br>
+The first step in (re)using data is to find them. Metadata (information about the data) and data should be easy to find for both humans and computers.</p>
+<p><strong>Accessible</strong><br>
+Once the user finds the required data, they need to know how they can be accessed, possibly including authentication and authorisation.</p>
+<p><strong>Interoperable</strong><br>
+The data usually need to be integrated with other data. In addition, the data need to interoperate with applications or workflows for analysis, storage, and processing.</p>
+<p><strong>Reusable</strong><br>
+The ultimate goal of FAIR is to optimise the reuse of data. To achieve this, metadata and data should be well-described so that they can be replicated and/or combined in different settings.</p>
+<p>FAIR does not mean that all data must be open or public.​ Rather, FAIR supports the structured discoverability and usability of data and other research outputs.</p>
+<p><strong>CARE Principles</strong></p>
+<p><strong>“</strong>The <a href="https://static1.squarespace.com/static/5d3799de845604000199cd24/t/6397b363b502ff481fce6baf/1670886246948/CARE%2BPrinciples_One%2BPagers%2BFINAL_Oct_17_2019.pdf">CARE Principles (Collective benefit, Authority to control, Responsibility, Ethics)</a> are a set of principles that are meant to work in tandem with the FAIR principles, with a focus on Indigenous self-determination in research and data practices.</p>
+<p><strong>Collective Benefit:</strong> Data ecosystems shall be designed and function in ways that enable Indigenous Peoples to derive benefit from the data.</p>
+<p><strong>Authority to Control:</strong> Indigenous Peoples’ rights and interests in Indigenous data must be recognised and their authority to control such data be empowered. Indigenous data governance enables Indigenous Peoples and governing bodies to determine how Indigenous Peoples, as well as Indigenous lands, territories, resources, knowledges and geographical indicators, are represented and identified within data.</p>
+<p><strong>Responsibility:</strong> Those working with Indigenous data have a responsibility to share how those data are used to support Indigenous Peoples’ self-determination and collective benefit. Accountability requires meaningful and openly available evidence of these efforts and the benefits accruing to Indigenous Peoples.</p>
+<p><strong>Ethics:</strong> Indigenous Peoples’ rights and wellbeing should be the primary concern at all stages of the data lifecycle and across the data ecosystem.<strong>”</strong></p>
+<p><strong>OCAP Principles</strong></p>
+<p><strong>“</strong>The <a href="https://fnigc.ca/ocap-training/">First Nations Principles of OCAP (Ownership, Control, Access, Possession)</a> assert that First Nations have control over data collection processes, and that they own and control how this information can be used.</p>
+<p><strong>Ownership:</strong> refers to the relationship of First Nations to their cultural knowledge, data, and information. This principle states that a community or group owns information collectively in the same way that an individual owns his or her personal information.</p>
+<p><strong>Control:</strong> affirms that First Nations, their communities, and representative bodies are within their rights to seek control over all aspects of research and information management processes that impact them. First Nations control of research can include all stages of a particular research project-from start to finish. The principle extends to the control of resources and review processes, the planning process, management of the information and so on.</p>
+<p><strong>Access:</strong> refers to the fact that First Nations must have access to information and data about themselves and their communities regardless of where it is held. The principle of access also refers to the right of First Nations’ communities and organizations to manage and make decisions regarding access to their collective information. This may be achieved, in practice, through standardized, formal protocols.</p>
+<p><strong>Possession:</strong> while ownership identifies the relationship between a people and their information in principle, possession or stewardship is more concrete: it refers to the physical control of data. Possession is the mechanism by which ownership can be asserted and protected.<strong>”</strong></p>
+</section>
+</section>
+<section id="sensitive-data" class="level3">
+<h3 class="anchored" data-anchor-id="sensitive-data">Sensitive Data</h3>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What types of materials would you be hesitant to post publicly?</p>
+</div>
+</div>
+<p>The <a href="https://zenodo.org/records/4088946#.Y1KyV3bMI2w">Sensitive Data Toolkit for Researchers</a> defines <strong>sensitive data</strong> as “information that must be safeguarded against unwarranted access or disclosure”. Examples include:</p>
+<ul>
+<li>personal information<br>
+</li>
+<li>personal health information<br>
+</li>
+<li>educational records<br>
+</li>
+<li>customer records<br>
+</li>
+<li>financial information<br>
+</li>
+<li>criminal information<br>
+</li>
+<li>geographic information (e.g., detailed locations of endangered species)<br>
+</li>
+<li>confidential personnel information<br>
+</li>
+<li>information that is deemed to be confidential<br>
+</li>
+<li>Proprietary information<br>
+</li>
+<li>Information that is protected by data sharing agreements or other contracts</li>
+</ul>
+<p>Data may be considered sensitive for ethical, legal, and contextual reasons. While institutional ethics boards will review research projects with the lens of protecting participants, you have a responsibility beyond ethics approval to ensure that your data is managed with care. A risk assessment is a process for identifying, evaluating, and mitigating risks associated with collecting, storing, using, sharing, and preserving research data. The <a href="https://zenodo.org/records/4088954">Sensitive Data Toolkit for Researchers</a> provides a framework for assessing and protecting participant risk, but it is good practice to ask yourself the following questions:</p>
+<ul>
+<li>Can someone be identified?<br>
+</li>
+<li>Could harm result from sharing?<br>
+</li>
+<li>What consent was given?<br>
+</li>
+<li>Are there legal restrictions?<br>
+</li>
+<li>Are there community expectations?</li>
+</ul>
+<p>Ethically managing sensitive data is beyond the scope of this course, and we advise you to consult with your institutional supports to determine adequate strategies for addressing sensitive data in your research.</p>
+</section>
+<section id="data-storage" class="level3">
+<h3 class="anchored" data-anchor-id="data-storage">Data Storage</h3>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Questions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Where do your research materials live right now?<br>
+Have you ever accidentally lost or overwritten your work?<br>
+If your personal computer crashed or was stolen, would you still have access to your work?</p>
+</div>
+</div>
+<p>Where your data is stored is a key part of data management. It is always recommended that your research materials are stored <strong>in at least two places</strong>, and that one of those places is remote cloud storage beyond your personal machine. This is known as a back-up.</p>
+<p>In addition to storing data for your active work, there are platforms that support the long-term storage and preservation of your data and research materials <strong>after the project’s completion</strong>. We will talk more about these preservation platforms later in the course, but this chart provides a summary of the basic storage types.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Storage</th>
+<th style="text-align: left;">Supports active research work</th>
+<th style="text-align: left;">laptop, shared drive, cloud storage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Repository</strong></td>
+<td style="text-align: left;">Publishes and shares research outputs</td>
+<td style="text-align: left;">Borealis, Zenodo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Archive</strong></td>
+<td style="text-align: left;">Ensures long-term preservation</td>
+<td style="text-align: left;">institutional archives, digital preservation systems</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Questions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>What active storage platforms does your institution offer?
+<ul>
+<li>Does the platform provide backups?<br>
+</li>
+</ul></li>
+<li>Who at your institution could you contact for RDM support?<br>
+</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="activity---breakout-room-discussion" class="level2">
+<h2 class="anchored" data-anchor-id="activity---breakout-room-discussion">Activity - Breakout Room Discussion</h2>
+<p>Now that you have learned about some of the fundamental aspects of RDM, take some time to reflect on your previous research and/or data management experiences in the light of RDM concepts.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Breakout Room
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In breakout rooms of five students, discuss one or more of the following questions:</p>
+<ul>
+<li>What (if any) research data management practices do you or your research group currently implement?<br>
+</li>
+<li>What stage(s) of the research data management lifecycle would be the most challenging to implement for your own work?<br>
+</li>
+<li>How can implementing research data management practices improve transparency, accountability, reproducibility and/or academic integrity in your research?<br>
+</li>
+<li>What data policies have you heard about before and/or had to implement? If applicable, how was your experience with them?<br>
+</li>
+<li>Are you familiar with RDM support at your own institution? Have you used their services before? How was your experience with it?</li>
+</ul>
+<p>You will have ten minutes in the breakout rooms. You won’t need to report back about your discussion to the larger group.</p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Exclusive of images, all content is licensed CC BY-NC 4.0<br><a href="https://creativecommons.org/licenses/by-nc/4.0/deed.en">Attribution-NonCommercial 4.0 International</a><br><img src="../../images/institutions/CC-License.png" class="img-fluid"></p>
+</div>   
+    <div class="nav-footer-center">
+<p><img src="../../images/institutions/all_logos.png" class="img-fluid"></p>
+</div>
+    <div class="nav-footer-right">
+<p>Build with <a href="https://quarto.org/">Quarto</a> &amp; <a href="https://posit.co/">RStudio from Posit</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Lesson 1: Data Types and Structures in R – RDM Jumpstart</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/institutions/alliance_favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-171f982d544e03298d991751a3ffa6d2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-f451d0c5045610450376d366026b0b86.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-171f982d544e03298d991751a3ffa6d2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KSGZ4ESKQ3"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
+</script>
+
+
+</head>
+
+<body class="floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/institutions/Alliance_logo_Symbol.png" alt="Alliance Logo" class="navbar-logo light-content">
+    <img src="../../images/institutions/Alliance_logo_Symbol.png" alt="Alliance Logo" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">RDM Jumpstart</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../qmd/Day01/00_TheProject.html"> 
+<span class="menu-text">The Project</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-1" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Day 1</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-1">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Lesson1.html">
+ <span class="dropdown-text">Lesson 1: Introduction to Research Data Management</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Lesson2.html">
+ <span class="dropdown-text">Lesson 2: Introduction to the Research Project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Lesson3.html">
+ <span class="dropdown-text">Lesson 3: Data Management Plans</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Lesson4.html">
+ <span class="dropdown-text">Lesson 4: Data Documentation</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-2" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Day 2</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-2">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Lesson1.html">
+ <span class="dropdown-text">Lesson 1: Documentation in Action</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Lesson2.html">
+ <span class="dropdown-text">Lesson 2: File Management</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Lesson3.html">
+ <span class="dropdown-text">Lesson 3: Reproducibility in Research</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Lesson4.html">
+ <span class="dropdown-text">Lesson 4: Introduction to R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-3" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Day 3</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-3">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Lesson1.html">
+ <span class="dropdown-text">Lesson 1: Data Types and Structures in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Lesson2.html">
+ <span class="dropdown-text">Lesson 2: File Paths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Lesson3.html">
+ <span class="dropdown-text">Lesson 3: Creating a Project Directory</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Lesson4.html">
+ <span class="dropdown-text">Lesson 4: The Tidyverse and Reading Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-4" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Day 4</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-4">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day04/Day04_Overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day04/Day04_Lesson1.html">
+ <span class="dropdown-text">Lesson 1: Data Cleaning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day04/Day04_Lesson2.html">
+ <span class="dropdown-text">Lesson 2: Documentation Update</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/extras/codeOfConduct.html">
+ <span class="dropdown-text">Code of Conduct</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/extras/setup.html">
+ <span class="dropdown-text">Setup</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/extras/contributors.html">
+ <span class="dropdown-text">Contributors</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/extras/template.html">
+ <span class="dropdown-text">Template</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#lecture---data-types-and-structures-in-r" id="toc-lecture---data-types-and-structures-in-r" class="nav-link" data-scroll-target="#lecture---data-types-and-structures-in-r">Lecture - Data Types and Structures in R</a></li>
+  <li><a href="#lecture" id="toc-lecture" class="nav-link" data-scroll-target="#lecture">Lecture</a>
+  <ul class="collapse">
+  <li><a href="#data-types-and-structures" id="toc-data-types-and-structures" class="nav-link" data-scroll-target="#data-types-and-structures">Data Types and Structures</a></li>
+  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types">Data Types</a></li>
+  <li><a href="#data-structures" id="toc-data-structures" class="nav-link" data-scroll-target="#data-structures">Data Structures</a></li>
+  <li><a href="#playing-with-vectors" id="toc-playing-with-vectors" class="nav-link" data-scroll-target="#playing-with-vectors">Playing with Vectors</a></li>
+  <li><a href="#playing-with-data-frames" id="toc-playing-with-data-frames" class="nav-link" data-scroll-target="#playing-with-data-frames">Playing with Data Frames</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lesson 1: Data Types and Structures in R</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this lesson, you will be able to:</p>
+<ul>
+<li>Describe and check the main data types and structures in R.<br>
+</li>
+<li>Create numeric, character, and logical vectors in R.<br>
+</li>
+<li>Inspect the structure and column names of a dataframe in R.<br>
+</li>
+<li>Select specific columns of a dataframe in R.</li>
+</ul>
+</section>
+<section id="lecture---data-types-and-structures-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="lecture---data-types-and-structures-in-r">Lecture - Data Types and Structures in R</h2>
+</section>
+<section id="lecture" class="level2">
+<h2 class="anchored" data-anchor-id="lecture">Lecture</h2>
+<ul>
+<li><a href="files/day3_L1_Data-Types-Structures.pptx">Download the PowerPoint</a></li>
+</ul>
+<embed src="files/day3_L1_Data-Types-Structures.pdf" type="application/pdf" width="100%" height="600px">
+<section id="data-types-and-structures" class="level3">
+<h3 class="anchored" data-anchor-id="data-types-and-structures">Data Types and Structures</h3>
+<p>This section will cover how data is organized in R. Understanding how your data is organized, and being able to adjust that organization to match your research needs, is an important part of research data management. For example, you might need your data to be in a certain structure to run statistical analyses, or you may need to transform variables into data types that are more easily understood by R.</p>
+<p>There are two main ways that R works with data:</p>
+<p><strong>Data types:</strong> The kind of value that is stored in a cell or group of cells.<br>
+<strong>Data structures:</strong> How values are organized.</p>
+<p>Misunderstandings about the way data types and structures work in R can lead to common errors. In this session, we will learn about concepts that are essential to understanding and working with data in R. We will continue to build on these foundational skills as we progress through this course.</p>
+</section>
+<section id="data-types" class="level3">
+<h3 class="anchored" data-anchor-id="data-types">Data Types</h3>
+<p>Data types represent the kind of data stored in a value. Values can come in many different formats or units. Your data may include numbers with decimals, true or false values, or categories with names. It is important to know what type of data you have, how to identify a data type in R, and how to modify a data type if needed. Various functions in R require using certain data types, which makes this a core skill for managing your data.</p>
+<section id="main-data-types-in-r" class="level4">
+<h4 class="anchored" data-anchor-id="main-data-types-in-r">Main Data Types in R</h4>
+<ul>
+<li><strong>Numeric</strong>: Data values that consist of numbers. These numbers can be integers (whole numbers), or have decimal values.<br>
+</li>
+<li><strong>Character:</strong> Data values that consist of letters or words. Remember, quotation marks are required to represent words as values rather than functions.<br>
+</li>
+<li><strong>Logical:</strong> Data values that are TRUE or FALSE. For example, <code>5 &gt; 3</code> will return a TRUE value, while <code>3 &gt; 5</code> will return a FALSE value. R can also provide TRUE or FALSE responses if a certain condition is met.<br>
+</li>
+<li><strong>Factor:</strong> Data values that represent categories, and can store either numeric or character data. “Education level” would be a factor variable consisting of character data, with values like “High school diploma”, “Undergraduate degree”, “Masters degree”, etc. Likert scales are very common examples where numeric data has categorical representation, such as the number 1 meaning “Strongly disagree” and the number 5 meaning “Strongly agree”.<br>
+</li>
+<li><strong>Dates and Times:</strong> Data values stored in date or time format. While the specific format depends on the structure of your original data, a format for dates can look like “2026-05-06”, and a format for time can look like “12:45:54”.</li>
+</ul>
+</section>
+<section id="lets-get-started" class="level4">
+<h4 class="anchored" data-anchor-id="lets-get-started">Let’s Get Started!</h4>
+<p>Let’s first start by creating a new R script. Remember, to create a new R script:</p>
+<p>Select File &gt; New File &gt; R Script</p>
+<p><img src="images/day-3-create-r-script.gif" class="img-fluid"></p>
+<p>Now that we have our script, let’s begin by creating some new objects in R:</p>
+<p><code>age &lt;- 28</code><br>
+<code>name &lt;- “Louis”</code><br>
+<code>is_student  &lt;- TRUE</code></p>
+<p>In these simple examples, the data type is clear, but data type identification is not always this easy. You can use the <code>class()</code> function in R to check the data type. Remember, functions are “verbs” in R, providing actions to be performed. The typical syntax of an R function looks like this:</p>
+<p><code>function(object)</code></p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You will often see functions in R accompanied by a set of parentheses (or brackets). This is because the parentheses <code>()</code> tell R to run a function, and you must put any inputs the function needs inside them. Here is a simple guide:</p>
+<p><code>class</code> - the function itself<br>
+<code>class()</code> - run the function<br>
+<code>class(x)</code> - run the function with the information inside the parentheses</p>
+<p>If you want R to run a function, you must use <code>()</code>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>With this structure, see if you can use the <code>class()</code> function to get the data type of each of these objects.</p>
+<p><code>class(age)</code><br>
+<code>class(name)</code><br>
+<code>class(is_student)</code></p>
+</div>
+</div>
+<p>In addition to these three data types, there are two other types: factor and date/time. These are more complicated than numeric, character, and logical data types, but they are very common in datasets. Let’s start by creating two new R objects:</p>
+<p><code>favourite_colour &lt;- “Blue”</code><br>
+<code>birthday &lt;- 1999-04-05</code></p>
+<p>Now, use the <code>class()</code> function on these new objects to see the result.</p>
+<p>You’ll see that <code>favourite_colour</code> is character, and <code>birthday</code> is numeric. This is because, by default, R classifies characters and numbers as character and numerical data, respectively.</p>
+<p>In order for R to recognize these objects as factor and date data types, you will need to use two new functions when assigning values to these objects.</p>
+<p><code>favourite_colour &lt;- as.factor(“Blue”)</code><br>
+<code>birthday &lt;- as.Date(“1999-04-05”)</code></p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Capitalization matters! The <code>as.factor</code> and <code>as.Date</code> functions must be written exactly as shown, otherwise they will result in an error. Try changing the first letters to upper or lowercase to see what happens.</p>
+</div>
+</div>
+<p>In these examples, <code>as.factor</code> and <code>as.Date</code> are specifically telling R to handle the values as factor for <code>favourite_colour</code> and as date for <code>birthday</code>. We’ll cover these concepts more throughout the program, so don’t worry if this is still confusing. For now, all you need to know is that there are different data types in R, and that factor and dates can require a bit more work than others.</p>
+<p>Another way to inspect objects in R is through the <code>str()</code> function, which stands for structure. This function provides a compact summary of the internal structure of an object.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Give it a try with the 5 objects we’ve created!</p>
+<p><code>str(age)</code><br>
+<code>str(name)</code><br>
+<code>str(is_student)</code><br>
+<code>str(favourite_colour)</code><br>
+<code>str(birthday)</code></p>
+<p>What is R telling you about each object?<br>
+Is there anything that is interesting/confusing?</p>
+</div>
+</div>
+</section>
+</section>
+<section id="data-structures" class="level3">
+<h3 class="anchored" data-anchor-id="data-structures">Data Structures</h3>
+<p>We’ve seen the ways that R handles different types of data values, but it is rare for values to exist on their own. They are often part of a larger <strong>data structure,</strong> which is the way R defines how values are stored, grouped, and accessed.</p>
+<section id="main-data-structures-in-r" class="level4">
+<h4 class="anchored" data-anchor-id="main-data-structures-in-r">Main Data Structures in R</h4>
+<p><strong>Vectors</strong></p>
+<p>Vectors are the simplest data structure in R. A vector is <strong>a list of elements of the same data type.</strong> For example, you could have a numeric vector containing the elements (10, 15, 20, 25) or a character vector containing the elements (“blue”, “red”, “green”). A single variable in a dataset (e.g., a list of ages of all the participants) can be considered a vector.</p>
+<p><strong>Data Frames</strong></p>
+<p>Data frames are the most common data structure used in R. Data frames look like spreadsheets, which are formatted in rows and columns to represent tabular data. Unlike vectors, which have one dimension (a single column of the same data type), data frames are two-dimensional, and have columns and rows that can store different data types in the same data frame (e.g., numeric and character). <strong>Data frames are made up of vectors of the same length</strong>.</p>
+<p><strong>Data frames have constraints:</strong></p>
+<ul>
+<li>The columns and rows must be named.<br>
+</li>
+<li>The lists of vectors in the data frame must have equal lengths (i.e., each column needs an identical number of elements/rows).<br>
+</li>
+<li>All elements in a single column must be of the same data type (e.g., you can’t switch between numbers and names in a single column).</li>
+</ul>
+<p>In addition to these two main data structures, there are also other data structures in R, which include <strong>lists</strong> and <strong>matrices.</strong> We will not focus on these structures in this course, but you can read more about data structures in the ebook, <a href="https://doserlab.com/files/for875/_book/structures">‘R Programming for Data Scientists’</a>.</p>
+</section>
+</section>
+<section id="playing-with-vectors" class="level3">
+<h3 class="anchored" data-anchor-id="playing-with-vectors">Playing with Vectors</h3>
+<p>Let’s make some multi-value vectors for <strong>numeric, character, and logic</strong> data types.</p>
+<p><code>scores &lt;- c(88, 91, 76, 95)</code><br>
+<code>colours &lt;- c(“red”, “blue”, “green”, “magenta”)</code><br>
+<code>passed &lt;- c(TRUE, TRUE, FALSE, TRUE)</code></p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We’ve already looked at <code>class()</code> and <code>str()</code> to inspect objects, but the <code>length()</code> function can also be a helpful tool to explore. Give these functions a try for the three vectors we just created. Are there any surprises?</p>
+<p>Let’s play a bit more, and create a vector with mixed data types:</p>
+<p><code>mixed_vector &lt;- c(10, “banana”, TRUE)</code></p>
+<p>Now run the <code>class()</code> function on this object. Is the output what you expected?</p>
+</div>
+</div>
+<p>As mentioned, vectors can only contain a single data type. When R gets an object like this, it must decide what data type that vector should be, and will convert values to a common data type by following a set of internal rules.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">If a vector contains:</th>
+<th style="text-align: left;">Everything becomes:</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Logical + numeric</td>
+<td style="text-align: left;">numeric</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Numeric + character</td>
+<td style="text-align: left;">character</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Logical + character</td>
+<td style="text-align: left;">character</td>
+</tr>
+</tbody>
+</table>
+<p>Try playing around with these combinations.</p>
+<p>This might seem like unnecessary information, but R’s default conversions can be the source of errors and confusion, so it’s good to know it has some pre-programed behaviours.</p>
+</section>
+<section id="playing-with-data-frames" class="level3">
+<h3 class="anchored" data-anchor-id="playing-with-data-frames">Playing with Data Frames</h3>
+<p>Most of the data that you’ll be working with in R are data frames, which contain rows and columns. In the next session we will learn how to import data from our example dataset, but for this session, we will play around with data that is pre-built into R.</p>
+<p>Before we do this, it is worth mentioning that R has a lot of built-in datasets to practice with: <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html">https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html</a></p>
+<p>They cover all kinds of topics and data types, and using them can be a great way to practice skills before you have your own data to analyze. There are a lot of online training materials and exercises that work with these datasets.</p>
+<p>For this session, we’ll be looking at the Iris dataset: <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/iris.html">https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/iris.html</a></p>
+<section id="loading-built-in-datasets" class="level4">
+<h4 class="anchored" data-anchor-id="loading-built-in-datasets">Loading Built-In Datasets</h4>
+<p>To load one of the built-in datasets in R, the syntax is:</p>
+<p><code>data(dataset-name)</code><br>
+<code>dataset-name</code></p>
+<p>Let’s use this pattern to load the iris data:</p>
+<p><code>data(iris)</code><br>
+<code>iris</code></p>
+<p>You should now see <code>iris</code> in the top right corner in your Environment pane. You will see that the previous objects we created are “values”, while <code>iris</code> is “data”. The data objects are tabular structures, and this is R’s way of organizing one-dimensional (values) and two-dimensional (data) objects.</p>
+<p><img src="images/day-3-iris-data.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Using the names, str, and length functions, start exploring the iris dataset.</p>
+<ol type="1">
+<li>What kind of structure is <code>iris</code>?<br>
+</li>
+<li>How many columns does it have?<br>
+</li>
+<li>What are the column names?<br>
+</li>
+<li>Which columns are numeric?<br>
+</li>
+<li>Which column is a factor (categorical)?<br>
+</li>
+<li>What other questions would you like to know about the data?</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answers
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>It is a data frame. You can find this by using: <code>class(iris)</code> or <code>str(iris)</code><br>
+</li>
+<li>There are 5 columns. You can find this by using: <code>str(iris)</code> or <code>names(iris)</code><br>
+</li>
+<li>The column names are “Sepal.Length”, “Sepal.Width”, “Petal.Length”, “Petal.Width”, “Species”. You can find this by using: <code>names(iris)</code> or <code>str(iris)</code><br>
+</li>
+<li>“Sepal.Length”, “Sepal.Width”, “Petal.Length”, “Petal.Width” are numeric. You can find this by using: <code>str(iris)</code><br>
+</li>
+<li>“Species” is a factor. You can find this by using <code>str(iris)</code>.</li>
+</ol>
+</div>
+</div>
+</div>
+<p>In these answers, we’ve introduced a new function called <code>names()</code>. This function is used to get or set the names of elements in an object. This function is <strong>not</strong> the same as the object called <code>name</code> that we created earlier in this lesson.</p>
+<p>In addition to these functions, we can use the <code>head()</code> function to show the top few rows of a dataset.</p>
+<p><code>head(iris)</code></p>
+<p>If you want to see more rows, you can specify the number with a command after the data object you are viewing:</p>
+<p><code>head(iris, 15)</code></p>
+<p>Finally, if you want to look at the dataset in a visual spreadsheet form, you can use the <code>View()</code> function (note that the capital ‘V’ is case sensitive!).This function will open a new window in your RStudio interface. Let’s take a look at the this dataset:</p>
+<p><code>View(iris)</code></p>
+</section>
+<section id="isolating-columns-from-a-data-frame" class="level4">
+<h4 class="anchored" data-anchor-id="isolating-columns-from-a-data-frame">Isolating Columns From a Data Frame</h4>
+<p>It is quite common for raw data to contain columns of data types that need to be changed. Changing data types will be covered in another session, however, it’s worth noting that you can quickly isolate columns to check their data types, among other functions. The syntax to isolate a column in a dataframe is:</p>
+<p><code>dataframe_name$column_name</code></p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Use the <code>names()</code> function on the <code>iris</code> dataset to determine the column names.<br>
+</li>
+<li>Isolate any three of the columns in <code>iris</code> using the $ operator. What do you see?</li>
+</ol>
+<p>As mentioned above, columns in data frames are <em>usually</em> vectors, so we can use the <code>class()</code> function combined with the above syntax to determine the data type of a column. When you want to call a function on a column name within a dataframe, you must use the entire syntax, otherwise you may run into errors, or worse, incorrect information.</p>
+<ol start="3" type="1">
+<li>Using the <code>class()</code> function, what type of data is <code>iris$Sepal.Length</code>?<br>
+</li>
+<li>Using the <code>class()</code> function, what type of data is <code>iris$Species</code>?</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answers
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><code>names(iris)</code><br>
+</li>
+<li>iris$[column-names]. You will see the full range of values for the specified variable in the R console.<br>
+</li>
+<li>Numeric. You can find this by using: <code>class(iris$Sepal.Length)</code><br>
+</li>
+<li>Factor. You can find this by using: <code>class(iris$Species)</code></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>In this session, we learned about how R understands data types (numeric, character, logical, factor, and date), and how these types (also known as data values), are organized into structures like vectors and dataframes.</p>
+<p>The key takeaway is that <strong>when you work with real data, every column has a type, and that type affects what you can do with it</strong>.</p>
+<p>In the next session we’re going to start working with a real dataset and you’ll get an opportunity to move these concepts into practice!</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Exclusive of images, all content is licensed CC BY-NC 4.0<br><a href="https://creativecommons.org/licenses/by-nc/4.0/deed.en">Attribution-NonCommercial 4.0 International</a><br><img src="../../images/institutions/CC-License.png" class="img-fluid"></p>
+</div>   
+    <div class="nav-footer-center">
+<p><img src="../../images/institutions/all_logos.png" class="img-fluid"></p>
+</div>
+    <div class="nav-footer-right">
+<p>Build with <a href="https://quarto.org/">Quarto</a> &amp; <a href="https://posit.co/">RStudio from Posit</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

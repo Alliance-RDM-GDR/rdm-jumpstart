@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Lesson 4: Introduction to R – RDM Jumpstart</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/institutions/alliance_favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-171f982d544e03298d991751a3ffa6d2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-f451d0c5045610450376d366026b0b86.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-171f982d544e03298d991751a3ffa6d2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KSGZ4ESKQ3"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
+</script>
+
+
+</head>
+
+<body class="floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/institutions/Alliance_logo_Symbol.png" alt="Alliance Logo" class="navbar-logo light-content">
+    <img src="../../images/institutions/Alliance_logo_Symbol.png" alt="Alliance Logo" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">RDM Jumpstart</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../qmd/Day01/00_TheProject.html"> 
+<span class="menu-text">The Project</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-1" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Day 1</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-1">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Lesson1.html">
+ <span class="dropdown-text">Lesson 1: Introduction to Research Data Management</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Lesson2.html">
+ <span class="dropdown-text">Lesson 2: Introduction to the Research Project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Lesson3.html">
+ <span class="dropdown-text">Lesson 3: Data Management Plans</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Lesson4.html">
+ <span class="dropdown-text">Lesson 4: Data Documentation</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-2" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Day 2</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-2">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Lesson1.html">
+ <span class="dropdown-text">Lesson 1: Documentation in Action</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Lesson2.html">
+ <span class="dropdown-text">Lesson 2: File Management</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Lesson3.html">
+ <span class="dropdown-text">Lesson 3: Reproducibility in Research</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Lesson4.html">
+ <span class="dropdown-text">Lesson 4: Introduction to R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-3" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Day 3</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-3">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Lesson1.html">
+ <span class="dropdown-text">Lesson 1: Data Types and Structures in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Lesson2.html">
+ <span class="dropdown-text">Lesson 2: File Paths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Lesson3.html">
+ <span class="dropdown-text">Lesson 3: Creating a Project Directory</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Lesson4.html">
+ <span class="dropdown-text">Lesson 4: The Tidyverse and Reading Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-4" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Day 4</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-4">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day04/Day04_Overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day04/Day04_Lesson1.html">
+ <span class="dropdown-text">Lesson 1: Data Cleaning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day04/Day04_Lesson2.html">
+ <span class="dropdown-text">Lesson 2: Documentation Update</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/extras/codeOfConduct.html">
+ <span class="dropdown-text">Code of Conduct</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/extras/setup.html">
+ <span class="dropdown-text">Setup</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/extras/contributors.html">
+ <span class="dropdown-text">Contributors</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/extras/template.html">
+ <span class="dropdown-text">Template</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#tutorial---introduction-to-r" id="toc-tutorial---introduction-to-r" class="nav-link" data-scroll-target="#tutorial---introduction-to-r">Tutorial - Introduction to R</a></li>
+  <li><a href="#introduction-to-r" id="toc-introduction-to-r" class="nav-link" data-scroll-target="#introduction-to-r">Introduction to R</a></li>
+  <li><a href="#rstudio-interface" id="toc-rstudio-interface" class="nav-link" data-scroll-target="#rstudio-interface">RStudio Interface</a>
+  <ul class="collapse">
+  <li><a href="#top-left-panel" id="toc-top-left-panel" class="nav-link" data-scroll-target="#top-left-panel">1 - Top left panel</a></li>
+  <li><a href="#bottom-left-panel" id="toc-bottom-left-panel" class="nav-link" data-scroll-target="#bottom-left-panel">2 - Bottom left panel</a></li>
+  <li><a href="#top-right-panel" id="toc-top-right-panel" class="nav-link" data-scroll-target="#top-right-panel">3 - Top right panel</a></li>
+  <li><a href="#bottom-right-panel" id="toc-bottom-right-panel" class="nav-link" data-scroll-target="#bottom-right-panel">4 - Bottom right panel</a></li>
+  </ul></li>
+  <li><a href="#easing-into-r" id="toc-easing-into-r" class="nav-link" data-scroll-target="#easing-into-r">Easing Into R</a>
+  <ul class="collapse">
+  <li><a href="#r-as-a-calculator" id="toc-r-as-a-calculator" class="nav-link" data-scroll-target="#r-as-a-calculator">R as a Calculator</a></li>
+  <li><a href="#types-of-files-in-r" id="toc-types-of-files-in-r" class="nav-link" data-scroll-target="#types-of-files-in-r">Types of Files in R</a></li>
+  <li><a href="#working-in-an-r-script-file" id="toc-working-in-an-r-script-file" class="nav-link" data-scroll-target="#working-in-an-r-script-file">Working in an R Script File</a></li>
+  <li><a href="#basic-syntax-of-r" id="toc-basic-syntax-of-r" class="nav-link" data-scroll-target="#basic-syntax-of-r">Basic Syntax of R</a></li>
+  </ul></li>
+  <li><a href="#literate-programming" id="toc-literate-programming" class="nav-link" data-scroll-target="#literate-programming">Literate Programming</a>
+  <ul class="collapse">
+  <li><a href="#commented-code" id="toc-commented-code" class="nav-link" data-scroll-target="#commented-code">Commented Code</a></li>
+  <li><a href="#save-your-work" id="toc-save-your-work" class="nav-link" data-scroll-target="#save-your-work">Save your Work!</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lesson 4: Introduction to R</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this lesson, you will be able to:</p>
+<ul>
+<li>Navigate R Studio and understand its different windows.<br>
+</li>
+<li>Apply the syntax of an R to conduct basic actions.<br>
+</li>
+<li>Perform basic functions in R (e.g., naming objects, basic mathematical calculations).<br>
+</li>
+<li>Create reproducible code by applying concepts of literate programming.</li>
+</ul>
+</section>
+<section id="tutorial---introduction-to-r" class="level2">
+<h2 class="anchored" data-anchor-id="tutorial---introduction-to-r">Tutorial - Introduction to R</h2>
+<p>In this lesson, you will work through the tutorial below to learn how to navigate R Studio and perform basic commands in R. Follow the instructions below to implement the commands in R. If you run into issues or have questions, do not hesitate to ask!</p>
+</section>
+<section id="introduction-to-r" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-r">Introduction to R</h2>
+<p>RStudio is a program that helps you write and run R code. The RStudio interface makes it easier to work with data, make graphs, and generate statistics.</p>
+<p>To complete this exercise, you must download R and RStudio; follow the instructions on this page, <a href="https://nickrochlin.github.io/rdm-jumpstart2/Block7_EXT-RRStudio.html">R and RStudio setup</a>.</p>
+</section>
+<section id="rstudio-interface" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio-interface">RStudio Interface</h2>
+<p>When you launch RStudio for the first time, you will notice three main panels or quadrants on the interface:</p>
+<p><img src="images/day-2_RStudio_3panel.png" class="img-fluid"></p>
+<p>Then, once you open a document, the interface will show four main panels. Don’t worry if you don’t understand everything that each of the panels can do yet! The following information contains a lot of coding-related terms that you will learn as this course progresses.</p>
+<p><img src="images/day-2_RStudio_4panel.png" class="img-fluid"></p>
+<section id="top-left-panel" class="level3">
+<h3 class="anchored" data-anchor-id="top-left-panel">1 - Top left panel</h3>
+<section id="files-and-scripts-source-window-or-code-editor" class="level4">
+<h4 class="anchored" data-anchor-id="files-and-scripts-source-window-or-code-editor"><strong>Files and scripts (source window or code editor)</strong></h4>
+<p>This is your code editor, where you write, save, and run R scripts (.R), RMarkdown documents (.Rmd), or other file types.</p>
+</section>
+</section>
+<section id="bottom-left-panel" class="level3">
+<h3 class="anchored" data-anchor-id="bottom-left-panel">2 - Bottom left panel</h3>
+<section id="r-console-and-terminal" class="level4">
+<h4 class="anchored" data-anchor-id="r-console-and-terminal"><strong>R console and terminal</strong></h4>
+<p>This is the interactive R console, where code is executed immediately. You can:</p>
+<ul>
+<li>Type and run commands interactively (great for testing small bits of code).<br>
+</li>
+<li>View outputs, error messages, and warnings in real time.<br>
+</li>
+<li>Switch to the Terminal tab for system-level commands.</li>
+</ul>
+</section>
+</section>
+<section id="top-right-panel" class="level3">
+<h3 class="anchored" data-anchor-id="top-right-panel">3 - Top right panel</h3>
+<section id="objects-history-environment-tutorial-and-connections" class="level4">
+<h4 class="anchored" data-anchor-id="objects-history-environment-tutorial-and-connections"><strong>Objects, history, environment, tutorial and connections</strong></h4>
+<p>This area lets you track what’s happening in your R session.</p>
+<p>It has different tabs for different actions:</p>
+<ul>
+<li><strong>Environment:</strong> See all objects (like data frames, functions, variables) currently in memory.<br>
+</li>
+<li><strong>History:</strong> View all commands you’ve previously run.<br>
+</li>
+<li><strong>Connections:</strong> Manage database connections.<br>
+</li>
+<li><strong>Tutorial:</strong> View built-in interactive tutorials.</li>
+</ul>
+</section>
+</section>
+<section id="bottom-right-panel" class="level3">
+<h3 class="anchored" data-anchor-id="bottom-right-panel">4 - Bottom right panel</h3>
+<section id="tree-of-folders-plots-packages-help-viewer" class="level4">
+<h4 class="anchored" data-anchor-id="tree-of-folders-plots-packages-help-viewer"><strong>Tree of folders, plots, packages, help, viewer</strong></h4>
+<p>This panel contains various tools and outputs:</p>
+<ul>
+<li><strong>Files:</strong> Navigate your folder structure and open scripts.<br>
+</li>
+<li><strong>Plots:</strong> View visualizations generated by your code.<br>
+</li>
+<li><strong>Packages:</strong> Install, load, or update R packages.<br>
+</li>
+<li><strong>Help:</strong> Search R documentation.<br>
+</li>
+<li><strong>Viewer:</strong> View HTML content, like R Markdown outputs or Shiny apps.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="easing-into-r" class="level2">
+<h2 class="anchored" data-anchor-id="easing-into-r">Easing Into R</h2>
+<section id="r-as-a-calculator" class="level3">
+<h3 class="anchored" data-anchor-id="r-as-a-calculator">R as a Calculator</h3>
+<p>A good starting place for learning R is using one of its most basic functions, the calculator. Let’s look at how this works by typing the following examples directly into the Console (left panel). You will see a <code>&gt;</code> symbol at the midpoint of the window. Put your cursor there to type, pressing enter when you’re ready to see the result.</p>
+<section id="adding-numbers" class="level4">
+<h4 class="anchored" data-anchor-id="adding-numbers"><strong>Adding Numbers</strong></h4>
+<p>You can add numbers using the plus sign <code>+</code>:</p>
+<p><code>2 + 2</code></p>
+</section>
+<section id="subtracting-numbers" class="level4">
+<h4 class="anchored" data-anchor-id="subtracting-numbers"><strong>Subtracting Numbers</strong></h4>
+<p>You can subtract numbers using a hyphen <code>-</code>:</p>
+<p><code>10 - 4</code></p>
+</section>
+<section id="dividing-numbers" class="level4">
+<h4 class="anchored" data-anchor-id="dividing-numbers"><strong>Dividing Numbers</strong></h4>
+<p>You can divide numbers using a slash <code>/</code>:</p>
+<p><code>20/4</code></p>
+</section>
+<section id="multiplying-numbers" class="level4">
+<h4 class="anchored" data-anchor-id="multiplying-numbers"><strong>Multiplying Numbers</strong></h4>
+<p>You can multiply numbers using the star / asterisk <code>*</code>:</p>
+<p><code>10 * 10</code></p>
+<p><strong>A quick note on the R console</strong></p>
+<p>The R console can be used as a place to type very small calculations or actions. However, a big drawback of using the console is that you can’t save the calculations, and there is no way to add comments to the code. If you were to close RStudio without saving a file, you would lose everything you’ve done here.</p>
+<p>Try it: close the RStudio program and then reopen it. Are your calculations still in the console?</p>
+<p>This is why R script files are used, as they can keep track of everything that has been done with sufficient documentation for others (and yourself!) to interpret.</p>
+</section>
+</section>
+<section id="types-of-files-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="types-of-files-in-r">Types of Files in R</h3>
+<p>There are two main types of files in R studio that can be used to edit code: R script files <code>.R</code> and RMarkdown files <code>.Rmd</code>.</p>
+<p>The R script file (<code>.R</code>) is a plain text file where you can write sequences of R code and comments. It is used to write and run code line-by-line, such as for data cleaning, analysis, or function building. It’s good for experimenting, scripting, and running code interactively. It’s also good for sharing code with other researchers.</p>
+<p>The RMarkdown file (<code>.Rmd</code>) has a mix of R code and written explanations using a type of formatting called Markdown. It can be used to create dynamic, reproducible reports that can be transformed into HTML, PDF, or Word documents. It’s great for homework, research reports, dashboards, or combining narrative with code.</p>
+<p>Both R script files and RMarkdown files can enable the practice of literate coding. For the purposes of this program we’ll be using R scripts, but if you’re interested in learning more about RMarkdown, check out:</p>
+<ul>
+<li><a href="https://rmarkdown.rstudio.com/lesson-8.html">RMarkdown lesson from RStudio</a><br>
+</li>
+<li><a href="https://bookdown.org/yihui/rmarkdown/">RMarkdown definitive guide</a></li>
+</ul>
+<p>Reopen RStudio and create a script file. To create this file, select File &gt; New File &gt; R Script</p>
+<p><img src="images/day-2-create-r-script.gif" class="img-fluid"></p>
+</section>
+<section id="working-in-an-r-script-file" class="level3">
+<h3 class="anchored" data-anchor-id="working-in-an-r-script-file">Working in an R Script File</h3>
+<p>Let’s move to the R script file we just created, located in the top left panel. First, try to re-run some simple mathematical calculations, but this time in the script:</p>
+<p><code>2 + 2</code><br>
+<code>10 - 4</code><br>
+<code>20/4</code><br>
+<code>10 * 10</code></p>
+<p>Did it work?</p>
+<p>Unless you have previous experience with R, you will notice that R won’t simply run commands in a script when you press the <code>enter/return</code> button. This is because the R script allows you to freely type, edit, and adjust your code before it deploys it. This is another advantage to using RStudio over using the console.</p>
+<section id="running-code-in-an-r-script" class="level4">
+<h4 class="anchored" data-anchor-id="running-code-in-an-r-script"><strong>Running Code in an R Script</strong></h4>
+<p>There are a few different ways that you can run code in your R script:</p>
+<ol type="1">
+<li><strong>Point-and-click</strong>: In the top right of the RStudio screen, you will see a button that says <code>Run</code>. If you click on it, RStudio will run the line/chunk of code where your cursor is located. If your cursor is above a line of code, it will run the line below it, but if your cursor is below the code, it won’t run anything. You can also highlight multiple lines of code and press <code>Run</code>, and they will be run consecutively</li>
+</ol>
+<p><img src="images/day-2-run-r-script.gif" class="img-fluid"></p>
+<ol start="2" type="1">
+<li><strong>Keyboard commands</strong>: There are two main ways that you can use keyboard commands to code in R scripts:<br>
+</li>
+</ol>
+<ul>
+<li><code>Ctrl + Enter</code> (Windows) / <code>Command + RETURN</code> (Mac) - will run a single line/chunk of code that your cursor is on<br>
+</li>
+<li><code>Ctrl + Shift + Enter</code> (Window) / <code>Command + Shift + Return</code> (Mac) - will run all the code in your R script, beginning at the top.</li>
+</ul>
+<p>Use both methods with the calculations above, and then check the results in the console window, now shown in the bottom left panel below the script window.</p>
+</section>
+</section>
+<section id="basic-syntax-of-r" class="level3">
+<h3 class="anchored" data-anchor-id="basic-syntax-of-r">Basic Syntax of R</h3>
+<p>In this section, we will start to use some of the coding-specific language that is commonly used in R. You don’t need to understand it all right away, but code, like any language, has grammar that provides structure and rules. Understanding the syntax of R will help you understand what R can do. Much like learning a spoken or signed language, we’re going to start off by learning about individual words and parts of speech before we jump into sentences (with paragraphs being the advanced next step).</p>
+<p>The most important components of an R script are <strong>objects</strong> and <strong>functions</strong>. <strong>Objects</strong> store information and <strong>functions</strong> are used to manipulate the data.</p>
+<section id="objects-assignment-operators" class="level4">
+<h4 class="anchored" data-anchor-id="objects-assignment-operators"><strong>Objects &amp; Assignment Operators</strong></h4>
+<p>An <strong>object</strong> is anything you create and name in R. It can be a number, a dataset, a function, or even a plot. Objects take on content from everything to the right of the assignment operator.</p>
+<p>An <strong>assignment operator</strong> is how you store a value in R. It’s like saying: “Let this name hold this value.” It assigns content from the objects/functions/arguments on its right to the object on its left.</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the examples below, you will also see a hashtag <code>#</code> symbol. This is used to indicate a comment about the code, which is an important aspect of literate programming. Everything after the <code>#</code> will be technically ‘ignored’ when the script runs.</p>
+</div>
+</div>
+<p>Try the two examples below, with and without the <code>#</code> symbol. When you use the <code>#</code> symbol, the code executes in the console as written. If you remove the symbol, the code results in an error. It is a good habit to use comments in your code, and we will start to use them more often as this course progresses.</p>
+<p><code>a &lt;- 5 # x is now an object that holds the value 5</code><br>
+<code>b &lt;- "Anna" # b is now an object that holds the character Anna</code></p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Since “Anna” is a series of characters (as opposed to numbers), it needs to be wrapped in quotations. We’ll learn more about this in another session.</p>
+</div>
+</div>
+<p><code>name &lt;- "Maria" # The "name" object now holds the value "Maria"</code></p>
+<p><code>name &lt;- "Anna" # The "name" object now holds the value "Anna", and no longer has the value "Maria".</code></p>
+<p>Now, take a look at the top right panel, under the ‘Environments’ tab, to see the values you’ve just assigned. Try switching the <code>name</code> object to your own name and see what happens.</p>
+<p><strong>Why Overwriting is Useful</strong></p>
+<ul>
+<li>As your analysis becomes more complicated, you often build your results step-by-step.<br>
+</li>
+<li>Instead of creating dozens of different object names, you can reuse the same object name to store updated versions of your data or results.<br>
+</li>
+<li>This keeps your environment clean and your code easier to read.</li>
+</ul>
+<p>Objects can also be assigned several values. This is done by using the <code>c()</code> command, which stands for concatenate, and where the strings of values go into the brackets. You can think of this function as “glueing” elements together into one group. It can be used like this:</p>
+<p><code>numbers &lt;- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)</code></p>
+<p><code>sports &lt;- c("Basketball", "Golf", "Soccer", "Tennis")</code></p>
+<p>Again, you’ll notice that the words, which are strings of letters / characters, are surrounded by quotation marks <code>""</code>, while numerals are not. This is because R, and most coding languages, handle character strings uniquely, and require quotations to surround words and phrases. We’ll cover this more in another section, but for now, just know that every time you want to use a character string as a value in R, you must use quotation marks.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Test yourself!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Create an object called <code>w</code>, and assign it a value of <code>100</code>.<br>
+</li>
+<li>Create an object called <code>x</code>, and assign it a value of <code>25</code>.<br>
+</li>
+<li>Create an object called <code>y</code>, and assign it the value of <code>basketball</code>.<br>
+</li>
+<li>Create an object called <code>z</code>, and assign it the value of <code>baseball</code>.</li>
+</ol>
+<p>If this all worked, you will see in the top-right ‘Environment’ panel the four new values that you have created.</p>
+<p>Let’s keep going:</p>
+<ol start="5" type="1">
+<li>Use the additional symbol <code>+</code> to add <code>w</code> and <code>x</code>.<br>
+</li>
+<li>Use the division symbol <code>/</code> to divide <code>w</code> by <code>x</code>.<br>
+</li>
+<li>Re-write objects <code>w</code> and <code>x</code> to give them new values of your choosing.<br>
+</li>
+<li>Use the additional symbol <code>+</code> to add <code>y</code> and <code>z</code>. Did it work? If not, what do you think might have happened?<br>
+</li>
+<li>Try creating an object that contains multiple values.</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answers
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><code>w &lt;- 100</code><br>
+</li>
+<li><code>x &lt;- 25</code><br>
+</li>
+<li><code>y &lt;- "basketball"</code><br>
+</li>
+<li><code>z &lt;- "baseball"</code><br>
+</li>
+<li><code>w + x</code><br>
+</li>
+<li><code>w/x</code><br>
+</li>
+<li>Ex: <code>w &lt;- 500</code> or <code>x &lt;- 9000</code><br>
+</li>
+<li>This should show an error like the following: <code>"Error in y + z : non-numeric argument to binary operator"</code>. This is because R will only let you add numerical values together, and not character values. This will be covered in more detail in another section.<br>
+</li>
+<li>Example: <code>movies &lt;- c("Pulp Fiction", "Lord of the Rings: The Fellowship of the Ring", "Highlander")</code></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="functions-arguments" class="level4">
+<h4 class="anchored" data-anchor-id="functions-arguments"><strong>Functions &amp; Arguments</strong></h4>
+<p>Functions in coding are like verbs in a language; they convey an action to be performed. These actions are often (though not always) performed on an argument. We’re going to learn more about functions in a later section, but here is a basic function to show you how it works.</p>
+<p><code>numbers &lt;- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)</code></p>
+<p><code>mean(numbers)</code></p>
+<p>Console result = <code>5.5</code></p>
+<p>In this example, the <code>mean</code> function is applied to the <code>numbers</code> object (which in this case is the <code>argument</code>), and gives the mean for the series of numbers.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Can you see how R could be used to perform multiple or repeated calculations with the use of a script file, rather than working manually or using an Excel formula?</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="literate-programming" class="level2">
+<h2 class="anchored" data-anchor-id="literate-programming">Literate Programming</h2>
+<p>Literate programming is a method of providing a human-language, or narrative, explanation of how a script works in combination with the script itself, so that it can be accurately interpreted and reused. If you look at the script that you’ve currently written, it’s quite messy and difficult to interpret. While this is only a practice script, it is a good idea to start developing documentation practices at the beginning of a project, so as you continue on your scripting journey, these principles become second-nature. There are two primary ways we can start to support literate programming: <strong>commented code</strong> and <strong>object naming</strong>.</p>
+<section id="commented-code" class="level3">
+<h3 class="anchored" data-anchor-id="commented-code">Commented Code</h3>
+<p>Commented code was described above and is identified by the hashtag <code>#</code> symbol. The <code>#</code> symbol is a valuable tool used in all coding languages, as it <strong>provides human-language descriptions of what a code chunk is doing.</strong> Comments can be placed anywhere in the code. In the earlier examples, the <code>#</code> was found directly following the code. In the examples below, the comment is shown above the code chunk.</p>
+<p><code># Create an object called "numbers" that carries the values 1-10</code><br>
+<code>numbers &lt;- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)</code></p>
+<p><code># Calculate the mean of the object "numbers"</code><br>
+<code>mean(numbers)</code></p>
+<p>Console result = <code>5.5</code></p>
+<p>As you can see in the example above, you can use the <code>#</code> to write descriptions of what each chunk of code is doing, so that when others look at your code, or if you look at code that you wrote in the past, you can easily understand what it is doing. This is an integral part of literate coding and reproducibility, and something that is practiced across all coding languages and domains.</p>
+<section id="object-naming" class="level4">
+<h4 class="anchored" data-anchor-id="object-naming"><strong>Object Naming</strong></h4>
+<p>Looking again at the script that you’ve created, there are a lot of objects with single letters as names (<code>w</code>, <code>x</code>, <code>y</code>, <code>z</code>). While using letters as object names isn’t a problem when running small tests in practice scripts, it can get very confusing when you start working on bigger projects and have multiple objects to sift through. A much better approach is to give your objects short but meaningful names so that you and others can easily make sense of the objects that you’ve created.</p>
+<p>Much like file naming, the following parameters apply:</p>
+<ul>
+<li>Only use letters in the English alphabet, numbers 0-9, dashes -, and underscores _<br>
+</li>
+<li>Do not use spaces or special characters such as: ~!@#$%^&amp;*()+=…<br>
+</li>
+<li>Separate naming elements with dashes - and underscores _</li>
+</ul>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Clean Up!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Now that we’ve established some best practices in literate programming, go through the script that you have currently created, and utilizing commented code and object naming, try to make it easily interpretable and reusable for others!</p>
+</div>
+</div>
+</section>
+</section>
+<section id="save-your-work" class="level3">
+<h3 class="anchored" data-anchor-id="save-your-work">Save your Work!</h3>
+<p>You can save your script by selecting <code>file &gt; save</code> or by clicking the disk icon in the top navigation pane.</p>
+<p>Name your script <code>my-first-script.R</code>.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Exclusive of images, all content is licensed CC BY-NC 4.0<br><a href="https://creativecommons.org/licenses/by-nc/4.0/deed.en">Attribution-NonCommercial 4.0 International</a><br><img src="../../images/institutions/CC-License.png" class="img-fluid"></p>
+</div>   
+    <div class="nav-footer-center">
+<p><img src="../../images/institutions/all_logos.png" class="img-fluid"></p>
+</div>
+    <div class="nav-footer-right">
+<p>Build with <a href="https://quarto.org/">Quarto</a> &amp; <a href="https://posit.co/">RStudio from Posit</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

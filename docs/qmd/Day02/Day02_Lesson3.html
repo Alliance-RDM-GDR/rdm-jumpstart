@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Lesson 3: Reproducibility in Research – RDM Jumpstart</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/institutions/alliance_favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-171f982d544e03298d991751a3ffa6d2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-f451d0c5045610450376d366026b0b86.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-171f982d544e03298d991751a3ffa6d2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KSGZ4ESKQ3"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
+</script>
+
+
+</head>
+
+<body class="floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/institutions/Alliance_logo_Symbol.png" alt="Alliance Logo" class="navbar-logo light-content">
+    <img src="../../images/institutions/Alliance_logo_Symbol.png" alt="Alliance Logo" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">RDM Jumpstart</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../qmd/Day01/00_TheProject.html"> 
+<span class="menu-text">The Project</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-1" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Day 1</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-1">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Lesson1.html">
+ <span class="dropdown-text">Lesson 1: Introduction to Research Data Management</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Lesson2.html">
+ <span class="dropdown-text">Lesson 2: Introduction to the Research Project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Lesson3.html">
+ <span class="dropdown-text">Lesson 3: Data Management Plans</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Lesson4.html">
+ <span class="dropdown-text">Lesson 4: Data Documentation</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-2" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Day 2</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-2">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Lesson1.html">
+ <span class="dropdown-text">Lesson 1: Documentation in Action</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Lesson2.html">
+ <span class="dropdown-text">Lesson 2: File Management</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Lesson3.html">
+ <span class="dropdown-text">Lesson 3: Reproducibility in Research</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Lesson4.html">
+ <span class="dropdown-text">Lesson 4: Introduction to R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-3" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Day 3</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-3">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Lesson1.html">
+ <span class="dropdown-text">Lesson 1: Data Types and Structures in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Lesson2.html">
+ <span class="dropdown-text">Lesson 2: File Paths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Lesson3.html">
+ <span class="dropdown-text">Lesson 3: Creating a Project Directory</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Lesson4.html">
+ <span class="dropdown-text">Lesson 4: The Tidyverse and Reading Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-4" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Day 4</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-4">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day04/Day04_Overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day04/Day04_Lesson1.html">
+ <span class="dropdown-text">Lesson 1: Data Cleaning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day04/Day04_Lesson2.html">
+ <span class="dropdown-text">Lesson 2: Documentation Update</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/extras/codeOfConduct.html">
+ <span class="dropdown-text">Code of Conduct</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/extras/setup.html">
+ <span class="dropdown-text">Setup</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/extras/contributors.html">
+ <span class="dropdown-text">Contributors</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/extras/template.html">
+ <span class="dropdown-text">Template</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#lecture---reproducibility-in-research" id="toc-lecture---reproducibility-in-research" class="nav-link" data-scroll-target="#lecture---reproducibility-in-research">Lecture - Reproducibility in Research</a>
+  <ul class="collapse">
+  <li><a href="#lecture" id="toc-lecture" class="nav-link" data-scroll-target="#lecture">Lecture</a></li>
+  <li><a href="#what-is-reproducibility" id="toc-what-is-reproducibility" class="nav-link" data-scroll-target="#what-is-reproducibility">What is Reproducibility?</a></li>
+  <li><a href="#the-reproducibility-crisis" id="toc-the-reproducibility-crisis" class="nav-link" data-scroll-target="#the-reproducibility-crisis">The Reproducibility Crisis</a></li>
+  <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices">Best Practices</a></li>
+  <li><a href="#working-with-microsoft-excel" id="toc-working-with-microsoft-excel" class="nav-link" data-scroll-target="#working-with-microsoft-excel">Working with Microsoft Excel</a></li>
+  <li><a href="#whats-in-a-spreadsheet" id="toc-whats-in-a-spreadsheet" class="nav-link" data-scroll-target="#whats-in-a-spreadsheet">What’s in a Spreadsheet</a></li>
+  <li><a href="#converting-excel-files-to-other-formats" id="toc-converting-excel-files-to-other-formats" class="nav-link" data-scroll-target="#converting-excel-files-to-other-formats">Converting Excel Files to Other Formats</a></li>
+  <li><a href="#scripting" id="toc-scripting" class="nav-link" data-scroll-target="#scripting">Scripting</a></li>
+  <li><a href="#coding-in-r" id="toc-coding-in-r" class="nav-link" data-scroll-target="#coding-in-r">Coding in R</a></li>
+  <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio">RStudio</a></li>
+  <li><a href="#choosing-between-r-and-python" id="toc-choosing-between-r-and-python" class="nav-link" data-scroll-target="#choosing-between-r-and-python">Choosing Between R and Python</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lesson 3: Reproducibility in Research</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this lesson, you will be able to:</p>
+<ul>
+<li>Identify issues with reproducibility in research, and best practices to make research reproducible.<br>
+</li>
+<li>Discuss pros and cons of using Excel for spreadsheet data.<br>
+</li>
+<li>Explain the difference between Excel files (.xlsx) and plain-test .csv files, and their role in reproducibility.<br>
+</li>
+<li>Define scripting and the concept of literate programming.<br>
+</li>
+<li>Connect the data science workflow and the use of R and RStudio with the research data lifecycle.</li>
+</ul>
+</section>
+<section id="lecture---reproducibility-in-research" class="level2">
+<h2 class="anchored" data-anchor-id="lecture---reproducibility-in-research">Lecture - Reproducibility in Research</h2>
+<section id="lecture" class="level3">
+<h3 class="anchored" data-anchor-id="lecture">Lecture</h3>
+<ul>
+<li><a href="files/day2_L3_Reproducibility.pptx">Download the PowerPoint</a></li>
+</ul>
+<embed src="files/day2_L3_Reproducibility.pdf" type="application/pdf" width="100%" height="600px">
+</section>
+<section id="what-is-reproducibility" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-reproducibility">What is Reproducibility?</h3>
+<p>As we have learned, research data management supports the responsible conduct of research. Reproducibility is an important aspect of that responsibility. Reproducible research practices lead to research outputs that are verifiable, extendable, and trustworthy.</p>
+<p>Research is reproducible when the same data + the same methods = the same results. Reproducibility is related to replicability, though replicability occurs when <strong>new data</strong> + the same methods = results that point in the same direction.</p>
+<p><img src="images/day-2-code-analysis-data.png" class="img-fluid"> <a href="https://ar5iv.labs.arxiv.org/html/2003.12206">Source</a></p>
+<p>Reproducibility in research can take different forms, including empirical/methodological, statistical, and computational. This section is focused on computational reproducibility.</p>
+<p>For a project to be computationally reproducible, information about all assets used to test hypotheses and generate results must be available. These include (but are not limited to) the following:</p>
+<ul>
+<li>input data<br>
+</li>
+<li>source code<br>
+</li>
+<li>software<br>
+</li>
+<li>computing environment and/or hardware</li>
+</ul>
+</section>
+<section id="the-reproducibility-crisis" class="level3">
+<h3 class="anchored" data-anchor-id="the-reproducibility-crisis">The Reproducibility Crisis</h3>
+<p>‘Crisis’ is a strong word, but it is easy to find examples of fabricated research results. Poorly documented research, whether accidental or purposeful, can create measurable harms to individuals and communities.</p>
+<p>Most researchers are not formally trained as programmers, but they increasingly need to deal with issues such as the growing size and scope of datasets, the availability of data analysis methods and algorithms, and the proliferation of new research tools and software.</p>
+<p>For these reasons, the barriers to fully reproducible research must be identified and addressed. These barriers include technical challenges, external dependencies, and human factors.</p>
+<p><strong>Technical challenges:</strong><br>
+Variations in available computing environments and differing computational complexity across projects / disciplines create hindrances to reproducibility. Technical challenges are not insurmountable, but they highlight the importance of detailed documentation.</p>
+<p><strong>External dependencies:</strong><br>
+Infrastructure such as external APIs and algorithms are often outside of the control of the research team. Many external services are not open-source, which creates a ‘black box’ of uncertainty when it comes to data processing methods and code documentation.</p>
+<p><strong>‘Operator error’ and reluctance to share:</strong><br>
+Human factors, such as inexperience with coding or a reluctance to share data, pose significant barriers to reproducible research. Documenting code takes time and skill, and some researchers are unwilling to share due to a fear of criticism or concern about their findings being ‘scooped’ or taken by others.</p>
+<section id="nuances-of-reproducibility" class="level4">
+<h4 class="anchored" data-anchor-id="nuances-of-reproducibility">Nuances of Reproducibility</h4>
+<p><strong>Reproducibility is a spectrum</strong>. The more assets and information provided, the easier it is to reproduce the study.</p>
+<ul>
+<li>High / full reproducibility: studies that provide the code, data, and full computational environment necessary to reproduce the results.<br>
+</li>
+<li>Medium / partial reproducibility: studies that provide the code and data, but not the computational environment in which the code can be run.<br>
+</li>
+<li>Low / shallow reproducibility: studies that provide algorithms and results.</li>
+</ul>
+<p><strong>Sharing ≠ reproducible</strong>. Simply sharing data and code does not make a project reproducible; rather, reproducibility requires detailed project documentation. Could another researcher, without ever speaking to you, open, understand, run, or reuse your data and code?</p>
+<p><strong>Not all data are computationally reproducible</strong>. Research methods are discipline-specific, and what works in one domain may not be possible in another. Qualitative, humanities, or arts-based research are not exempt from good documentation practices just because they are less computationally reproducible than other projects.</p>
+</section>
+</section>
+<section id="best-practices" class="level3">
+<h3 class="anchored" data-anchor-id="best-practices">Best Practices</h3>
+<p>Good research data management is not about perfection. Small incremental changes can have a powerful impact on the reusability and reproducibility of a research project. Perfection is unattainable, but good and consistent data management practices are always within reach. Best practices in reproducible research include being proactive with data management planning, providing robust (rather than just sufficient) documentation, and paying careful attention to the computational environment and hardware.</p>
+<p><strong>Be proactive</strong>. Planning for reproducibility should happen at the start of a project, not the end. Make use of resources such as data management plan templates and reproducibility checklists. This will not only help with the project’s reusability, it will make the current research easier to implement and understand.<br>
+<strong>Document, document document</strong>. There can never be too much documentation. If the concept of writing about the project details seems daunting, think of it as a communication with your future self. If you put the project away for six months, how would you describe to yourself what you were working on? Practices such as literate programming and version control can help to streamline and automate documentation.</p>
+<p><strong>Use discrete computational environments</strong>. Technologies such as software containers and virtual machines create predictable and controlled environments for computational research. As with all practices in RDM, using discrete computational environments is not only helpful for future research, but for the implementation of the current research project.</p>
+<p><strong>Be</strong> <strong>FAIR</strong>. Sharing your data, code, and documentation in a recognized repository helps with reproducibility by making your research <em>findable</em>. Ensuring all documentation and data are in open, rather than proprietary, file formats allows your research to be <em>accessible</em> and <em>interoperable</em>. And, providing robust documentation supports research <em>reusability</em>.</p>
+</section>
+<section id="working-with-microsoft-excel" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-microsoft-excel">Working with Microsoft Excel</h3>
+<section id="what-it-does-well" class="level4">
+<h4 class="anchored" data-anchor-id="what-it-does-well">What it Does Well</h4>
+<p>Microsoft Excel is widely known and used, and it often elicits strong reactions from people who either strongly like or dislike it. But Excel is popular for a reason. It is easy to use; it can quickly calculate things like sum, mean, and basic statistics; there are many options in the graphical user interface for automation and formatting; it can create colourful graphs and charts; and there is a lot of help available for writing formulas and using advanced features.</p>
+<p>The popularity of Excel can lead users to believe that it is the only option for wrangling data, but there are other options depending on the use-case. Programs like OpenRefine, SPSS, Sass, and Stata, and coding languages such as R and Python all have robust functions and features for tasks like data cleaning and advanced statistical analysis and graphing.</p>
+</section>
+<section id="what-it-doesnt-do-well" class="level4">
+<h4 class="anchored" data-anchor-id="what-it-doesnt-do-well">What it Doesn’t Do Well</h4>
+<p>Excel is an easy-to-use program for novice users, but it is full of hidden features and idiosyncrasies. The biggest issue with any technology is ‘operator error’, and this is especially prevalent in Excel, where settings and preferences are hidden away in menus. Since Excel is a proprietary program, users can’t easily inspect or search for errors in their configuration settings.</p>
+<p>Dates in Excel need to be formatted correctly in multiple ways. The characters must appear in a predictable pattern, and the cell format needs to be set correctly.</p>
+<p>Long strings of numbers will always be truncated, and, depending on the settings, numbers with more than 16 characters may be rounded to zero.</p>
+<p>Excel does not handle big, or even medium datasets very well. Files become very hard to load or work with if they have over 800,000 rows of data.</p>
+<p>Since Excel is a graphical user interface, it provides multiple ways in which to achieve the same task. For example, formulas can be ‘hard-coded’ (referring to specific cells), or they can be relational (referring to named cells) depending on configuration and user knowledge. When formulas are hard-coded, if a change is made to the data or configuration, the formula may break, or worse, display incorrect information.</p>
+<p>And finally, one of the biggest issues with Excel is the lack of versioning support. The program makes direct changes to the source data whenever a file is saved. If the data are overwritten in the absence of a backup copy, a research project can be compromised, delayed, or worse.</p>
+</section>
+</section>
+<section id="whats-in-a-spreadsheet" class="level3">
+<h3 class="anchored" data-anchor-id="whats-in-a-spreadsheet">What’s in a Spreadsheet</h3>
+<p>An Excel spreadsheet saves as an <code>.xlsx</code> file, which is a proprietary Microsoft format. While it’s natural to think of an Excel file as a single file, it is actually a zipped archive containing multiple files, including:</p>
+<ul>
+<li>source data<br>
+</li>
+<li>formatting and style sheets<br>
+</li>
+<li>charts and graphs<br>
+</li>
+<li>pivot tables<br>
+</li>
+<li>external links<br>
+</li>
+<li>Metadata</li>
+</ul>
+<p>Excel can load and save non-proprietary file formats such as <code>.csv</code>, <code>.tsv</code>, <code>.txt</code>, and <code>.xml</code>. Comma separated values, or<code>.csv</code> files, structure data in a tabular format, which differentiates between columns using commas, with rows represented by every new line in the file. This is exactly how a spreadsheet is formatted, only without the extra configuration and style data attached. <code>.csv</code> files are text files; they are Human-Readable, they can be opened by text editors and other programs, and they can be interpreted by coding languages such as R or Python.</p>
+</section>
+<section id="converting-excel-files-to-other-formats" class="level3">
+<h3 class="anchored" data-anchor-id="converting-excel-files-to-other-formats">Converting Excel Files to Other Formats</h3>
+<p>Excel files such as <code>.xslx</code> can be converted to plain text formats, but there are important factors to be aware of. Aside from the textual and formatting issues that can occur when <code>.xlsx</code> is saved as <code>.csv</code>, it is important to know that <code>.csv</code> files only save one Excel worksheet at a time, rather than the multiple worksheets saved by an <code>.xlsx</code> file. Complex formulas or tables that rely on data from multiple worksheets cannot be saved into <code>.csv</code>, so it is important to understand the data sources and structure before files are converted. The table below shows some of the most common formatting issues that can occur during a file conversion.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Original value/format</strong></td>
+<td><strong>What can happen</strong></td>
+<td><strong>Example of change</strong></td>
+<td><strong>Why it happens</strong></td>
+</tr>
+<tr class="even">
+<td>01234</td>
+<td>Leading zero lost</td>
+<td>1234</td>
+<td>Treated as a whole number</td>
+</tr>
+<tr class="odd">
+<td>Résumé</td>
+<td>Characters corrupted</td>
+<td>Rsum / RÃ©sumÃ©</td>
+<td>Encoding issues</td>
+</tr>
+<tr class="even">
+<td>31/12/2024</td>
+<td>Date misread or changed</td>
+<td>12/31/2024</td>
+<td>Different regional settings for dates</td>
+</tr>
+<tr class="odd">
+<td>=SUM(A1:A10)</td>
+<td>Formula lost</td>
+<td>55 (only value)</td>
+<td>Plain text only keeps values</td>
+</tr>
+<tr class="even">
+<td>==Hello==</td>
+<td>Formatting lost</td>
+<td>Hello</td>
+<td>Plain text doesn’t store formatting</td>
+</tr>
+<tr class="odd">
+<td>123456789012345</td>
+<td>Rounded or scientific notation</td>
+<td>1.23E+19 or rounded value</td>
+<td>Precision limits</td>
+</tr>
+</tbody>
+</table>
+<section id="example-genetic-data" class="level4">
+<h4 class="anchored" data-anchor-id="example-genetic-data">Example: Genetic Data</h4>
+<p>In a survey looking at over 11,000 papers with Excel gene lists published between 2014 and 2020, more than 30% contained at least one gene name error caused by Excel’s autoformatting. This was due to gene names being converted to standard dates, internal data numbers (5 digits), and floating point numbers.</p>
+<p><a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008984">Source</a></p>
+</section>
+</section>
+<section id="scripting" class="level3">
+<h3 class="anchored" data-anchor-id="scripting">Scripting</h3>
+<section id="what-is-scripting" class="level4">
+<h4 class="anchored" data-anchor-id="what-is-scripting">What is Scripting?</h4>
+<p>Lines of code, or ‘scripts’, are instructions that a coding language can perform. They are useful for automating common or repeated operations, such as renaming variables or column names, especially for projects that use medium to large sets of data. Scripts can be used for many purposes, but in this section, the focus is on scripting for datasets.<br>
+Scripts improve reproducibility because they are predictable. They perform the same operations, in the same order, every time.</p>
+</section>
+<section id="literate-programming" class="level4">
+<h4 class="anchored" data-anchor-id="literate-programming">Literate Programming</h4>
+<p>Code is a language that computers can understand, but it is not always easily read by humans. Literate programming is a method of providing a human-language, or narrative, explanation of how a script works in combination with the script itself, so that it can be accurately interpreted and reused. The researcher who first wrote about literate programming, <a href="https://cs.stanford.edu/~knuth/lp.html">Donald E. Knuth</a>, suggested that researchers “treat a program as a piece of literature, addressed to human beings rather than to a computer.”</p>
+<p>This is a helpful approach for all aspects of research data management. Documentation <strong>is</strong> academic writing, and requires just as much care as a journal article or conference presentation.</p>
+<p>“An article about computational science in a scientific publication is not the scholarship itself, it is merely advertising of the scholarship.” <a href="https://web.stanford.edu/dept/statistics/cgi-bin/donoho/wp-content/uploads/2018/08/wavelab.pdf">Buckheit and Donoho</a> (1995) paraphrasing Jon Claerbout.</p>
+</section>
+<section id="when-not-to-script" class="level4">
+<h4 class="anchored" data-anchor-id="when-not-to-script">When Not to Script</h4>
+<p>Coding, like any language, takes time and regular practice to learn. As a beginner, creating scripted solutions to simple research tasks may take much longer than using an easily accessible tool such as Excel. Good scripts take time, and they are not always necessary. Focus on the biggest, most repetitive tasks first. This will not only improve reproducibility, but it will save valuable time that can be used for tasks that are easily automated.</p>
+</section>
+<section id="when-to-script" class="level4">
+<h4 class="anchored" data-anchor-id="when-to-script">When to Script</h4>
+<p>Scripting can overcome the common issues with Excel that were described earlier. For example:</p>
+<ul>
+<li>In scripting there are no ‘manual’ changes; everything from the data to the configuration can be tracked and checked.<br>
+</li>
+<li>Scripts are saved as individual documents and provide a clear and ordered list of everything that was done.<br>
+</li>
+<li>A single script can be used for multiple files, and individual lines of code can be taken from one script and altered slightly to perform the same task on different datasets.<br>
+</li>
+<li>There is no graphical user interface to inadvertently obscure settings or hide data.<br>
+</li>
+<li>Scripting can load and work on a copy of the source data, so original data isn’t overwritten or corrupted.</li>
+</ul>
+<p>Scripting, especially when it is literate and well-documented, is a powerful way to increase the reusability of your data, both for yourself and others.</p>
+</section>
+</section>
+<section id="coding-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="coding-in-r">Coding in R</h3>
+<p>R is an open-source programming language designed for data manipulation, statistical analysis, and visualization in research. It can be used on any operating system, it has comprehensive documentation, and it has an active user-support and training community. It is popular in academic settings because researchers from many disciplines can use it on data types that range from bioinformatics to demography.</p>
+<p>Because R is open-source, it is easily reproducible, as there are no hidden algorithms or proprietary file formats. Many R users are willing to share their code openly, which means that novice users don’t need to have perfect fluency in order to get started.</p>
+</section>
+<section id="rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="rstudio">RStudio</h3>
+<p>R is a programming language and RStudio is an Integrated Development Environment (IDE). While this is not quite the same as a program like Excel, it does make R a lot more user friendly, especially when it comes to identifying inconsistencies or errors, which is known as debugging.</p>
+<p>To make the difference between R and RStudio clearer, consider this analogy:<br>
+You are writing a document in Microsoft Word. In this case, the plain human language that you are typing would be R, and Microsoft Word, which is the software that allows you to view, format, add visuals, and save your work, is RStudio.</p>
+</section>
+<section id="choosing-between-r-and-python" class="level3">
+<h3 class="anchored" data-anchor-id="choosing-between-r-and-python">Choosing Between R and Python</h3>
+<p>As described in this <a href="https://www.ibm.com/think/topics/python-vs-r">article from IBM</a>, choosing between R and Python (another popular open-source coding language) depends on the needs and goals of the data analysis and the research team. R is well known for its capacity for statistical analysis and data visualizations. Python is known as being easier to learn than R, but both languages are suitable for novice users. Because R is so widely used in data science, it will be the focus of the instruction for this content.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Exclusive of images, all content is licensed CC BY-NC 4.0<br><a href="https://creativecommons.org/licenses/by-nc/4.0/deed.en">Attribution-NonCommercial 4.0 International</a><br><img src="../../images/institutions/CC-License.png" class="img-fluid"></p>
+</div>   
+    <div class="nav-footer-center">
+<p><img src="../../images/institutions/all_logos.png" class="img-fluid"></p>
+</div>
+    <div class="nav-footer-right">
+<p>Build with <a href="https://quarto.org/">Quarto</a> &amp; <a href="https://posit.co/">RStudio from Posit</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
