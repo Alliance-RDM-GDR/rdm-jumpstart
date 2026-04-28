@@ -2,7 +2,6 @@
 .Rproj.user
 .Rhistory
 .Rapp.history
-docs/
 images/institutions/originals/
 /.quarto/
 **/*.quarto_ipynb
