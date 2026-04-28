@@ -7,9 +7,9 @@ Title: "RDM Jumpstart"
 
 Site last rendered `r Sys.Date()`.
 
-## Welcome
+## Welcome to the 2026 RDM Jumpstart!
 
-Welcome to RDM Jumpstart, 2025! Before going any further, [please read our code of conduct...](codeOfConduct.html)
+Before going any further, [please read our code of conduct...](codeOfConduct.html)
 
 ## Program Overview
 
