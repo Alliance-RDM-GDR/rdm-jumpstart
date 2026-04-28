@@ -1,0 +1,33 @@
+---
+title: "Setup"
+---
+
+In order to work through this program, you will need to setup the following programs. If you run into any trouble or have questions, please contact the Jumpstart organizing team.
+
+## DMP Assistant Setup
+
+DMP Assistant is a platform that we will use to create a data management plan (DMP) for the series. To use the DMP Assistant, you will need to create an account:
+
+1.  Go to the DMP Assistant Website: <https://dmp-pgd.ca/>
+
+2.  Fill out your first and last name, email, organization (University of Victoria), and then choose a password. You should receive an email confirming your successful account setup, and now you’re good to go!
+
+## R and RStudio Setup
+
+We will be using R and RStudio to handle data manipulation and exploration. R is the coding language that we’ll be using, and RStudio is software that makes running R more user-friendly. In order for everything to work correctly, you will need to download both separately.
+
+#### Downloading R and RStudio
+
+Link to download R and RStudio (download R first, then RStudio): <https://posit.co/download/rstudio-desktop/>
+
+#### Installation instructions
+
+For detailed instructions providing video walkthroughs of how to download R and RStudio for both Mac and Windows, visit [UVic’s Digital Scholarship Commons](https://uviclibraries.github.io/rstudio/pre-workshop.html).
+
+## Borealis Setup
+
+On the final day of the Jumpstart, we will be doing a hands-on demonstration of a data deposit using the demo instance of the Borealis data repository. In order to do this, you’ll need to create an account on the demo instance:
+
+1.  Go to this website: <https://demo.borealisdata.ca/dataverse.xhtml>
+
+2.  Follow the steps in this document, which will walk you through how to do this based on whether your institution is a participating member of Borealis or not: <https://learn.scholarsportal.info/all-guides/borealis/user-accounts/>
