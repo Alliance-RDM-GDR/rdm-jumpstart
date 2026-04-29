@@ -634,7 +634,7 @@
     "href": "index.html",
     "title": "RDM Jumpstart",
     "section": "",
-    "text": "Site last rendered 2026-04-28."
+    "text": "Site last rendered 2026-04-29."
   },
   {
     "objectID": "index.html#welcome-to-the-2026-rdm-jumpstart",
@@ -648,7 +648,7 @@
     "href": "index.html#program-overview",
     "title": "RDM Jumpstart",
     "section": "Program Overview",
-    "text": "Program Overview\nBy the end of the program, participants will be able to:\n\nExplain how Research Data Management (RDM) principles support research transparency and reproducibility\nApply RDM practices to real-world examples and consider how they can be applied to your own work.\nImplement reproducible research workflows using R and RStudio.\nDevelop transferable strategies for independently learning and adopting new digital tools for research and applying RDM practices to different types of data.\n\nThe program will start with the basics of RDM and how to manage your data, and then will continue with how to use the R language to clean and visualize data. We will close the course by discussing data sharing principles. This will all be done by using a mock survey example dataset."
+    "text": "Program Overview\nBy the end of the program, participants will be able to:\n\nExplain how Research Data Management (RDM) principles support research transparency and reproducibility.\nApply RDM practices to real-world examples and consider how they can be applied to your own work.\nImplement reproducible research workflows using R and RStudio.\nDevelop transferable strategies for independently learning and adopting new digital tools for research and applying RDM practices to different types of data.\n\nThe program will start with the basics of RDM and how to manage your data, and then will continue with how to use the R language to clean and visualize data. We will close the course by discussing data sharing principles. This will all be done by using a mock survey example dataset."
   },
   {
     "objectID": "index.html#navigating-the-website",

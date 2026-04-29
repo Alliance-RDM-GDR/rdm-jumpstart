@@ -15,7 +15,7 @@ Before going any further, [please read our code of conduct...](qmd/extras/codeOf
 
 By the end of the program, participants will be able to:
 
-* Explain how Research Data Management (RDM) principles support research transparency and reproducibility
+* Explain how Research Data Management (RDM) principles support research transparency and reproducibility.
 * Apply RDM practices to real-world examples and consider how they can be applied to your own work.
 * Implement reproducible research workflows using R and RStudio.
 * Develop transferable strategies for independently learning and adopting new digital tools for research and applying RDM practices to different types of data.
