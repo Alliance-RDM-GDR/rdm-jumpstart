@@ -114,16 +114,18 @@ In this activity, you will work in break out groups to look at the documentation
 
 First, choose one of the following datasets to inspect. You will have ten minutes to read through its documentation and files. Although some people in your break-our group will inspect the same dataset, make sure that each dataset is inspected by at least one person in your group.
 
-\- Kampen, Andrea; Pearson, Maggie; Smit, Michael, 2018, “Replication Data for: Digital Tools and Techniques in Scholarship and Pedagogy in the Social Sciences and Humanities”, [https://doi.org/10.23685/1H9TOV](https://doi.org/10.23685/1H9TOV)  
-\- Livingstone, D.W., 2021, “7 Replication Data for: 2017 CWKE Registered Nursing Dataset”, [https://doi.org/10.5683/SP2/I98O1W](https://doi.org/10.5683/SP2/I98O1W)  
-\- Perron, Maxime, 2023, “Interindividual variability in the benefits of personal sound amplification products on speech perception in noise: a randomized cross-over clinical trial”, [https://doi.org/10.5683/SP3/HTMDLI](https://doi.org/10.5683/SP3/HTMDLI)
+* Kampen, Andrea; Pearson, Maggie; Smit, Michael, 2018, “Replication Data for: Digital Tools and Techniques in Scholarship and Pedagogy in the Social Sciences and Humanities”, [https://doi.org/10.23685/1H9TOV](https://doi.org/10.23685/1H9TOV)  
+
+* Livingstone, D.W., 2021, “7 Replication Data for: 2017 CWKE Registered Nursing Dataset”, [https://doi.org/10.5683/SP2/I98O1W](https://doi.org/10.5683/SP2/I98O1W)  
+
+* Perron, Maxime, 2023, “Interindividual variability in the benefits of personal sound amplification products on speech perception in noise: a randomized cross-over clinical trial”, [https://doi.org/10.5683/SP3/HTMDLI](https://doi.org/10.5683/SP3/HTMDLI)
 
 Then, for an additional ten minutes, discuss the following questions in your break out room. One person should take notes so that your team can report back for a general discussion.  
 
-\- What kind of documentation do you see?  
-\- Can you tell what each of the files is?  
-\- When looking at a data file, can you understand what you are looking at? Why or why not?  
-\- Is there anything that sticks out to you as interesting? Good? Bad?
+* What kind of documentation do you see?  
+* Can you tell what each of the files is?  
+* When looking at a data file, can you understand what you are looking at? Why or why not?
+* Is there anything that sticks out to you as interesting? Good? Bad?
 
 After your group discussion, we will reconvene with the larger group to share what was discovered. Please choose someone in your group to share your group's main discussion points. 
 
@@ -133,7 +135,7 @@ After your group discussion, we will reconvene with the larger group to share wh
 
 In the next session, we will use what we have learned so far about data documentation to create a README file for the example project of this course. To prepare for this, make sure to do the following before the start of next day:
 
-\- Download the [README file template](https://cornell.app.box.com/v/ReadmeTemplate).  
-\- Have the README template open in a text editor so it is ready for the start of the next session.  
+* Download the [README file template](https://cornell.app.box.com/v/ReadmeTemplate).  
+* Have the README template open in a text editor so it is ready for the start of the next session.  
 
 
