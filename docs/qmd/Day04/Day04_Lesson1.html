@@ -78,9 +78,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-171f982d544e03298d991751a3ffa6d2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-f451d0c5045610450376d366026b0b86.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-171f982d544e03298d991751a3ffa6d2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-a72143d83de2706571ae85829102a192.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-d782e41c20a4d414c472eab32ab8595a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-a72143d83de2706571ae85829102a192.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -458,7 +458,14 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
   <li><a href="#the-pipe-operator" id="toc-the-pipe-operator" class="nav-link" data-scroll-target="#the-pipe-operator">The Pipe Operator</a></li>
   <li><a href="#set-up-the-data-cleaning-script" id="toc-set-up-the-data-cleaning-script" class="nav-link" data-scroll-target="#set-up-the-data-cleaning-script">Set up the Data Cleaning Script</a></li>
   <li><a href="#organize-your-working-environment" id="toc-organize-your-working-environment" class="nav-link" data-scroll-target="#organize-your-working-environment">Organize your working environment</a></li>
-  <li><a href="#cleaning-the-data" id="toc-cleaning-the-data" class="nav-link" data-scroll-target="#cleaning-the-data">Cleaning the Data</a></li>
+  <li><a href="#update-column-names" id="toc-update-column-names" class="nav-link" data-scroll-target="#update-column-names">Update Column Names</a></li>
+  <li><a href="#remove-duplicates" id="toc-remove-duplicates" class="nav-link" data-scroll-target="#remove-duplicates">Remove Duplicates</a></li>
+  <li><a href="#tackle-personal-identifiers" id="toc-tackle-personal-identifiers" class="nav-link" data-scroll-target="#tackle-personal-identifiers">Tackle Personal Identifiers</a></li>
+  <li><a href="#save-current-version-of-cleaned-data" id="toc-save-current-version-of-cleaned-data" class="nav-link" data-scroll-target="#save-current-version-of-cleaned-data">Save current version of cleaned data</a></li>
+  <li><a href="#create-new-variables" id="toc-create-new-variables" class="nav-link" data-scroll-target="#create-new-variables">Create New Variables</a></li>
+  <li><a href="#deal-with-missing-data" id="toc-deal-with-missing-data" class="nav-link" data-scroll-target="#deal-with-missing-data">Deal with Missing Data</a></li>
+  <li><a href="#fix-typos-and-recode-variables" id="toc-fix-typos-and-recode-variables" class="nav-link" data-scroll-target="#fix-typos-and-recode-variables">Fix Typos and Recode Variables</a></li>
+  <li><a href="#separate-values" id="toc-separate-values" class="nav-link" data-scroll-target="#separate-values">Separate Values</a></li>
   <li><a href="#save-your-script" id="toc-save-your-script" class="nav-link" data-scroll-target="#save-your-script">Save Your Script</a></li>
   </ul></li>
   <li><a href="#optional-data-cleaning-activity" id="toc-optional-data-cleaning-activity" class="nav-link" data-scroll-target="#optional-data-cleaning-activity">Optional Data Cleaning Activity</a></li>
@@ -518,7 +525,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In your breakout rooms, open the survey dataset in R (e.g., use the <code>View()</code> function that you learned in Day 3, and discuss the following questions:</p>
+<p>In your breakout rooms, open the survey dataset in R (e.g., use the <code>View()</code> function that you learned in Day 3), and discuss the following questions:</p>
 <ol type="1">
 <li>Is this dataset in a consistent format for subsequent work and analysis? Why or why not?<br>
 </li>
@@ -588,18 +595,17 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <section id="the-pipe-operator" class="level3">
 <h3 class="anchored" data-anchor-id="the-pipe-operator">The Pipe Operator</h3>
 <p>You’ve already learned that the <code>tidyverse</code> package has many functions that are helpful for data cleaning. You will use these functions in this lesson, but before you do, it is helpful to understand one additional rule about the syntax used in this library. The <code>tidyverse</code> uses a pipe operator, represented by the symbol <code>|&gt;</code>. The pipe is used to feed the result of one function directly into the next function.</p>
-<p>In an earlier lesson, you used “nesting” to view frequencies of observations by age and gender in our example dataset. To run this code again, open your script in RStudio, and run the first line of code uploading the data, and the final line of code exploring the count by age and gender:</p>
+<p>In an earlier lesson, you used “nesting” to view frequencies of observations by age and gender in our example dataset. We will continue in this script to learn how to use the pipe. For that, first open your R Project by clicking in the .RProj file in your project directory. This will open the project in R Studio. Then, to run the nesting code again, open your script in RStudio, and run the first lines of code loading the <code>tidyverse</code> and uploading the data, and the final line of code exploring the count by age and gender:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load package</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Import data</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/raw/survey_student_rawdata.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import data</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/raw/survey_student_rawdata.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of observations by age and gender and print all results</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">count</span>(survey_data, Age, Gender), <span class="at">n =</span> <span class="cn">Inf</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of observations by age and gender and print all results</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">count</span>(survey_data, Age, Gender), <span class="at">n =</span> <span class="cn">Inf</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 51 × 3
      Age Gender                n
@@ -657,12 +663,12 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 51    NA &lt;NA&gt;                  1</code></pre>
 </div>
 </div>
-<p>Here’s where the pipe operator becomes useful. Instead of nesting <code>count(survey_data, Age, Gender)</code> inside the <code>print()</code> function, you can use the <code>|&gt;</code> symbol to feed the result of the first part of the argument - <code>count(survey_data, Age, Gender</code>) into the second part - <code>print()</code>.</p>
+<p>Here’s where the pipe operator becomes useful. Instead of nesting <code>count(survey_data, Age, Gender)</code> inside the <code>print()</code> function, you can use the <code>|&gt;</code> symbol to feed the result of the first part of the argument (<code>count(survey_data, Age, Gender</code>) into the second part (<code>print()</code>).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of observations by age and gender and print all results</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(survey_data, Age, Gender) <span class="sc">|&gt;</span>  </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of observations by age and gender and print all results</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(survey_data, Age, Gender) <span class="sc">|&gt;</span>  </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 51 × 3
      Age Gender                n
@@ -733,8 +739,10 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <div class="callout-body-container callout-body">
 <p>You can also use the pipe to feed the dataset <code>survey_data</code> into the <code>count()</code> function. What would the code look like?</p>
 <p>You can check the answer below, but please make sure to try it yourself before you see the answer. The best way to learn is to try to do it by yourself!</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -743,72 +751,13 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of observations by age and gender and print all results  </span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>survey_data <span class="sc">|&gt;</span>  </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(Age, Gender) <span class="sc">|&gt;</span>  </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 51 × 3
-     Age Gender                n
-   &lt;dbl&gt; &lt;chr&gt;             &lt;int&gt;
- 1    16 Female                5
- 2    16 Male                 16
- 3    16 Non-binary            4
- 4    16 &lt;NA&gt;                  2
- 5    17 Female               31
- 6    17 Male                 17
- 7    17 Non-binary            1
- 8    17 Prefer not to say     1
- 9    18 Female               27
-10    18 Male                 19
-11    18 Non-binary            2
-12    18 Prefer not to say     1
-13    19 Female               28
-14    19 Male                 36
-15    19 Non-binary            1
-16    19 &lt;NA&gt;                  3
-17    20 Female               21
-18    20 Male                 34
-19    20 Prefer not to say     1
-20    20 &lt;NA&gt;                  3
-21    21 Female               31
-22    21 Male                 23
-23    21 Prefer not to say     1
-24    21 &lt;NA&gt;                  2
-25    22 Female               17
-26    22 Male                 19
-27    22 Non-binary            4
-28    22 Prefer not to say     2
-29    22 &lt;NA&gt;                  2
-30    23 Female               21
-31    23 Male                 23
-32    23 &lt;NA&gt;                  1
-33    24 Female               19
-34    24 Male                 14
-35    24 Non-binary            1
-36    24 Prefer not to say     1
-37    24 &lt;NA&gt;                  1
-38    25 Female                6
-39    25 Male                  8
-40    25 Non-binary            4
-41    25 &lt;NA&gt;                  2
-42    26 Female                2
-43    26 Male                  6
-44    27 Female                5
-45    27 Male                  5
-46    29 Male                  1
-47    NA Female               27
-48    NA Male                 18
-49    NA Non-binary            1
-50    NA Prefer not to say     4
-51    NA &lt;NA&gt;                  1</code></pre>
-</div>
-</div>
-</div>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of observations by age and gender and print all results  </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>survey_data <span class="sc">|&gt;</span>  </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(Age, Gender) <span class="sc">|&gt;</span>  </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Using pipes can help the code look cleaner and easier to understand. When formatted this way, you can see each step:</p>
 <ol type="1">
@@ -819,6 +768,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <li><code>print()</code> shows the data you’ve requested from <code>count()</code> in the console and uses the <code>n = Inf</code> flag to ask R to show all of the data available.</li>
 </ol>
 <p>This makes the code both machine-readable and easier to understand by humans, following the practices of literate programming.</p>
+</div>
 </div>
 </div>
 <p><strong>Note</strong>: The symbol <code>%&gt;%</code> is another way of expressing the pipe syntax in <code>tidyverse</code>, while <code>|&gt;</code> is used in base R. Both symbols will work exactly the same in most cases. In this course, we will use <code>|&gt;</code>, which is now considered the standard pipe symbol, but if you see <code>%&gt;%</code> in older tutorials or in <code>tidyverse</code> documentation, you can interpret it in the same way as <code>|&gt;</code>. If you want to know more about their differences, you can refer to this page on <a href="https://tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/">differences between the base R and magrittr pipes</a>.</p>
@@ -839,16 +789,16 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Consult the project’s file naming and folder structure conventions (<a href="../Day03/Day03_Lesson3.html">Day3</a>) if needed.</p>
+<p>Consult the project’s file naming and folder structure conventions (<a href="../Day03/Day03_Lesson3.html">Day 3</a>) if needed.</p>
 </div>
 </div>
 <p>At the top of your script, create a title and add a brief description of its purpose. Remember, this comment should be preceded by a hash <code>#</code> symbol.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DATA CLEANING</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this script:  </span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="do">## uploads the raw social media survey data \+ cleans it  </span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="do">## outputs a cleaned dataset ready to be used in analysis  </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DATA CLEANING</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this script:  </span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">## uploads the raw social media survey data \+ cleans it  </span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="do">## outputs a cleaned dataset ready to be used in analysis  </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="organize-your-working-environment" class="level3">
@@ -856,15 +806,15 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <p>Before you start with the actual data cleaning tasks, make sure your working environment is ready to go. Since you are working within an R Project, the working directory will already be set.</p>
 <p>Next, add a line that loads the packages you need. In this lesson, we’ll be using <code>tidyverse</code>, though it is common to see more than one package here. Be sure to include a comment about what the script is doing. It may seem obvious to you, but the more you get into the habit of writing comments, the more likely you are to do it consistently.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the tidyverse package  </span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the tidyverse package  </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Remember to check the console (below your script editing window) to ensure your code ran without errors.</p>
 <p>Then, load the dataset using <code>read_csv()</code></p>
 <p>If you can’t remember how this function works, look back to your practice scripts, or review <a href="../Day03/Day03_Lesson4.html">Day 3</a>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import data  </span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/raw/survey_student_rawdata.csv"</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import data  </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/raw/survey_student_rawdata.csv"</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>You should now see a <code>survey_data</code> object listed under Data, in the top right panel Environment tab.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
@@ -893,25 +843,23 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check that data was correctly imported  </span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>survey_data <span class="co"># prints in the console  </span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(survey_data) <span class="co"># prints in a separate window  </span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(survey_data) <span class="co"># prints the first 6 rows of data  </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check that data was correctly imported  </span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>survey_data <span class="co"># prints in the console  </span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(survey_data) <span class="co"># prints in a separate window  </span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(survey_data) <span class="co"># prints the first 6 rows of data  </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
 <p>Take some time to inspect the console output for the code chunk you just created. What kind of information does each line provide? You may need to scroll up in the console to see the entire output. We won’t review them again here, but you should be seeing terms like <code>tibble</code>, <code>&lt;chr&gt;</code>, and <code>print(n = ...),</code> along with a sample of the survey data, both in the console and in a new window.</p>
 </section>
-<section id="cleaning-the-data" class="level3">
-<h3 class="anchored" data-anchor-id="cleaning-the-data">Cleaning the Data</h3>
+<section id="update-column-names" class="level3">
+<h3 class="anchored" data-anchor-id="update-column-names">Update Column Names</h3>
 <p>Now that we know that the data have been imported correctly, it is time to begin cleaning. Remember, each dataset is unique, so what we do in this lesson may not apply to the next project you work on. Use what you learn here as a starting point.</p>
-<section id="update-column-names" class="level4">
-<h4 class="anchored" data-anchor-id="update-column-names">Update Column Names</h4>
 <p>The first thing we need to address are the column names, as they are currently very long with extra characters such as spaces and punctuation. Why do you think the column names look like this?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check names  </span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(survey_data)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check names  </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(survey_data)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "Timestamp"                                                                                                                                                                  
  [2] "Name"                                                                                                                                                                       
@@ -940,11 +888,23 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <p>The column names consist of the question text from the survey form. While the single-word column names are acceptable, the other ones will be more difficult to work with, and require cleaning.</p>
 <p>To change column names we will use <code>rename()</code>. This function is part of the <code>dplyr</code> package that is installed with <code>tidyverse</code>.</p>
 <p>Type the following code into your script to change “Date of birth” to “date_birth”:</p>
-<p>Note: In this script, we are going to create a new object every time we perform an action on the dataset (such as, <code>survey_data_fixnames</code> or <code>survey_data_nodupl</code>). We do this to keep a visual record of the changes we are making to the dataset. However, when working on your own projects, avoid creating too many similar objects in your working environment. Instead, you will <a href="../Day02/Day02_Lesson4.html">overwrite the original object</a> with the changes implemented (e.g., always overwrite the object named <code>survey_data</code> without adding the description).</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this script, we are going to create a new object every time we perform an action on the dataset (such as, <code>survey_data_fixnames</code> or <code>survey_data_nodupl</code>). We do this to keep a visual record of the changes we are making to the dataset. However, when working on your own projects, avoid creating too many similar objects in your working environment. Instead, you will <a href="../Day02/Day02_Lesson4.html">overwrite the original object</a> with the changes implemented (e.g., always overwrite the object named <code>survey_data</code> without adding the description).</p>
+</div>
+</div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change column names  </span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>survey_data_fixnames <span class="ot">&lt;-</span> survey_data <span class="sc">|&gt;</span>  </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">date_birth =</span> <span class="st">"Date of birth"</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change column names  </span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>survey_data_fixnames <span class="ot">&lt;-</span> survey_data <span class="sc">|&gt;</span>  </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">date_birth =</span> <span class="st">"Date of birth"</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -975,10 +935,10 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <p>What happened when you ran the <code>names(survey_data)</code>code again? Did you see the name change? Remember, we didn’t change column names in the <code>survey_data</code> object, we created a new object called <code>survey_data_fixnames</code> and changed the column name there.</p>
 <p><code>rename()</code> can change multiple column names at once if you provide it with a comma separated list. Modify your code so that it changes the column “How many hours per day do you use each platform? [Facebook]” to “hours_facebook”. You can do this by adding a comma after <code>date_birth = "Date of birth</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change column names  </span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>survey_data_fixnames <span class="ot">&lt;-</span> survey_data <span class="sc">|&gt;</span>  </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">date_birth =</span> <span class="st">"Date of birth"</span>,  </span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">hours_facebook =</span> <span class="st">"How many hours per day do you use each platform? [Facebook]"</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change column names  </span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>survey_data_fixnames <span class="ot">&lt;-</span> survey_data <span class="sc">|&gt;</span>  </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">date_birth =</span> <span class="st">"Date of birth"</span>,  </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">hours_facebook =</span> <span class="st">"How many hours per day do you use each platform? [Facebook]"</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -990,19 +950,19 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Edit the code above so that it also changes the following column names in the same argument:</p>
+<p>Edit the code above so that it also changes the following column names in the same call of the the <code>rename</code> function:</p>
 <ul>
-<li>`“Timestamp”` to `timestamp`<br>
+<li><code>“Timestamp”</code> to <code>timestamp</code><br>
 </li>
-<li>`”Name”` to `name`<br>
+<li><code>”Name”</code> to <code>name</code><br>
 </li>
-<li>`“Email”` to `email`</li>
+<li><code>“Email”</code> to <code>email</code></li>
 </ul>
 <p>You can check the answer below, but please make sure to try it yourself before you see the answer. The best way to learn is to try to do it by yourself!</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1011,16 +971,16 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change column names  </span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>survey_data_fixnames <span class="ot">&lt;-</span> survey_data  <span class="sc">|&gt;</span>  </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">date_birth =</span> <span class="st">"Date of birth"</span>,  </span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_facebook =</span> <span class="st">"How many hours per day do you use each platform? [Facebook]"</span>,  </span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">timestamp =</span> <span class="st">"Timestamp"</span>,  </span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">name =</span> <span class="st">"Name"</span>,  </span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">email =</span> <span class="st">"Email"</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change column names  </span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>survey_data_fixnames <span class="ot">&lt;-</span> survey_data  <span class="sc">|&gt;</span>  </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">date_birth =</span> <span class="st">"Date of birth"</span>,  </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_facebook =</span> <span class="st">"How many hours per day do you use each platform? [Facebook]"</span>,  </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">timestamp =</span> <span class="st">"Timestamp"</span>,  </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">name =</span> <span class="st">"Name"</span>,  </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">email =</span> <span class="st">"Email"</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1028,7 +988,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <p>Now, let’s change the rest of the column names. Use the code below as a guide, but get used to navigating your dataset in RStudio. Also, if you want to use copy / paste to collect the column names, do it in RStudio, not here. You should never copy code from a website for use on your computer. Not only can the HTML markup cause errors, the code itself could be malicious.</p>
 <p>Remember, a script is a document. Take your time to create it, and check for typos as you go. Take the same care as you would when writing a paper or formatting a list of citations. Grammar, punctuation, and style matter.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1037,42 +997,42 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change column names  </span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>survey_data_fixnames <span class="ot">&lt;-</span> survey_data  <span class="sc">|&gt;</span>  </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">date_birth =</span> <span class="st">"Date of birth"</span>,  </span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_facebook =</span> <span class="st">"How many hours per day do you use each platform? [Facebook]"</span>,  </span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">timestamp =</span> <span class="st">"Timestamp"</span>,  </span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">name =</span> <span class="st">"Name"</span>,  </span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">email =</span> <span class="st">"Email"</span>,  </span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">age =</span> <span class="st">"Age"</span>,  </span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">province =</span> <span class="st">"Province"</span>,  </span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">gender =</span> <span class="st">"Gender"</span>,  </span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">year_study =</span> <span class="st">"Year of Study"</span>,  </span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">field_study =</span> <span class="st">"Field of Study"</span>,  </span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_instagram =</span> <span class="st">"How many hours per day do you use each platform? [Instagram]"</span>,  </span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_snapchat =</span> <span class="st">"How many hours per day do you use each platform? [Snapchat]"</span>,  </span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_tiktok =</span> <span class="st">"How many hours per day do you use each platform? [Tiktok]"</span>,  </span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_xtwitter =</span> <span class="st">"How many hours per day do you use each platform? [X (Twitter)]"</span>,  </span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_other =</span> <span class="st">"How many hours per day do you use each platform? [Other]"</span>,  </span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_sleep =</span> <span class="st">"On average, how many hours of sleep do you get per night?"</span>,  </span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">devices_used =</span> <span class="st">"What devices do you use to access social media"</span>,  </span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">feel_connected =</span> <span class="st">"Please indicate how much you agree or disagree with the following statements about social media and your mental health: [Social media helps me feel connected to others.]"</span>,  </span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">feel_stress =</span> <span class="st">"Please indicate how much you agree or disagree with the following statements about social media and your mental health: [Social media makes me feel anxious or stressed.]"</span>,  </span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">feel_distracted =</span> <span class="st">"Please indicate how much you agree or disagree with the following statements about social media and your mental health: [Social media distracts me from academic work.]"</span>,  </span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>         <span class="at">feel_improvedmood =</span> <span class="st">"Please indicate how much you agree or disagree with the following statements about social media and your mental health: [Social media improves my mood when I feel lonely.]"</span>,  </span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>         <span class="at">reasons_use =</span> <span class="st">"Select any of the following reasons for using social media:"</span>  </span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change column names  </span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>survey_data_fixnames <span class="ot">&lt;-</span> survey_data  <span class="sc">|&gt;</span>  </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">date_birth =</span> <span class="st">"Date of birth"</span>,  </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_facebook =</span> <span class="st">"How many hours per day do you use each platform? [Facebook]"</span>,  </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">timestamp =</span> <span class="st">"Timestamp"</span>,  </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">name =</span> <span class="st">"Name"</span>,  </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">email =</span> <span class="st">"Email"</span>,  </span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">age =</span> <span class="st">"Age"</span>,  </span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">province =</span> <span class="st">"Province"</span>,  </span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">gender =</span> <span class="st">"Gender"</span>,  </span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">year_study =</span> <span class="st">"Year of Study"</span>,  </span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">field_study =</span> <span class="st">"Field of Study"</span>,  </span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_instagram =</span> <span class="st">"How many hours per day do you use each platform? [Instagram]"</span>,  </span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_snapchat =</span> <span class="st">"How many hours per day do you use each platform? [Snapchat]"</span>,  </span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_tiktok =</span> <span class="st">"How many hours per day do you use each platform? [Tiktok]"</span>,  </span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_xtwitter =</span> <span class="st">"How many hours per day do you use each platform? [X (Twitter)]"</span>,  </span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_other =</span> <span class="st">"How many hours per day do you use each platform? [Other]"</span>,  </span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_sleep =</span> <span class="st">"On average, how many hours of sleep do you get per night?"</span>,  </span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">devices_used =</span> <span class="st">"What devices do you use to access social media"</span>,  </span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">feel_connected =</span> <span class="st">"Please indicate how much you agree or disagree with the following statements about social media and your mental health: [Social media helps me feel connected to others.]"</span>,  </span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">feel_stress =</span> <span class="st">"Please indicate how much you agree or disagree with the following statements about social media and your mental health: [Social media makes me feel anxious or stressed.]"</span>,  </span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">feel_distracted =</span> <span class="st">"Please indicate how much you agree or disagree with the following statements about social media and your mental health: [Social media distracts me from academic work.]"</span>,  </span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>         <span class="at">feel_improvedmood =</span> <span class="st">"Please indicate how much you agree or disagree with the following statements about social media and your mental health: [Social media improves my mood when I feel lonely.]"</span>,  </span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>         <span class="at">reasons_use =</span> <span class="st">"Select any of the following reasons for using social media:"</span>  </span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
 <p>You can now check if column names were correctly modified.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if names were correctly changed  </span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(survey_data_fixnames)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if names were correctly changed  </span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(survey_data_fixnames)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "timestamp"         "name"              "email"            
  [4] "date_birth"        "age"               "province"         
@@ -1086,15 +1046,15 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 <p>Did everything work as you expected? You should see a list of all of the updated column names. If you don’t, go back through this lesson from the beginning and try again. Remember, another way to keep track of your objects in RStudio is to check the Environment tab.</p>
 </section>
-<section id="remove-duplicates" class="level4">
-<h4 class="anchored" data-anchor-id="remove-duplicates">Remove Duplicates</h4>
+<section id="remove-duplicates" class="level3">
+<h3 class="anchored" data-anchor-id="remove-duplicates">Remove Duplicates</h3>
 <p>Duplicated information can happen in a dataset for many reasons. There may have been an error in the survey collection tool that created a duplicate column, or user errors could lead to the same data appearing in multiple records, or rows. It is good practice to search for duplicate data.</p>
 <p>One way to check for duplicates in a survey dataset like this, is to check that the number of respondents is the same as the number of rows in the dataset.</p>
 <p>To see the number of respondents, we will use the <code>name</code> and <code>email</code> columns. While some people in a dataset could have the same name, they will have a different email address. Use the function <code>distinct()</code> from <code>dplyr</code>, which shows the unique combinations of the variables you choose.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of respondents in the dataset.  </span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>survey_data_fixnames <span class="sc">|&gt;</span>  </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(name, email)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of respondents in the dataset.  </span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>survey_data_fixnames <span class="sc">|&gt;</span>  </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(name, email)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 500 × 2
    name          email                          
@@ -1138,18 +1098,18 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <p>This means that the function has retrieved two columns (name and email) and 500 rows (500 unique respondents).</p>
 <p>To check the total number of rows in the dataset, use the function <code>nrow().</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of rows in the dataset.  </span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(survey_data_fixnames)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of rows in the dataset.  </span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(survey_data_fixnames)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 525</code></pre>
 </div>
 </div>
 <p>What was the output from <code>nrow()</code>? If there are more rows than unique respondents, it means there are duplicate observations.</p>
-<p>To remove them, we will use the <code>distinct()</code> function and a pipe that assigns the function’s output to a new object. If you do not specify column names inside the parentheses, this function will search for and keep unique rows from across the entire data frame or tibble.</p>
+<p>To remove them, we will use the <code>distinct()</code> function and assign the function’s output to a new object. If you do not specify column names inside the parentheses, this function will search for and keep unique rows from across the entire data frame or tibble.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove duplicated values  </span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>survey_data_nodupl <span class="ot">&lt;-</span> survey_data_fixnames <span class="sc">|&gt;</span>   </span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove duplicated values  </span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>survey_data_nodupl <span class="ot">&lt;-</span> survey_data_fixnames <span class="sc">|&gt;</span>   </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1176,24 +1136,24 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 <p>Now, check the number of rows in the dataset again.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check number of rows in the dataset and the number of distinct rows  </span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(survey_data_nodupl)  </span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(survey_data_nodupl)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check number of rows in the dataset and the number of distinct rows  </span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(survey_data_nodupl)  </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(survey_data_nodupl)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>You should now have the same number of rows as respondents, which shows that duplicates have been removed. If you don’t see the same result, refresh your R session and go through your code from the top.</p>
 </section>
-<section id="tackle-personal-identifiers" class="level4">
-<h4 class="anchored" data-anchor-id="tackle-personal-identifiers">Tackle Personal Identifiers</h4>
+<section id="tackle-personal-identifiers" class="level3">
+<h3 class="anchored" data-anchor-id="tackle-personal-identifiers">Tackle Personal Identifiers</h3>
 <p>This dataset includes the names and email address of respondents, as well as other personal details, such as age and gender. While the design of a survey instrument is outside of the scope of this course, it is always a good idea to consider how much data you actually need before you start collection. Your project may have documentation about how respondent data are to be collected or used, so make sure you follow the norms of your lab or research group.</p>
 <p>It is common practice to remove personal identifiers from survey data, but you may also wish to create a code for each entry, should you ever need to connect information back to the respondent. In this example, we will create a new ID column, and then write it to a new object with the personal information removed.</p>
-<section id="create-an-id-column" class="level5">
-<h5 class="anchored" data-anchor-id="create-an-id-column">Create an ID Column</h5>
+<section id="create-an-id-column" class="level4">
+<h4 class="anchored" data-anchor-id="create-an-id-column">Create an ID Column</h4>
 <p>The <code>mutate()</code> function, part of the <code>dplyr</code> package, is useful when you want to modify columns or create new columns based on other functions or calculations with existing variables.</p>
 <p>We can use <code>mutate()</code> with the <code>row_number()</code> function to create a new column that assigns a unique number to each row. This has the added benefit of identifying the unique entries in the dataset.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add a column with an anonymous ID per respondent  </span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>survey_data_id <span class="ot">&lt;-</span> survey_data_nodupl <span class="sc">|&gt;</span>  </span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">row_number</span>())  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add a column with an anonymous ID per respondent  </span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>survey_data_id <span class="ot">&lt;-</span> survey_data_nodupl <span class="sc">|&gt;</span>  </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">row_number</span>())  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1207,7 +1167,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <div class="callout-body-container callout-body">
 <p>You can see that the grammar works in the same way as the <code>rename()</code> and <code>distinct()</code> function, which is one of the strengths of using the <code>tidyverse</code>.</p>
 <ul>
-<li><code>survey_data_noid</code> - an object to hold the dataset with the new <code>id</code> column.<br>
+<li><code>survey_data_id</code> - an object to hold the dataset with the new <code>id</code> column.<br>
 </li>
 <li><code>&lt;-</code> - the assignment operator.<br>
 </li>
@@ -1217,7 +1177,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </li>
 <li><code>mutate()</code> - this function adds new variables or changes existing ones by applying calculations or transformations.<br>
 </li>
-<li><code>id = -</code> the name of the new column. The equal operator here is used in the same way as it was in the <code>rename()</code> function, here it assigns a column name to whatever comes next.<br>
+<li><code>id =</code> - the name of the new column. The equal operator here is used in the same way as it was in the <code>rename()</code> function, here it assigns a column name to whatever comes next.<br>
 </li>
 <li><code>row_number()</code> - this is a function used to assign a number to each row, usually based on the current order of the data</li>
 </ul>
@@ -1225,23 +1185,23 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 <p>Now, check if the <code>id</code> column was created.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add a column with an anonymous ID per respondent  </span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(survey_data_id)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add a column with an anonymous ID per respondent  </span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(survey_data_id)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Scroll down to the right to see the final column in the dataset, it should be the newly created <code>id</code> column.</p>
 </section>
-<section id="reorder-columns" class="level5">
-<h5 class="anchored" data-anchor-id="reorder-columns">Reorder Columns</h5>
+<section id="reorder-columns" class="level4">
+<h4 class="anchored" data-anchor-id="reorder-columns">Reorder Columns</h4>
 <p>Now, we want to move our newly created <code>id</code> column from the right of the tibble to the left, so that it is easier to see when we view the data.</p>
 <p>The <code>relocate()</code> function, which is also part of the <code>dplyr</code> package, is the next function we will learn. It is a simple function that relocates columns in a dataset.</p>
 <p>The default of <code>relocate()</code> is to put the specified column in the first position, so we don’t need to specify location here, though that is possible with added arguments. We will learn those below.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># moves id column to the left most position (default of relocate function)  </span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>survey_data_ordered <span class="ot">&lt;-</span> survey_data_id <span class="sc">|&gt;</span>  </span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(id)</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># check if it worked  </span></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>survey_data_ordered  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># moves id column to the left most position (default of relocate function)  </span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>survey_data_ordered <span class="ot">&lt;-</span> survey_data_id <span class="sc">|&gt;</span>  </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(id)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co"># check if it worked  </span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>survey_data_ordered  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 500 × 23
       id timestamp       name  email date_birth   age province gender year_study
@@ -1264,14 +1224,14 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 #   feel_distracted &lt;chr&gt;, feel_improvedmood &lt;chr&gt;, reasons_use &lt;chr&gt;</code></pre>
 </div>
 </div>
-<p>However, if you want to put a column in another location, you can specify the new location in reference to another column by using the arguments <code>.before</code> or <code>.after</code>. For example, the code below moves the gender column to the position after the age column.</p>
+<p>However, if you want to put a column in another location, you can specify the new location in reference to another column by using the arguments <code>.before</code> or <code>.after</code>. For example, the code below moves the <code>gender</code> column to the position after the <code>age</code> column.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># move gender column to the right of age column  </span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>survey_data_ordered <span class="ot">&lt;-</span> survey_data_ordered <span class="sc">|&gt;</span>  </span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(gender, <span class="at">.after =</span> age)</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># check  </span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>survey_data_ordered  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># move gender column to the right of age column  </span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>survey_data_ordered <span class="ot">&lt;-</span> survey_data_ordered <span class="sc">|&gt;</span>  </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(gender, <span class="at">.after =</span> age)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># check  </span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>survey_data_ordered  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 500 × 23
       id timestamp       name  email date_birth   age gender province year_study
@@ -1304,12 +1264,12 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Use <code>relocate()</code> to move the gender column after the name column by rewriting your code to change the order of columns.</p>
+<p>Use <code>relocate()</code> to move the <code>gender</code> column after the <code>name</code> column by rewriting your code to change the order of columns.</p>
 <p>You can check the answer below, but please make sure to try it yourself before you see the answer. The best way to learn is to try it yourself first.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1318,15 +1278,15 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># move gender column to the right of name column  </span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>survey_data_ordered <span class="ot">&lt;-</span> survey_data_ordered <span class="sc">|&gt;</span>  </span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(gender, <span class="at">.after =</span> name)</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># check  </span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>survey_data_ordered  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># move gender column to the right of name column  </span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>survey_data_ordered <span class="ot">&lt;-</span> survey_data_ordered <span class="sc">|&gt;</span>  </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(gender, <span class="at">.after =</span> name)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># check  </span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>survey_data_ordered  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 500 × 23
       id timestamp       name  gender email date_birth   age province year_study
@@ -1353,28 +1313,28 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 </div>
 </section>
-<section id="save-data-with-personal-identifiers" class="level5">
-<h5 class="anchored" data-anchor-id="save-data-with-personal-identifiers">Save Data with Personal Identifiers</h5>
+<section id="save-data-with-personal-identifiers" class="level4">
+<h4 class="anchored" data-anchor-id="save-data-with-personal-identifiers">Save Data with Personal Identifiers</h4>
 <p>Before we go further, let’s save a copy of our data as it is currently formatted, just as our project lead asked us to do in the <a href="../Day01/00_TheProject.html">project scenario</a>. This copy will include the personal identifiers and the ID codes. We won’t be using this dataset for analysis, but it will be necessary should the project lead need to connect with respondents.</p>
 <p>To save the data, we can use the function <code>write_csv()</code>, which is very similar to the function <code>read_csv</code> that you learned in an earlier lesson. The general syntax is:</p>
 <p><code>write_csv(object_to_save, “file-path-to-file-to-be-saved.csv”)</code></p>
 <p>It is important to know that if you use the name of an existing file, R will overwrite it without warning. As we mentioned earlier, <strong>you should never edit your original data</strong>, so in this step we are going to give the file a new descriptive name.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save data linking ID to names  </span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(survey_data_ordered, <span class="st">"data/processed/survey_student_identifiers-IDs.csv"</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save data linking ID to names  </span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(survey_data_ordered, <span class="st">"data/processed/survey_student_identifiers-IDs.csv"</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Remember, if you want to inspect your file directory, you can see it under the ‘Files’ tab in the bottom right panel of RStudio. Did your file save as expected?</p>
 </section>
-<section id="remove-columns" class="level5">
-<h5 class="anchored" data-anchor-id="remove-columns">Remove Columns</h5>
+<section id="remove-columns" class="level4">
+<h4 class="anchored" data-anchor-id="remove-columns">Remove Columns</h4>
 <p>Now that we have saved a new version of the data, we will remove the email and name columns to de-identify the dataset. We will also use the same command to remove unnecessary columns.</p>
 <p>There are a number of ways to remove columns in R, but here, we’ll focus on the <code>select()</code> function from the <code>dplyr</code> package in <code>tidyverse</code>.</p>
 <p>This function uses the same general syntax that we have been learning as we explore the <code>tidyverse</code>. In the parentheses, you must insert a dash - or minus symbol, followed by the name of the column you want to remove.</p>
 <p>Remove the name and email columns using the <code>select()</code> function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove name and email columns  </span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>survey_data_anon <span class="ot">&lt;-</span> survey_data_ordered <span class="sc">|&gt;</span>  </span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>name, <span class="sc">-</span>email)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove name and email columns  </span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>survey_data_anon <span class="ot">&lt;-</span> survey_data_ordered <span class="sc">|&gt;</span>  </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>name, <span class="sc">-</span>email)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1386,12 +1346,12 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Now remove other unnecessary columns. The timestamp is a default column added by the survey tool we used (Google Forms), but we will not be using this for our analysis. Use the <code>select()</code> function to remove this column from the dataset.</p>
+<p>Now remove other unnecessary columns. The <code>timestamp</code> is a default column added by the survey tool we used (Google Forms), but we will not be using this for our analysis. Use the <code>select()</code> function to remove this column from the dataset.</p>
 <p>You can check the answer below, but please make sure to try it yourself before you see the answer.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1400,20 +1360,20 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove other unnecessary columns  </span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>survey_data_anon <span class="ot">&lt;-</span> survey_data_anon <span class="sc">|&gt;</span>  </span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>timestamp)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove other unnecessary columns  </span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>survey_data_anon <span class="ot">&lt;-</span> survey_data_anon <span class="sc">|&gt;</span>  </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>timestamp)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
 <p>You can now check that all column removals worked:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check that it worked  </span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>survey_data_anon  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check that it worked  </span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>survey_data_anon  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 500 × 20
       id gender date_birth   age province  year_study field_study hours_facebook
@@ -1438,9 +1398,9 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 <p>Before we continue to the next step, it is useful to know that the <code>select()</code> function can also be used to select specific variables from your dataset. For example, if you want to show the variables <code>year_study</code> and <code>field_study</code>, use the following code:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select specific columns  </span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>survey_data_anon <span class="sc">|&gt;</span>  </span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year_study, field_study)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select specific columns  </span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>survey_data_anon <span class="sc">|&gt;</span>  </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year_study, field_study)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 500 × 2
    year_study field_study     
@@ -1473,7 +1433,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1482,12 +1442,12 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select specific columns  </span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>survey_data_anon <span class="sc">|&gt;</span>  </span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date_birth, age, province) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select specific columns  </span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>survey_data_anon <span class="sc">|&gt;</span>  </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date_birth, age, province) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 500 × 3
    date_birth   age province        
@@ -1510,8 +1470,8 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 </section>
 </section>
-<section id="save-current-version-of-the-cleaned-data" class="level4">
-<h4 class="anchored" data-anchor-id="save-current-version-of-the-cleaned-data">Save current version of the cleaned data</h4>
+<section id="save-current-version-of-cleaned-data" class="level3">
+<h3 class="anchored" data-anchor-id="save-current-version-of-cleaned-data">Save current version of cleaned data</h3>
 <p>Now that we removed the personal identifiers, it is good practice to save a version of the data at this stage, before any more steps of data cleaning, so we can share this version later on.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1523,12 +1483,12 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Save the data in the object <code>survey_data_anon</code> into a .csv file named “survey_student_anonymized-cleancolnames.csv” in the processed data folder.</p>
+<p>Use the <code>write_csv()</code> function to save the object <code>survey_data_anon</code> into a .csv file named <code>“survey_student_anonymized-cleancolnames.csv”</code> in the processed data folder.</p>
 <p>You can check the answer below, but please make sure to try it yourself before you see the answer.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1537,31 +1497,31 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the file without personal identifiers  </span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(survey_data_anon, <span class="st">"data/processed/survey_student_anonymized-cleancolnames.csv"</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the file without personal identifiers  </span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(survey_data_anon, <span class="st">"data/processed/survey_student_anonymized-cleancolnames.csv"</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
 <p>To continue the script, we want to import the data that we just saved. This will make sure that the rest of the code is reproducible later on when we share the anonymized data with clean column names.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import data  </span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>survey_data_anon <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/processed/survey_student_anonymized-cleancolnames.csv"</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import data  </span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>survey_data_anon <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/processed/survey_student_anonymized-cleancolnames.csv"</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="create-new-variables" class="level4">
-<h4 class="anchored" data-anchor-id="create-new-variables">Create New Variables</h4>
+<section id="create-new-variables" class="level3">
+<h3 class="anchored" data-anchor-id="create-new-variables">Create New Variables</h3>
 <p>Depending on your research question, you may need to create a new variable based on your existing variables. For example, because we are investigating overall social media usage, we could combine the time spent in different platforms into a single variable. This is called a <strong>“derived variable”</strong>, as it does not appear in the original dataset. However, if our question was about comparing the usage of different platforms, we would want to keep the variables separate. It is always important to go back to your questions to have more clarity on how you want your variables to be.</p>
 <p>To create a derived variable, we will use the <code>mutate()</code> function. Remember, the syntax for this function requires an argument inside the parentheses. Last time, we used <code>mutate()</code> to create the new ID column. This time, we are using it to combine variables, so we need to tell R the new column name, followed by the names of the columns we want to merge. Since the column names are existing variables in our dataset, we don’t need to enclose them in quotations. Take a look at the code below to see how the <code>mutate()</code> function works for this example.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add a variable for total amount of time spent on social media  </span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>survey_data_tothour <span class="ot">&lt;-</span> survey_data_anon <span class="sc">|&gt;</span>  </span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(  </span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">hours_total =</span> hours_facebook <span class="sc">+</span> hours_instagram <span class="sc">+</span> hours_snapchat <span class="sc">+</span> hours_tiktok <span class="sc">+</span> hours_xtwitter  <span class="sc">+</span> hours_other  </span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  )  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add a variable for total amount of time spent on social media  </span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>survey_data_tothour <span class="ot">&lt;-</span> survey_data_anon <span class="sc">|&gt;</span>  </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(  </span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">hours_total =</span> hours_facebook <span class="sc">+</span> hours_instagram <span class="sc">+</span> hours_snapchat <span class="sc">+</span> hours_tiktok <span class="sc">+</span> hours_xtwitter  <span class="sc">+</span> hours_other  </span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  )  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Remember, by default, R creates the new variable as the last column in the dataset. For a cleaner dataset, we may want to move this variable closer to the individual platform variables.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
@@ -1579,7 +1539,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1588,34 +1548,34 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># move the new variable to after hour\_other  </span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>survey_data_tothour <span class="ot">&lt;-</span> survey_data_tothour <span class="sc">|&gt;</span>   </span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(hours_total,  </span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">.after =</span> hours_other)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># move the new variable to after hour\_other  </span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>survey_data_tothour <span class="ot">&lt;-</span> survey_data_tothour <span class="sc">|&gt;</span>   </span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(hours_total,  </span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">.after =</span> hours_other)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
 <p>Now that we have created this new variable, let’s see if the numbers from each individual column were added together correctly in the new column. First, let’s use the <code>range()</code> function to see the range of total hours spent in social media:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the range of hours\_total  </span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(survey_data_tothour<span class="sc">$</span>hours_total)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the range of hours\_total  </span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(survey_data_tothour<span class="sc">$</span>hours_total)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA NA</code></pre>
 </div>
 </div>
-<p>If your code ran correctly, you’ll be seeing <code>NA</code>, or ‘not available’ in your console. NA in R means that a value is missing or unavailable.</p>
+<p>If your code ran correctly, you’ll be seeing <code>NA</code>, or ‘not available’ in your console. <code>NA</code> in R means that a value is missing or unavailable.</p>
 </section>
-<section id="deal-with-missing-data" class="level4">
-<h4 class="anchored" data-anchor-id="deal-with-missing-data">Deal with Missing Data</h4>
+<section id="deal-with-missing-data" class="level3">
+<h3 class="anchored" data-anchor-id="deal-with-missing-data">Deal with Missing Data</h3>
 <p>Missing data can create difficulties when working with certain functions because they can’t be used in calculations. Certain statistical analyses, such as linear models, will not work if there is missing data. This means that dealing with NA values during data cleaning is very important. There are many different ways to handle NAs, but we will only cover some of them here.</p>
 <p>First, let’s look at how many NAs we have in our dataset.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check NAs in the dataset  </span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>survey_data_tothour <span class="sc">|&gt;</span> <span class="fu">summary</span>()   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check NAs in the dataset  </span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>survey_data_tothour <span class="sc">|&gt;</span> <span class="fu">summary</span>()   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       id           gender           date_birth             age       
  Min.   :  1.0   Length:500         Length:500         Min.   :16.00  
@@ -1664,8 +1624,8 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <p>Every missing data situation is different, so when you’re working with your own data, you will have to make a decision about how you want to deal with NAs based on your dataset and research question.</p>
 <p>In some cases, you may want to preserve the missing values. Since we don’t have information to replace the missing data about social media usage, it would be unwise to add incorrect information simply to get rid of the error. In this situation, we can ask R to prevent the inclusion of NA values by using the <code>na.rm=TRUE</code> argument inside our function. This tells R to remove the NA values before performing a calculation.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check range of total\_hour\_per\_day, removing NAs  </span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(survey_data_tothour<span class="sc">$</span>hours_total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check range of total_hour_per_day, removing NAs  </span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(survey_data_tothour<span class="sc">$</span>hours_total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  0 11</code></pre>
 </div>
@@ -1673,14 +1633,14 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <p>With this additional argument, you can now see the range of the <code>hours_total</code> variable, which shows the values 0 and 11. This means that the lowest value in the <code>hours_total</code> column is zero and the highest value is 11.</p>
 <p>In other situations, you may wish to replace the NA values, rather than ignore them. In this dataset, we can safely substitute the NAs in the hours variables with zeroes, as the sum of all hours will still give us a minimum number of hours. To do this we will return to the <code>mutate()</code> function, combining it with the <code>replace_na()</code> function. The <code>replace_na</code> function takes a vector in its argument followed by a value to replace the missing values.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace NAs in the hours variable with 0  </span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>survey_data_replna <span class="ot">&lt;-</span> survey_data_tothour <span class="sc">|&gt;</span>   </span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hours_facebook =</span> <span class="fu">replace_na</span>(hours_facebook, <span class="dv">0</span>),  </span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_instagram  =</span> <span class="fu">replace_na</span>(hours_instagram, <span class="dv">0</span>),  </span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_snapchat =</span> <span class="fu">replace_na</span>(hours_snapchat, <span class="dv">0</span>),  </span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_tiktok =</span> <span class="fu">replace_na</span>(hours_tiktok, <span class="dv">0</span>),  </span>
-<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_xtwitter =</span> <span class="fu">replace_na</span>(hours_xtwitter, <span class="dv">0</span>),  </span>
-<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_other =</span> <span class="fu">replace_na</span>(hours_other, <span class="dv">0</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace NAs in the hours variable with 0  </span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>survey_data_replna <span class="ot">&lt;-</span> survey_data_tothour <span class="sc">|&gt;</span>   </span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hours_facebook =</span> <span class="fu">replace_na</span>(hours_facebook, <span class="dv">0</span>),  </span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_instagram  =</span> <span class="fu">replace_na</span>(hours_instagram, <span class="dv">0</span>),  </span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_snapchat =</span> <span class="fu">replace_na</span>(hours_snapchat, <span class="dv">0</span>),  </span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_tiktok =</span> <span class="fu">replace_na</span>(hours_tiktok, <span class="dv">0</span>),  </span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_xtwitter =</span> <span class="fu">replace_na</span>(hours_xtwitter, <span class="dv">0</span>),  </span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_other =</span> <span class="fu">replace_na</span>(hours_other, <span class="dv">0</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1706,21 +1666,21 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 <p>Now you can check if there still are NAs in those columns.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check: that NAs were replaced by zeroes in hours-of-social-media-use columns  </span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(survey_data_replna)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check: that NAs were replaced by zeroes in hours-of-social-media-use columns  </span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(survey_data_replna)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now, we can update our <code>hours_total</code> column by re-running the code snippet again.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># update our 'hours_total' column   </span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>survey_data_replna <span class="ot">&lt;-</span> survey_data_replna <span class="sc">|&gt;</span>  </span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(  </span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">hours_total =</span> hours_facebook <span class="sc">+</span> hours_instagram <span class="sc">+</span> hours_snapchat <span class="sc">+</span> hours_tiktok <span class="sc">+</span> hours_xtwitter  <span class="sc">+</span> hours_other  </span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># update our 'hours_total' column   </span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>survey_data_replna <span class="ot">&lt;-</span> survey_data_replna <span class="sc">|&gt;</span>  </span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(  </span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">hours_total =</span> hours_facebook <span class="sc">+</span> hours_instagram <span class="sc">+</span> hours_snapchat <span class="sc">+</span> hours_tiktok <span class="sc">+</span> hours_xtwitter  <span class="sc">+</span> hours_other  </span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now you can check if there still are NAs in the <code>hours_total</code> column.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check no NAs in hours_total  </span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(survey_data_replna<span class="sc">$</span>hours_total)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check no NAs in hours_total  </span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(survey_data_replna<span class="sc">$</span>hours_total)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   0.000   4.000   4.000   4.584   5.250  11.000 </code></pre>
@@ -1728,19 +1688,19 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 <p>We can also check the range again.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the range again  </span></span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(survey_data_replna<span class="sc">$</span>hours_total)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the range again  </span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(survey_data_replna<span class="sc">$</span>hours_total)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  0 11</code></pre>
 </div>
 </div>
-<p>Looks good, now we have only numerical values, without having to use the <code>[na.rm](http://na.rm)</code> argument.</p>
+<p>Looks good, now we have only numerical values, without having to use the <code>na.rm</code> argument.</p>
 <p>Finally, another way that you can deal with NAs is to remove them for your dataset. For example, it might be that knowing the number of hours people sleep on average is very important for your research question, in which case you might want to remove all the entries where hours of sleep were not specified from the dataset.</p>
-<p>We can remove the entries (i.e., rows) where <code>hours_sleep</code> are NA using the function drop_na():</p>
+<p>We can remove the entries (i.e., rows) where <code>hours_sleep</code> are NA using the function <code>drop_na()</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove observations with NAs for hours slept  </span></span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>survey_data_dropna <span class="ot">&lt;-</span> survey_data_replna <span class="sc">|&gt;</span>   </span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(hours_sleep)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove observations with NAs for hours slept  </span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>survey_data_dropna <span class="ot">&lt;-</span> survey_data_replna <span class="sc">|&gt;</span>   </span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(hours_sleep)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1757,7 +1717,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </li>
 <li>Then you pipe the current dataset <code>survey_data_replna</code> into the <code>drop_na</code> function<br>
 </li>
-<li>Inside the drop_na function, you add the column (or columns) for which you want the NAs to be dropped</li>
+<li>Inside the <code>drop_na</code> function, you add the column (or columns) for which you want the NAs to be dropped</li>
 </ul>
 </div>
 </div>
@@ -1776,7 +1736,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1785,20 +1745,20 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove observations with NAs for age  </span></span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>survey_data_dropna <span class="ot">&lt;-</span> survey_data_dropna <span class="sc">|&gt;</span>   </span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(date_birth)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove observations with NAs for age  </span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>survey_data_dropna <span class="ot">&lt;-</span> survey_data_dropna <span class="sc">|&gt;</span>   </span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(date_birth)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
 <p>To drop NAs, you have to drop the entire observation, which means you end up with a smaller dataset.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check number of rows now  </span></span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(survey_data_dropna)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check number of rows now  </span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(survey_data_dropna)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 437</code></pre>
 </div>
@@ -1806,16 +1766,16 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <p>Therefore, dropping NAs is only recommended when essential for your analysis. Here, as we have a larger sample size, it is okay to continue with this smaller dataset.</p>
 <p>Now that we have dealt with NAs, let’s continue with other data cleaning steps.</p>
 </section>
-<section id="fix-typos-and-recode-variables" class="level4">
-<h4 class="anchored" data-anchor-id="fix-typos-and-recode-variables">Fix Typos and Recode Variables</h4>
+<section id="fix-typos-and-recode-variables" class="level3">
+<h3 class="anchored" data-anchor-id="fix-typos-and-recode-variables">Fix Typos and Recode Variables</h3>
 <p>Now that we have organized our columns and dealt with NAs, it is time to start looking at the actual values of variables to see if we will be easily able to analyze them, or if they need cleaning too. A quick inspection of the dataset shows us that some variables like province and field of study need some work to be put into a stage that is ready for analysis. When we want to substitute some values of a variable for other values, we call that recoding. This can be done both to update an existing variable, or to create a new variable. Let’s look at both options.</p>
 <p>The <code>province</code> variable was entered as a free entry text, and there are a lot of typos that need to be corrected. A good way to see all possible entries is to use the function <code>distinct()</code>, which we have already seen.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check all entries for the province variable  </span></span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>survey_data_dropna <span class="sc">|&gt;</span>  </span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(province) <span class="sc">|&gt;</span>  </span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(province) <span class="sc">|&gt;</span>  </span>
-<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check all entries for the province variable  </span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>survey_data_dropna <span class="sc">|&gt;</span>  </span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(province) <span class="sc">|&gt;</span>  </span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(province) <span class="sc">|&gt;</span>  </span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 18 × 1
    province        
@@ -1867,19 +1827,19 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <p>Look at the results. Can you spot the typos that need to be fixed?</p>
 <p>Now you can use these values to fix the variable. In this case, we want to update the variable, and not create a new one. For that, we can use the <code>replace_values()</code> function from the <code>dplyr</code> package. This function is useful when you want to replace values in a column with new values. We will use this inside the <code>mutate()</code> function because we will be modifying an existing column. This is how we would use it for the province variable:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fix values for the province variable  </span></span>
-<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>survey_data_notypos <span class="ot">&lt;-</span> survey_data_dropna <span class="sc">|&gt;</span>  </span>
-<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(   </span>
-<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">province =</span> province <span class="sc">|&gt;</span></span>
-<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">replace_values</span>(  </span>
-<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">c</span>(<span class="st">"AB"</span>, <span class="st">"Alta"</span>) <span class="sc">~</span> <span class="st">"Alberta"</span>,  </span>
-<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">c</span>(<span class="st">"B.C."</span>, <span class="st">"BC"</span>, <span class="st">"british columbia"</span>) <span class="sc">~</span> <span class="st">"British Columbia"</span>,  </span>
-<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"MB"</span> <span class="sc">~</span> <span class="st">"Manitoba"</span>,  </span>
-<span id="cb67-9"><a href="#cb67-9" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"NS"</span> <span class="sc">~</span> <span class="st">"Nova Scotia"</span>,  </span>
-<span id="cb67-10"><a href="#cb67-10" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">c</span>(<span class="st">"ON"</span>, <span class="st">"ontario"</span>) <span class="sc">~</span> <span class="st">"Ontario"</span>,  </span>
-<span id="cb67-11"><a href="#cb67-11" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">c</span>(<span class="st">"QC"</span>, <span class="st">"Québec"</span>) <span class="sc">~</span> <span class="st">"Quebec"</span>  </span>
-<span id="cb67-12"><a href="#cb67-12" aria-hidden="true" tabindex="-1"></a>    )  </span>
-<span id="cb67-13"><a href="#cb67-13" aria-hidden="true" tabindex="-1"></a>  )  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fix values for the province variable  </span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>survey_data_notypos <span class="ot">&lt;-</span> survey_data_dropna <span class="sc">|&gt;</span>  </span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(   </span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">province =</span> province <span class="sc">|&gt;</span></span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">replace_values</span>(</span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="st">"AB"</span>, <span class="st">"Alta"</span>) <span class="sc">~</span> <span class="st">"Alberta"</span>,  </span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="st">"B.C."</span>, <span class="st">"BC"</span>, <span class="st">"british columbia"</span>) <span class="sc">~</span> <span class="st">"British Columbia"</span>,</span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"MB"</span> <span class="sc">~</span> <span class="st">"Manitoba"</span>,</span>
+<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"NS"</span> <span class="sc">~</span> <span class="st">"Nova Scotia"</span>,</span>
+<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="st">"ON"</span>, <span class="st">"ontario"</span>) <span class="sc">~</span> <span class="st">"Ontario"</span>,</span>
+<span id="cb65-11"><a href="#cb65-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="st">"QC"</span>, <span class="st">"Québec"</span>) <span class="sc">~</span> <span class="st">"Quebec"</span>  </span>
+<span id="cb65-12"><a href="#cb65-12" aria-hidden="true" tabindex="-1"></a>    )  </span>
+<span id="cb65-13"><a href="#cb65-13" aria-hidden="true" tabindex="-1"></a>  )  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1892,7 +1852,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>We start with a similar syntax to the other functions in the <code>tidyverse</code> package: you start with tour current dataset survey_data_dropna, and you pipe it into the <code>mutate</code> function<br>
+<li>We start with a similar syntax to the other functions in the <code>tidyverse</code> package: you start with tour current dataset <code>survey_data_dropna</code>, and you pipe it into the <code>mutate</code> function<br>
 </li>
 <li>Inside the mutate function, you tell R that you want to update the <code>province</code>variable by indicating <code>province  =</code><br>
 </li>
@@ -1908,11 +1868,11 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 <p>Now we can see if that worked:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check if it worked  </span></span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>survey_data_notypos <span class="sc">|&gt;</span>  </span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(province) <span class="sc">|&gt;</span>  </span>
-<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(province) <span class="sc">|&gt;</span>  </span>
-<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check if it worked  </span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>survey_data_notypos <span class="sc">|&gt;</span>  </span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(province) <span class="sc">|&gt;</span>  </span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(province) <span class="sc">|&gt;</span>  </span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 7 × 1
   province        
@@ -1941,7 +1901,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1950,14 +1910,14 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check all entries for the field\_study variable  </span></span>
-<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>survey_data_notypos <span class="sc">|&gt;</span>  </span>
-<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(field_study) <span class="sc">|&gt;</span>  </span>
-<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(field_study) <span class="sc">|&gt;</span>  </span>
-<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check all entries for the field\_study variable  </span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>survey_data_notypos <span class="sc">|&gt;</span>  </span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(field_study) <span class="sc">|&gt;</span>  </span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(field_study) <span class="sc">|&gt;</span>  </span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 22 × 1
    field_study     
@@ -1985,24 +1945,24 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 21 stats           
 22 &lt;NA&gt;            </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fix values for the field\_study variable  </span></span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>survey_data_notypos <span class="ot">&lt;-</span> survey_data_notypos <span class="sc">|&gt;</span>  </span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">field_study =</span> <span class="fu">replace_values</span>(field_study,  </span>
-<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">c</span>(<span class="st">"Biolgy"</span>, <span class="st">"biology"</span>) <span class="sc">~</span> <span class="st">"Biology"</span>,  </span>
-<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">c</span>(<span class="st">"CompSci"</span>, <span class="st">"comp sci"</span>) <span class="sc">~</span> <span class="st">"Computer Science"</span>,  </span>
-<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"chem"</span> <span class="sc">~</span> <span class="st">"Chemistry"</span>,  </span>
-<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"econ"</span> <span class="sc">~</span> <span class="st">"Economics"</span>,  </span>
-<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">c</span>(<span class="st">"engineering"</span>, <span class="st">"enginering"</span>) <span class="sc">~</span> <span class="st">"Engineering"</span>,  </span>
-<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">c</span>(<span class="st">"psychology"</span>, <span class="st">"psycology"</span>) <span class="sc">~</span><span class="st">"Psychology"</span>,  </span>
-<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"stats"</span> <span class="sc">~</span> <span class="st">"Statistics"</span>  </span>
-<span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a>                                      )  </span>
-<span id="cb72-12"><a href="#cb72-12" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb72-13"><a href="#cb72-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-14"><a href="#cb72-14" aria-hidden="true" tabindex="-1"></a><span class="co"># check if it worked  </span></span>
-<span id="cb72-15"><a href="#cb72-15" aria-hidden="true" tabindex="-1"></a>survey_data_notypos <span class="sc">|&gt;</span>  </span>
-<span id="cb72-16"><a href="#cb72-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(field_study) <span class="sc">|&gt;</span>  </span>
-<span id="cb72-17"><a href="#cb72-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(field_study) <span class="sc">|&gt;</span>  </span>
-<span id="cb72-18"><a href="#cb72-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fix values for the field\_study variable  </span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>survey_data_notypos <span class="ot">&lt;-</span> survey_data_notypos <span class="sc">|&gt;</span>  </span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">field_study =</span> <span class="fu">replace_values</span>(field_study,  </span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">c</span>(<span class="st">"Biolgy"</span>, <span class="st">"biology"</span>) <span class="sc">~</span> <span class="st">"Biology"</span>,  </span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">c</span>(<span class="st">"CompSci"</span>, <span class="st">"comp sci"</span>) <span class="sc">~</span> <span class="st">"Computer Science"</span>,  </span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"chem"</span> <span class="sc">~</span> <span class="st">"Chemistry"</span>,  </span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"econ"</span> <span class="sc">~</span> <span class="st">"Economics"</span>,  </span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">c</span>(<span class="st">"engineering"</span>, <span class="st">"enginering"</span>) <span class="sc">~</span> <span class="st">"Engineering"</span>,  </span>
+<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">c</span>(<span class="st">"psychology"</span>, <span class="st">"psycology"</span>) <span class="sc">~</span><span class="st">"Psychology"</span>,  </span>
+<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"stats"</span> <span class="sc">~</span> <span class="st">"Statistics"</span>  </span>
+<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a>                                      )  </span>
+<span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb70-13"><a href="#cb70-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-14"><a href="#cb70-14" aria-hidden="true" tabindex="-1"></a><span class="co"># check if it worked  </span></span>
+<span id="cb70-15"><a href="#cb70-15" aria-hidden="true" tabindex="-1"></a>survey_data_notypos <span class="sc">|&gt;</span>  </span>
+<span id="cb70-16"><a href="#cb70-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(field_study) <span class="sc">|&gt;</span>  </span>
+<span id="cb70-17"><a href="#cb70-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(field_study) <span class="sc">|&gt;</span>  </span>
+<span id="cb70-18"><a href="#cb70-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 11 × 1
    field_study     
@@ -2027,13 +1987,13 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <p>Sometimes you might also want to create a new variable based on values from other variables. For example, it might be useful to group participants according to certain ranges of social media usage, instead of looking at the exact number of hours used per day.</p>
 <p>For that, we can use the <code>case_when()</code> function inside <code>mutate()</code> to create a new categorical variable that bins participants into four categories of social media usage. The <code>case_when</code> function works well for when you want to create a whole new variable using values from an existing variable (this is different from replacing an existing variable, as we did above for the <code>province</code> and <code>field_study</code> variables, when we were interested in updating an existent column, rather than creating a new one). To create this new variable, <code>case_when</code> looks for statements of conditions, and creates the new values when the condition is <code>TRUE</code>. Let’s see how this works:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create categorical variable for hours\_total  </span></span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>survey_data_bins <span class="ot">&lt;-</span> survey_data_notypos  <span class="sc">|&gt;</span>   </span>
-<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bin_hours_total =</span> <span class="fu">case_when</span>(  </span>
-<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>    hours_total <span class="sc">&lt;=</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">'Less than or equal to 2 hours'</span>,  </span>
-<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>    hours_total <span class="sc">&lt;=</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">'2-4 hours'</span>,  </span>
-<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>    hours_total <span class="sc">&lt;=</span> <span class="dv">6</span> <span class="sc">~</span> <span class="st">'4-6 hours'</span>,  </span>
-<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>    hours_total <span class="sc">&gt;</span> <span class="dv">6</span> <span class="sc">~</span> <span class="st">'More than 6 hours'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create categorical variable for hours\_total  </span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>survey_data_bins <span class="ot">&lt;-</span> survey_data_notypos  <span class="sc">|&gt;</span>   </span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bin_hours_total =</span> <span class="fu">case_when</span>(  </span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>    hours_total <span class="sc">&lt;=</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Less than or equal to 2 hours"</span>,  </span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>    hours_total <span class="sc">&lt;=</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">"2-4 hours"</span>,  </span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>    hours_total <span class="sc">&lt;=</span> <span class="dv">6</span> <span class="sc">~</span> <span class="st">"4-6 hours"</span>,  </span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>    hours_total <span class="sc">&gt;</span> <span class="dv">6</span> <span class="sc">~</span> <span class="st">"More than 6 hours"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -2058,12 +2018,12 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </ul>
 </div>
 </div>
-<p>If you want to check how that worked, you can see how the bin_hours_total variable maps to the hours_total variable using this code:</p>
+<p>If you want to check how that worked, you can see how the <code>bin_hours_total</code> variable maps to the <code>hours_total</code> variable using this code:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check if it worked  </span></span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>survey_data_bins  <span class="sc">|&gt;</span>   </span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(hours_total, bin_hours_total)  <span class="sc">|&gt;</span>   </span>
-<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(hours_total)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check if it worked  </span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>survey_data_bins  <span class="sc">|&gt;</span>   </span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(hours_total, bin_hours_total)  <span class="sc">|&gt;</span>   </span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(hours_total)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 11 × 2
    hours_total bin_hours_total              
@@ -2082,21 +2042,21 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 </div>
 </section>
-<section id="separate-values" class="level4">
-<h4 class="anchored" data-anchor-id="separate-values">Separate Values</h4>
-<p>Before we go into our final cleaning step for this lesson (but there is more to come in the next lesson), let’s talk about how to separate values from a variable. In certain cases, you might have a variable that actually contains two variables. For example, the date_birth variable can actually be understood as containing information about the dat, month, and year of birth. To separate the values of this column into three columns, we can use the function <code>separate_wider_delim()</code> of the <code>tidyr</code> package, which specializes in dealing with columns like this.</p>
-<p>The <code>separate_wider_delim()</code> function will separate a column into multiple columns, therefore making the dataset wider, hence its name. It also uses a delimiter to separate the column, and that’s why it has delim on its name (we all love an informative function name, right?). The function has three main arguments: the column(s) you want to separate, the delimiter that should be used to separate the values, and the names for the new columns. In the case of the date_birth column, the delimiter is the character <code>/</code>.</p>
+<section id="separate-values" class="level3">
+<h3 class="anchored" data-anchor-id="separate-values">Separate Values</h3>
+<p>In our final cleaning step for this lesson (but there is more to come in the next lesson), we’ll talk about how to separate values from a variable. In certain cases, you might have a variable that actually contains two variables. For example, the <code>date_birth</code> variable can actually be understood as containing information about the date, month, and year of birth. To separate the values of this column into three columns, we can use the function <code>separate_wider_delim()</code> of the <code>tidyr</code> package, which specializes in dealing with columns like this.</p>
+<p>The <code>separate_wider_delim()</code> function will separate a column into multiple columns, therefore making the dataset wider, hence its name. It also uses a delimiter to separate the column, and that’s why it has delim on its name (we all love an informative function name, right?). The function has three main arguments: the column(s) you want to separate, the delimiter that should be used to separate the values, and the names for the new columns. In the case of the <code>date_birth</code> column, the delimiter is the character <code>/</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># separate 'date of birth' into 'day', 'month and 'year' columns, using the '/ as the separator  </span></span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>survey_data_sep <span class="ot">&lt;-</span> survey_data_bins  <span class="sc">|&gt;</span>   </span>
-<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(<span class="at">cols =</span> date_birth,  </span>
-<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">delim =</span> <span class="st">"/"</span>,  </span>
-<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"day"</span>, <span class="st">"month"</span>, <span class="st">"year"</span>))  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># separate 'date of birth' into 'day', 'month and 'year' columns, using the '/ as the separator  </span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>survey_data_sep <span class="ot">&lt;-</span> survey_data_bins  <span class="sc">|&gt;</span>   </span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(<span class="at">cols =</span> date_birth,  </span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">delim =</span> <span class="st">"/"</span>,  </span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"day"</span>, <span class="st">"month"</span>, <span class="st">"year"</span>))  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Let’s see if it worked:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the result  </span></span>
-<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>survey_data_sep  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the result  </span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>survey_data_sep  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 437 × 24
       id gender day   month year    age province         year_study field_study 
@@ -2121,14 +2081,14 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 </div>
 <p>Great, seems like we managed to separate the variable into three!</p>
-<p>We can also unite the columns together using the <code>unite()</code> function, which does the opposite as <code>separate_wider_delim()</code>. This function takes in the name of the new column you want to create, followed by the current columns to be united, followed by the separator to be added between column values. For example, to recreate the date_birth variable, you can use this code:</p>
+<p>We can also unite the columns together using the <code>unite()</code> function, which does the opposite as <code>separate_wider_delim()</code>. This function takes in the name of the new column you want to create, followed by the current columns to be united, followed by the separator to be added between column values. For example, to recreate the <code>date_birth</code> variable, you can use this code:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now unite them  </span></span>
-<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>survey_data_unit <span class="ot">&lt;-</span> survey_data_sep  <span class="sc">|&gt;</span>   </span>
-<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unite</span>(date_birth, day, month, year, <span class="at">sep =</span> <span class="st">"/"</span>)</span>
-<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a><span class="co"># check the result  </span></span>
-<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>survey_data_unit  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now unite them  </span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>survey_data_unit <span class="ot">&lt;-</span> survey_data_sep  <span class="sc">|&gt;</span>   </span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unite</span>(date_birth, day, month, year, <span class="at">sep =</span> <span class="st">"/"</span>)</span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a><span class="co"># check the result  </span></span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a>survey_data_unit  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 437 × 22
       id gender date_birth   age province  year_study field_study hours_facebook
@@ -2153,10 +2113,9 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 <p>Although this is a simple example, there are multiple cases of weirdly structured data where the <code>separate_wider_delim()</code> and <code>unite()</code> functions will come in handy.</p>
 </section>
-</section>
 <section id="save-your-script" class="level3">
 <h3 class="anchored" data-anchor-id="save-your-script">Save Your Script</h3>
-<p>Wow, that was a lot of data cleaning in one day! We are going to stop for now, but we will continue working on this script in Day 5 - Lesson 1 (oh, you thought you were done with data cleaning?), so there is no need to save a final cleaned dataset just yet, but you should update the documentation where you can. However, you will want to document and save everything that you did.</p>
+<p>Wow, that was a lot of data cleaning in one day! We are going to stop for now, but we will continue working on this script in Day 5 - Lesson 1, so there is no need to save a final cleaned dataset just yet. However, you will want to document and save everything that you did.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2631,10 +2590,10 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Exclusive of images, all content is licensed CC BY-NC 4.0<br><a href="https://creativecommons.org/licenses/by-nc/4.0/deed.en">Attribution-NonCommercial 4.0 International</a><br><img src="../../images/institutions/CC-License.png" class="img-fluid"></p>
+<p>Exclusive of images, all content is licensed CC BY-NC 4.0<br><a href="https://creativecommons.org/licenses/by-nc/4.0/deed.en">Attribution-NonCommercial 4.0 International</a><br><img src="../..\images/institutions/CC-License.png" class="img-fluid"></p>
 </div>   
     <div class="nav-footer-center">
-<p><img src="../../images/institutions/all_logos.png" class="img-fluid"></p>
+<p><img src="../..\images/institutions/all_logos.png" class="img-fluid"></p>
 </div>
     <div class="nav-footer-right">
 <p>Build with <a href="https://quarto.org/">Quarto</a> &amp; <a href="https://posit.co/">RStudio from Posit</a>.</p>
