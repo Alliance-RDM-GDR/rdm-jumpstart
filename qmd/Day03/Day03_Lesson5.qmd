@@ -1,0 +1,29 @@
+---
+title: "Lesson 5: Update README and DMP"
+---
+
+## Activity - Update README and DMP
+
+**README**
+
+Let’s revisit our README and see what needs to be updated. In the previous session, we did a few things that should be documented:
+
+* Created a directory structure with a file naming convention.  
+* Downloaded a data file.  
+* Created a new R script.  
+* Installed the Tidyverse package.
+
+**DMP**
+
+Now go into the DMP Assistant and see if there is anything you want to add for the sections that you started on day 1. Also, consider what you could add for these sections:
+
+* Documentation and Metadata  
+  * What documentation will be needed for the data to be read and interpreted correctly in the future?  
+  * How will you make sure that documentation is created or captured consistently throughout your project?  
+  * If you are using a metadata standard and/or tools to document and describe your data, please list here.  
+* Responsibilities and Resources  
+  * Identify who will be responsible for managing this project's data during and after the project and the major data management tasks for which they will be responsible.  
+  * How will responsibilities for managing data activities be handled if substantive changes happen in the personnel overseeing the project's data, including a change of Principal Investigator?  
+  * What resources will you require to implement your data management plan? What do you estimate the overall cost for data management to be?
+
+

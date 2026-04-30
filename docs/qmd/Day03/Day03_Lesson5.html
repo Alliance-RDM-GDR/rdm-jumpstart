@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lesson 3: Reproducibility in Research – RDM Jumpstart</title>
+<title>Lesson 5: Update README and DMP – RDM Jumpstart</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -418,21 +418,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#lecture---reproducibility-in-research" id="toc-lecture---reproducibility-in-research" class="nav-link" data-scroll-target="#lecture---reproducibility-in-research">Lecture - Reproducibility in Research</a>
-  <ul class="collapse">
-  <li><a href="#lecture" id="toc-lecture" class="nav-link" data-scroll-target="#lecture">Lecture</a></li>
-  <li><a href="#what-is-reproducibility" id="toc-what-is-reproducibility" class="nav-link" data-scroll-target="#what-is-reproducibility">What is Reproducibility?</a></li>
-  <li><a href="#the-reproducibility-crisis" id="toc-the-reproducibility-crisis" class="nav-link" data-scroll-target="#the-reproducibility-crisis">The Reproducibility Crisis</a></li>
-  <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices">Best Practices</a></li>
-  <li><a href="#working-with-microsoft-excel" id="toc-working-with-microsoft-excel" class="nav-link" data-scroll-target="#working-with-microsoft-excel">Working with Microsoft Excel</a></li>
-  <li><a href="#whats-in-a-spreadsheet" id="toc-whats-in-a-spreadsheet" class="nav-link" data-scroll-target="#whats-in-a-spreadsheet">What’s in a Spreadsheet</a></li>
-  <li><a href="#converting-excel-files-to-other-formats" id="toc-converting-excel-files-to-other-formats" class="nav-link" data-scroll-target="#converting-excel-files-to-other-formats">Converting Excel Files to Other Formats</a></li>
-  <li><a href="#scripting" id="toc-scripting" class="nav-link" data-scroll-target="#scripting">Scripting</a></li>
-  <li><a href="#coding-in-r" id="toc-coding-in-r" class="nav-link" data-scroll-target="#coding-in-r">Coding in R</a></li>
-  <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio">RStudio</a></li>
-  <li><a href="#choosing-between-r-and-python" id="toc-choosing-between-r-and-python" class="nav-link" data-scroll-target="#choosing-between-r-and-python">Choosing Between R and Python</a></li>
-  </ul></li>
+  <li><a href="#activity---update-readme-and-dmp" id="toc-activity---update-readme-and-dmp" class="nav-link active" data-scroll-target="#activity---update-readme-and-dmp">Activity - Update README and DMP</a></li>
   </ul>
 </nav>
 </nav>
@@ -446,7 +432,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lesson 3: Reproducibility in Research</h1>
+<h1 class="title">Lesson 5: Update README and DMP</h1>
 </div>
 
 
@@ -463,227 +449,42 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </header>
 
 
-<section id="learning-objectives" class="level2">
-<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
-<p>By the end of this lesson, you will be able to:</p>
+<section id="activity---update-readme-and-dmp" class="level2">
+<h2 class="anchored" data-anchor-id="activity---update-readme-and-dmp">Activity - Update README and DMP</h2>
+<p><strong>README</strong></p>
+<p>Let’s revisit our README and see what needs to be updated. In the previous session, we did a few things that should be documented:</p>
 <ul>
-<li>Identify issues with reproducibility in research, and best practices to make research reproducible.<br>
+<li>Created a directory structure with a file naming convention.<br>
 </li>
-<li>Discuss pros and cons of using Excel for spreadsheet data.<br>
+<li>Downloaded a data file.<br>
 </li>
-<li>Explain the difference between Excel files (.xlsx) and plain-test .csv files, and their role in reproducibility.<br>
+<li>Created a new R script.<br>
 </li>
-<li>Define scripting and the concept of literate programming.<br>
-</li>
-<li>Connect the data science workflow and the use of R and RStudio with the research data lifecycle.</li>
+<li>Installed the Tidyverse package.</li>
 </ul>
-</section>
-<section id="lecture---reproducibility-in-research" class="level2">
-<h2 class="anchored" data-anchor-id="lecture---reproducibility-in-research">Lecture - Reproducibility in Research</h2>
-<section id="lecture" class="level3">
-<h3 class="anchored" data-anchor-id="lecture">Lecture</h3>
+<p><strong>DMP</strong></p>
+<p>Now go into the DMP Assistant and see if there is anything you want to add for the sections that you started on day 1. Also, consider what you could add for these sections:</p>
 <ul>
-<li><a href="files/day2_L3_Reproducibility.pptx">Download the PowerPoint</a></li>
-</ul>
-<embed src="files/day2_L3_Reproducibility.pdf" type="application/pdf" width="100%" height="600px">
-</section>
-<section id="what-is-reproducibility" class="level3">
-<h3 class="anchored" data-anchor-id="what-is-reproducibility">What is Reproducibility?</h3>
-<p>As we have learned, research data management supports the responsible conduct of research. Reproducibility is an important aspect of that responsibility. Reproducible research practices lead to research outputs that are verifiable, extendable, and trustworthy.</p>
-<p>Research is reproducible when the same data + the same methods = the same results. Reproducibility is related to replicability, though replicability occurs when <strong>new data</strong> + the same methods = results that point in the same direction.</p>
-<p><img src="images/day-2-code-analysis-data.png" class="img-fluid"> <a href="https://ar5iv.labs.arxiv.org/html/2003.12206">Source</a></p>
-<p>Reproducibility in research can take different forms, including empirical/methodological, statistical, and computational. This section is focused on computational reproducibility.</p>
-<p>For a project to be computationally reproducible, information about all assets used to test hypotheses and generate results must be available. These include (but are not limited to) the following:</p>
+<li>Documentation and Metadata
 <ul>
-<li>input data<br>
+<li>What documentation will be needed for the data to be read and interpreted correctly in the future?<br>
 </li>
-<li>source code<br>
+<li>How will you make sure that documentation is created or captured consistently throughout your project?<br>
 </li>
-<li>software<br>
+<li>If you are using a metadata standard and/or tools to document and describe your data, please list here.<br>
 </li>
-<li>computing environment and/or hardware</li>
-</ul>
-</section>
-<section id="the-reproducibility-crisis" class="level3">
-<h3 class="anchored" data-anchor-id="the-reproducibility-crisis">The Reproducibility Crisis</h3>
-<p>‘Crisis’ is a strong word, but it is easy to find examples of fabricated research results. Poorly documented research, whether accidental or purposeful, can create measurable harms to individuals and communities.</p>
-<p>Most researchers are not formally trained as programmers, but they increasingly need to deal with issues such as the growing size and scope of datasets, the availability of data analysis methods and algorithms, and the proliferation of new research tools and software.</p>
-<p>For these reasons, the barriers to fully reproducible research must be identified and addressed. These barriers include technical challenges, external dependencies, and human factors.</p>
-<p><strong>Technical challenges:</strong><br>
-Variations in available computing environments and differing computational complexity across projects / disciplines create hindrances to reproducibility. Technical challenges are not insurmountable, but they highlight the importance of detailed documentation.</p>
-<p><strong>External dependencies:</strong><br>
-Infrastructure such as external APIs and algorithms are often outside of the control of the research team. Many external services are not open-source, which creates a ‘black box’ of uncertainty when it comes to data processing methods and code documentation.</p>
-<p><strong>‘Operator error’ and reluctance to share:</strong><br>
-Human factors, such as inexperience with coding or a reluctance to share data, pose significant barriers to reproducible research. Documenting code takes time and skill, and some researchers are unwilling to share due to a fear of criticism or concern about their findings being ‘scooped’ or taken by others.</p>
-<section id="nuances-of-reproducibility" class="level4">
-<h4 class="anchored" data-anchor-id="nuances-of-reproducibility">Nuances of Reproducibility</h4>
-<p><strong>Reproducibility is a spectrum</strong>. The more assets and information provided, the easier it is to reproduce the study.</p>
+</ul></li>
+<li>Responsibilities and Resources
 <ul>
-<li>High / full reproducibility: studies that provide the code, data, and full computational environment necessary to reproduce the results.<br>
+<li>Identify who will be responsible for managing this project’s data during and after the project and the major data management tasks for which they will be responsible.<br>
 </li>
-<li>Medium / partial reproducibility: studies that provide the code and data, but not the computational environment in which the code can be run.<br>
+<li>How will responsibilities for managing data activities be handled if substantive changes happen in the personnel overseeing the project’s data, including a change of Principal Investigator?<br>
 </li>
-<li>Low / shallow reproducibility: studies that provide algorithms and results.</li>
+<li>What resources will you require to implement your data management plan? What do you estimate the overall cost for data management to be?</li>
+</ul></li>
 </ul>
-<p><strong>Sharing ≠ reproducible</strong>. Simply sharing data and code does not make a project reproducible; rather, reproducibility requires detailed project documentation. Could another researcher, without ever speaking to you, open, understand, run, or reuse your data and code?</p>
-<p><strong>Not all data are computationally reproducible</strong>. Research methods are discipline-specific, and what works in one domain may not be possible in another. Qualitative, humanities, or arts-based research are not exempt from good documentation practices just because they are less computationally reproducible than other projects.</p>
-</section>
-</section>
-<section id="best-practices" class="level3">
-<h3 class="anchored" data-anchor-id="best-practices">Best Practices</h3>
-<p>Good research data management is not about perfection. Small incremental changes can have a powerful impact on the reusability and reproducibility of a research project. Perfection is unattainable, but good and consistent data management practices are always within reach. Best practices in reproducible research include being proactive with data management planning, providing robust (rather than just sufficient) documentation, and paying careful attention to the computational environment and hardware.</p>
-<p><strong>Be proactive</strong>. Planning for reproducibility should happen at the start of a project, not the end. Make use of resources such as data management plan templates and reproducibility checklists. This will not only help with the project’s reusability, it will make the current research easier to implement and understand.<br>
-<strong>Document, document document</strong>. There can never be too much documentation. If the concept of writing about the project details seems daunting, think of it as a communication with your future self. If you put the project away for six months, how would you describe to yourself what you were working on? Practices such as literate programming and version control can help to streamline and automate documentation.</p>
-<p><strong>Use discrete computational environments</strong>. Technologies such as software containers and virtual machines create predictable and controlled environments for computational research. As with all practices in RDM, using discrete computational environments is not only helpful for future research, but for the implementation of the current research project.</p>
-<p><strong>Be</strong> <strong>FAIR</strong>. Sharing your data, code, and documentation in a recognized repository helps with reproducibility by making your research <em>findable</em>. Ensuring all documentation and data are in open, rather than proprietary, file formats allows your research to be <em>accessible</em> and <em>interoperable</em>. And, providing robust documentation supports research <em>reusability</em>.</p>
-</section>
-<section id="working-with-microsoft-excel" class="level3">
-<h3 class="anchored" data-anchor-id="working-with-microsoft-excel">Working with Microsoft Excel</h3>
-<section id="what-it-does-well" class="level4">
-<h4 class="anchored" data-anchor-id="what-it-does-well">What it Does Well</h4>
-<p>Microsoft Excel is widely known and used, and it often elicits strong reactions from people who either strongly like or dislike it. But Excel is popular for a reason. It is easy to use; it can quickly calculate things like sum, mean, and basic statistics; there are many options in the graphical user interface for automation and formatting; it can create colourful graphs and charts; and there is a lot of help available for writing formulas and using advanced features.</p>
-<p>The popularity of Excel can lead users to believe that it is the only option for wrangling data, but there are other options depending on the use-case. Programs like OpenRefine, SPSS, Sass, and Stata, and coding languages such as R and Python all have robust functions and features for tasks like data cleaning and advanced statistical analysis and graphing.</p>
-</section>
-<section id="what-it-doesnt-do-well" class="level4">
-<h4 class="anchored" data-anchor-id="what-it-doesnt-do-well">What it Doesn’t Do Well</h4>
-<p>Excel is an easy-to-use program for novice users, but it is full of hidden features and idiosyncrasies. The biggest issue with any technology is ‘operator error’, and this is especially prevalent in Excel, where settings and preferences are hidden away in menus. Since Excel is a proprietary program, users can’t easily inspect or search for errors in their configuration settings.</p>
-<p>Dates in Excel need to be formatted correctly in multiple ways. The characters must appear in a predictable pattern, and the cell format needs to be set correctly.</p>
-<p>Long strings of numbers will always be truncated, and, depending on the settings, numbers with more than 16 characters may be rounded to zero.</p>
-<p>Excel does not handle big, or even medium datasets very well. Files become very hard to load or work with if they have over 800,000 rows of data.</p>
-<p>Since Excel is a graphical user interface, it provides multiple ways in which to achieve the same task. For example, formulas can be ‘hard-coded’ (referring to specific cells), or they can be relational (referring to named cells) depending on configuration and user knowledge. When formulas are hard-coded, if a change is made to the data or configuration, the formula may break, or worse, display incorrect information.</p>
-<p>And finally, one of the biggest issues with Excel is the lack of versioning support. The program makes direct changes to the source data whenever a file is saved. If the data are overwritten in the absence of a backup copy, a research project can be compromised, delayed, or worse.</p>
-</section>
-</section>
-<section id="whats-in-a-spreadsheet" class="level3">
-<h3 class="anchored" data-anchor-id="whats-in-a-spreadsheet">What’s in a Spreadsheet</h3>
-<p>An Excel spreadsheet saves as an <code>.xlsx</code> file, which is a proprietary Microsoft format. While it’s natural to think of an Excel file as a single file, it is actually a zipped archive containing multiple files, including:</p>
-<ul>
-<li>source data<br>
-</li>
-<li>formatting and style sheets<br>
-</li>
-<li>charts and graphs<br>
-</li>
-<li>pivot tables<br>
-</li>
-<li>external links<br>
-</li>
-<li>Metadata</li>
-</ul>
-<p>Excel can load and save non-proprietary file formats such as <code>.csv</code>, <code>.tsv</code>, <code>.txt</code>, and <code>.xml</code>. Comma separated values, or<code>.csv</code> files, structure data in a tabular format, which differentiates between columns using commas, with rows represented by every new line in the file. This is exactly how a spreadsheet is formatted, only without the extra configuration and style data attached. <code>.csv</code> files are text files; they are Human-Readable, they can be opened by text editors and other programs, and they can be interpreted by coding languages such as R or Python.</p>
-</section>
-<section id="converting-excel-files-to-other-formats" class="level3">
-<h3 class="anchored" data-anchor-id="converting-excel-files-to-other-formats">Converting Excel Files to Other Formats</h3>
-<p>Excel files such as <code>.xslx</code> can be converted to plain text formats, but there are important factors to be aware of. Aside from the textual and formatting issues that can occur when <code>.xlsx</code> is saved as <code>.csv</code>, it is important to know that <code>.csv</code> files only save one Excel worksheet at a time, rather than the multiple worksheets saved by an <code>.xlsx</code> file. Complex formulas or tables that rely on data from multiple worksheets cannot be saved into <code>.csv</code>, so it is important to understand the data sources and structure before files are converted. The table below shows some of the most common formatting issues that can occur during a file conversion.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>Original value/format</strong></td>
-<td><strong>What can happen</strong></td>
-<td><strong>Example of change</strong></td>
-<td><strong>Why it happens</strong></td>
-</tr>
-<tr class="even">
-<td>01234</td>
-<td>Leading zero lost</td>
-<td>1234</td>
-<td>Treated as a whole number</td>
-</tr>
-<tr class="odd">
-<td>Résumé</td>
-<td>Characters corrupted</td>
-<td>Rsum / RÃ©sumÃ©</td>
-<td>Encoding issues</td>
-</tr>
-<tr class="even">
-<td>31/12/2024</td>
-<td>Date misread or changed</td>
-<td>12/31/2024</td>
-<td>Different regional settings for dates</td>
-</tr>
-<tr class="odd">
-<td>=SUM(A1:A10)</td>
-<td>Formula lost</td>
-<td>55 (only value)</td>
-<td>Plain text only keeps values</td>
-</tr>
-<tr class="even">
-<td>==Hello==</td>
-<td>Formatting lost</td>
-<td>Hello</td>
-<td>Plain text doesn’t store formatting</td>
-</tr>
-<tr class="odd">
-<td>123456789012345</td>
-<td>Rounded or scientific notation</td>
-<td>1.23E+19 or rounded value</td>
-<td>Precision limits</td>
-</tr>
-</tbody>
-</table>
-<section id="example-genetic-data" class="level4">
-<h4 class="anchored" data-anchor-id="example-genetic-data">Example: Genetic Data</h4>
-<p>In a survey looking at over 11,000 papers with Excel gene lists published between 2014 and 2020, more than 30% contained at least one gene name error caused by Excel’s autoformatting. This was due to gene names being converted to standard dates, internal data numbers (5 digits), and floating point numbers.</p>
-<p><a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008984">Source</a></p>
-</section>
-</section>
-<section id="scripting" class="level3">
-<h3 class="anchored" data-anchor-id="scripting">Scripting</h3>
-<section id="what-is-scripting" class="level4">
-<h4 class="anchored" data-anchor-id="what-is-scripting">What is Scripting?</h4>
-<p>Lines of code, or ‘scripts’, are instructions that a coding language can perform. They are useful for automating common or repeated operations, such as renaming variables or column names, especially for projects that use medium to large sets of data. Scripts can be used for many purposes, but in this section, the focus is on scripting for datasets.<br>
-Scripts improve reproducibility because they are predictable. They perform the same operations, in the same order, every time.</p>
-</section>
-<section id="literate-programming" class="level4">
-<h4 class="anchored" data-anchor-id="literate-programming">Literate Programming</h4>
-<p>Code is a language that computers can understand, but it is not always easily read by humans. Literate programming is a method of providing a human-language, or narrative, explanation of how a script works in combination with the script itself, so that it can be accurately interpreted and reused. The researcher who first wrote about literate programming, <a href="https://cs.stanford.edu/~knuth/lp.html">Donald E. Knuth</a>, suggested that researchers “treat a program as a piece of literature, addressed to human beings rather than to a computer.”</p>
-<p>This is a helpful approach for all aspects of research data management. Documentation <strong>is</strong> academic writing, and requires just as much care as a journal article or conference presentation.</p>
-<p>“An article about computational science in a scientific publication is not the scholarship itself, it is merely advertising of the scholarship.” <a href="https://web.stanford.edu/dept/statistics/cgi-bin/donoho/wp-content/uploads/2018/08/wavelab.pdf">Buckheit and Donoho</a> (1995) paraphrasing Jon Claerbout.</p>
-</section>
-<section id="when-not-to-script" class="level4">
-<h4 class="anchored" data-anchor-id="when-not-to-script">When Not to Script</h4>
-<p>Coding, like any language, takes time and regular practice to learn. As a beginner, creating scripted solutions to simple research tasks may take much longer than using an easily accessible tool such as Excel. Good scripts take time, and they are not always necessary. Focus on the biggest, most repetitive tasks first. This will not only improve reproducibility, but it will save valuable time that can be used for tasks that are easily automated.</p>
-</section>
-<section id="when-to-script" class="level4">
-<h4 class="anchored" data-anchor-id="when-to-script">When to Script</h4>
-<p>Scripting can overcome the common issues with Excel that were described earlier. For example:</p>
-<ul>
-<li>In scripting there are no ‘manual’ changes; everything from the data to the configuration can be tracked and checked.<br>
-</li>
-<li>Scripts are saved as individual documents and provide a clear and ordered list of everything that was done.<br>
-</li>
-<li>A single script can be used for multiple files, and individual lines of code can be taken from one script and altered slightly to perform the same task on different datasets.<br>
-</li>
-<li>There is no graphical user interface to inadvertently obscure settings or hide data.<br>
-</li>
-<li>Scripting can load and work on a copy of the source data, so original data isn’t overwritten or corrupted.</li>
-</ul>
-<p>Scripting, especially when it is literate and well-documented, is a powerful way to increase the reusability of your data, both for yourself and others.</p>
-</section>
-</section>
-<section id="coding-in-r" class="level3">
-<h3 class="anchored" data-anchor-id="coding-in-r">Coding in R</h3>
-<p>R is an open-source programming language designed for data manipulation, statistical analysis, and visualization in research. It can be used on any operating system, it has comprehensive documentation, and it has an active user-support and training community. It is popular in academic settings because researchers from many disciplines can use it on data types that range from bioinformatics to demography.</p>
-<p>Because R is open-source, it is easily reproducible, as there are no hidden algorithms or proprietary file formats. Many R users are willing to share their code openly, which means that novice users don’t need to have perfect fluency in order to get started.</p>
-</section>
-<section id="rstudio" class="level3">
-<h3 class="anchored" data-anchor-id="rstudio">RStudio</h3>
-<p>R is a programming language and RStudio is an Integrated Development Environment (IDE). While this is not quite the same as a program like Excel, it does make R a lot more user friendly, especially when it comes to identifying inconsistencies or errors, which is known as debugging.</p>
-<p>To make the difference between R and RStudio clearer, consider this analogy:<br>
-You are writing a document in Microsoft Word. In this case, the plain human language that you are typing would be R, and Microsoft Word, which is the software that allows you to view, format, add visuals, and save your work, is RStudio.</p>
-</section>
-<section id="choosing-between-r-and-python" class="level3">
-<h3 class="anchored" data-anchor-id="choosing-between-r-and-python">Choosing Between R and Python</h3>
-<p>As described in this <a href="https://www.ibm.com/think/topics/python-vs-r">article from IBM</a>, choosing between R and Python (another popular open-source coding language) depends on the needs and goals of the data analysis and the research team. R is well known for its capacity for statistical analysis and data visualizations. Python is known as being easier to learn than R, but both languages are suitable for novice users. Because R is so widely used in data science, it will be the focus of the instruction for this content.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
