@@ -1,0 +1,2283 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Lesson 1 - Data Cleaning, part 2 – RDM Jumpstart</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/institutions/alliance_favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-a72143d83de2706571ae85829102a192.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-d782e41c20a4d414c472eab32ab8595a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-a72143d83de2706571ae85829102a192.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KSGZ4ESKQ3"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
+</script>
+
+
+</head>
+
+<body class="floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/institutions/Alliance_logo_Symbol.png" alt="Alliance Logo" class="navbar-logo light-content">
+    <img src="../../images/institutions/Alliance_logo_Symbol.png" alt="Alliance Logo" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">RDM Jumpstart</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-1" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Day 1</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-1">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Lesson1.html">
+ <span class="dropdown-text">Lesson 1: Introduction to Research Data Management</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Lesson2.html">
+ <span class="dropdown-text">Lesson 2: Introduction to the Research Project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Lesson3.html">
+ <span class="dropdown-text">Lesson 3: Data Management Plans</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day01/Day01_Lesson4.html">
+ <span class="dropdown-text">Lesson 4: Data Documentation</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-2" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Day 2</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-2">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Lesson1.html">
+ <span class="dropdown-text">Lesson 1: Documentation in Action</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Lesson2.html">
+ <span class="dropdown-text">Lesson 2: File Management</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Lesson3.html">
+ <span class="dropdown-text">Lesson 3: Reproducibility in Research</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day02/Day02_Lesson4.html">
+ <span class="dropdown-text">Lesson 4: Introduction to R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-3" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Day 3</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-3">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Lesson1.html">
+ <span class="dropdown-text">Lesson 1: Data Types and Structures in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Lesson2.html">
+ <span class="dropdown-text">Lesson 2: File Paths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Lesson3.html">
+ <span class="dropdown-text">Lesson 3: Creating a Project Directory</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Lesson4.html">
+ <span class="dropdown-text">Lesson 4: The Tidyverse and Reading Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day03/Day03_Lesson5.html">
+ <span class="dropdown-text">Lesson 5: Update README and DMP</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-4" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Day 4</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-4">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day04/Day04_Overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day04/Day04_Lesson1.html">
+ <span class="dropdown-text">Lesson 1: Data Cleaning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/Day04/Day04_Lesson2.html">
+ <span class="dropdown-text">Lesson 2: Documentation Update</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../qmd/Day01/00_TheProject.html"> 
+<span class="menu-text">The Project</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/extras/codeOfConduct.html">
+ <span class="dropdown-text">Code of Conduct</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/extras/setup.html">
+ <span class="dropdown-text">Setup</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/extras/contributors.html">
+ <span class="dropdown-text">Contributors</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/extras/template.html">
+ <span class="dropdown-text">Template</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#lecture---data-cleaning" id="toc-lecture---data-cleaning" class="nav-link" data-scroll-target="#lecture---data-cleaning">Lecture - Data Cleaning</a>
+  <ul class="collapse">
+  <li><a href="#lecture" id="toc-lecture" class="nav-link" data-scroll-target="#lecture">Lecture</a></li>
+  <li><a href="#tidy-data" id="toc-tidy-data" class="nav-link" data-scroll-target="#tidy-data">Tidy data</a></li>
+  </ul></li>
+  <li><a href="#tutorial---tidying-data" id="toc-tutorial---tidying-data" class="nav-link" data-scroll-target="#tutorial---tidying-data">Tutorial - Tidying Data</a>
+  <ul class="collapse">
+  <li><a href="#set-up" id="toc-set-up" class="nav-link" data-scroll-target="#set-up">Set Up</a></li>
+  <li><a href="#fix-variable-types" id="toc-fix-variable-types" class="nav-link" data-scroll-target="#fix-variable-types">Fix Variable Types</a></li>
+  <li><a href="#reshape-data" id="toc-reshape-data" class="nav-link" data-scroll-target="#reshape-data">Reshape Data</a></li>
+  <li><a href="#subset-data" id="toc-subset-data" class="nav-link" data-scroll-target="#subset-data">Subset Data</a></li>
+  <li><a href="#save-anonymized-dataset" id="toc-save-anonymized-dataset" class="nav-link" data-scroll-target="#save-anonymized-dataset">Save Anonymized Dataset</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lesson 1 - Data Cleaning, part 2</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this lesson, you’ll be able to:</p>
+<ul>
+<li>Describe what tidy data is.<br>
+</li>
+<li>Manipulate data into tidy formats.<br>
+</li>
+<li>Reshape data from wide to long format and vice-versa.<br>
+</li>
+<li>Use functions from the tidyverse to clean data of an example dataset.<br>
+</li>
+<li>Write reproducible code by applying concepts of literate programming.</li>
+</ul>
+</section>
+<section id="lecture---data-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="lecture---data-cleaning">Lecture - Data Cleaning</h2>
+<section id="lecture" class="level3">
+<h3 class="anchored" data-anchor-id="lecture">Lecture</h3>
+<ul>
+<li><a href="files/day5_L1_Tidy-data.pptx">Download the PowerPoint</a></li>
+</ul>
+<embed src="files/day5_L1_Tidy-data.pdf" type="application/pdf" width="100%" height="600px">
+</section>
+<section id="tidy-data" class="level3">
+<h3 class="anchored" data-anchor-id="tidy-data">Tidy data</h3>
+<p>Last session, we learned the <code>tidyverse</code> is a useful package for cleaning data. The <code>tidyverse</code> is also useful for formatting datasets to make them ‘tidy’. But what is tidy data?</p>
+<p>There are 3 things make a dataset tidy: - each variable has its own column. - each observation has its own row. - each value has its own cell.</p>
+<p>In practice, tidy data might look like this: in table format, each column represents a unique variable, each row a unique observation and each cell a unique value.</p>
+<p><img src="images/tidy-data.png" class="img-fluid"> But what are variables, observations and values? From the <a href="https://tidyr.tidyverse.org/articles/tidy-data.html#defining">Tidy data documentation</a>: “A dataset is a collection of values, usually either numbers (if quantitative) or strings (if qualitative). Values are organised in two ways. Every value belongs to a variable and an observation. A variable contains all values that measure the same underlying attribute (like height, temperature, duration) across units. An observation contains all values measured on the same unit (like a person, or a day, or a race) across attributes.”</p>
+<p>Let’s work through what this all means with an example.</p>
+<p>Say this is your dataset: you have a list of countries, and years where the number of cases of an illness were recorded.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong>country</strong></th>
+<th><strong>1999</strong></th>
+<th><strong>2000</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Afghanistan</td>
+<td>587</td>
+<td>497</td>
+</tr>
+<tr class="even">
+<td>Brazil</td>
+<td>93</td>
+<td>88</td>
+</tr>
+<tr class="odd">
+<td>China</td>
+<td>3391</td>
+<td>2034</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What are the variables and observations in this data? Is this dataset tidy?</p>
+</div>
+</div>
+<p>Here, the numbers of cases were recorded for each country and year, which then comprise the three variables in this dataset (country, year, cases). Each combination of country and year consists of one observation. Therefore, this dataset is not tidy, because the variable year is spread across multiple columns.</p>
+<p>How can we tidy this data up? Remember that for tidy data, each variable has its own column. Therefore, we would have to take the columns ‘1999’ and ‘2000’ and combine them into a new column, ‘year’ - which looks like this:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong>country</strong></th>
+<th><strong>year</strong></th>
+<th><strong>cases</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Afghanistan</td>
+<td>1999</td>
+<td>587</td>
+</tr>
+<tr class="even">
+<td>Afghanistan</td>
+<td>2000</td>
+<td>497</td>
+</tr>
+<tr class="odd">
+<td>Brazil</td>
+<td>1999</td>
+<td>93</td>
+</tr>
+<tr class="even">
+<td>Brazil</td>
+<td>2000</td>
+<td>88</td>
+</tr>
+<tr class="odd">
+<td>China</td>
+<td>1999</td>
+<td>3391</td>
+</tr>
+<tr class="even">
+<td>China</td>
+<td>2000</td>
+<td>2034</td>
+</tr>
+<tr class="odd">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+<p>You will notice that each column is its own variable - country, year, cases - and each row is its own observation - one row per combination of country and year. You will also notice that the names of countries appear in multiple rows, as do the years, as they have more than one observation each (each country has observations for multiple years, and each year has observations for multiple countries).</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let’s try again! Look at the dataset below. Is it in tidy format? If not, what would the tidy version look like?</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong>Student</strong></th>
+<th><strong>Math test</strong></th>
+<th><strong>English test</strong></th>
+<th><strong>Essay</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Beth</td>
+<td>D</td>
+<td>D</td>
+<td>C</td>
+</tr>
+<tr class="even">
+<td>Carl</td>
+<td>F</td>
+<td>C</td>
+<td>C</td>
+</tr>
+<tr class="odd">
+<td>Erin</td>
+<td>B</td>
+<td>C</td>
+<td>B</td>
+</tr>
+<tr class="even">
+<td>Joe</td>
+<td>A</td>
+<td>A</td>
+<td>B</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The dataset is not tidy. Here, the variable “assessment” is spread across multiple columns. The tidy version of this dataset would look like this, with one row per observation, that is, per combination of student and assessment.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Student</th>
+<th>Assessment</th>
+<th>Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Beth</td>
+<td>Math test</td>
+<td>D</td>
+</tr>
+<tr class="even">
+<td>Beth</td>
+<td>English test</td>
+<td>D</td>
+</tr>
+<tr class="odd">
+<td>Beth</td>
+<td>Essay</td>
+<td>C</td>
+</tr>
+<tr class="even">
+<td>Carl</td>
+<td>Math test</td>
+<td>F</td>
+</tr>
+<tr class="odd">
+<td>Carl</td>
+<td>English test</td>
+<td>C</td>
+</tr>
+<tr class="even">
+<td>Carl</td>
+<td>Essay</td>
+<td>C</td>
+</tr>
+<tr class="odd">
+<td>Erin</td>
+<td>Math test</td>
+<td>B</td>
+</tr>
+<tr class="even">
+<td>Erin</td>
+<td>English test</td>
+<td>C</td>
+</tr>
+<tr class="odd">
+<td>Erin</td>
+<td>Essay</td>
+<td>B</td>
+</tr>
+<tr class="even">
+<td>Joe</td>
+<td>Math test</td>
+<td>A</td>
+</tr>
+<tr class="odd">
+<td>Joe</td>
+<td>English test</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td>Joe</td>
+<td>Essay</td>
+<td>B</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Because this format has more rows than the original version, it is said to be in long format, while the previous version is said to be in wide format.</p>
+<p>Usually, the long format of a dataset is considered to be more tidy. However, each dataset and research question is different, and what is considered a variable might also be different depending on questions. For example, while for most situations “home phone” and “work phone” could be considered two different variables, in a fraud detection context, you might want to use a long version dataset with “phone type” and “phone number”, as having one phone number for multiple people could indicate fraud. Therefore, deciding what is the best tidy format for your project will depend on your dataset and questions. Typically, if you want to describe the relationship between things (e.g., is age related to usage of social media?), these two things are better considered as different variables in your dataset. On the other hand, if you want to compare things between groups (e.g., is usage of social media different between genders?), you want the group to be a variable, with categories of your group to appear in the different rows of the dataset.</p>
+<p>Great, but why bother to make your dataset tidy in the first place? There are two reasons you might want to transform your data into a tidy format. First it helps to keep data structure consistent. Second, it makes it easier to use lots of functions in R, especially in the <code>tidyverse</code> package, which you will see in future lessons.</p>
+<p>Now that we have gone over what tidy data is and why you might want to make your data tidy - let’s try it in R!</p>
+</section>
+</section>
+<section id="tutorial---tidying-data" class="level2">
+<h2 class="anchored" data-anchor-id="tutorial---tidying-data">Tutorial - Tidying Data</h2>
+<p>To keep this neat for yourself, and to promote transparent and reproducible research, it is best to clean your data in a single script that works from raw input to a final cleaned output. So, we are going to continue with the same script that we were working with before: survey_student_cleaning.R</p>
+<section id="set-up" class="level3">
+<h3 class="anchored" data-anchor-id="set-up">Set Up</h3>
+<p>Open the survey_student_cleaning.R script by first opening the R Project, then opening the script file. Run the script from beginning (set-up) to end (separate or unite values). We are now in the same place we ended off the previous data cleaning lesson.</p>
+</section>
+<section id="fix-variable-types" class="level3">
+<h3 class="anchored" data-anchor-id="fix-variable-types">Fix Variable Types</h3>
+<p>Before we start reshaping our data, we want to make sure all variables are assigned to their correct type in the dataset.</p>
+<p>In Day 3 - Lesson 1, we talked about the different data types in R, such as numeric, character, and factor. To explore and analyze data in R, you must make sure that R is reading your data as it should. That is, numeric variables are understood as numeric, and categorical variables are understood as factors. For categorical variables that are ordinal (that is, they have an order), it is particularly important to assign correct levels of the variable. We will go through these cases one by one here.</p>
+<p>To start, we can use the <code>str()</code> function to see all the data types of our dataset and identify the ones that need correcting. Remember that, in our current script, we stopped at the step where we created the object <code>survey_data_unit</code>, so that’s the object we are starting with today.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check data types</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(survey_data_unit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>spc_tbl_ [437 × 22] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ id               : num [1:437] 1 2 3 4 5 6 7 8 9 10 ...
+ $ gender           : chr [1:437] "Female" "Female" "Male" "Female" ...
+ $ date_birth       : chr [1:437] "9/16/2001" "4/16/2004" "2/14/2007" "7/20/2001" ...
+ $ age              : num [1:437] 24 21 19 24 NA 19 17 21 24 20 ...
+ $ province         : chr [1:437] "British Columbia" "Manitoba" "Manitoba" "British Columbia" ...
+ $ year_study       : num [1:437] 3 1 4 2 1 2 1 1 1 2 ...
+ $ field_study      : chr [1:437] "Statistics" "Computer Science" "Psychology" "Chemistry" ...
+ $ hours_facebook   : num [1:437] 1 1 1 1 1 1 1 1 1 1 ...
+ $ hours_instagram  : num [1:437] 1 2 2 1 1 2 0 2 2 2 ...
+ $ hours_snapchat   : num [1:437] 1 1 2 1 1 1 1 2 0 1 ...
+ $ hours_tiktok     : num [1:437] 1 1 2 1 1 2 1 3 1 1 ...
+ $ hours_xtwitter   : num [1:437] 0 0 0 0 0 0 0 0 0 0 ...
+ $ hours_other      : num [1:437] 0 0 0 0 0 0 0 0 0 0 ...
+ $ hours_total      : num [1:437] 4 5 7 4 4 6 3 8 4 5 ...
+ $ hours_sleep      : num [1:437] 8 7 5 8 8 6 7 6 8 7 ...
+ $ devices_used     : chr [1:437] "Smartphone, Laptop" "Smartphone, Laptop, Desktop computer" "Smartphone, Tablet" "Laptop" ...
+ $ feel_connected   : chr [1:437] "Neutral" "Neutral" "Neutral" "Neutral" ...
+ $ feel_stress      : chr [1:437] "Disagree" "Neutral" "Neutral" "Disagree" ...
+ $ feel_distracted  : chr [1:437] NA "Neutral" "Neutral" "Disagree" ...
+ $ feel_improvedmood: chr [1:437] "Agree" "Agree" "Neutral" "Agree" ...
+ $ reasons_use      : chr [1:437] "Staying in touch with friends / family, Academic or professional networking" "Staying in touch with friends / family, Staying informed about news/events, Self-expression / creativity" "Entertainment / passing time, Staying informed about news/events, Self-expression / creativity" "Staying in touch with friends / family, Academic or professional networking" ...
+ $ bin_hours_total  : chr [1:437] "2-4 hours" "4-6 hours" "More than 6 hours" "2-4 hours" ...
+ - attr(*, "spec")=
+  .. cols(
+  ..   id = col_double(),
+  ..   gender = col_character(),
+  ..   date_birth = col_character(),
+  ..   age = col_double(),
+  ..   province = col_character(),
+  ..   year_study = col_double(),
+  ..   field_study = col_character(),
+  ..   hours_facebook = col_double(),
+  ..   hours_instagram = col_double(),
+  ..   hours_snapchat = col_double(),
+  ..   hours_tiktok = col_double(),
+  ..   hours_xtwitter = col_double(),
+  ..   hours_other = col_double(),
+  ..   hours_total = col_double(),
+  ..   hours_sleep = col_double(),
+  ..   devices_used = col_character(),
+  ..   feel_connected = col_character(),
+  ..   feel_stress = col_character(),
+  ..   feel_distracted = col_character(),
+  ..   feel_improvedmood = col_character(),
+  ..   reasons_use = col_character(),
+  ..   bin_hours_total = col_character()
+  .. )
+ - attr(*, "problems")=&lt;externalptr&gt; </code></pre>
+</div>
+</div>
+<p>The output lists all variables, followed by either “num” or “int” for numeric variables (“int” is for integer values, while “num” is for continuous values), or “chr” for character variables. You can also see the first few values of each variable.</p>
+<section id="nominal-variables" class="level4">
+<h4 class="anchored" data-anchor-id="nominal-variables">Nominal Variables</h4>
+<p>Nominal variables are categorical variables without order, for example the gender, province, and field of study variables. Typically, these variables are written with letters, which means that R will read them as characters. To transform them to factor, we can use the <code>as.factor()</code> function inside the <code>mutate()</code> function.</p>
+<p>To transform it into a factor, we can use the <code>mutate()</code> function, but instead of creating a new column name, we will use the same column name. R will overwrite the original variable with the new variable transformed to factor type.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transform gender variable to factor</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>survey_data_transf <span class="ot">&lt;-</span> survey_data_unit <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">gender =</span> <span class="fu">as.factor</span>(gender)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>You can now check if it worked:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check: 'gender' is a factor?</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(survey_data_transf<span class="sc">$</span>gender)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Factor w/ 4 levels "Female","Male",..: 1 1 2 1 2 2 1 1 1 NA ...</code></pre>
+</div>
+</div>
+<p>It says that it is a “Factor w/ 4 levels”. Levels are what R calls the categories of a factor vector. You can check all levels using the <code>levels()</code> function:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the levels of the factor 'gender'</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(survey_data_transf<span class="sc">$</span>gender)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Female"            "Male"              "Non-binary"       
+[4] "Prefer not to say"</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Your turn!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Now transform the province and the field of study variables to factor. Remember that, in typical <code>tidyverse</code> syntax similar to the <code>rename()</code> function, you can perform multiple creations of variables with a single <code>mutate()</code> function, just by separating the different statements by a comma.</p>
+<p>You can check the answer below, but please make sure to try it yourself before you see the answer.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transform province and field of study variables to factor</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>survey_data_transf <span class="ot">&lt;-</span> survey_data_transf <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">province =</span> <span class="fu">as.factor</span>(province),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">field_study =</span> <span class="fu">as.factor</span>(field_study)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ordinal-variables" class="level4">
+<h4 class="anchored" data-anchor-id="ordinal-variables">Ordinal Variables</h4>
+<p>Now, we can look at the ordinal categorical variables. These are variables that have order between categories, for example, a Likert scale. The “Agree” option is between “Neutral” and “Strongly agree”, and so on. You have to be explicit with R in specifying the order of categories. You can do that using the levels argument of the <code>factor()</code> function. Again, we are going to do that inside a <code>mutate()</code> command.</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We are using the <code>factor()</code> function here instead of the <code>as.factor()</code> function. You cannot specify ordinal levels inside the <code>as.factor()</code> function, because it assigns levels based on alphabetical order by default. For specific levels, you need to create a factor vector using the <code>factor</code> function.</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transform ordinal variables to factor, with levels</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># since all variables have the same levels, you can specify them first outside to avoid repetition:</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>feel_levels <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Strongly disagree"</span>, <span class="st">"Disagree"</span>, <span class="st">"Neutral"</span>, <span class="st">"Agree"</span>, <span class="st">"Strongly agree"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># and now you transform:</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>survey_data_transf <span class="ot">&lt;-</span> survey_data_transf <span class="sc">|&gt;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">feel_connected =</span> <span class="fu">factor</span>(feel_connected, <span class="at">levels =</span> feel_levels),</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">feel_stress =</span> <span class="fu">factor</span>(feel_stress, <span class="at">levels =</span> feel_levels),</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">feel_distracted =</span> <span class="fu">factor</span>(feel_distracted, <span class="at">levels =</span> feel_levels),</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">feel_improvedmood =</span> <span class="fu">factor</span>(feel_improvedmood, <span class="at">levels =</span> feel_levels)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co"># check that it worked</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(survey_data_transf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [437 × 22] (S3: tbl_df/tbl/data.frame)
+ $ id               : num [1:437] 1 2 3 4 5 6 7 8 9 10 ...
+ $ gender           : Factor w/ 4 levels "Female","Male",..: 1 1 2 1 2 2 1 1 1 NA ...
+ $ date_birth       : chr [1:437] "9/16/2001" "4/16/2004" "2/14/2007" "7/20/2001" ...
+ $ age              : num [1:437] 24 21 19 24 NA 19 17 21 24 20 ...
+ $ province         : Factor w/ 6 levels "Alberta","British Columbia",..: 2 3 3 2 5 5 2 3 NA 1 ...
+ $ year_study       : num [1:437] 3 1 4 2 1 2 1 1 1 2 ...
+ $ field_study      : Factor w/ 10 levels "Biology","Chemistry",..: 9 3 8 2 1 8 8 9 8 3 ...
+ $ hours_facebook   : num [1:437] 1 1 1 1 1 1 1 1 1 1 ...
+ $ hours_instagram  : num [1:437] 1 2 2 1 1 2 0 2 2 2 ...
+ $ hours_snapchat   : num [1:437] 1 1 2 1 1 1 1 2 0 1 ...
+ $ hours_tiktok     : num [1:437] 1 1 2 1 1 2 1 3 1 1 ...
+ $ hours_xtwitter   : num [1:437] 0 0 0 0 0 0 0 0 0 0 ...
+ $ hours_other      : num [1:437] 0 0 0 0 0 0 0 0 0 0 ...
+ $ hours_total      : num [1:437] 4 5 7 4 4 6 3 8 4 5 ...
+ $ hours_sleep      : num [1:437] 8 7 5 8 8 6 7 6 8 7 ...
+ $ devices_used     : chr [1:437] "Smartphone, Laptop" "Smartphone, Laptop, Desktop computer" "Smartphone, Tablet" "Laptop" ...
+ $ feel_connected   : Factor w/ 5 levels "Strongly disagree",..: 3 3 3 3 4 4 4 4 4 4 ...
+ $ feel_stress      : Factor w/ 5 levels "Strongly disagree",..: 2 3 3 2 2 3 2 NA 3 2 ...
+ $ feel_distracted  : Factor w/ 5 levels "Strongly disagree",..: NA 3 3 2 2 2 2 3 NA 2 ...
+ $ feel_improvedmood: Factor w/ 5 levels "Strongly disagree",..: 4 4 3 4 3 4 4 3 4 NA ...
+ $ reasons_use      : chr [1:437] "Staying in touch with friends / family, Academic or professional networking" "Staying in touch with friends / family, Staying informed about news/events, Self-expression / creativity" "Entertainment / passing time, Staying informed about news/events, Self-expression / creativity" "Staying in touch with friends / family, Academic or professional networking" ...
+ $ bin_hours_total  : chr [1:437] "2-4 hours" "4-6 hours" "More than 6 hours" "2-4 hours" ...</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Your turn!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Transform the categorical variable that we created about total time spent per day in social media (<code>bin_hours_total</code>) into an ordered factor. Remember, the levels we created are: “Less than or equal to 2 hours”, “2-4 hours”, “4-6 hours”, and “More than 6 hours”. Since you are only doing this for one variable, you could specify the levels directly inside the <code>factor</code> function, just make sure they are concatenated into a vector with <code>c()</code></p>
+<p>You can check the answer below, but please make sure to try it yourself before you see the answer.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transforms bin_hours_total to ordered factor</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>survey_data_transf <span class="ot">&lt;-</span> survey_data_transf <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">bin_hours_total =</span> <span class="fu">factor</span>(bin_hours_total, </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                             <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Less than or equal to 2 hours"</span>, <span class="st">"2-4 hours"</span>, <span class="st">"4-6 hours"</span>, <span class="st">"More than 6 hours"</span>))</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># check that it worked</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(survey_data_transf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [437 × 22] (S3: tbl_df/tbl/data.frame)
+ $ id               : num [1:437] 1 2 3 4 5 6 7 8 9 10 ...
+ $ gender           : Factor w/ 4 levels "Female","Male",..: 1 1 2 1 2 2 1 1 1 NA ...
+ $ date_birth       : chr [1:437] "9/16/2001" "4/16/2004" "2/14/2007" "7/20/2001" ...
+ $ age              : num [1:437] 24 21 19 24 NA 19 17 21 24 20 ...
+ $ province         : Factor w/ 6 levels "Alberta","British Columbia",..: 2 3 3 2 5 5 2 3 NA 1 ...
+ $ year_study       : num [1:437] 3 1 4 2 1 2 1 1 1 2 ...
+ $ field_study      : Factor w/ 10 levels "Biology","Chemistry",..: 9 3 8 2 1 8 8 9 8 3 ...
+ $ hours_facebook   : num [1:437] 1 1 1 1 1 1 1 1 1 1 ...
+ $ hours_instagram  : num [1:437] 1 2 2 1 1 2 0 2 2 2 ...
+ $ hours_snapchat   : num [1:437] 1 1 2 1 1 1 1 2 0 1 ...
+ $ hours_tiktok     : num [1:437] 1 1 2 1 1 2 1 3 1 1 ...
+ $ hours_xtwitter   : num [1:437] 0 0 0 0 0 0 0 0 0 0 ...
+ $ hours_other      : num [1:437] 0 0 0 0 0 0 0 0 0 0 ...
+ $ hours_total      : num [1:437] 4 5 7 4 4 6 3 8 4 5 ...
+ $ hours_sleep      : num [1:437] 8 7 5 8 8 6 7 6 8 7 ...
+ $ devices_used     : chr [1:437] "Smartphone, Laptop" "Smartphone, Laptop, Desktop computer" "Smartphone, Tablet" "Laptop" ...
+ $ feel_connected   : Factor w/ 5 levels "Strongly disagree",..: 3 3 3 3 4 4 4 4 4 4 ...
+ $ feel_stress      : Factor w/ 5 levels "Strongly disagree",..: 2 3 3 2 2 3 2 NA 3 2 ...
+ $ feel_distracted  : Factor w/ 5 levels "Strongly disagree",..: NA 3 3 2 2 2 2 3 NA 2 ...
+ $ feel_improvedmood: Factor w/ 5 levels "Strongly disagree",..: 4 4 3 4 3 4 4 3 4 NA ...
+ $ reasons_use      : chr [1:437] "Staying in touch with friends / family, Academic or professional networking" "Staying in touch with friends / family, Staying informed about news/events, Self-expression / creativity" "Entertainment / passing time, Staying informed about news/events, Self-expression / creativity" "Staying in touch with friends / family, Academic or professional networking" ...
+ $ bin_hours_total  : Factor w/ 4 levels "Less than or equal to 2 hours",..: 2 3 4 2 2 3 2 4 2 3 ...</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>The great thing about having the ordinal variables as factors with ordered levels is that you can easily transform them to numeric data types. This will be practical in the Data Visualization Lesson when we are exploring how usage of social media influences mental health. We will be able to use the different levels of agreements as numbers to combine the answers for each feeling into a single metric of mental health.</p>
+<p>For now, we don’t need to transform the variables into numbers, as the ordered factor stores that information if needed. But for reference, here is how an ordered factor can be easily transformed into numbers.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the first 10 entries of an ordered factor</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>survey_data_transf <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(feel_connected) <span class="sc">|&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] Neutral Neutral Neutral Neutral Agree   Agree   Agree   Agree   Agree  
+[10] Agree  
+Levels: Strongly disagree Disagree Neutral Agree Strongly agree</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the first 10 entries of an ordered factor transformed to numbers</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>survey_data_transf <span class="sc">|&gt;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(feel_connected) <span class="sc">|&gt;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>() <span class="sc">|&gt;</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 3 3 3 3 4 4 4 4 4 4</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Step-by-step explanation:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>The <code>pull()</code> function that we are using here just extracts one vector from the dataset. In this example, we are extracting the variable <code>feel_connected</code></li>
+<li>Then, we use the <code>head()</code> function to see the first 10 entries</li>
+<li>In the second section of code, we first transform the <code>feel_connected</code> variable, which is an ordered factor, to number * using <code>as.numeric()</code> and then see the first 10 entries using <code>head(10)</code></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="other-transformations" class="level4">
+<h4 class="anchored" data-anchor-id="other-transformations">Other Transformations</h4>
+<p>These are all the transformations that we are going to need for this dataset. However, sometimes R reads numeric data as character data; in that case, you use the same approach as before, but using the function <code>as.numeric()</code> to transform your variable to numeric type. When doing that, R will assign an NA value for anything that is not a number, so always check the result to make sure things are transforming correctly.</p>
+<p>We will not be working with date variables for our research questions, so we won’t show you how to deal with them here, but you might run into date variables in other scenarios. If you need to deal with date variables, you should check the <code>lubridate</code> package which is also within the ‘tidyverse’. The R for Data Science book has a great <a href="https://r4ds.hadley.nz/datetimes.html">chapter on how to deal with dates and times</a> using this package. If you want to give it a try, transform the <code>birth_date</code> variable into a date format.</p>
+<p>Finally, after you have transformed all your variables, you should always check again to make sure things are how they should be.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check if it worked:</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(survey_data_transf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [437 × 22] (S3: tbl_df/tbl/data.frame)
+ $ id               : num [1:437] 1 2 3 4 5 6 7 8 9 10 ...
+ $ gender           : Factor w/ 4 levels "Female","Male",..: 1 1 2 1 2 2 1 1 1 NA ...
+ $ date_birth       : chr [1:437] "9/16/2001" "4/16/2004" "2/14/2007" "7/20/2001" ...
+ $ age              : num [1:437] 24 21 19 24 NA 19 17 21 24 20 ...
+ $ province         : Factor w/ 6 levels "Alberta","British Columbia",..: 2 3 3 2 5 5 2 3 NA 1 ...
+ $ year_study       : num [1:437] 3 1 4 2 1 2 1 1 1 2 ...
+ $ field_study      : Factor w/ 10 levels "Biology","Chemistry",..: 9 3 8 2 1 8 8 9 8 3 ...
+ $ hours_facebook   : num [1:437] 1 1 1 1 1 1 1 1 1 1 ...
+ $ hours_instagram  : num [1:437] 1 2 2 1 1 2 0 2 2 2 ...
+ $ hours_snapchat   : num [1:437] 1 1 2 1 1 1 1 2 0 1 ...
+ $ hours_tiktok     : num [1:437] 1 1 2 1 1 2 1 3 1 1 ...
+ $ hours_xtwitter   : num [1:437] 0 0 0 0 0 0 0 0 0 0 ...
+ $ hours_other      : num [1:437] 0 0 0 0 0 0 0 0 0 0 ...
+ $ hours_total      : num [1:437] 4 5 7 4 4 6 3 8 4 5 ...
+ $ hours_sleep      : num [1:437] 8 7 5 8 8 6 7 6 8 7 ...
+ $ devices_used     : chr [1:437] "Smartphone, Laptop" "Smartphone, Laptop, Desktop computer" "Smartphone, Tablet" "Laptop" ...
+ $ feel_connected   : Factor w/ 5 levels "Strongly disagree",..: 3 3 3 3 4 4 4 4 4 4 ...
+ $ feel_stress      : Factor w/ 5 levels "Strongly disagree",..: 2 3 3 2 2 3 2 NA 3 2 ...
+ $ feel_distracted  : Factor w/ 5 levels "Strongly disagree",..: NA 3 3 2 2 2 2 3 NA 2 ...
+ $ feel_improvedmood: Factor w/ 5 levels "Strongly disagree",..: 4 4 3 4 3 4 4 3 4 NA ...
+ $ reasons_use      : chr [1:437] "Staying in touch with friends / family, Academic or professional networking" "Staying in touch with friends / family, Staying informed about news/events, Self-expression / creativity" "Entertainment / passing time, Staying informed about news/events, Self-expression / creativity" "Staying in touch with friends / family, Academic or professional networking" ...
+ $ bin_hours_total  : Factor w/ 4 levels "Less than or equal to 2 hours",..: 2 3 4 2 2 3 2 4 2 3 ...</code></pre>
+</div>
+</div>
+<p>If your code worked properly, your variables should appear in their new order and data type.</p>
+</section>
+</section>
+<section id="reshape-data" class="level3">
+<h3 class="anchored" data-anchor-id="reshape-data">Reshape Data</h3>
+<p>Ok, now that all variables are transformed to their correct type, we are going to convert our data into tidy formats.</p>
+<section id="turn-dataset-into-long-format" class="level4">
+<h4 class="anchored" data-anchor-id="turn-dataset-into-long-format">Turn Dataset Into Long Format</h4>
+<p>When looking at the dataset, we can see that there are several columns that describe the number of hours spent in some activity, whether that is using a social media platform or sleeping.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># view variables</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>survey_data_transf <span class="sc">|&gt;</span> </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, <span class="fu">starts_with</span>(<span class="st">"hours"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 437 × 9
+      id hours_facebook hours_instagram hours_snapchat hours_tiktok
+   &lt;dbl&gt;          &lt;dbl&gt;           &lt;dbl&gt;          &lt;dbl&gt;        &lt;dbl&gt;
+ 1     1              1               1              1            1
+ 2     2              1               2              1            1
+ 3     3              1               2              2            2
+ 4     4              1               1              1            1
+ 5     5              1               1              1            1
+ 6     6              1               2              1            2
+ 7     7              1               0              1            1
+ 8     8              1               2              2            3
+ 9     9              1               2              0            1
+10    10              1               2              1            1
+# ℹ 427 more rows
+# ℹ 4 more variables: hours_xtwitter &lt;dbl&gt;, hours_other &lt;dbl&gt;,
+#   hours_total &lt;dbl&gt;, hours_sleep &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Step-by-step explanation:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>You have seen the <code>select()</code> function before, but here we are using a shortcut that you can use inside the <code>select()t</code> function, which is the <code>starts_with()</code> function</li>
+<li>The <code>starts_with()</code> function takes in as argument a character string (in this case “hours”), and when used inside the <code>select()</code> function, it will select all the columns that start with that string.</li>
+</ul>
+</div>
+</div>
+<p>In the context of our project, you can think of all of these values as part of the same variable “hours”. To make this tidy, we can use the function <code>pivot_longer()</code> to collapse those many columns down into two columns, which simultaneously increases the number of rows.</p>
+<p>We’ll create a column for ‘hours_type’, which is populated with the activity type, and another column called ‘hours_number’ with the associated number of hours.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pivot the hours variables (sleep, total, and each social media) to long format</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>survey_data_long <span class="ot">&lt;-</span> survey_data_transf <span class="sc">|&gt;</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">'hours'</span>),</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">'hours_type'</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">'hours_number'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Step-by-step explanation:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Again, the syntax is similar to what you have previously done using the <code>tidyverse</code>.</p>
+<ul>
+<li>We start with our current dataset <code>survey_data_transf</code> and pipe it into the <code>pivot_longer function()</code></li>
+<li>The <code>pivot_longer()</code> function will pivot longer the columns listed in the argument <code>cols</code>. Here, we used the function learned above <code>starts_with()</code> to select all variables that start with <code>hours</code></li>
+<li>Then, after <code>names_to</code>, you define the name of the column where the current column names will go to (i.e.&nbsp;<code>hours_type</code>)</li>
+<li>And after <code>values_to</code>, you define the name of the column where the current values will go to (i.e.&nbsp;<code>hours_number</code>)</li>
+</ul>
+</div>
+</div>
+<p>Let’s check to see how that worked.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check: long format for 'hours_type' and 'hours_number'</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>survey_data_long <span class="sc">|&gt;</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, hours_type, hours_number)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3,496 × 3
+      id hours_type      hours_number
+   &lt;dbl&gt; &lt;chr&gt;                  &lt;dbl&gt;
+ 1     1 hours_facebook             1
+ 2     1 hours_instagram            1
+ 3     1 hours_snapchat             1
+ 4     1 hours_tiktok               1
+ 5     1 hours_xtwitter             0
+ 6     1 hours_other                0
+ 7     1 hours_total                4
+ 8     1 hours_sleep                8
+ 9     2 hours_facebook             1
+10     2 hours_instagram            2
+# ℹ 3,486 more rows</code></pre>
+</div>
+</div>
+<p>We can see that what was previously eight columns - hours_facebook, hours_instagram, hours_snapchat, hours_tiktok, hours_xtwitter, hours_other, hours_total, hours_sleep - has now been collapsed into the column ‘hours_type.’ In that column, there is now one row for each of these types per respondent. The sister column to ‘hours_type’ is ‘hours_number,’ which holds information about the number of hours spent on each type of activity. We have the same survey data we’ve always had - just in a long format.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Your turn!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Do the same pivot with the columns related to feelings associated with social media. Notice that all of these columns start with <code>feel_</code>. Remember to start with the recently created object <code>survey_data_long</code>.</p>
+<p>You can check the answer below, but please make sure to try it yourself before you see the answer.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># view variables</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>survey_data_long <span class="sc">|&gt;</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, <span class="fu">starts_with</span>(<span class="st">"feel"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3,496 × 5
+      id feel_connected feel_stress feel_distracted feel_improvedmood
+   &lt;dbl&gt; &lt;fct&gt;          &lt;fct&gt;       &lt;fct&gt;           &lt;fct&gt;            
+ 1     1 Neutral        Disagree    &lt;NA&gt;            Agree            
+ 2     1 Neutral        Disagree    &lt;NA&gt;            Agree            
+ 3     1 Neutral        Disagree    &lt;NA&gt;            Agree            
+ 4     1 Neutral        Disagree    &lt;NA&gt;            Agree            
+ 5     1 Neutral        Disagree    &lt;NA&gt;            Agree            
+ 6     1 Neutral        Disagree    &lt;NA&gt;            Agree            
+ 7     1 Neutral        Disagree    &lt;NA&gt;            Agree            
+ 8     1 Neutral        Disagree    &lt;NA&gt;            Agree            
+ 9     2 Neutral        Neutral     Neutral         Agree            
+10     2 Neutral        Neutral     Neutral         Agree            
+# ℹ 3,486 more rows</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># now do the same for the feel variables</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>survey_data_long <span class="ot">&lt;-</span> survey_data_long <span class="sc">|&gt;</span> </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">'feel'</span>),</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">'feel_type'</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">'feel_response'</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># check long format for 'feel_type' and 'feel_response'</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>survey_data_long <span class="sc">|&gt;</span> </span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, feel_type, feel_response)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 13,984 × 3
+      id feel_type         feel_response
+   &lt;dbl&gt; &lt;chr&gt;             &lt;fct&gt;        
+ 1     1 feel_connected    Neutral      
+ 2     1 feel_stress       Disagree     
+ 3     1 feel_distracted   &lt;NA&gt;         
+ 4     1 feel_improvedmood Agree        
+ 5     1 feel_connected    Neutral      
+ 6     1 feel_stress       Disagree     
+ 7     1 feel_distracted   &lt;NA&gt;         
+ 8     1 feel_improvedmood Agree        
+ 9     1 feel_connected    Neutral      
+10     1 feel_stress       Disagree     
+# ℹ 13,974 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Looks great! Each respondent has their answers spread out over multiple rows because we’ve collapsed the columns.</p>
+</section>
+<section id="turn-dataset-into-wide" class="level4">
+<h4 class="anchored" data-anchor-id="turn-dataset-into-wide">Turn Dataset into Wide</h4>
+<p>As we mentioned in the lecture, whether the best format for your dataset is the wide or long version will depend on what you are calling the variables in your dataset, which is dependent on your research question. Therefore, it is also useful to know how to change datasets from long into wide formats.</p>
+<p>In the <code>tidyverse</code>, the opposite of <code>pivot_longer()</code> is <code>pivot_wider()</code>. This function tidies datasets that have single observations distributed across multiple rows. Although we don’t have observations distributed across multiple rows in our dataset, we can practice back-transforming our data using <code>pivot_wider()</code> to get a sense of how it works. As you’ll see, the syntax is very similar - it is the reverse of what we’ve already learned.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pivot hours variables back to wide format</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>survey_data_wide <span class="ot">&lt;-</span> survey_data_long <span class="sc">|&gt;</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> hours_type,</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> hours_number)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Step-by-step explanation:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>We start with our current dataset <code>survey_data_long</code> and pipe it into the <code>pivot_wider function()</code></li>
+<li>The <code>pivot_wider()</code> function will take the values in the columns listed in the argument <code>names_from</code> (i.e.&nbsp;<code>hours_type</code>) make them column names</li>
+<li>Then, it will fill those columns with the values from the column listed after <code>values_from</code> (i.e., <code>hours_number</code>)</li>
+</ul>
+</div>
+</div>
+<p>Now, let’s check the results.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check results</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(survey_data_wide)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Scroll to the right to see if the hours columns have returned to their wide format.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Your turn!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Do the same with the columns related to the different feelings associated with social media. Remember to start with the recently created object <code>survey_data_wide</code>.</p>
+<p>You can check the answer below, but please make sure to try it yourself before you see the answer.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># do the same with the feel variables</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>survey_data_wide <span class="ot">&lt;-</span> survey_data_wide <span class="sc">|&gt;</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> feel_type, <span class="co"># make new columns with names from 'hours_type'</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> feel_response)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co"># check results</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(survey_data_wide)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+<p>You’ll see that the dataset looks as it did before we transformed it by pivoting longer. To check this, you can look at one dataset after the other, and see if they have the same number of rows and columns.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># see that it is the same as the original.</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>survey_data_wide</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 437 × 22
+      id gender date_birth   age province    year_study field_study devices_used
+   &lt;dbl&gt; &lt;fct&gt;  &lt;chr&gt;      &lt;dbl&gt; &lt;fct&gt;            &lt;dbl&gt; &lt;fct&gt;       &lt;chr&gt;       
+ 1     1 Female 9/16/2001     24 British Co…          3 Statistics  Smartphone,…
+ 2     2 Female 4/16/2004     21 Manitoba             1 Computer S… Smartphone,…
+ 3     3 Male   2/14/2007     19 Manitoba             4 Psychology  Smartphone,…
+ 4     4 Female 7/20/2001     24 British Co…          2 Chemistry   Laptop      
+ 5     5 Male   5/3/2001      NA Ontario              1 Biology     Smartphone  
+ 6     6 Male   1/15/2007     19 Ontario              2 Psychology  Smartphone,…
+ 7     7 Female 12/30/2008    17 British Co…          1 Psychology  Smartphone,…
+ 8     8 Female 3/2/2005      21 Manitoba             1 Statistics  Smartphone,…
+ 9     9 Female 2/1/2002      24 &lt;NA&gt;                 1 Psychology  Smartphone,…
+10    10 &lt;NA&gt;   8/27/2005     20 Alberta              2 Computer S… Smartphone,…
+# ℹ 427 more rows
+# ℹ 14 more variables: reasons_use &lt;chr&gt;, bin_hours_total &lt;fct&gt;,
+#   hours_facebook &lt;dbl&gt;, hours_instagram &lt;dbl&gt;, hours_snapchat &lt;dbl&gt;,
+#   hours_tiktok &lt;dbl&gt;, hours_xtwitter &lt;dbl&gt;, hours_other &lt;dbl&gt;,
+#   hours_total &lt;dbl&gt;, hours_sleep &lt;dbl&gt;, feel_connected &lt;fct&gt;,
+#   feel_stress &lt;fct&gt;, feel_distracted &lt;fct&gt;, feel_improvedmood &lt;fct&gt;</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>survey_data_transf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 437 × 22
+      id gender date_birth   age province  year_study field_study hours_facebook
+   &lt;dbl&gt; &lt;fct&gt;  &lt;chr&gt;      &lt;dbl&gt; &lt;fct&gt;          &lt;dbl&gt; &lt;fct&gt;                &lt;dbl&gt;
+ 1     1 Female 9/16/2001     24 British …          3 Statistics               1
+ 2     2 Female 4/16/2004     21 Manitoba           1 Computer S…              1
+ 3     3 Male   2/14/2007     19 Manitoba           4 Psychology               1
+ 4     4 Female 7/20/2001     24 British …          2 Chemistry                1
+ 5     5 Male   5/3/2001      NA Ontario            1 Biology                  1
+ 6     6 Male   1/15/2007     19 Ontario            2 Psychology               1
+ 7     7 Female 12/30/2008    17 British …          1 Psychology               1
+ 8     8 Female 3/2/2005      21 Manitoba           1 Statistics               1
+ 9     9 Female 2/1/2002      24 &lt;NA&gt;               1 Psychology               1
+10    10 &lt;NA&gt;   8/27/2005     20 Alberta            2 Computer S…              1
+# ℹ 427 more rows
+# ℹ 14 more variables: hours_instagram &lt;dbl&gt;, hours_snapchat &lt;dbl&gt;,
+#   hours_tiktok &lt;dbl&gt;, hours_xtwitter &lt;dbl&gt;, hours_other &lt;dbl&gt;,
+#   hours_total &lt;dbl&gt;, hours_sleep &lt;dbl&gt;, devices_used &lt;chr&gt;,
+#   feel_connected &lt;fct&gt;, feel_stress &lt;fct&gt;, feel_distracted &lt;fct&gt;,
+#   feel_improvedmood &lt;fct&gt;, reasons_use &lt;chr&gt;, bin_hours_total &lt;fct&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="another-way-to-pivot-longer" class="level4">
+<h4 class="anchored" data-anchor-id="another-way-to-pivot-longer">Another Way to Pivot Longer</h4>
+<p>There is still another way to turn data into long format, and this one is useful when you have cells that contain multiple values of the same variable, separated by a delimiter. For example, our <code>devices_used</code> variable.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># see variables</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>survey_data_long <span class="sc">|&gt;</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, devices_used)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 13,984 × 2
+      id devices_used      
+   &lt;dbl&gt; &lt;chr&gt;             
+ 1     1 Smartphone, Laptop
+ 2     1 Smartphone, Laptop
+ 3     1 Smartphone, Laptop
+ 4     1 Smartphone, Laptop
+ 5     1 Smartphone, Laptop
+ 6     1 Smartphone, Laptop
+ 7     1 Smartphone, Laptop
+ 8     1 Smartphone, Laptop
+ 9     1 Smartphone, Laptop
+10     1 Smartphone, Laptop
+# ℹ 13,974 more rows</code></pre>
+</div>
+</div>
+<p>As you can see, the two different answers “Smartphone” and “Laptop” appear in the same row, separated by “,”. But if these are different values, according to tidy data principles, they should each be in their own cell. A function that does this is <code>separate_longer_delim()</code>, which separates cells from a column into long formats (this is the sister function of the <code>separate_wider function()</code> that we saw in <a href="../Day04/Day04_Lesson1.html">Day 4 - Lesson 1</a>, which separates into a wide dataset).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pivot devices used to long format</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>survey_data_verylong <span class="ot">&lt;-</span> survey_data_long <span class="sc">|&gt;</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_longer_delim</span>(devices_used, <span class="at">delim =</span> <span class="st">", "</span>)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># see results</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>survey_data_verylong <span class="sc">|&gt;</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, devices_used)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 29,696 × 2
+      id devices_used
+   &lt;dbl&gt; &lt;chr&gt;       
+ 1     1 Smartphone  
+ 2     1 Laptop      
+ 3     1 Smartphone  
+ 4     1 Laptop      
+ 5     1 Smartphone  
+ 6     1 Laptop      
+ 7     1 Smartphone  
+ 8     1 Laptop      
+ 9     1 Smartphone  
+10     1 Laptop      
+# ℹ 29,686 more rows</code></pre>
+</div>
+</div>
+<p>As you can see, each device used is now in its own row, as they are each a different observation.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Your turn!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Do the same with the columns related to the different reasons someone might use social media. Remember to start with the recently created object <code>survey_data_verylong</code>.</p>
+<p>You can check the answer below, but please make sure to try it yourself before you see the answer.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># do the same for reasons_use</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># see variables</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>survey_data_verylong <span class="sc">|&gt;</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, reasons_use)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 29,696 × 2
+      id reasons_use                                                            
+   &lt;dbl&gt; &lt;chr&gt;                                                                  
+ 1     1 Staying in touch with friends / family, Academic or professional netwo…
+ 2     1 Staying in touch with friends / family, Academic or professional netwo…
+ 3     1 Staying in touch with friends / family, Academic or professional netwo…
+ 4     1 Staying in touch with friends / family, Academic or professional netwo…
+ 5     1 Staying in touch with friends / family, Academic or professional netwo…
+ 6     1 Staying in touch with friends / family, Academic or professional netwo…
+ 7     1 Staying in touch with friends / family, Academic or professional netwo…
+ 8     1 Staying in touch with friends / family, Academic or professional netwo…
+ 9     1 Staying in touch with friends / family, Academic or professional netwo…
+10     1 Staying in touch with friends / family, Academic or professional netwo…
+# ℹ 29,686 more rows</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pivot to long format</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>survey_data_verylong <span class="ot">&lt;-</span> survey_data_verylong <span class="sc">|&gt;</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_longer_delim</span>(reasons_use, <span class="at">delim =</span> <span class="st">", "</span>)</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co"># see results</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>survey_data_verylong <span class="sc">|&gt;</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, reasons_use)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 86,592 × 2
+      id reasons_use                           
+   &lt;dbl&gt; &lt;chr&gt;                                 
+ 1     1 Staying in touch with friends / family
+ 2     1 Academic or professional networking   
+ 3     1 Staying in touch with friends / family
+ 4     1 Academic or professional networking   
+ 5     1 Staying in touch with friends / family
+ 6     1 Academic or professional networking   
+ 7     1 Staying in touch with friends / family
+ 8     1 Academic or professional networking   
+ 9     1 Staying in touch with friends / family
+10     1 Academic or professional networking   
+# ℹ 86,582 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Now you will see that we have a very long dataframe.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check long dataframe</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(survey_data_verylong)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>When you make a dataset like this very long, you will begin to see repeated rows of information for the same respondent. This again reminds us that the best, tidy format for your project will depend on your data and questions. For our case, because we are not interested in the types of devices or reasons to use social media (at least not right now), we will not save our data in this very long format. But know that you could, if those variables were of interest to you.</p>
+</section>
+</section>
+<section id="subset-data" class="level3">
+<h3 class="anchored" data-anchor-id="subset-data">Subset Data</h3>
+<p>Finally, before we finish the data cleaning portion of this course, there is one final function from the <code>tidyverse</code> that can be very helpful. This is the <code>filter()</code> function, which keeps or removes rows that match conditions.</p>
+<p>For example, if we want to subset our data to show only participants that are 24-years-old, we can do that using the <code>filter()</code> function.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="do">## subset for participants that are 24-years-old </span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>survey_data_long <span class="sc">|&gt;</span> </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(age <span class="sc">==</span> <span class="dv">24</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 960 × 14
+      id gender date_birth   age province    year_study field_study devices_used
+   &lt;dbl&gt; &lt;fct&gt;  &lt;chr&gt;      &lt;dbl&gt; &lt;fct&gt;            &lt;dbl&gt; &lt;fct&gt;       &lt;chr&gt;       
+ 1     1 Female 9/16/2001     24 British Co…          3 Statistics  Smartphone,…
+ 2     1 Female 9/16/2001     24 British Co…          3 Statistics  Smartphone,…
+ 3     1 Female 9/16/2001     24 British Co…          3 Statistics  Smartphone,…
+ 4     1 Female 9/16/2001     24 British Co…          3 Statistics  Smartphone,…
+ 5     1 Female 9/16/2001     24 British Co…          3 Statistics  Smartphone,…
+ 6     1 Female 9/16/2001     24 British Co…          3 Statistics  Smartphone,…
+ 7     1 Female 9/16/2001     24 British Co…          3 Statistics  Smartphone,…
+ 8     1 Female 9/16/2001     24 British Co…          3 Statistics  Smartphone,…
+ 9     1 Female 9/16/2001     24 British Co…          3 Statistics  Smartphone,…
+10     1 Female 9/16/2001     24 British Co…          3 Statistics  Smartphone,…
+# ℹ 950 more rows
+# ℹ 6 more variables: reasons_use &lt;chr&gt;, bin_hours_total &lt;fct&gt;,
+#   hours_type &lt;chr&gt;, hours_number &lt;dbl&gt;, feel_type &lt;chr&gt;, feel_response &lt;fct&gt;</code></pre>
+</div>
+</div>
+<p>We must use two equal signs to tell R to evaluate for equality. The <code>filter()</code> function takes multiple operators for logical expressions.</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Logical operators
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Some useful operators in R:<br>
+<code>==</code> equal to<br>
+<code>&lt;</code> less than<br>
+<code>&lt;=</code> less than or equal to<br>
+<code>&gt;</code> greater than<br>
+<code>&gt;=</code> greater than or equal to<br>
+<code>!=</code> not equal to<br>
+<code>&amp;</code> and<br>
+<code>|</code> or</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Your turn!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Try creating a subset of participants that are younger than 24-years-old.</p>
+<p>You can check the answer below, but please make sure to try it yourself before you see the answer.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subset for participants that are younger than 24-years-old</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>survey_data_long <span class="sc">|&gt;</span> </span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(age <span class="sc">&lt;</span> <span class="dv">24</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10,944 × 14
+      id gender date_birth   age province year_study field_study    devices_used
+   &lt;dbl&gt; &lt;fct&gt;  &lt;chr&gt;      &lt;dbl&gt; &lt;fct&gt;         &lt;dbl&gt; &lt;fct&gt;          &lt;chr&gt;       
+ 1     2 Female 4/16/2004     21 Manitoba          1 Computer Scie… Smartphone,…
+ 2     2 Female 4/16/2004     21 Manitoba          1 Computer Scie… Smartphone,…
+ 3     2 Female 4/16/2004     21 Manitoba          1 Computer Scie… Smartphone,…
+ 4     2 Female 4/16/2004     21 Manitoba          1 Computer Scie… Smartphone,…
+ 5     2 Female 4/16/2004     21 Manitoba          1 Computer Scie… Smartphone,…
+ 6     2 Female 4/16/2004     21 Manitoba          1 Computer Scie… Smartphone,…
+ 7     2 Female 4/16/2004     21 Manitoba          1 Computer Scie… Smartphone,…
+ 8     2 Female 4/16/2004     21 Manitoba          1 Computer Scie… Smartphone,…
+ 9     2 Female 4/16/2004     21 Manitoba          1 Computer Scie… Smartphone,…
+10     2 Female 4/16/2004     21 Manitoba          1 Computer Scie… Smartphone,…
+# ℹ 10,934 more rows
+# ℹ 6 more variables: reasons_use &lt;chr&gt;, bin_hours_total &lt;fct&gt;,
+#   hours_type &lt;chr&gt;, hours_number &lt;dbl&gt;, feel_type &lt;chr&gt;, feel_response &lt;fct&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>The purpose of this activity was to showcase the <code>filter()</code> function, so we will not be saving these subsets into new versions of the dataset. Though, if you wanted to save a subset as an object, remember that you can use the assignment operator &lt;- to create a new named object.</p>
+<p>We can also use <code>filter()</code> on non-numerical data - like strings. For example, if we wanted to subset for participants that identify as male.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subset for participants that identify as male</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>survey_data_long <span class="sc">|&gt;</span> </span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">'Male'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6,304 × 14
+      id gender date_birth   age province year_study field_study devices_used   
+   &lt;dbl&gt; &lt;fct&gt;  &lt;chr&gt;      &lt;dbl&gt; &lt;fct&gt;         &lt;dbl&gt; &lt;fct&gt;       &lt;chr&gt;          
+ 1     3 Male   2/14/2007     19 Manitoba          4 Psychology  Smartphone, Ta…
+ 2     3 Male   2/14/2007     19 Manitoba          4 Psychology  Smartphone, Ta…
+ 3     3 Male   2/14/2007     19 Manitoba          4 Psychology  Smartphone, Ta…
+ 4     3 Male   2/14/2007     19 Manitoba          4 Psychology  Smartphone, Ta…
+ 5     3 Male   2/14/2007     19 Manitoba          4 Psychology  Smartphone, Ta…
+ 6     3 Male   2/14/2007     19 Manitoba          4 Psychology  Smartphone, Ta…
+ 7     3 Male   2/14/2007     19 Manitoba          4 Psychology  Smartphone, Ta…
+ 8     3 Male   2/14/2007     19 Manitoba          4 Psychology  Smartphone, Ta…
+ 9     3 Male   2/14/2007     19 Manitoba          4 Psychology  Smartphone, Ta…
+10     3 Male   2/14/2007     19 Manitoba          4 Psychology  Smartphone, Ta…
+# ℹ 6,294 more rows
+# ℹ 6 more variables: reasons_use &lt;chr&gt;, bin_hours_total &lt;fct&gt;,
+#   hours_type &lt;chr&gt;, hours_number &lt;dbl&gt;, feel_type &lt;chr&gt;, feel_response &lt;fct&gt;</code></pre>
+</div>
+</div>
+<p>When we’re asking R to scan for string matches, they must be exact - including capitalized letters and punctuation.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Your turn!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Try subsetting for participants that identify as non-binary.</p>
+<p>You can check the answer below, but please make sure to try it yourself before you see the answer.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subset for participants that identify as non-binary</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>survey_data_long <span class="sc">|&gt;</span> </span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">'Non-binary'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 416 × 14
+      id gender    date_birth   age province year_study field_study devices_used
+   &lt;dbl&gt; &lt;fct&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;fct&gt;         &lt;dbl&gt; &lt;fct&gt;       &lt;chr&gt;       
+ 1    48 Non-bina… 11/3/2000     25 Ontario           2 Chemistry   Smartphone,…
+ 2    48 Non-bina… 11/3/2000     25 Ontario           2 Chemistry   Smartphone,…
+ 3    48 Non-bina… 11/3/2000     25 Ontario           2 Chemistry   Smartphone,…
+ 4    48 Non-bina… 11/3/2000     25 Ontario           2 Chemistry   Smartphone,…
+ 5    48 Non-bina… 11/3/2000     25 Ontario           2 Chemistry   Smartphone,…
+ 6    48 Non-bina… 11/3/2000     25 Ontario           2 Chemistry   Smartphone,…
+ 7    48 Non-bina… 11/3/2000     25 Ontario           2 Chemistry   Smartphone,…
+ 8    48 Non-bina… 11/3/2000     25 Ontario           2 Chemistry   Smartphone,…
+ 9    48 Non-bina… 11/3/2000     25 Ontario           2 Chemistry   Smartphone,…
+10    48 Non-bina… 11/3/2000     25 Ontario           2 Chemistry   Smartphone,…
+# ℹ 406 more rows
+# ℹ 6 more variables: reasons_use &lt;chr&gt;, bin_hours_total &lt;fct&gt;,
+#   hours_type &lt;chr&gt;, hours_number &lt;dbl&gt;, feel_type &lt;chr&gt;, feel_response &lt;fct&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Another thing we can do when subsetting data is to filter for two or more things at once. For example, we can subset for participants that identify as male and are 24-years-old.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subset for participants that identify as male and are 24-years-old</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>survey_data_long <span class="sc">|&gt;</span> </span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">'Male'</span> <span class="sc">&amp;</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>           age <span class="sc">==</span> <span class="dv">24</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 352 × 14
+      id gender date_birth   age province    year_study field_study devices_used
+   &lt;dbl&gt; &lt;fct&gt;  &lt;chr&gt;      &lt;dbl&gt; &lt;fct&gt;            &lt;dbl&gt; &lt;fct&gt;       &lt;chr&gt;       
+ 1    49 Male   5/15/2001     24 British Co…         NA Economics   Smart TV    
+ 2    49 Male   5/15/2001     24 British Co…         NA Economics   Smart TV    
+ 3    49 Male   5/15/2001     24 British Co…         NA Economics   Smart TV    
+ 4    49 Male   5/15/2001     24 British Co…         NA Economics   Smart TV    
+ 5    49 Male   5/15/2001     24 British Co…         NA Economics   Smart TV    
+ 6    49 Male   5/15/2001     24 British Co…         NA Economics   Smart TV    
+ 7    49 Male   5/15/2001     24 British Co…         NA Economics   Smart TV    
+ 8    49 Male   5/15/2001     24 British Co…         NA Economics   Smart TV    
+ 9    49 Male   5/15/2001     24 British Co…         NA Economics   Smart TV    
+10    49 Male   5/15/2001     24 British Co…         NA Economics   Smart TV    
+# ℹ 342 more rows
+# ℹ 6 more variables: reasons_use &lt;chr&gt;, bin_hours_total &lt;fct&gt;,
+#   hours_type &lt;chr&gt;, hours_number &lt;dbl&gt;, feel_type &lt;chr&gt;, feel_response &lt;fct&gt;</code></pre>
+</div>
+</div>
+<p>We can do both of these filtrations at once using the <code>&amp;</code> symbol. Conversely, we can ask R to filter for one thing or another using the <code>|</code> operator, which represents “or”.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Your turn!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Filter for respondents that are male or 24-years-old. Remember, the ‘or’ operator is ‘|’.</p>
+<p>You can check the answer below, but please make sure to try it yourself before you see the answer.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subset for participants that identify as male or are 24-years-old</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>survey_data_long <span class="sc">|&gt;</span> </span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">'Male'</span> <span class="sc">|</span> age <span class="sc">==</span> <span class="dv">24</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6,912 × 14
+      id gender date_birth   age province    year_study field_study devices_used
+   &lt;dbl&gt; &lt;fct&gt;  &lt;chr&gt;      &lt;dbl&gt; &lt;fct&gt;            &lt;dbl&gt; &lt;fct&gt;       &lt;chr&gt;       
+ 1     1 Female 9/16/2001     24 British Co…          3 Statistics  Smartphone,…
+ 2     1 Female 9/16/2001     24 British Co…          3 Statistics  Smartphone,…
+ 3     1 Female 9/16/2001     24 British Co…          3 Statistics  Smartphone,…
+ 4     1 Female 9/16/2001     24 British Co…          3 Statistics  Smartphone,…
+ 5     1 Female 9/16/2001     24 British Co…          3 Statistics  Smartphone,…
+ 6     1 Female 9/16/2001     24 British Co…          3 Statistics  Smartphone,…
+ 7     1 Female 9/16/2001     24 British Co…          3 Statistics  Smartphone,…
+ 8     1 Female 9/16/2001     24 British Co…          3 Statistics  Smartphone,…
+ 9     1 Female 9/16/2001     24 British Co…          3 Statistics  Smartphone,…
+10     1 Female 9/16/2001     24 British Co…          3 Statistics  Smartphone,…
+# ℹ 6,902 more rows
+# ℹ 6 more variables: reasons_use &lt;chr&gt;, bin_hours_total &lt;fct&gt;,
+#   hours_type &lt;chr&gt;, hours_number &lt;dbl&gt;, feel_type &lt;chr&gt;, feel_response &lt;fct&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="save-anonymized-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="save-anonymized-dataset">Save Anonymized Dataset</h3>
+<p>We did it! We now have a cleaned dataset with all the correct variable types. We also have the dataset in two formats: a wide format and a long format. For now, we will save both versions, as some explorations might be easier with the wide version, but we also want to save the tidy long version. <code>Let’s start with the wide format data, which we have in an object called</code>survey_data_wide<code>. To save it as a</code>.csv<code>file, you can use the</code>read_csv()` function that you learned in <a href="../Day04/Day04_Lesson1.html">Day 4 - Lesson 1</a>. Save it in the data &gt; processed folder, with a filename that follows our file naming conventions:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save the wide format</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(survey_data_wide, <span class="st">'data/processed/survey_student_anonymized-wide.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Besides saving in <code>.csv</code> format, we will also save the data in a format called <code>.rds</code>. An <code>.rds</code> file is an R-specific file format for saving a single object so it can be stored and loaded later without losing its structure or data types. This is good practice if you are saving a dataframe or tibble in R that you are hoping to use in future scripts. The main difference is that when saving as .csv (which is a plain text file), though it is great for data sharing and reproducibility, the information about the variable types is lost, such as the transformation of ordinal variables to factor with specific levels. Instead, these data will be saved as plain characters.</p>
+<p>On the other hand, an .rds file will save all of the attributes and keep the structure and data types intact. We will be using these objects in our data visualization activity, so let’s also save it as an .rds file in addition to the .csv file. This function is called <code>saveRDS()</code>, and it works the same way as <code>write_csv()</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save wide format data in R-ready format</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(survey_data_wide, <span class="st">'data/processed/survey_student_anonymized-wide.rds'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Your turn!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Save a <code>.csv</code> and <code>.rds</code> file for the long format of the dataset stored in the object <code>survey_data_long</code>.</p>
+<p>You can check the answer below, but please make sure to try it yourself before you see the answer.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save long format data into csv</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(survey_data_long, <span class="st">'data/processed/survey_student_anonymized-long.csv'</span>)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co"># save long format data in R-ready format</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(survey_data_long, <span class="st">'data/processed/survey_student_anonymized-long.rds'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+<p>You’ve just finished cleaning and saving your data! Remember that submitting your data-cleaning script is part of the requirements for receiving a course certificate, so make sure to save your script!</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Reflection
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Now that you have finished data cleaning, look back to your <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1BvWYEQlzdLJNFowhD02Sz0n7Y2jTISqlHhllFCuW3SkkBQ/viewform?usp=dialog">data collection instrument</a>. Is there any way that you could have set up the survey to make data cleaning simpler?</p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Exclusive of images, all content is licensed CC BY-NC 4.0<br><a href="https://creativecommons.org/licenses/by-nc/4.0/deed.en">Attribution-NonCommercial 4.0 International</a><br><img src="../..\images/institutions/CC-License.png" class="img-fluid"></p>
+</div>   
+    <div class="nav-footer-center">
+<p><img src="../..\images/institutions/all_logos.png" class="img-fluid"></p>
+</div>
+    <div class="nav-footer-right">
+<p>Build with <a href="https://quarto.org/">Quarto</a> &amp; <a href="https://posit.co/">RStudio from Posit</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
