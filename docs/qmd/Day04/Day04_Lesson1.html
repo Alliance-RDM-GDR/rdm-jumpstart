@@ -456,6 +456,9 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
   <li><a href="#lecture---data-cleaning" id="toc-lecture---data-cleaning" class="nav-link" data-scroll-target="#lecture---data-cleaning">Lecture - Data Cleaning</a>
   <ul class="collapse">
   <li><a href="#lecture" id="toc-lecture" class="nav-link" data-scroll-target="#lecture">Lecture</a></li>
+  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data Cleaning</a></li>
+  <li><a href="#best-practices-for-data-cleaning" id="toc-best-practices-for-data-cleaning" class="nav-link" data-scroll-target="#best-practices-for-data-cleaning">Best Practices for Data Cleaning</a></li>
+  <li><a href="#data-cleaning-steps" id="toc-data-cleaning-steps" class="nav-link" data-scroll-target="#data-cleaning-steps">Data Cleaning Steps</a></li>
   </ul></li>
   <li><a href="#tutorial---data-cleaning" id="toc-tutorial---data-cleaning" class="nav-link" data-scroll-target="#tutorial---data-cleaning">Tutorial - Data Cleaning</a>
   <ul class="collapse">
@@ -552,20 +555,21 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <li><a href="files/day4_L1_Data-Cleaning.pptx">Download the PowerPoint</a></li>
 </ul>
 <embed src="files/day4_L1_Data-Cleaning.pdf" type="application/pdf" width="100%" height="600px">
-<section id="data-cleaning" class="level4">
-<h4 class="anchored" data-anchor-id="data-cleaning">Data Cleaning</h4>
+</section>
+<section id="data-cleaning" class="level3">
+<h3 class="anchored" data-anchor-id="data-cleaning">Data Cleaning</h3>
 <p>Data cleaning is the process of checking, fixing, or transforming your data. Depending on how it was collected, your data may contain errors (e.g., typos) or it may be in a format that does not allow it to be easily used. During data cleaning, you will correct and transform the data to ensure it is ready for analysis.</p>
 <p>Data cleaning can be time consuming, but it is a crucial step in the research data lifecycle. If your data contains errors, the results of your analysis will not be reliable, regardless of how good your methods are.</p>
 <p>As you clean your data, use the data management practices you’ve learned so far to document your data cleaning process. A preferred way to document this step is to create a script that performs and describes all of the required data cleaning actions. The comments in your script will not only help you in the future, but enhance the reproducibility of your research for others.</p>
 </section>
-<section id="best-practices-for-data-cleaning" class="level4">
-<h4 class="anchored" data-anchor-id="best-practices-for-data-cleaning">Best Practices for Data Cleaning</h4>
+<section id="best-practices-for-data-cleaning" class="level3">
+<h3 class="anchored" data-anchor-id="best-practices-for-data-cleaning">Best Practices for Data Cleaning</h3>
 <p>The single most important rule in data cleaning is to <strong>never directly edit your raw data</strong>. Once your data has been collected, save the source file in the appropriate data folder in your project directory and do not change it. This ensures that you can reload the original dataset if you make a mistake. It also allows others (and yourself) to understand the ways in which you cleaned and manipulated your data. This is where file versioning practices are necessary, as any changes to the data should be saved and labelled as a new version.</p>
 <p>When performing data cleaning using a script, <strong>create a single data cleaning script</strong> that uploads the raw data, performs all necessary data cleaning steps, and then saves the cleaned dataset in a new file in the correct folder in your project directory.</p>
 <p>When sharing the dataset with others (which we will cover in more detail in another lesson), <strong>always remember to share the clean version of your data.</strong> This file will be easy to identify if you have named it appropriately.</p>
 </section>
-<section id="data-cleaning-steps" class="level4">
-<h4 class="anchored" data-anchor-id="data-cleaning-steps">Data Cleaning Steps</h4>
+<section id="data-cleaning-steps" class="level3">
+<h3 class="anchored" data-anchor-id="data-cleaning-steps">Data Cleaning Steps</h3>
 <p>Each dataset is unique and the type of data cleaning practices you use will need to be adapted for each new project. But, here is a general idea of what a dataset may require for cleaning:</p>
 <ul>
 <li>Fix column names.<br>
@@ -590,7 +594,6 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </li>
 <li>Reshape the dataset for analysis.</li>
 </ul>
-</section>
 </section>
 </section>
 <section id="tutorial---data-cleaning" class="level2">
