@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lesson 2: Introduction to the Research Project – RDM Jumpstart</title>
+<title>Lesson 3: Troubleshooting – RDM Jumpstart</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -446,8 +446,11 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
    
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#the-project" id="toc-the-project" class="nav-link" data-scroll-target="#the-project">The Project</a></li>
-  <li><a href="#activity---breakout-room-discussion" id="toc-activity---breakout-room-discussion" class="nav-link" data-scroll-target="#activity---breakout-room-discussion">Activity - Breakout Room Discussion</a></li>
+  <li><a href="#lecture---troubleshooting-in-r" id="toc-lecture---troubleshooting-in-r" class="nav-link" data-scroll-target="#lecture---troubleshooting-in-r">Lecture - Troubleshooting in R</a></li>
+  <li><a href="#understanding-error-messages" id="toc-understanding-error-messages" class="nav-link" data-scroll-target="#understanding-error-messages">Understanding Error Messages</a></li>
+  <li><a href="#common-errors-in-r" id="toc-common-errors-in-r" class="nav-link" data-scroll-target="#common-errors-in-r">Common Errors in R</a></li>
+  <li><a href="#what-to-do-when-you-get-an-error" id="toc-what-to-do-when-you-get-an-error" class="nav-link" data-scroll-target="#what-to-do-when-you-get-an-error">What to Do When You Get an Error</a></li>
+  <li><a href="#activity---breakout-room-discussion" id="toc-activity---breakout-room-discussion" class="nav-link" data-scroll-target="#activity---breakout-room-discussion">Activity - Breakout room discussion</a></li>
   </ul>
 </nav>
 </nav>
@@ -461,7 +464,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lesson 2: Introduction to the Research Project</h1>
+<h1 class="title">Lesson 3: Troubleshooting</h1>
 </div>
 
 
@@ -482,21 +485,68 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
 <p>By the end of this lesson, you will be able to:</p>
 <ul>
-<li>Describe the context of the example research project that will be used throughout the course.<br>
+<li>Identify how to interpret errors and warnings in R.<br>
 </li>
-<li>Identify the type of data that will be used throughout the course.<br>
+<li>Work through steps to solve errors in R.<br>
 </li>
-<li>Recognize considerations about data sensitivity and harm that might apply to the example research project.<br>
-</li>
-<li>Inspect the data collection instrument and the raw data from the example research project.</li>
+<li>Discuss advantages and disadvantages of using AI to learn coding and work with data.</li>
 </ul>
 </section>
-<section id="the-project" class="level2">
-<h2 class="anchored" data-anchor-id="the-project">The Project</h2>
-<p>Read the <a href="00_TheProject.html">project description</a></p>
+<section id="lecture---troubleshooting-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="lecture---troubleshooting-in-r">Lecture - Troubleshooting in R</h2>
+<p>Understanding and fixing errors is one of the most important (and sometimes frustrating) parts of learning R. In R, errors occur when the code you write can’t be executed due to problems like typos, missing packages, incorrect function arguments, or misused data structures. When R encounters an error, it stops running the code at the point where it finds the error and doesn’t go any further.</p>
+<p>Warnings in R are alerts to inform you about something, but they don’t prevent the code from running. Warnings may tell you things like a package is out of date or an update is available, or may indicate actions that have been taken in the background when your code was running, like empty spaces being converted to NAs. It’s a good idea to read the warnings, because if running your code produces a result you didn’t expect, the explanation could be in the warning.</p>
+</section>
+<section id="understanding-error-messages" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-error-messages">Understanding Error Messages</h2>
+<p>When an error occurs in R, you’ll see a message that gives clues about what went wrong. However, these messages require a bit of getting used to.</p>
+<p>For example, if you forget a comma in a chunk of code, you’ll get an error like “unexpected symbol” or “unexpected string constant”. While it might seem like this <strong>should</strong> mean you put in something extra that R didn’t expect, it <strong>actually</strong> means that R expected a comma and got something else instead.</p>
+<p>Another example is the “object not found” error. R is very literal, so if you misspell the name of an object, R won’t be able to find it, even if it worked with the object successfully when you spelled the name correctly.</p>
+<p>Learning to read and interpret these messages is a key part of becoming confident in R, as error messages help you troubleshoot and fix mistakes efficiently. As you gain experience, you’ll begin to recognize common patterns and learn how to resolve them quickly.</p>
+</section>
+<section id="common-errors-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="common-errors-in-r">Common Errors in R</h2>
+<p>Some R errors happen frequently, so it can be a good idea to start your troubleshooting with errors of this type in mind. Here are five common errors that you might encounter.</p>
+<ol type="1">
+<li><p>Not including a closing parenthesis, curly brace, square bracket, or quotation mark.</p>
+<p>If you’re using RStudio, when you type an opening parenthesis, brace, bracket or quotation mark, RStudio will automatically supply the closing punctuation for you; however, it’s easy to accidentally delete something or add extra punctuation!</p></li>
+<li><p>Typos, spelling mistakes, capitalization errors, or other errors in the names of datasets, objects or functions.</p>
+<p>Note that R is case sensitive, so capitalization matters.</p></li>
+</ol>
+<p>If you’re sure that you’ve spelled something correctly and your code still isn’t working, make sure that you’ve defined it.</p>
+<ol start="3" type="1">
+<li><p>Forgetting or misplacing a comma.</p></li>
+<li><p>Calling a function in a library that you haven’t yet installed or loaded.</p></li>
+<li><p>Having missing or incorrect arguments in a function.</p></li>
+</ol>
+<p>For more examples of common errors, check out this webpage: <a href="https://statsandr.com/blog/top-10-errors-in-r/">https://statsandr.com/blog/top-10-errors-in-r/</a></p>
+<p>If you’re not sure what the arguments should be for a function, check the description. You can get to the documentation easily by using ?function_name or help(function_name)</p>
+</section>
+<section id="what-to-do-when-you-get-an-error" class="level2">
+<h2 class="anchored" data-anchor-id="what-to-do-when-you-get-an-error">What to Do When You Get an Error</h2>
+<ol type="1">
+<li>Take a deep breath. You’ll be able to work through this!<br>
+</li>
+<li>Try to identify what the error is. Look at the error message that R is giving you, and/or the line or chunk of code that R is indicating has a problem.<br>
+</li>
+<li>Double check your code for common mistakes, such as the ones indicated above.<br>
+</li>
+<li>Consult the package description to understand how each function works. For example, if you haven’t included the right number of arguments, a function won’t run properly.<br>
+</li>
+<li>Try to look for a similar error online. A quick copy / paste of your error message into a search engine often guides you to a tutorial, or a forum with someone who’s faced a similar issue and received responses.<br>
+</li>
+<li>Ask for help in a forum like <a href="http://stackoverflow.com">stackoverflow.com</a>, <a href="http://stackexchange.com">stackexchange.com</a>, or community.rstudio.com.<br>
+</li>
+<li>Ask someone else ( e.g., a lab mate, a friend, your supervisor) to look at your code and see if they can see the problem and/or know the answer. It’s best to try to work through it yourself first.</li>
+</ol>
+<p>You can also consult this guide for more strategies and details on troubleshooting in R: <a href="https://uviclibraries.github.io/rstudio/troubleshooting.html">https://uviclibraries.github.io/rstudio/troubleshooting.html</a></p>
 </section>
 <section id="activity---breakout-room-discussion" class="level2">
-<h2 class="anchored" data-anchor-id="activity---breakout-room-discussion">Activity - Breakout Room Discussion</h2>
+<h2 class="anchored" data-anchor-id="activity---breakout-room-discussion">Activity - Breakout room discussion</h2>
+<p>You may have noticed that AI wasn’t mentioned in the list of strategies above.</p>
+<p>AI systems can generate code from text instructions, explain coding concepts, and help debug errors. But AI generates code based on patterns - not because it understands. AI tools often produce code that contains errors, use functions that don’t exist, assume packages are loaded that are not, or misinterprets data structure. A beginner often cannot recognize these mistakes, which can lead to frustration and confusion.</p>
+<p>AI can be helpful for programming, but learning to code requires practice and understanding. If you rely on AI too early, you might write code that runs, but you won’t know why it works or how to fix it if it breaks. The goal of learning R is not just to get output, but to develop the skills needed to analyze and understand data.</p>
+<p>The best way to learn how to use R is to write and troubleshoot code yourself. Once you’re familiar with R basics, you might consider integrating AI in your coding workflow, but be very careful if and when you do.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -507,17 +557,18 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In breakout rooms, read the project description, and then go through the following items:</p>
+<p>In breakout rooms, discuss the following questions:</p>
 <ul>
-<li><p>Go through the <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1BvWYEQlzdLJNFowhD02Sz0n7Y2jTISqlHhllFCuW3SkkBQ/viewform?usp=dialog">Google Form survey</a> to get a sense of what kind of data are being collected. <strong>Note:</strong> while the data you submit will not be shared, it will be stored on Google Drive. Do not use your real information if you don’t want it to be saved!</p></li>
-<li><p>Open the survey .csv file (you can do this in Excel, Numbers or a similar application) and take a look at the raw dataset.</p>
-<ul>
-<li>What pieces of information are personally-identifying, and would need to be removed to create an anonymized dataset appropriate for analysis and sharing?<br>
+<li>Have you used AI (like ChatGPT, Google AI, Gemini, etc.) in your personal life? What about your academic work?<br>
 </li>
-<li>What other kinds of information are being collected?</li>
-</ul></li>
+<li>When have you found AI to be useful? When has it let you down or led you astray?<br>
+</li>
+<li>If you asked AI an R coding question today, do you think you could understand its response? What would you do if you couldn’t?<br>
+</li>
+<li>How can you check code generated by AI?<br>
+</li>
+<li>What are some advantages and disadvantages of relying on AI when working with data? How does working with AI affect transparency and reproducibility?</li>
 </ul>
-<p>You will have 20 min in break out rooms. Please choose someone in your group to share your group’s main discussion points to the larger group after.</p>
 </div>
 </div>
 

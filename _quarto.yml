@@ -46,6 +46,13 @@ website:
             - qmd/Day04/Day04_Overview.qmd
             - qmd/Day04/Day04_Lesson1.qmd 
             - qmd/Day04/Day04_Lesson2.qmd
+      - text: "Day 5"
+        menu:
+            - qmd/Day05/Day05_Overview.qmd
+            - qmd/Day05/Day05_Lesson1.qmd 
+            - qmd/Day05/Day05_Lesson2.qmd
+            - qmd/Day05/Day05_Lesson3.qmd
+            - qmd/Day05/Day05_Lesson4.qmd
       - text: "The Project"
         href: qmd/Day01/00_TheProject.qmd
       - text: "Resources"

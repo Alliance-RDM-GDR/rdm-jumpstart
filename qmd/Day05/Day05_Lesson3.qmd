@@ -1,0 +1,90 @@
+---
+title: "Lesson 3: Troubleshooting"
+---
+
+## Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+ - Identify how to interpret errors and warnings in R.  
+ - Work through steps to solve errors in R.  
+ - Discuss advantages and disadvantages of using AI to learn coding and work with data.
+ 
+## Lecture - Troubleshooting in R
+
+Understanding and fixing errors is one of the most important (and sometimes frustrating) parts of learning R. In R, errors occur when the code you write can’t be executed due to problems like typos, missing packages, incorrect function arguments, or misused data structures. When R encounters an error, it stops running the code at the point where it finds the error and doesn’t go any further.
+
+Warnings in R are alerts to inform you about something, but they don’t prevent the code from running. Warnings may tell you things like a package is out of date or an update is available, or may indicate actions that have been taken in the background when your code was running, like empty spaces being converted to NAs. It’s a good idea to read the warnings, because if running your code produces a result you didn’t expect, the explanation could be in the warning.
+
+## Understanding Error Messages
+
+When an error occurs in R, you’ll see a message that gives clues about what went wrong. However, these messages require a bit of getting used to. 
+
+For example, if you forget a comma in a chunk of code, you’ll get an error like “unexpected symbol” or “unexpected string constant”. While it might seem like this **should** mean you put in something extra that R didn’t expect, it **actually** means that R expected a comma and got something else instead.
+
+Another example is the “object not found” error. R is very literal, so if you misspell the name of an object, R won’t be able to find it, even if it worked with the object successfully when you spelled the name correctly. 
+
+Learning to read and interpret these messages is a key part of becoming confident in R, as error messages help you troubleshoot and fix mistakes efficiently. As you gain experience, you’ll begin to recognize common patterns and learn how to resolve them quickly.
+
+## Common Errors in R
+
+Some R errors happen frequently, so it can be a good idea to start your troubleshooting with errors of this type in mind. Here are five common errors that you might encounter.
+
+1. Not including a closing parenthesis, curly brace, square bracket, or quotation mark.
+
+   If you’re using RStudio, when you type an opening parenthesis, brace, bracket or quotation mark, RStudio will automatically supply the closing punctuation for you; however, it’s easy to accidentally delete something or add extra punctuation!
+
+2. Typos, spelling mistakes, capitalization errors, or other errors in the names of datasets, objects or functions.
+
+	Note that R is case sensitive, so capitalization matters.
+
+If you’re sure that you’ve spelled something correctly and your code still isn’t working, make sure that you’ve defined it.
+
+3. Forgetting or misplacing a comma.
+
+4. Calling a function in a library that you haven’t yet installed or loaded.
+
+5. Having missing or incorrect arguments in a function.
+
+For more examples of common errors, check out this webpage: [https://statsandr.com/blog/top-10-errors-in-r/](https://statsandr.com/blog/top-10-errors-in-r/)
+
+If you’re not sure what the arguments should be for a function, check the description. You can get to the documentation easily by using ?function_name or help(function_name)
+
+## What to Do When You Get an Error
+
+1. Take a deep breath. You’ll be able to work through this!  
+2. Try to identify what the error is. Look at the error message that R is giving you, and/or the line or chunk of code that R is indicating has a problem.   
+3. Double check your code for common mistakes, such as the ones indicated above.  
+4. Consult the package description to understand how each function works. For example, if you haven’t included the right number of arguments, a function won’t run properly.  
+5. Try to look for a similar error online. A quick copy / paste of your error message into a search engine often guides you to a tutorial, or a forum with someone who’s faced a similar issue and received responses.  
+6. Ask for help in a forum like [stackoverflow.com](http://stackoverflow.com), [stackexchange.com](http://stackexchange.com), or community.rstudio.com.  
+7. Ask someone else ( e.g., a lab mate, a friend, your supervisor) to look at your code and see if they can see the problem and/or know the answer. It’s best to try to work through it yourself first. 
+
+You can also consult this guide for more strategies and details on troubleshooting in R: [https://uviclibraries.github.io/rstudio/troubleshooting.html](https://uviclibraries.github.io/rstudio/troubleshooting.html) 
+
+## Activity - Breakout room discussion
+
+You may have noticed that AI wasn’t mentioned in the list of strategies above.
+
+AI systems can generate code from text instructions, explain coding concepts, and help debug errors. But AI generates code based on patterns - not because it understands. AI tools often produce code that contains errors, use functions that don’t exist, assume packages are loaded that are not, or misinterprets data structure. A beginner often cannot recognize these mistakes, which can lead to frustration and confusion.
+
+AI can be helpful for programming, but learning to code requires practice and understanding. If you rely on AI too early, you might write code that runs, but you won’t know why it works or how to fix it if it breaks. The goal of learning R is not just to get output, but to develop the skills needed to analyze and understand data.
+
+The best way to learn how to use R is to write and troubleshoot code yourself. Once you're familiar with R basics, you might consider integrating AI in your coding workflow, but be very careful if and when you do.
+
+::: {.callout-note}
+## Breakout Room
+
+
+In breakout rooms, discuss the following questions:
+
+* Have you used AI (like ChatGPT, Google AI, Gemini, etc.) in your personal life? What about your academic work?  
+* When have you found AI to be useful? When has it let you down or led you astray?  
+* If you asked AI an R coding question today, do you think you could understand its response? What would you do if you couldn’t?  
+* How can you check code generated by AI?  
+* What are some advantages and disadvantages of relying on AI when working with data? How does working with AI affect transparency and reproducibility?
+
+:::
+
+
+

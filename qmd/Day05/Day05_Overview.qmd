@@ -1,0 +1,29 @@
+---
+title: "Overview"
+---
+
+## Overview
+
+Today we will continue with data cleaning. Now that you have gone through some of the major steps of data cleaning, we will now focus on understanding what tidy data is, and how to reshape your dataset so that it is in a tidy format. After we finish cleaning the dataset from our example project, we will then take some time to update the documentation. Throughout your learning journey so far, you’ve probably encountered many error messages and mistakes in R. During the second half of the day, we will discuss strategies to troubleshoot our code, and the role AI can play in code creation and review. Finally, we will end the day with a troubleshooting challenge.
+
+## Learning Objectives: 
+
+By the end of today, you will be able to: 
+
+ - Describe what tidy data is and manipulate data into tidy formats.  
+ - Use functions from the tidyverse to clean data of an example dataset.  
+ - Write reproducible code by applying concepts of literate programming.  
+ - Work through steps to solve errors in R.  
+ - Discuss advantages and disadvantages of using AI to learn coding and work with data.
+ 
+## Lessons
+
+This day has four parts:
+
+ - Lesson 1  - [Data cleaning, part 2](Day05_Lesson1.html) 
+ - Lesson 2  - [Documentation Update](Day05_Lesson2.html)
+ - Lesson 3  - [Troubleshooting](Day05_Lesson3.html)
+ - Lesson 4  - [Troubleshooting Activity](Day05_Lesson4.html)
+
+You can click on the links above to go to each page. There, you will find the learning objectives for the lessons, as well as all the material you will need to follow along with the course.  
+

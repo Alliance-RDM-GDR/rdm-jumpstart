@@ -1,0 +1,30 @@
+---
+title: "Lesson 2: Documentation Update"
+---
+
+## Activity - Update README and DMP
+
+### README
+
+Now that we’ve done some more data cleaning, let’s revisit our README and see what needs to be updated. In the previous session, we did a few things that should be documented:
+
+* Transformed variable types.  
+* Transformed the dataset into long formats.  
+* Saved both wide and long versions of the cleaned and anonymized dataset.
+
+In your README document, do the following:
+
+* Update the methodological information to include the data cleaning steps for processing the data.  
+* Update the Data Specific information for the dataset:  
+  * You will need to duplicate the list for each file that you created  
+  * For each file, update the descriptions for:  
+    * Number of variables  
+    * Number of cases/rows  
+    * Variable List: \<list variable name(s), description(s), unit(s) and value labels as appropriate for each\>  
+    * Missing data codes: \<list code/symbol and definition\>  
+    * Specialized formats or other abbreviations used
+
+### Update DMP
+
+Now, sign into the DMP Assistant and see if there is anything you want to add for the sections that you have worked on previous days. By the end of today, you will want to have almost everything but sections four (Preservation) and five (Sharing and Reuse) filled out.
+
