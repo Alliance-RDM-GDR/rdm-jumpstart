@@ -1,0 +1,112 @@
+---
+title: "Lesson 3: Documentation update"
+---
+
+## Activity - Updating Your Data Management Plan
+
+Go into your DMP and see if there’s anything that you think needs to be updated. You should also be able to complete the remaining sections:
+
+* Preservation  
+  * Where will you deposit your data for long-term preservation and access at the end of your research project?  
+  * Indicate how you will ensure your data is preservation ready. Consider preservation-friendly file formats, ensuring file integrity, anonymization and de-identification, inclusion of supporting documentation.  
+* Sharing and Reuse  
+  * What data will you be sharing and in what form? (e.g. raw, processed, analyzed, final).  
+  * Have you considered what type of end-user license to include with your data?  
+  * What steps will be taken to help the research community know that your data exists?
+
+Once you have completed your DMP, you can download the PDF/Word document and add it to the root directory of your project.
+
+## Activity - Finalizing Your README
+
+Because you may not want to share all the files that were generated over the course of a project, you’ll need to decide which files you want to deposit.
+
+So far, we have collected/generated the following files over this program:
+
+* my-first-script.R   
+* data-types-script.R  
+* survey_student_rawdata.csv   
+* survey_student_data-explore.R   
+* survey_student.RProj   
+* survey_student_identifiers-IDs.csv   
+* survey_student_anonymized-cleancolnames.csv   
+* survey_student_cleaning.R   
+* survey_student_anonymized-wide.csv   
+* survey_student_anonymized-wide.rds   
+* survey_student_anonymized-long.csv   
+* survey_student_anonymized-long.rds   
+* survey_faculty_rawdata.csv  
+* survey_faculty_cleaning.R  
+* survey_student_visualization.R   
+* survey_student_sleep.png  
+* survey_student_meantime-platform.png   
+* survey_student_stress-hours.png   
+* survey_student_meantime-age.png
+
+::: {.callout-note}
+## Exercise
+
+Take a few minutes to look at these files and think about what files you would share versus what you would not share.
+
+:::
+
+::: {.callout-tip collapse=true}
+## Answer
+
+In terms of what would be valuable to share, we’re going to deposit the files that have not been crossed out:
+
+* ~~**my-first-script.R**~~  
+  * Training file, no need to share.  
+* ~~**data-types-script.R**~~  
+  * Training file, no need to share.  
+* ~~**survey_student_rawdata.csv**~~  
+  * Raw data containing identifiers, don’t share to protect participant identity. 
+* ~~**survey_student_data-explore.R**~~  
+  * Training file, no need to share.  
+* **survey_student.RProj**  
+  * .RProj file helps with reproducibility of code, so should be shared.  
+* ~~**survey_student_identifiers-IDs.csv**~~  
+  * Data file that contains identifiers, don’t share to protect participant identity.  
+* **survey_student_anonymized-cleancolnames.csv**  
+  * The first version of the data with no identifiers, this can be shared as the deidentified “raw” data.  
+* **survey_student_cleaning.R**  
+  * Code to reproduce cleaning steps, share.  
+* **survey_student_anonymized-wide.csv**  
+  * Wide version of cleaned .csv data, share.  
+* **survey_student_anonymized-wide.rds**  
+  * Wide version of cleaned .rds data, share.  
+* **survey_student_anonymized-long.csv**  
+  * Long version of cleaned .csv data, share.  
+* **survey_student_anonymized-long.rds**  
+  * Long version of cleaned .rds data, share.  
+* ~~**survey_faculty_rawdata.csv**~~  
+  * Not part of the paper on student research, don’t share.  
+* ~~**survey_faculty_cleaning.R**~~  
+  * Not part of the paper on student research, don’t share.  
+* **survey_student_visualization.R**  
+  * Script to create plots, share.  
+* ~~**survey_student_sleep.png**~~   
+  * Plots can be recreated with viz script, don’t share. 
+* ~~**survey_student_meantime-platform.png**~~   
+  * Plots can be recreated with viz script, don’t share.  
+* ~~**survey_student_stress-hours.png**~~   
+  * Plots can be recreated with viz script, don’t share.  
+* ~~**survey_student_meantime-age.png**~~   
+  * Plots can be recreated with viz script, don’t share.
+
+:::
+
+Now open up your README and make sure that it contains an accurate description of all the files that will be deposited.
+
+::: {.callout-caution}
+## Note
+
+It should be noted that on projects that have generated many files, it can be helpful to create a new folder in the root directory called deposit, which only contains the files that will be deposited.
+
+It’s also possible that bigger projects will make multiple deposits associated with different papers, which may result in multiple deposit folders. Because data deposits may not represent all the files generated in a project, it is sometimes necessary to have two separate README files:
+
+* One for the active project/personal copies retained.  
+* One for the deposited materials.
+
+Because our project this week has been quite simple, and for the sake of time, we won’t be creating a separate folder or another README, but you are welcome to experiment with your own work.
+
+:::

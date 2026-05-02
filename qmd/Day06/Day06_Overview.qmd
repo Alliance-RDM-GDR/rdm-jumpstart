@@ -1,0 +1,29 @@
+---
+title: "Overview"
+---
+
+## Overview
+
+Welcome to the final day of the RDM Jumpstart! You’ve learned about the importance of RDM, how to manage your data, and how to keep consistent and updated project documentation. We also learned how to use R to clean your data so that it is ready for analysis and sharing. Today, we are going to finalize with an introduction about data exploration and visualization in R, which is an important first step in the analysis of data. We will finish with a discussion about data sharing and data licenses, and then practice depositing the data from our example project into a data repository. 
+
+## Learning Objectives: 
+
+By the end of today, you will be able to: 
+
+ - Locate data visualization within the data science workflow.  
+ - Use the grammar of `ggpplot2` to create visualizations in R.  
+ - Articulate reasons to share and preserve research data, and when not to share certain elements of a project.  
+ - Define data repositories and their role in the research data lifecycle.  
+ - List and explain the main data license types.  
+ - Deposit data into the Borealis data repository.
+
+## Lessons
+
+This day has four lessons:
+
+ - Lesson 1  - [Data visualization with ggplot2](Day06_Lesson1.html) 
+ - Lesson 2  - [Data sharing](Day06_Lesson2.html) 
+ - Lesson 3  - [Documentation update](Day06_Lesson3.html) 
+ - Lesson 4  - [Borealis deposit](Day06_Lesson4.html) 
+
+You can click on the links above to go to each lesson page. There, you will find the learning objectives for the lesson, as well as all the material you will need to follow along with the course.
