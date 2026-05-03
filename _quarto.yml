@@ -60,6 +60,7 @@ website:
             - qmd/Day06/Day06_Lesson2.qmd
             - qmd/Day06/Day06_Lesson3.qmd
             - qmd/Day06/Day06_Lesson4.qmd
+            - qmd/Day06/Day06_Lesson5.qmd
       - text: "The Project"
         href: qmd/Day01/00_TheProject.qmd
       - text: "Resources"
