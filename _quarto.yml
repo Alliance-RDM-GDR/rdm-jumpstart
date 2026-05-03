@@ -68,8 +68,6 @@ website:
             - qmd/extras/codeOfConduct.qmd
             - qmd/extras/setup.qmd
             - qmd/extras/contributors.qmd
-            - qmd/extras/template.qmd
-
 format:
   html:
     theme:
