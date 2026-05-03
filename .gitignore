@@ -4,5 +4,6 @@
 .Rapp.history
 images/institutions/originals/
 /.quarto/
+/qmd/extras/template.qmd
 **/*.quarto_ipynb
 .positai
