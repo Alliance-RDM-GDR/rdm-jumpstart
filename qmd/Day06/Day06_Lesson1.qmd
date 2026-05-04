@@ -15,7 +15,10 @@ By the end of this lesson, you’ll be able to:
 
 ### Lecture
 
-[insert ppt]
+* [Download the PowerPoint](files/day6_L1_Data-Visualization.pptx)
+
+<embed src="files/day6_L1_Data-Visualization.pdf" type="application/pdf" width="100%" height="600px" />
+
 
 ### Visualizing Data
 
@@ -528,7 +531,7 @@ In breakout rooms, work together to build the following plots.
 
 ### Question 1: Bar Plot
 
-::: {.callout-tip}
+::: {.callout-note}
 ## Create a Bar Plot
 
 
@@ -638,7 +641,7 @@ ggsave("survey_student_meantime-platform.png",
 
 ### Question 2: Box Plot
 
-::: {.callout-tip}
+::: {.callout-note}
 ## Create a Box Plot
 
 Create a **box plot** to show how perceptions of stress associated with hours spent on social media.
@@ -705,7 +708,7 @@ ggsave("survey_student_stress-hours.png",
 
 ### Question 3: Linear Regression
 
-::: {.callout-tip}
+::: {.callout-note}
 ## Create a Linear Regression
 
 Create a **linear regression** showing the relationship between respondent age and time spent on social media.

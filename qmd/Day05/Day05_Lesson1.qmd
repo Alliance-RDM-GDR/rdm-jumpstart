@@ -1,5 +1,5 @@
 ---
-title: "Lesson 1 - Data Cleaning, part 2"
+title: "Lesson 1: Data Cleaning, part 2"
 ---
 
 ## Learning Objectives
