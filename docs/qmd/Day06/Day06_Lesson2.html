@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lesson 2 - Data Visualization Activity – RDM Jumpstart</title>
+<title>Lesson 2: Data sharing – RDM Jumpstart</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -450,19 +415,15 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
   </li>  
         <li>
     <a class="dropdown-item" href="../../qmd/Day06/Day06_Lesson2.html">
- <span class="dropdown-text">Lesson 2 - Data Visualization Activity</span></a>
+ <span class="dropdown-text">Lesson 2: Data sharing</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../qmd/Day06/Day06_Lesson3.html">
- <span class="dropdown-text">Lesson 3: Data sharing</span></a>
+ <span class="dropdown-text">Lesson 3: Documentation update</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../qmd/Day06/Day06_Lesson4.html">
- <span class="dropdown-text">Lesson 4: Documentation update</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../qmd/Day06/Day06_Lesson5.html">
- <span class="dropdown-text">Lesson 5: Borealis deposit</span></a>
+ <span class="dropdown-text">Lesson 4: Borealis deposit</span></a>
   </li>  
     </ul>
   </li>
@@ -505,9 +466,17 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#question-1-bar-plot" id="toc-question-1-bar-plot" class="nav-link active" data-scroll-target="#question-1-bar-plot">Question 1: Bar Plot</a></li>
-  <li><a href="#question-2-box-plot" id="toc-question-2-box-plot" class="nav-link" data-scroll-target="#question-2-box-plot">Question 2: Box Plot</a></li>
-  <li><a href="#question-3-linear-regression" id="toc-question-3-linear-regression" class="nav-link" data-scroll-target="#question-3-linear-regression">Question 3: Linear Regression</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#lecture---data-sharing" id="toc-lecture---data-sharing" class="nav-link" data-scroll-target="#lecture---data-sharing">Lecture - Data Sharing</a>
+  <ul class="collapse">
+  <li><a href="#why-would-you-share-data" id="toc-why-would-you-share-data" class="nav-link" data-scroll-target="#why-would-you-share-data">Why Would You Share Data?</a></li>
+  <li><a href="#why-wouldnt-you-share-data" id="toc-why-wouldnt-you-share-data" class="nav-link" data-scroll-target="#why-wouldnt-you-share-data">Why Wouldn’t You Share Data?</a></li>
+  <li><a href="#deciding-what-to-share" id="toc-deciding-what-to-share" class="nav-link" data-scroll-target="#deciding-what-to-share">Deciding What to Share</a></li>
+  <li><a href="#what-to-keep-for-yourself" id="toc-what-to-keep-for-yourself" class="nav-link" data-scroll-target="#what-to-keep-for-yourself">What to Keep for Yourself</a></li>
+  <li><a href="#data-repositories" id="toc-data-repositories" class="nav-link" data-scroll-target="#data-repositories">Data Repositories</a></li>
+  <li><a href="#borealis" id="toc-borealis" class="nav-link" data-scroll-target="#borealis">Borealis</a></li>
+  <li><a href="#data-licenses" id="toc-data-licenses" class="nav-link" data-scroll-target="#data-licenses">Data Licenses</a></li>
+  </ul></li>
   </ul>
 </nav>
 </nav>
@@ -521,7 +490,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lesson 2 - Data Visualization Activity</h1>
+<h1 class="title">Lesson 2: Data sharing</h1>
 </div>
 
 
@@ -538,265 +507,213 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </header>
 
 
-<p>In breakout rooms, work together to build the following plots.</p>
-<section id="question-1-bar-plot" class="level2">
-<h2 class="anchored" data-anchor-id="question-1-bar-plot">Question 1: Bar Plot</h2>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this session, you’ll be able to:</p>
+<ul>
+<li>Articulate reasons to share and preserve research data.<br>
+</li>
+<li>Make decisions about what data and materials to share and keep after a project’s completion.<br>
+</li>
+<li>Define data repositories and their purpose.<br>
+</li>
+<li>Discuss qualities of good data repositories and how to choose one for your project.<br>
+</li>
+<li>Describe data license types and the main considerations when choosing a license for your project.<br>
+</li>
+<li>Deposit data into the Borealis data repository.</li>
+</ul>
+</section>
+<section id="lecture---data-sharing" class="level2">
+<h2 class="anchored" data-anchor-id="lecture---data-sharing">Lecture - Data Sharing</h2>
+<p>We’ve spent a lot of time in this course talking about documentation and its importance for data sharing and reproducibility. In this session, we’re going to learn how to preserve data so it can be accessed and reused, which is part of the research data life cycle that we looked at on day one.</p>
+<p><img src="images/day-6-rdm-lifecycle.png" class="img-fluid"></p>
+<section id="why-would-you-share-data" class="level3">
+<h3 class="anchored" data-anchor-id="why-would-you-share-data">Why Would You Share Data?</h3>
+<p>As mentioned in the <a href="../Day01/Day01_Lesson1.html">Introduction to RDM</a> session, research funders and publishers are progressively requiring that data be shared after a project’s completion. Because of this, one major reason that researchers share data is because they have an obligation to share. However, these requirements are driven by a larger philosophy that FAIR data is synonymous with good research. By allowing data to be made accessible to others, research can be vetted for errors and bias, which enables new studies to utilize existing data rather than recreating new data.</p>
+</section>
+<section id="why-wouldnt-you-share-data" class="level3">
+<h3 class="anchored" data-anchor-id="why-wouldnt-you-share-data">Why Wouldn’t You Share Data?</h3>
+<p>While funders and publishers announce data sharing requirements, they understand that there will be reasons that certain data can’t be shared. These can include:</p>
+<ul>
+<li>Sensitivities and ethics regarding personal information.<br>
+</li>
+<li>Sensitivities and ethics regarding community-based data.<br>
+</li>
+<li>Intellectual property and ownership considerations.<br>
+</li>
+<li>Too much data.</li>
+</ul>
+<section id="data-sensitivity-consent-for-secondary-use" class="level4">
+<h4 class="anchored" data-anchor-id="data-sensitivity-consent-for-secondary-use">Data Sensitivity &amp; Consent for Secondary Use</h4>
+<p>Before you share your data, consider the ethical implications of sharing it. As discussed in Day 1, sensitive data is determined through the inherent risk and potential harm that may come from inappropriate access or mishandling of it. As of May 2026, there is currently no existing research data infrastructure in Canada that can adequately provide protection (data security, access controls, etc.) for a dataset containing sensitive data.</p>
+<p>Most research funders do not require sensitive data to be shared. Rather, they operate under the principle of “as open as possible, as closed as necessary.”</p>
+<p>Some funders still require sensitive data to be discoverable. This means that the data files associated with the project are not deposited in a research data repository, but the metadata and documentation, when appropriate, are. The data is then self-hosted in a secure location, chosen by the researcher, where adequate protections can be guaranteed.</p>
+<p>If you are working with sensitive data and are required to share its metadata and documentation, you should develop a data access plan, which details the procedures for providing access to the data. This should also be clearly articulated in your ethics application and consent form.</p>
+</section>
+<section id="data-size-folder-structure" class="level4">
+<h4 class="anchored" data-anchor-id="data-size-folder-structure">Data Size &amp; Folder Structure</h4>
+<p>Before you share your data, consider the size of your data. Repositories often have file and dataset size limits, though they may permit larger uploads by request, or through a specialized service. For most research data repositories, file size limits can range between 2 to 50 gigabytes, and total dataset size limits can range between 2-5 terabytes.</p>
+<p>Additionally, before you deposit, consider the folder structure of your files and how you would like to structure your files in the repository.</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Create a Bar Plot
+<span class="screen-reader-only">Caution</span>Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Create a <strong>Bar plot</strong> to show which social media platforms are used most by respondents.</p>
-<p>Start by calculating the average number of hours spent on each platform, across respondents, from <code>survey_long</code>.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate average hours per platform from ‘survey_long’</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>platform_mean_hours <span class="ot">&lt;-</span> survey_long <span class="sc">|&gt;</span> </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># for every category in ‘hours_type’...  </span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(hours_type) <span class="sc">|&gt;</span> </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># summarise dataset down to mean hours per category + standard deviation </span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(hours_number),</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">sd =</span> <span class="fu">sd</span>(hours_number)) <span class="sc">|&gt;</span> </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># remove unneeded columns</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(hours_type <span class="sc">!=</span> <span class="st">"hours_sleep"</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        hours_type <span class="sc">!=</span> <span class="st">"hours_total"</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        hours_type <span class="sc">!=</span> <span class="st">"hours_other"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>View <code>platform_mean_hours</code> and take a look at how the data has been summarized.</p>
-<p>Then, use <code>platform_mean_hours</code> to make the following plot:</p>
-<p><img src="images/day-6_activity-1.png" class="img-fluid"></p>
-<p><br> <br></p>
-<p>Save the finished plot to your <code>figures</code> folder with the name <code>survey_student_meantime-platform.png</code>, with a width and height of 150 mm.</p>
-<p>Some helpful hints:</p>
-<ul>
-<li>The colour of the bars is <code>darkseagreen4</code></li>
-<li>Error bars represent standard deviation, and are added using <code>geom_errorbar()</code></li>
-<li>You’ll need to rename the x axis text using <code>scale_x_discrete()</code></li>
-<li>You can change or remove axis ticks using <code>theme()</code> and the arguments <code>element_text()</code> to edit text and <code>element_blank()</code> to remove the chart element</li>
-<li>Use the <code>ggplot2</code> cheat sheet and/or search Google for the changes you want to make to your plot if you get stuck.</li>
-</ul>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>platform_mean_hours_plot <span class="ot">&lt;-</span> </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># specify data + aesthetics</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(platform_mean_hours,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> hours_type,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> mean)) <span class="sc">+</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># specify geometry</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"darkseagreen4"</span>) <span class="sc">+</span> <span class="co"># change fill colour to dark sea-green</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add error bars</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> <span class="fu">pmax</span>(mean <span class="sc">-</span> sd, <span class="dv">0</span>), <span class="co"># keep error bar for Twitter above zero</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">ymax =</span> mean <span class="sc">+</span> sd), </span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> <span class="fl">0.2</span>, <span class="co"># make error bars less wide</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"grey10"</span>) <span class="sc">+</span> <span class="co"># change colour to dark grey</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fix up axes labels</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Social Media Platform"</span>,</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Average Hours per Day"</span>) <span class="sc">+</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>   <span class="co"># fix up platform labels</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Facebook"</span>,</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Instagram"</span>,</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Snapchat"</span>,</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"TikTok"</span>,</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Twitter/X"</span>)) <span class="sc">+</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># remove gap between x axis + plot</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># set theme</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># manually change theme elements</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>),</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>,</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">angle =</span> <span class="dv">45</span>, <span class="co"># tilt x axis text 45 degrees</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">hjust =</span> <span class="dv">1</span>), <span class="co"># centre x axis text</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>),</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>()) <span class="co"># remove x axis ticks</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save plot to "figures" folder</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"survey_student_meantime-platform.png"</span>,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  platform_mean_hours_plot,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">150</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">150</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">units =</span> <span class="st">"mm"</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">"figures"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
+<p>If your deposit has many files and folders, compress the root directory as a .zip file. When you deposit your dataset, upload the zipped (compressed) file as is. This will maintain the folder structure of your dataset.</p>
 </div>
 </div>
 </section>
-<section id="question-2-box-plot" class="level2">
-<h2 class="anchored" data-anchor-id="question-2-box-plot">Question 2: Box Plot</h2>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Create a Box Plot
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Create a <strong>box plot</strong> to show how perceptions of stress associated with hours spent on social media.</p>
-<p>Use <code>survey_short</code> data to make the following plot:</p>
-<p><img src="images/day-6_activity-2.png" class="img-fluid"> <br> <br></p>
-<p>Save the finished plot to your <code>figures</code> folder with the name <code>survey_student_stress-hours.png</code>, with a width and height of 150 mm.</p>
-<p>Some helpful hints:</p>
-<ul>
-<li>You’ll need to rename the x axis text using <code>scale_x_discrete()</code></li>
-<li>Use the ggplot2 cheat sheet and/or search Google for the changes you want to make to your plot if you get stuck.</li>
-</ul>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>stress_total_hours_plot <span class="ot">&lt;-</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># specify data + aesthetics</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(survey_short,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>         <span class="fu">aes</span>(<span class="at">x =</span> feel_stress,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> hours_total)) <span class="sc">+</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># specify geometry</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"grey"</span>) <span class="sc">+</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fix up axes labels</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Social Media Incurs Stress"</span>,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Total Daily Hours on Social Media"</span>) <span class="sc">+</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fix up agreement labels</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Strong Disagree"</span>,</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Disagree"</span>,</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Neutral"</span>,</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Agree"</span>,</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"NA"</span>)) <span class="sc">+</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># set theme</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># manually change theme elements</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>),</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>,</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">angle =</span> <span class="dv">45</span>,</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">hjust =</span> <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save plot to "figures" folder</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"survey_student_stress-hours.png"</span>,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>       stress_total_hours_plot,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">150</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">height =</span> <span class="dv">150</span>,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">units =</span> <span class="st">"mm"</span>,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">path =</span> <span class="st">"figures"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="question-3-linear-regression" class="level2">
-<h2 class="anchored" data-anchor-id="question-3-linear-regression">Question 3: Linear Regression</h2>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<section id="deciding-what-to-share" class="level3">
+<h3 class="anchored" data-anchor-id="deciding-what-to-share">Deciding What to Share</h3>
+<p>When sharing data, you do not necessarily need to share every file generated in your project. Rather, what you share should be a purposeful selection of files that allow for the interpretation and reproducibility of your research. This can include:</p>
+<p><strong>Data files:</strong></p>
+<ul>
+<li>Raw/original files<br>
+</li>
+<li>Processed data, which is a cleaned or manipulated version of the raw data files<br>
+</li>
+<li>Analyzed or summary data, which shows the analysis and results of the processed data</li>
+</ul>
+<p><strong>Code files:</strong></p>
+<ul>
+<li>Cleaning<br>
+</li>
+<li>Analysis<br>
+</li>
+<li>Visualization</li>
+</ul>
+<p><strong>Documentation:</strong></p>
+<ul>
+<li>README file(s)<br>
+</li>
+<li>Data dictionary<br>
+</li>
+<li>Codebook</li>
+</ul>
+<p>The exact files you choose to share will be specific to your project, but at minimum should include:</p>
+<ul>
+<li>Processed data that has been cleaned of errors and/or anonymized to remove direct or indirect identifying information, and that is in a preservation friendly format, and<br>
+</li>
+<li>enough supporting documentation for other researchers to understand, reproduce, and/or reuse your data.</li>
+</ul>
+</section>
+<section id="what-to-keep-for-yourself" class="level3">
+<h3 class="anchored" data-anchor-id="what-to-keep-for-yourself">What to Keep for Yourself</h3>
+<p>In addition to the data and files that you will share with others, you also want to consider which project files you should keep for yourself. Just because you’re not sharing something doesn’t mean you should get rid of it. It is common for institutions to have rules for how long you have to keep research records after a project is complete. Research ethics boards don’t require you to destroy data, but if participants are told that their data will be destroyed, it must be. While it is not possible to predict all the files you will generate prior to beginning a project, considering these elements at the project’s onset, and through a DMP, can help ensure that your research files will be in good shape at the end of your project to enable your desired workflows.</p>
+<p>Files you will want to consider saving for yourself include:</p>
+<ul>
+<li>Project management records: internal communications, decision making documents, admin records, ethics information, etc.<br>
+</li>
+<li>Data management plans, methodologies, standard operated procedures.<br>
+</li>
+<li>Unused analyses, visualizations, code chunks.<br>
+</li>
+<li>Intermediate files.</li>
+</ul>
+<p>You will also want to make sure that everybody involved with the project agrees on what data/files will be shared (if any), and how/where this will happen. This can include:</p>
+<ul>
+<li>Your supervisor<br>
+</li>
+<li>Partners/collaborators/communities you’re working with<br>
+</li>
+<li>Research participants</li>
+</ul>
+</section>
+<section id="data-repositories" class="level3">
+<h3 class="anchored" data-anchor-id="data-repositories">Data Repositories</h3>
+<p>There are different ways that data can be shared. Some researchers will keep their files on a local storage system, and through the addition of a data availability statement in their research papers, others can contact them and request access to the data. Another option is to host the data on a website that is maintained by those involved with the research project. While both of these methods for sharing data do work, they require ongoing work and maintenance, which can be a burden and result in unintended barriers to data access.</p>
+<p>Data repositories are systems that facilitate the upload, long-term preservation, discovery, and access of research data and accompanying materials. The focus of data repositories is on housing data after a project’s completion - data that won’t be changed or updated on a regular basis. These systems remove the perpetual maintenance and work by researchers in keeping their data safe and organized, and are a best practice for sharing data.</p>
+<p>Data repositories provide:</p>
+<ul>
+<li>persistent identifiers (e.g.&nbsp;DOIs),<br>
+</li>
+<li>options for controlled vocabulary and custom metadata,<br>
+</li>
+<li>version control,<br>
+</li>
+<li>access permissions on both public and administrative sides of the interface.</li>
+</ul>
+<p>Persistent identifiers make datasets citable as research outputs. Metadata enables search and discovery. Versioning ensures research remains traceable over time. And, access permissions help research teams control who can edit or view the data.</p>
+<p>Data repositories <strong>do not</strong> always guarantee long-term storage and preservation, nor are they always appropriate for sensitive data. Your choice of repository will depend on the unique needs of your project, the structure and size of your data, and the ethical, legal, or cultural aspects of the data you want to deposit.</p>
+<p>Repositories generally fall into three categories:</p>
+<ul>
+<li>Disciplinary: these are focused on specific research communities, such as genomics, demography, or archaeology. For example, <a href="https://www.ncbi.nlm.nih.gov/geo/#:~:text=GEO%20is%20a%20public%20functional%20genomics%20data,submissions.%20Array%2D%20and%20sequence%2Dbased%20data%20are%20accepted.">GEO</a>, <a href="https://www.icpsr.umich.edu/sites/icpsr/home">ICPSR</a>, and the <a href="https://archaeologydataservice.ac.uk">Archaeology Data Service</a>.<br>
+</li>
+<li>Generalist: these accept data from multiple disciplines and support multiple file types. For example, <a href="https://zenodo.org">Zenodo</a> and <a href="https://figshare.com">Figshare</a>. The <a href="https://www.frdr-dfdr.ca/repo/">Federated Research Data Repository</a> is a Canadian generalist repository that specializes in big data deposits.<br>
+</li>
+<li>Institutional: these are hosted by universities or governments. For example, <a href="https://borealisdata.ca">Borealis</a> is a Canadian institutional data repository.</li>
+</ul>
+<section id="choosing-a-repository" class="level4">
+<h4 class="anchored" data-anchor-id="choosing-a-repository">Choosing a Repository</h4>
+<p>The following questions can be used to guide your decision in choosing a data repository:</p>
+<ul>
+<li>Does it assign DOIs?<br>
+</li>
+<li>Does it support metadata standards?<br>
+</li>
+<li>Is there institutional support?<br>
+</li>
+<li>What are file size limits?<br>
+</li>
+<li>Does it allow restricted access?<br>
+</li>
+<li>Is it sustainable long-term?<br>
+</li>
+<li>Is it indexed by discovery services?</li>
+</ul>
+</section>
+</section>
+<section id="borealis" class="level3">
+<h3 class="anchored" data-anchor-id="borealis">Borealis</h3>
+<p>Borealis is a national data repository service coordinated by the <a href="https://www.alliancecan.ca/en">Digital Research Alliance of Canada</a>. It is built on <a href="https://dataverse.org">Dataverse</a>, an open-source repository infrastructure originally developed at Harvard. It is used by over 70 institutions in Canada, and will be the repository that we will be using for this program.</p>
+<p>Benefits of Borealis include:</p>
+<ul>
+<li>Servers are hosted in Canada.<br>
+</li>
+<li>Has a robust preservation plan (<a href="https://borealisdata.ca/preservationplan/">https://borealisdata.ca/preservationplan/</a>).<br>
+</li>
+<li>Provides a persistent digital object identifier (DOI) for all datasets.<br>
+</li>
+<li>Metadata are harvested by a number of aggregation services, e.g., Lunaris(https://www.lunaris.ca/en), Google Dataset Search(<a href="https://datasetsearch.research.google.com/">https://datasetsearch.research.google.com/</a>.)<br>
+</li>
+<li>Metrics available for how often datasets/files have been downloaded.</li>
+</ul>
+<p>If your institution uses Borealis, there will likely be local support available to you. This support is going to be different across institutions, with some institutions providing robust support for submissions, some providing a review of submitted datasets, and others allowing data to be directly deposited by researchers.</p>
+<p>While Borealis is generally a good choice for most research projects, there are some drawbacks that can make it unsuitable for certain projects. While many institutions in Canada use Borealis, it requires a subscription and a certain level of staffing, and not all institutions are able to support it. There is also a maximum file size of 5GB, so larger datasets cannot be uploaded to the system. If your institution doesn’t support Borealis, or if you are working with larger data, FRDR (mentioned above) is a good choice as a generalist Canadian repository.</p>
+<p>For more details about Borealis, you can contact your institution, or follow the documentation on their website: <a href="https://learn.scholarsportal.info/all-guides/borealis/">https://learn.scholarsportal.info/all-guides/borealis/</a></p>
+</section>
+<section id="data-licenses" class="level3">
+<h3 class="anchored" data-anchor-id="data-licenses">Data Licenses</h3>
+<p>When you share data, you should carefully consider the license and what it will allow people to do with it (or not do with it). As with all aspects of data sharing, these are considerations you will need to communicate with your research team and research participants, and ideally have outlined in your DMP.</p>
+<section id="creative-commons-licenses" class="level4">
+<h4 class="anchored" data-anchor-id="creative-commons-licenses">Creative Commons licenses</h4>
+<p><a href="https://creativecommons.org/">Creative Commons licenses</a> are a common way to licence data, as it provides a structured way for users to dictate and understand what they are able to do with the data. Borealis and some other data repositories have Creative Commons licenses built into the platform, which allows for the easy application of the license. You must be the copyright holder in order to apply a Creative Commons license, and once a license has been set you can’t revoke it, so pick wisely!</p>
+<p>Below are the types of Creative Commons licenses available, and if you have questions about how to choose a license, they have created a tool to help you work through the decision process: <a href="https://creativecommons.org/chooser/">https://creativecommons.org/chooser/</a></p>
+<p><img src="images/day-6_lesson2_licenses.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Create a Linear Regression
+<span class="screen-reader-only">Caution</span>Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Create a <strong>linear regression</strong> showing the relationship between respondent age and time spent on social media.</p>
-<p>Start by calculating the average number of hours spent on social media by age, from <code>survey_short</code>.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate average hours on social media per age from ‘survey_short’</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>age_mean_hours <span class="ot">&lt;-</span> survey_short <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># for every age in ‘age’...</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(age) <span class="sc">|&gt;</span> </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># summarise dataset down to mean hours per age + standard deviation</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(hours_total),</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(hours_total))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In addition to the licenses listed above, there is also the option for a CCo license, which is a dedication of your work/data to the public domain. It allows anyone to use the work/data and do what they want with it without crediting you in any way, but unless you’re very generous, you probably want to use a different CC license type.</p>
 </div>
-<p>View <code>age_mean_hours</code> and take a look at how the data has been summarized.</p>
-<p>Then, use <code>age_mean_hours</code> to make the following plot:</p>
-<p><img src="images/day-6_activity-3.png" class="img-fluid"> <br> <br></p>
-<p>Save the finished plot to your <code>figures</code> folder with the name <code>survey_student_meantime-age.png</code>, with a width and height of 150 mm.</p>
-<p>Some helpful hints:</p>
-<ul>
-<li>The colour of ribbon is <code>slategray3</code></li>
-<li>A linear regression is plotted using geom_smooth() , specifying <code>method = ‘lm’</code></li>
-<li>Use the ggplot2 cheat sheet and/or search Google for the changes you want to make to your plot if you get stuck.</li>
-</ul>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>age_mean_hours_plot <span class="ot">&lt;-</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># specify data + aesthetics</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(age_mean_hours,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>         <span class="fu">aes</span>(<span class="at">x =</span> age,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> mean)) <span class="sc">+</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># specify geometry</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">"black"</span>, <span class="co"># change colour of regression line</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">fill =</span> <span class="st">"slategray3"</span>) <span class="sc">+</span> <span class="co"># change colour of ribbon</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fix up axes labels</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Participant Age"</span>,</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Average Hours on Social Media Per Day"</span>) <span class="sc">+</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># remove gaps between axes and plots</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># set theme</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># manually change theme elements</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>),</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save plot to "figures" folder</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"survey_student_meantime-age.png"</span>,</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>       age_mean_hours_plot,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">150</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">height =</span> <span class="dv">150</span>,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">units =</span> <span class="st">"mm"</span>,</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">path =</span> <span class="st">"figures"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
-</div>
-</div>
-</div>
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

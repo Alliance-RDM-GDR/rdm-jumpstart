@@ -1,9 +1,0 @@
----
-title: "Lesson 5: Borealis deposit"
----
-
-## Tutorial - Uploading Data to Borealis
-
-For this session, we’ll be doing a hands-on data deposit in the Borealis Demo instance. You can follow this link to get to the Borealis Demo site, and your instructor will take it from there: [Borealis Demo site](https://demo.borealisdata.ca/dataverse.xhtml)
-
-For more information on how to deposit data in Borealis, you can contact your institution, or follow the documentation on their website: [https://learn.scholarsportal.info/all-guides/borealis/](https://learn.scholarsportal.info/all-guides/borealis/) 
