@@ -195,7 +195,7 @@ To add another layer to the plot, we also used a plus sign `+` after the first `
 
 **ggplot2 Geometries**
 
-There are tons of different geometries built into ggplot2. Take a look at the ggplot2 cheatsheet to get a sense of what other kinds of plots you can make.
+There are tons of different geometries built into ggplot2. Take a look at the <a href="files/ggplot-cheatsheet.pdf" download>ggplot2 cheatsheet</a> to get a sense of what other kinds of plots you can make.
 
 :::
 
@@ -780,5 +780,4 @@ ggsave("survey_student_meantime-age.png",
        path = "figures")
 ```
 
-
-
+:::
