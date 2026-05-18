@@ -6,10 +6,10 @@ title: "Lesson 1: Data Cleaning"
 
 By the end of this lesson, you’ll be able to:
 
- - Describe the importance of data cleaning for the research data lifecycle.  
- - Identify data cleaning needs for an example dataset.  
- - Use the pipe operator and functions from the `tidyverse` to clean data of an example dataset.  
- - Write reproducible code by applying concepts of literate programming.
+- Describe the importance of data cleaning for the research data lifecycle.  
+- Identify data cleaning needs for an example dataset.  
+- Use the pipe operator and functions from the `tidyverse` to clean data of an example dataset.  
+- Write reproducible code by applying concepts of literate programming.
 
 ## Activity \- What Needs to Be Cleaned?
 
@@ -59,17 +59,17 @@ When sharing the dataset with others (which we will cover in more detail in anot
 
 Each dataset is unique and the type of data cleaning practices you use will need to be adapted for each new project. But, here is a general idea of what a dataset may require for cleaning:
 
- - Fix column names.  
- - Remove duplicate observations.  
- - Correct spelling mistakes.  
- - Standardize letter case and use of spaces or other special characters.  
- - Group values into larger categories.  
- - Convert variables to correct variable types (e.g., numeric, categorical, date, etc).  
- - Merge and split columns.  
- - Create new variables.  
- - Identify missing values.  
- - Create a subset of the data.  
- - Reshape the dataset for analysis.
+- Fix column names.  
+- Remove duplicate observations.  
+- Correct spelling mistakes.  
+- Standardize letter case and use of spaces or other special characters.  
+- Group values into larger categories.  
+- Convert variables to correct variable types (e.g., numeric, categorical, date, etc).  
+- Merge and split columns.  
+- Create new variables.  
+- Identify missing values.  
+- Create a subset of the data.  
+- Reshape the dataset for analysis.
 
 ## Tutorial \- Data Cleaning
 
@@ -105,7 +105,7 @@ Here’s where the pipe operator becomes useful. Instead of nesting `count(surve
 # Get the number of observations by age and gender and print all results
 
 count(survey_data, Age, Gender) |>  
-    print(n = Inf)  
+  print(n = Inf)  
 ```
 
 In the example above, `print(n = Inf)` is indented on a new line for readability. When using the pipe symbol (`|>`), editors such as RStudio may automatically indent the next line to show that the command continues.
@@ -125,8 +125,8 @@ You can check the answer below, but please make sure to try it yourself before y
 #| eval: false
 # Get the number of observations by age and gender and print all results  
 survey_data |>  
-    count(Age, Gender) |>  
-    print(n = Inf) 
+  count(Age, Gender) |>  
+  print(n = Inf) 
 ```
 
 Using pipes can help the code look cleaner and easier to understand. When formatted this way, you can see each step: 
@@ -154,7 +154,7 @@ Now, open a new R script and save it with a meaningful name in the correct folde
 ## Note
 
 Consult the project's file naming and folder structure conventions ([Day 3](../Day03/Day03_Lesson3.html)) if needed.
- 
+
 :::
 
 At the top of your script, create a title and add a brief description of its purpose. Remember, this comment should be preceded by a hash `#` symbol.
@@ -256,7 +256,7 @@ survey_data_fixnames <- survey_data |>
 * `date_birth = "Date of birth"` \- you are renaming the “Date of birth” column to date\_birth. This new column name is written without quotes because it has no spaces.
 
 Run `names(survey_data)` again to check if the name change worked.
- 
+
 :::
 
 What happened when you ran the `names(survey_data)`code again? Did you see the name change? Remember, we didn’t change column names in the `survey_data` object, we created a new object called `survey_data_fixnames` and changed the column name there.
@@ -268,7 +268,7 @@ What happened when you ran the `names(survey_data)`code again? Did you see the n
 # change column names  
 survey_data_fixnames <- survey_data |>  
   rename(date_birth = "Date of birth",  
-               hours_facebook = "How many hours per day do you use each platform? [Facebook]")  
+         hours_facebook = "How many hours per day do you use each platform? [Facebook]")  
 ```
 
 ::: {.callout-note}
@@ -335,7 +335,7 @@ survey_data_fixnames <- survey_data  |>
          reasons_use = "Select any of the following reasons for using social media:"  
   )
 ```
- 
+
 :::
 
 You can now check if column names were correctly modified.
@@ -565,7 +565,7 @@ survey_data_anon <- survey_data_anon |>
   select(-timestamp)
 
 ```
- 
+
 :::
 
 You can now check that all column removals worked:
@@ -600,7 +600,7 @@ You can check the answer below, but try it yourself before you see the answer.
 survey_data_anon |>  
   select(date_birth, age, province) 
 ```
- 
+
 :::
 
 ### Save current version of cleaned data
@@ -854,14 +854,13 @@ Now you can use these values to fix the variable. In this case, we want to updat
 # fix values for the province variable  
 survey_data_notypos <- survey_data_dropna |>  
   mutate(   
-    province = province |>
-      replace_values(
-        c("AB", "Alta") ~ "Alberta",  
-        c("B.C.", "BC", "british columbia") ~ "British Columbia",
-        "MB" ~ "Manitoba",
-        "NS" ~ "Nova Scotia",
-        c("ON", "ontario") ~ "Ontario",
-        c("QC", "Québec") ~ "Quebec"  
+    province = replace_values(province, 
+                              c("AB", "Alta") ~ "Alberta",  
+                              c("B.C.", "BC", "british columbia") ~ "British Columbia",
+                              "MB" ~ "Manitoba",
+                              "NS" ~ "Nova Scotia",
+                              c("ON", "ontario") ~ "Ontario",
+                              c("QC", "Québec") ~ "Quebec"  
     )  
   )  
 ```
@@ -893,7 +892,7 @@ survey_data_notypos |>
 You might have noticed that the field of study variable also has typos. Check which typos exist and use `replace_values()` to fix these typos.
 
 You can check the answer below, but please make sure to try it yourself before you see the answer. 
- 
+
 :::
 
 ::: {.callout-tip collapse=true}
@@ -916,7 +915,7 @@ survey_data_notypos <- survey_data_notypos |>
                                       c("engineering", "enginering") ~ "Engineering",  
                                       c("psychology", "psycology") ~"Psychology",  
                                       "stats" ~ "Statistics"  
-                                      )  
+  )  
   )
 
 # check if it worked  
@@ -1024,22 +1023,22 @@ Practice your skills in data cleaning with another dataset! This is an optional 
 
 1. Download this [dataset](https://www.dropbox.com/scl/fi/is2yaa5gz1of32xo1xwvd/squirrel-data.csv?rlkey=sao5wj2tqd98nzs6rsi5k7ot6&e=2&dl=0). If you want to read more about it, check out the [dataset documentation](https://www.dropbox.com/s/cs293zzz1li79nn/user-guide_data-sets_nyc-open-data-week-multi-park-squirrel-count.pdf?dl=0).   
 2. Create a data cleaning script that:  
-   * Renames variables to use consistent names with lower caps, no spaces, and no units of measurements  
-   * Checks for duplicates and corrects if needed  
-   * Reorders columns to move the Latitude and Longitude columns to after Squirrel ID  
-   * Fix typos and inconsistencies in the Height Aboveground column  
-     1. You will have to decide what you want to do with inconsistent values, but if you do not know the height, you can assign them an NA value  
-   * Recodes location variable to specify only “groundplane”, “aboveground”, or “both”.   
-     1. There is no need to mention “Specific Location” in the values here as a column for specific location exists and details their location.  
-     2. All entries that say solely “Specific Location” can be assigned to “aboveground” as they describe squirrels seen on a bench, tree, handrail or fence, as detailed in the specific location variable.  
-   * Saves the cleaned dataset with an informative name different from the raw dataset name
+* Renames variables to use consistent names with lower caps, no spaces, and no units of measurements  
+* Checks for duplicates and corrects if needed  
+* Reorders columns to move the Latitude and Longitude columns to after Squirrel ID  
+* Fix typos and inconsistencies in the Height Aboveground column  
+1. You will have to decide what you want to do with inconsistent values, but if you do not know the height, you can assign them an NA value  
+* Recodes location variable to specify only “groundplane”, “aboveground”, or “both”.   
+1. There is no need to mention “Specific Location” in the values here as a column for specific location exists and details their location.  
+2. All entries that say solely “Specific Location” can be assigned to “aboveground” as they describe squirrels seen on a bench, tree, handrail or fence, as detailed in the specific location variable.  
+* Saves the cleaned dataset with an informative name different from the raw dataset name
 
 If starting from scratch feels like too much for you, you could also download this <a href="files/day4_lesson1_extra-activity-template.R" download>
-  fill-in-the-blanks
+fill-in-the-blanks
 </a> data cleaning script template with hints for you to complete this activity.
 
 As always with R, there are multiple ways to perform the same actions, so your script won’t necessarily be the same as ours. But if you want a reference script that performs the above data cleaning tasks, you can find one <a href="files/day4_lesson1_extra-activity-solution.R" download>
-  here
+here
 </a>
 
 

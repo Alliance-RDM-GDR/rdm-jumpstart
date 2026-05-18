@@ -150,7 +150,9 @@ Now we're ready to start plotting!
 
 The basic syntax of ggplot2 is:
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
+
 ggplot(data,
   aes(x = x_variable, y = y_variable)) +
   geom_whatever()
@@ -279,7 +281,8 @@ The `theme()` function is where you can change things like axis and axis title t
 
 Next, you might have noticed spaces between the bar plot and the axis lines - ggplots often have these spaces between graph elements and axes. You can remove the space between the plot and the axes using the following lines:
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
   scale_y_continuous(expand = expansion(0))
 ``` 
 
@@ -362,7 +365,8 @@ ggplot(survey_short,
 Specifying `color = "blue"` within `geom_point()` works - but that command turns all points blue, and we can no longer distinguish data points by participants’ gender. Perhaps using the concatenate function, `c()`, nested within will work. Give it a try: since there are five gender categories (female, male, non-binary, prefer not to answer, NA), concatenate five different colours within the `color` argument.
 
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 ggplot(survey_short,
   aes(x = hours_total,
       y = hours_sleep,
@@ -449,7 +453,8 @@ ggplot(survey_short,
 
 One small, final change we can make is to capitalize the legend title. We do that within the `labs()` function as well.
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 color = "Participant Gender"
 ``` 
 
@@ -500,7 +505,8 @@ social_media_sleep <-
 
 Now that we’ve assigned the scatter plot a name, we can save it. The syntax for exporting an image is:
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 ggsave(“name.png”,
   R_object,
   width = 100,
@@ -513,7 +519,8 @@ Here, `name.png` is the name you want to give your image file, with includes the
 
 Try saving the scatter plot to your `figures` folder.
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 ggsave("survey_student_sleep.png",
   social_media_sleep,
   width = 100,
@@ -539,19 +546,6 @@ Create a **Bar plot** to show which social media platforms are used most by resp
 
 Start by calculating the average number of hours spent on each platform, across respondents, from `survey_long`.
 
-```{r, eval=TRUE, echo=FALSE}
-library(tidyverse)
-```
-
-```{r, eval=TRUE, echo=FALSE}
-survey_long <- readRDS("data/survey_student_anonymized-long.rds")
-```
-
-```{r, eval=TRUE, echo=FALSE}
-survey_short <- readRDS("data/survey_student_anonymized-wide.rds")
-```
-
-
 ```{r}
 # calculate average hours per platform from ‘survey_long’
 platform_mean_hours <- survey_long |> 
@@ -570,7 +564,44 @@ View `platform_mean_hours` and take a look at how the data has been summarized.
 
 Then, use `platform_mean_hours` to make the following plot:
 
-![](images/day-6_activity-1.png)
+```{r}
+#| eval: true
+#| echo: false
+#| fig-asp: 1
+platform_mean_hours_plot <- 
+  # specify data + aesthetics
+  ggplot(platform_mean_hours,
+    aes(x = hours_type,
+        y = mean)) +
+  # specify geometry
+  geom_col(fill = "darkseagreen4") + # change fill colour to dark sea-green
+  # add error bars
+  geom_errorbar(aes(ymin = pmax(mean - sd, 0), # keep error bar for Twitter above zero
+        ymax = mean + sd), 
+        width = 0.2, # make error bars less wide
+        color = "grey10") + # change colour to dark grey
+  # fix up axes labels
+  labs(x = "Social Media Platform",
+       y = "Average Hours per Day") +
+   # fix up platform labels
+  scale_x_discrete(labels = c("Facebook",
+                              "Instagram",
+                              "Snapchat",
+                              "TikTok",
+                              "Twitter/X")) +
+  # remove gap between x axis + plot
+  scale_y_continuous(expand = expansion(0)) +
+  # set theme
+  theme_classic() +
+  # manually change theme elements
+  theme(axis.title = element_text(size = 14),
+        axis.text.x = element_text(size = 14,
+                                   angle = 45, # tilt x axis text 45 degrees
+                                   hjust = 1), # centre x axis text
+        axis.text.y = element_text(size = 14),
+        axis.ticks.x = element_blank()) # remove x axis ticks
+platform_mean_hours_plot
+```
 
 <br>
 <br>
@@ -627,7 +658,8 @@ platform_mean_hours_plot <-
 
 ```
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 # save plot to "figures" folder
 ggsave("survey_student_meantime-platform.png",
   platform_mean_hours_plot,
@@ -647,8 +679,38 @@ ggsave("survey_student_meantime-platform.png",
 Create a **box plot** to show how perceptions of stress associated with hours spent on social media.
 
 Use `survey_short` data to make the following plot: 
+```{r}
+#| eval: true
+#| echo: false
+#| fig-asp: 1
+stress_total_hours_plot <-
+  # specify data + aesthetics
+  ggplot(survey_short,
+         aes(x = feel_stress,
+             y = hours_total)) +
+  # specify geometry
+  geom_boxplot(fill = "grey") +
+  # fix up axes labels
+  labs(x = "Social Media Incurs Stress",
+       y = "Total Daily Hours on Social Media") +
+  # fix up agreement labels
+  scale_x_discrete(labels = c("Strong Disagree",
+                              "Disagree",
+                              "Neutral",
+                              "Agree",
+                              "NA")) +
+  # set theme
+  theme_classic() +
+  # manually change theme elements
+  theme(axis.title = element_text(size = 14),
+        axis.text.y = element_text(size = 12),
+        axis.text.x = element_text(size = 12,
+                                   angle = 45,
+                                   hjust = 1))
+stress_total_hours_plot
 
-![](images/day-6_activity-2.png)
+```
+
 <br>
 <br>
 
@@ -695,6 +757,7 @@ stress_total_hours_plot <-
 
 
 ```{r, eval=FALSE}
+#| eval: false
 # save plot to "figures" folder
 ggsave("survey_student_stress-hours.png",
        stress_total_hours_plot,
@@ -728,8 +791,33 @@ age_mean_hours <- survey_short |>
 View `age_mean_hours` and take a look at how the data has been summarized.
 
 Then, use `age_mean_hours` to make the following plot:
+```{r}
+#| eval: true
+#| echo: false
+#| fig-asp: 1
+age_mean_hours_plot <-
+  # specify data + aesthetics
+  ggplot(age_mean_hours,
+         aes(x = age,
+             y = mean)) +
+  # specify geometry
+  geom_smooth(method = "lm",
+              color = "black", # change colour of regression line
+              fill = "slategray3") + # change colour of ribbon
+  # fix up axes labels
+  labs(x = "Participant Age",
+       y = "Average Hours on Social Media Per Day") +
+  # remove gaps between axes and plots
+  scale_x_continuous(expand = expansion(0)) +
+  scale_y_continuous(expand = expansion(0)) +
+  # set theme
+  theme_classic() +
+  # manually change theme elements
+  theme(axis.title.x = element_text(size = 14),
+        axis.title.y = element_text(size = 14))
+age_mean_hours_plot
+```
 
-![](images/day-6_activity-3.png)
 <br>
 <br>
 
@@ -770,7 +858,8 @@ age_mean_hours_plot <-
         axis.title.y = element_text(size = 14))
 ```
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 # save plot to "figures" folder
 ggsave("survey_student_meantime-age.png",
        age_mean_hours_plot,
