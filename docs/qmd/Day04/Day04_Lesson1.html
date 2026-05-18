@@ -725,7 +725,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of observations by age and gender and print all results</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(survey_data, Age, Gender) <span class="sc">|&gt;</span>  </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 51 × 3
      Age Gender                n
@@ -813,8 +813,8 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of observations by age and gender and print all results  </span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>survey_data <span class="sc">|&gt;</span>  </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(Age, Gender) <span class="sc">|&gt;</span>  </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Age, Gender) <span class="sc">|&gt;</span>  </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Using pipes can help the code look cleaner and easier to understand. When formatted this way, you can see each step:</p>
 <ol type="1">
@@ -995,7 +995,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change column names  </span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>survey_data_fixnames <span class="ot">&lt;-</span> survey_data <span class="sc">|&gt;</span>  </span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">date_birth =</span> <span class="st">"Date of birth"</span>,  </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">hours_facebook =</span> <span class="st">"How many hours per day do you use each platform? [Facebook]"</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">hours_facebook =</span> <span class="st">"How many hours per day do you use each platform? [Facebook]"</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1887,16 +1887,15 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fix values for the province variable  </span></span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>survey_data_notypos <span class="ot">&lt;-</span> survey_data_dropna <span class="sc">|&gt;</span>  </span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(   </span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">province =</span> province <span class="sc">|&gt;</span></span>
-<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">replace_values</span>(</span>
-<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="st">"AB"</span>, <span class="st">"Alta"</span>) <span class="sc">~</span> <span class="st">"Alberta"</span>,  </span>
-<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="st">"B.C."</span>, <span class="st">"BC"</span>, <span class="st">"british columbia"</span>) <span class="sc">~</span> <span class="st">"British Columbia"</span>,</span>
-<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"MB"</span> <span class="sc">~</span> <span class="st">"Manitoba"</span>,</span>
-<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"NS"</span> <span class="sc">~</span> <span class="st">"Nova Scotia"</span>,</span>
-<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="st">"ON"</span>, <span class="st">"ontario"</span>) <span class="sc">~</span> <span class="st">"Ontario"</span>,</span>
-<span id="cb65-11"><a href="#cb65-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="st">"QC"</span>, <span class="st">"Québec"</span>) <span class="sc">~</span> <span class="st">"Quebec"</span>  </span>
-<span id="cb65-12"><a href="#cb65-12" aria-hidden="true" tabindex="-1"></a>    )  </span>
-<span id="cb65-13"><a href="#cb65-13" aria-hidden="true" tabindex="-1"></a>  )  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">province =</span> <span class="fu">replace_values</span>(province, </span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">c</span>(<span class="st">"AB"</span>, <span class="st">"Alta"</span>) <span class="sc">~</span> <span class="st">"Alberta"</span>,  </span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">c</span>(<span class="st">"B.C."</span>, <span class="st">"BC"</span>, <span class="st">"british columbia"</span>) <span class="sc">~</span> <span class="st">"British Columbia"</span>,</span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"MB"</span> <span class="sc">~</span> <span class="st">"Manitoba"</span>,</span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"NS"</span> <span class="sc">~</span> <span class="st">"Nova Scotia"</span>,</span>
+<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">c</span>(<span class="st">"ON"</span>, <span class="st">"ontario"</span>) <span class="sc">~</span> <span class="st">"Ontario"</span>,</span>
+<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">c</span>(<span class="st">"QC"</span>, <span class="st">"Québec"</span>) <span class="sc">~</span> <span class="st">"Quebec"</span>  </span>
+<span id="cb65-11"><a href="#cb65-11" aria-hidden="true" tabindex="-1"></a>    )  </span>
+<span id="cb65-12"><a href="#cb65-12" aria-hidden="true" tabindex="-1"></a>  )  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -2012,7 +2011,7 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">c</span>(<span class="st">"engineering"</span>, <span class="st">"enginering"</span>) <span class="sc">~</span> <span class="st">"Engineering"</span>,  </span>
 <span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">c</span>(<span class="st">"psychology"</span>, <span class="st">"psycology"</span>) <span class="sc">~</span><span class="st">"Psychology"</span>,  </span>
 <span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"stats"</span> <span class="sc">~</span> <span class="st">"Statistics"</span>  </span>
-<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a>                                      )  </span>
+<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a>  )  </span>
 <span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb70-13"><a href="#cb70-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb70-14"><a href="#cb70-14" aria-hidden="true" tabindex="-1"></a><span class="co"># check if it worked  </span></span>
@@ -2200,7 +2199,9 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 <ol type="1">
 <li>Download this <a href="https://www.dropbox.com/scl/fi/is2yaa5gz1of32xo1xwvd/squirrel-data.csv?rlkey=sao5wj2tqd98nzs6rsi5k7ot6&amp;e=2&amp;dl=0">dataset</a>. If you want to read more about it, check out the <a href="https://www.dropbox.com/s/cs293zzz1li79nn/user-guide_data-sets_nyc-open-data-week-multi-park-squirrel-count.pdf?dl=0">dataset documentation</a>.<br>
 </li>
-<li>Create a data cleaning script that:
+<li>Create a data cleaning script that:<br>
+</li>
+</ol>
 <ul>
 <li>Renames variables to use consistent names with lower caps, no spaces, and no units of measurements<br>
 </li>
@@ -2208,21 +2209,26 @@ gtag('config', 'G-KSGZ4ESKQ3', { 'anonymize_ip': true});
 </li>
 <li>Reorders columns to move the Latitude and Longitude columns to after Squirrel ID<br>
 </li>
-<li>Fix typos and inconsistencies in the Height Aboveground column
+<li>Fix typos and inconsistencies in the Height Aboveground column<br>
+</li>
+</ul>
 <ol type="1">
 <li>You will have to decide what you want to do with inconsistent values, but if you do not know the height, you can assign them an NA value<br>
 </li>
-</ol></li>
-<li>Recodes location variable to specify only “groundplane”, “aboveground”, or “both”.
+</ol>
+<ul>
+<li>Recodes location variable to specify only “groundplane”, “aboveground”, or “both”.<br>
+</li>
+</ul>
 <ol type="1">
 <li>There is no need to mention “Specific Location” in the values here as a column for specific location exists and details their location.<br>
 </li>
 <li>All entries that say solely “Specific Location” can be assigned to “aboveground” as they describe squirrels seen on a bench, tree, handrail or fence, as detailed in the specific location variable.<br>
 </li>
-</ol></li>
-<li>Saves the cleaned dataset with an informative name different from the raw dataset name</li>
-</ul></li>
 </ol>
+<ul>
+<li>Saves the cleaned dataset with an informative name different from the raw dataset name</li>
+</ul>
 <p>If starting from scratch feels like too much for you, you could also download this <a href="files/day4_lesson1_extra-activity-template.R" download=""> fill-in-the-blanks </a> data cleaning script template with hints for you to complete this activity.</p>
 <p>As always with R, there are multiple ways to perform the same actions, so your script won’t necessarily be the same as ours. But if you want a reference script that performs the above data cleaning tasks, you can find one <a href="files/day4_lesson1_extra-activity-solution.R" download=""> here </a></p>
 
